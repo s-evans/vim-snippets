@@ -1,6 +1,36 @@
+# TODO: 
+# string functions; file i/o;
+##
+## Other
 # todo
 snippet to
 	// TODO: ${0}
+# goto
+snippet go
+	goto ${1:label};
+# sizeof
+snippet so
+	sizeof( ${1:type} )
+# fileblock
+snippet fb
+	//----------------------------------------------------------------------------------------------------------------------
+	// ${1}
+	//----------------------------------------------------------------------------------------------------------------------
+##
+## Allocation
+# malloc
+snippet malloc
+	malloc( ${1:size} )
+# free
+snippet free
+	free( ${1:pointer} );
+# realloc
+snippet realloc
+	realloc( ${1:pointer}, ${2:size} )
+# calloc
+snippet calloc
+	calloc( ${1:num}, ${2:size} )
+##
 ## Main
 # main
 snippet main
@@ -45,12 +75,11 @@ snippet #if
 # header include guard
 snippet once
 	#ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
-
 	#define $1
 
 	${0}
 
-	#endif /* end of include guard: $1 */
+	#endif // $1
 ##
 ## Control Statements
 # if
