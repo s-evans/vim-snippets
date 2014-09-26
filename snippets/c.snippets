@@ -1,14 +1,17 @@
+# todo
+snippet to
+	// TODO: ${0}
 ## Main
 # main
 snippet main
-	int main(int argc, const char *argv[])
+	int main( int argc, const char *argv[] )
 	{
 		${0}
 		return 0;
 	}
 # main(void)
 snippet mainn
-	int main(void)
+	int main( void )
 	{
 		${0}
 		return 0;
@@ -52,7 +55,7 @@ snippet once
 ## Control Statements
 # if
 snippet if
-	if (${1:/* condition */}) {
+	if ( ${1:/* condition */} ) {
 		${2}
 	}
 # else
@@ -62,18 +65,18 @@ snippet el
 	}
 # else if
 snippet elif
-	else if (${1:/* condition */}) {
+	else if ( ${1:/* condition */} ) {
 		${2}
 	}
 # ifi
 snippet ifi
-	if (${1:/* condition */}) ${2};
+	if ( ${1:/* condition */} ) ${2};
 # ternary
 snippet t
 	${1:/* condition */} ? ${2:a} : ${3:b}
 # switch
 snippet switch
-	switch (${1:/* variable */}) {
+	switch ( ${1:/* variable */} ) {
 		case ${2:/* variable case */}:
 			${3}
 			${4:break;}${5}
@@ -82,7 +85,7 @@ snippet switch
 	}
 # switch without default
 snippet switchndef
-	switch (${1:/* variable */}) {
+	switch ( ${1:/* variable */} ) {
 		case ${2:/* variable case */}:
 			${3}
 			${4:break;}${5}
@@ -96,35 +99,35 @@ snippet case
 ## Loops
 # for
 snippet for
-	for (${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+	for ( ${2:i} = 0; $2 < ${1:count}; $2${3:++} ) {
 		${4}
 	}
 # for (custom)
 snippet forr
-	for (${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++}) {
+	for ( ${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++} ) {
 		${5}
 	}
 # while
 snippet wh
-	while (${1:/* condition */}) {
+	while ( ${1:/* condition */} ) {
 		${2}
 	}
 # do... while
 snippet do
 	do {
 		${2}
-	} while (${1:/* condition */});
+	} while ( ${1:/* condition */} );
 ##
 ## Functions
 # function definition
 snippet fun
-	${1:void} ${2:function_name}(${3})
+	${1:void} ${2:function_name}( ${3} )
 	{
 		${4}
 	}
 # function declaration
 snippet fund
-	${1:void} ${2:function_name}(${3});
+	${1:void} ${2:function_name}( ${3} );
 ##
 ## Types
 # typedef
@@ -149,14 +152,14 @@ snippet tde
 ## Input/Output
 # printf
 snippet pr
-	printf("${1:%s}\n"${2});
+	printf( "${1:%s}\n"${2} );
 # fprintf (again, this isn't as nice as TextMate's version, but it works)
 snippet fpr
-	fprintf(${1:stderr}, "${2:%s}\n"${3});
+	fprintf( ${1:stderr}, "${2:%s}\n"${3} );
 # getopt
 snippet getopt
 	int choice;
-	while (1)
+	while ( 1 )
 	{
 		static struct option long_options[] =
 		{
