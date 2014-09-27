@@ -1,4 +1,77 @@
-snippet ifeq
-	ifeq (${1:cond0},${2:cond1})
-		${0}
-	endif
+snippet dir
+	$(dir ${0:names})
+snippet notdir
+	$(notdir ${0:names})
+snippet suffix
+	$(suffix ${1:names})
+snippet basename
+	$(basename ${1:names})
+snippet addsuffix
+	$(addsuffix ${1:suffix}, ${2:names})
+snippet addprefix
+	$(addprefix ${1:prefix}, ${2:names})
+snippet join
+	$(join ${1:list1}, ${2:list2})
+snippet wildcard
+	$(wildcard ${1:pattern})
+snippet realpath
+	$(realpath ${1:names})
+snippet abspath
+	$(abspath ${1:names})
+snippet if
+	$(if ${1:condition}, ${2:then-part}, ${3:else-part})
+snippet or
+	$(or ${1:condition1}, ${2:conditions})
+snippet and
+	$(and ${1:condition1}, ${2:conditions})
+snippet subst
+	$(subst ${1:from}, ${2:to}, ${3:text})
+snippet patsubst
+	$(patsubst ${1:pattern}, ${2:replacement}, ${3:text})
+snippet strip
+	$(strip ${1:string})
+snippet findstring
+	$(findstring ${1:find}, ${2:in})
+snippet filter
+	$(filter ${1:pattern...}, ${2:text})
+snippet filter-out
+	$(filter-out ${1:pattern...}, ${2:text})
+snippet sort
+	$(sort ${1:list})
+snippet word
+	$(word ${1:n}, ${2:text})
+snippet wordlist
+	$(wordlist ${1:s}, ${2:e}, ${3:text})
+snippet words
+	$(words ${1:text})
+snippet firstword
+	$(firstword ${1:list})
+snippet lastword
+	$(lastword ${1:list})
+snippet foreach
+	$(foreach ${1:var}, ${2:list}, ${3:text})
+snippet file
+	$(file ${1:>} ${2:filename}, ${3:text})
+snippet call
+	$(call ${1:variable}, ${2:params})
+snippet value
+	$(value ${1:variable})
+snippet eval
+	$(eval ${1:statement})
+snippet origin
+	$(origin ${1:variable})
+snippet flavor
+	$(flavor ${1:variable})
+snippet error
+	$(error ${1:text...})
+snippet warning
+	$(warning ${1:text...})
+snippet info
+	$(info ${1:text...})
+snippet shell
+	$(shell ${1:cmd} ${2:args})
+snippet v
+	$(${0:variable_name})
+snippet t
+	${1:labels}: ${2:dependencies} | ${3:order_only_dependencies}
+		${4:rules}
