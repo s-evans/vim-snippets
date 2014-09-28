@@ -1,5 +1,5 @@
 # TODO:
-# boost; file I/O and stream junk;
+# streams;
 ##
 ## Keywords
 snippet string std
@@ -100,20 +100,32 @@ snippet sleep boost::this_thread
 	boost::this_thread::sleep( ${1:posix_time} )
 snippet hardware_concurrency boost::thread
 	boost::thread::hardware_concurrency()
+snippet condition_variable boost
+	boost::condition_variable
+snippet barrier boost
+	boost::barrier
 snippet mutex boost
 	boost::mutex
 snippet rmutex boost
 	boost::recursive_mutex
+snippet tmutex boost
+	boost::timed_mutex
+snippet rtmutex boost
+	boost::recursive_timed_mutex
+snippet smutex boost
+	boost::shared_mutex
 snippet unique_lock boost
 	boost::unique_lock<${1:mutex}>
-snippet scoped_lock boost
-	boost::scoped_lock
+snippet lock_guard boost
+	boost::lock_guard<${1:mutex}>
 ## 
 ## ASIO
 snippet io_service boost::asio
 	boost::asio::io_service
 snippet deadline_timer boost::asio
 	boost::asio::deadline_timer
+snippet strand boost::asio::io_service
+	boost::asio::io_service::strand
 ##
 ## Networking
 ##
