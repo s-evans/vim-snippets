@@ -35,25 +35,85 @@ snippet typename
 ##
 ## Allocation
 snippet n
-	new ${1};
+	new ${1}
 snippet na
-	new ${1}[${2}];
+	new ${1}[${2}]
 snippet pn
-	new (${1}) ${2};
+	new (${1}) ${2}
 snippet pna
-	new (${1}) ${2}[${3}];
+	new (${1}) ${2}[${3}]
 snippet d
-	delete ${1};
+	delete ${1}
 snippet da
-	delete[] ${1};
+	delete[] ${1}
 ## 
 ## Boost
 ## 
+## System
+snippet error_code boost::system
+	boost::system::error_code
+snippet system_error boost::system
+	boost::system::system_error
+## 
 ## Time
+snippet date boost::gregorian
+	boost::gregorian::date
+snippet ptime boost::posix_time
+	boost::posix_time::ptime
+snippet time_duration boost::posix_time
+	boost::posix_time::time_duration
+snippet time_period boost::posix_time
+	boost::posix_time::time_period
+snippet time_iterator boost::posix_time
+	boost::posix_time::time_iterator
+snippet hours boost::posix_time
+	boost::posix_time::hours( ${1:count} )
+snippet minutes boost::posix_time
+	boost::posix_time::minutes( ${1:count} )
+snippet seconds boost::posix_time
+	boost::posix_time::seconds( ${1:count} )
+snippet milliseconds boost::posix_time
+	boost::posix_time::milliseconds( ${1:count} )
+snippet microseconds boost::posix_time
+	boost::posix_time::microseconds( ${1:count} )
+snippet nanoseconds boost::posix_time
+	boost::posix_time::nanoseconds( ${1:count} )
+snippet time_from_string boost::posix_time
+	boost::posix_time::time_from_string( ${1:string} )
+snippet from_iso_string boost::posix_time
+	boost::posix_time::from_iso_string( ${1:string} )
+snippet universal_time boost::posix_time
+	boost::posix_time::${1:microsec_clock}::universal_time()
+snippet local_time boost::posix_time
+	boost::posix_time::${1:microsec_clock}::local_time()
+snippet from_time_t boost::posix_time
+	boost::posix_time::from_time_t( ${1:time_t} )
+snippet from_ftime boost::posix_time
+	boost::posix_time::from_ftime<ptime>( ${1:FILETIME} )
 ##
 ## Threading
+snippet thread boost
+	boost::thread
+snippet get_id boost::this_thread
+	boost::this_thread::get_id()
+snippet sleep boost::this_thread
+	boost::this_thread::sleep( ${1:posix_time} )
+snippet hardware_concurrency boost::thread
+	boost::thread::hardware_concurrency()
+snippet mutex boost
+	boost::mutex
+snippet rmutex boost
+	boost::recursive_mutex
+snippet unique_lock boost
+	boost::unique_lock<${1:mutex}>
+snippet scoped_lock boost
+	boost::scoped_lock
 ## 
 ## ASIO
+snippet io_service boost::asio
+	boost::asio::io_service
+snippet deadline_timer boost::asio
+	boost::asio::deadline_timer
 ##
 ## Networking
 ##
