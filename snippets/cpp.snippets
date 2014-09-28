@@ -2,66 +2,48 @@
 # boost; file I/O and stream junk;
 ##
 ## Keywords
-# std::string
-snippet string
+snippet string std
 	std::string
-# operator
 snippet op
 	operator${1}( ${2} )
-# try
 snippet try
 	try {
 		${1}
 	} catch ( ${2:T}& ${3:name} ) {
 		${4}
 	}
-# catch
 snippet catch
 	catch ( ${1:T}& ${2:name} ) {
 		${3}
 	}
-# throw
 snippet throw
 	throw ${1:value};
-# static_cast
 snippet static_cast
 	static_cast<${1:T}>( ${2:value} )
-# dynamic_cast
 snippet dynamic_cast
 	dynamic_cast<${1:T}>( ${2:value} )
-# reinterpret_cast
 snippet reinterpret_cast
 	reinterpret_cast<${1:T}>( ${2:value} )
-# lexical_cast
 snippet lexical_cast
 	boost::lexical_cast<${1:T}>( ${2:value} )
-# template 
 snippet template
 	template<${1}>
-# classname
 snippet classname
 	classname ${1}
-# typename
 snippet typename
 	typename ${1}
 ##
 ## Allocation
-# new 
 snippet n
 	new ${1};
-# new[]
 snippet na
 	new ${1}[${2}];
-# new ()
 snippet pn
 	new (${1}) ${2};
-# new () []
 snippet pna
 	new (${1}) ${2}[${3}];
-# delete
 snippet d
 	delete ${1};
-# delete[]
 snippet da
 	delete[] ${1};
 ## 
@@ -76,675 +58,480 @@ snippet da
 ## Networking
 ##
 ## Algorithms
-# boost::algorithm::to_upper
-snippet to_upper
+snippet to_upper boost::algorithm
 	boost::algorithm::to_upper( ${1:string} )
-# boost::algorithm::to_upper_copy
-snippet to_upper_copy
+snippet to_upper_copy boost::algorithm
 	boost::algorithm::to_upper_copy( ${1:string} )
-# boost::algorithm::to_lower
-snippet to_lower
+snippet to_lower boost::algorithm
 	boost::algorithm::to_lower( ${1:string} )
-# boost::algorithm::to_lower_copy
-snippet to_lower_copy
+snippet to_lower_copy boost::algorithm
 	boost::algorithm::to_lower_copy( ${1:string} )
-# boost::algorithm::trim
-snippet trim
+snippet trim boost::algorithm
 	boost::algorithm::trim( ${1:string} )
-# boost::algorithm::trim_if
-snippet trim_if
+snippet trim_if boost::algorithm
 	boost::algorithm::trim_if( ${1:string}, ${2:unary_predicate} )
-# boost::algorithm::trim_copy
-snippet trim_copy
+snippet trim_copy boost::algorithm
 	boost::algorithm::trim_copy( ${1:string} )
-# boost::algorithm::trim_copy_if
-snippet trim_copy_if
+snippet trim_copy_if boost::algorithm
 	boost::algorithm::trim_copy_if( ${1:string}, ${2:unary_predicate} )
-# boost::algorithm::trim_left
-snippet trim_left
+snippet trim_left boost::algorithm
 	boost::algorithm::trim_left( ${1:string} )
-# boost::algorithm::trim_left_if
-snippet trim_left_if
+snippet trim_left_if boost::algorithm
 	boost::algorithm::trim_left_if( ${1:string}, ${2:unary_predicate} )
-# boost::algorithm::trim_left_copy
-snippet trim_left_copy
+snippet trim_left_copy boost::algorithm
 	boost::algorithm::trim_left_copy( ${1:string} )
-# boost::algorithm::trim_left_copy_if
-snippet trim_left_copy_if
+snippet trim_left_copy_if boost::algorithm
 	boost::algorithm::trim_left_copy_if( ${1:string}, ${2:unary_predicate} )
-# boost::algorithm::trim_right
-snippet trim_right
+snippet trim_right boost::algorithm
 	boost::algorithm::trim_right( ${1:string} )
-# boost::algorithm::trim_right_if
-snippet trim_right_if
+snippet trim_right_if boost::algorithm
 	boost::algorithm::trim_right_if( ${1:string}, ${2:unary_predicate} )
-# boost::algorithm::trim_right_copy
-snippet trim_right_copy
+snippet trim_right_copy boost::algorithm
 	boost::algorithm::trim_right_copy( ${1:string} )
-# boost::algorithm::trim_right_copy_if
-snippet trim_right_copy_if
+snippet trim_right_copy_if boost::algorithm
 	boost::algorithm::trim_right_copy_if( ${1:string}, ${2:unary_predicate} )
-# boost::algorithm::split
-snippet split
+snippet split boost::algorithm
 	boost::algorithm::split( ${1:vector}, ${2:string}, ${3:unary_predicate} )
-# boost::algorithm::join
-snippet join
+snippet join boost::algorithm
 	boost::algorithm::join( ${1:vector}, ${2:separator} )
-# boost::algorithm::replace_first_copy
-snippet replace_first_copy
+snippet replace_first_copy boost::algorithm
 	boost::algorithm::replace_first_copy( ${1:string}, ${2:find}, ${3:replace} )
-# boost::algorithm::replace_nth_copy
-snippet replace_nth_copy
+snippet replace_nth_copy boost::algorithm
 	boost::algorithm::replace_nth_copy( ${1:string}, ${2:find}, ${3:n}, ${4:replace} )
-# boost::algorithm::replace_last_copy
-snippet replace_last_copy
+snippet replace_last_copy boost::algorithm
 	boost::algorithm::replace_last_copy( ${1:string}, ${2:find}, ${3:replace} )
-# boost::algorithm::replace_all_copy
-snippet replace_all_copy
+snippet replace_all_copy boost::algorithm
 	boost::algorithm::replace_all_copy( ${1:string}, ${2:find}, ${3:replace} )
-# boost::algorithm::replace_head_copy
-snippet replace_head_copy
+snippet replace_head_copy boost::algorithm
 	boost::algorithm::replace_head_copy( ${1:string}, ${2:find}, ${3:replace} )
-# boost::algorithm::replace_tail_copy
-snippet replace_tail_copy
+snippet replace_tail_copy boost::algorithm
 	boost::algorithm::replace_tail_copy( ${1:string}, ${2:find}, ${3:replace} )
-# boost::algorithm::erase_first_copy
-snippet erase_first_copy
+snippet erase_first_copy boost::algorithm
 	boost::algorithm::erase_first_copy( ${1:string}, ${2:find} )
-# boost::algorithm::erase_nth_copy
-snippet erase_nth_copy
+snippet erase_nth_copy boost::algorithm
 	boost::algorithm::erase_nth_copy( ${1:string}, ${2:find} )
-# boost::algorithm::erase_last_copy
-snippet erase_last_copy
+snippet erase_last_copy boost::algorithm
 	boost::algorithm::erase_last_copy( ${1:string}, ${2:find} )
-# boost::algorithm::erase_all_copy
-snippet erase_all_copy
+snippet erase_all_copy boost::algorithm
 	boost::algorithm::erase_all_copy( ${1:string}, ${2:find} )
-# boost::algorithm::erase_head_copy
-snippet erase_head_copy
+snippet erase_head_copy boost::algorithm
 	boost::algorithm::erase_head_copy( ${1:string}, ${2:find} )
-# boost::algorithm::erase_tail_copy
-snippet erase_tail_copy
+snippet erase_tail_copy boost::algorithm
 	boost::algorithm::erase_tail_copy( ${1:string}, ${2:find} )
-# boost::algorithm::find_first
-snippet find_first
+snippet find_first boost::algorithm
 	boost::algorithm::find_first( ${1:string}, ${2:find} )
-# boost::algorithm::find_last
-snippet find_last
+snippet find_last boost::algorithm
 	boost::algorithm::find_last( ${1:string}, ${2:find} )
-# boost::algorithm::find_nth
-snippet find_nth
+snippet find_nth boost::algorithm
 	boost::algorithm::find_nth( ${1:string}, ${2:find}, ${3:n} )
-# boost::algorithm::find_head
-snippet find_head
+snippet find_head boost::algorithm
 	boost::algorithm::find_head( ${1:string}, ${2:find} )
-# boost::algorithm::find_tail
-snippet find_tail
+snippet find_tail boost::algorithm
 	boost::algorithm::find_tail( ${1:string}, ${2:find} )
-# boost::algorithm::starts_with
-snippet starts_with
+snippet starts_with boost::algorithm
 	boost::algorithm::starts_with( ${1:string}, ${2:find} )
-# boost::algorithm::ends_with
-snippet ends_with
+snippet ends_with boost::algorithm
 	boost::algorithm::ends_with( ${1:string}, ${2:find} )
-# boost::algorithm::contains
-snippet contains
+snippet contains boost::algorithm
 	boost::algorithm::contains( ${1:string}, ${2:find} )
-# boost::algorithm::is_space
-snippet is_space
+snippet is_space boost::algorithm
 	boost::algorithm::is_space()
-# boost::algorithm::is_alnum
-snippet is_alnum
+snippet is_alnum boost::algorithm
 	boost::algorithm::is_alnum()
-# boost::algorithm::is_alpha
-snippet is_alpha
+snippet is_alpha boost::algorithm
 	boost::algorithm::is_alpha()
-# boost::algorithm::is_cntrl
-snippet is_cntrl
+snippet is_cntrl boost::algorithm
 	boost::algorithm::is_cntrl()
-# boost::algorithm::is_digit
-snippet is_digit
+snippet is_digit boost::algorithm
 	boost::algorithm::is_digit()
-# boost::algorithm::is_graph
-snippet is_graph
+snippet is_graph boost::algorithm
 	boost::algorithm::is_graph()
-# boost::algorithm::is_lower
-snippet is_lower
+snippet is_lower boost::algorithm
 	boost::algorithm::is_lower()
-# boost::algorithm::is_print
-snippet is_print
+snippet is_print boost::algorithm
 	boost::algorithm::is_print()
-# boost::algorithm::is_punct
-snippet is_punct
+snippet is_punct boost::algorithm
 	boost::algorithm::is_punct()
-# boost::algorithm::is_upper
-snippet is_upper
+snippet is_upper boost::algorithm
 	boost::algorithm::is_upper()
-# boost::algorithm::is_any_of
-snippet is_any_of
+snippet is_any_of boost::algorithm
 	boost::algorithm::is_any_of( ${1:string} )
-# boost::algorithm::is_from_range
-snippet is_from_range
+snippet is_from_range boost::algorithm
 	boost::algorithm::is_from_range( ${1:from}, ${2:to} )
 ## 
 ## Regex
-# boost::regex_match
-snippet regex_match
+snippet regex_match boost
 	boost::regex_match( ${1:string}, ${3:regex} )
-# boost::regex_search
-snippet regex_search
+snippet regex_search boost
 	boost::regex_search( ${1:string}, ${2:smatch}, ${3:regex} )
-# boost::regex_replace
-snippet regex_replace
+snippet regex_replace boost
 	boost::regex_replace( ${1:string}, ${2:regex}, ${3:replace_format_string} )
-# boost::smatch
-snippet smatch
+snippet smatch boost
 	boost::smatch
-# boost::regex
-snippet regex
+snippet regex boost
 	boost::regex
 ## 
 ## Multi-index
-# boost::multi_index::multi_index_container
-snippet multi_index_container
+snippet multi_index_container boost::multi_index
 	boost::multi_index::multi_index_container<${1:T}, ${2:indexed_by}>
-# boost::multi_index::indexed_by
-snippet indexed_by
+snippet indexed_by boost::multi_index
 	boost::multi_index::indexed_by<${1:T}, ${2:T}> 
-# boost::multi_index::hashed_non_unique
-snippet hashed_non_unique
+snippet hashed_non_unique boost::multi_index
 	boost::multi_index::hashed_non_unique<${1:T}>
-# boost::multi_index::hashed_unique
-snippet hashed_unique
+snippet hashed_unique boost::multi_index
 	boost::multi_index::hashed_unique<${1:T}>
-# boost::multi_index::member
-snippet member
+snippet member boost::multi_index
 	boost::multi_index::member<${1:T}, ${2:T_member_type}, ${3:T_member_name}>
-# boost::multi_index::ordered_unique
-snippet ordered_unique
+snippet ordered_unique boost::multi_index
 	boost::multi_index::ordered_unique<${1:T}>
-# boost::multi_index::identity
-snippet identity
+snippet identity boost::multi_index
 	boost::multi_index::identity<${1:T}>
-# boost::multi_index::ordered_non_unique
-snippet ordered_non_unique
+snippet ordered_non_unique boost::multi_index
 	boost::multi_index::ordered_non_unique<${1:T}>
-# boost::multi_index::random_access
-snippet random_access
+snippet random_access boost::multi_index
 	boost::multi_index::random_access<>
-# boost::multi_index::sequenced
-snippet sequenced
+snippet sequenced boost::multi_index
 	boost::multi_index::sequenced<>
-# boost::multi_index::nth_index
-snippet nth_index
+snippet nth_index boost::multi_index
 	nth_index<${1:number}>::type::iterator
 ##
 ## Smart pointers
-# std::unique_ptr
-snippet unique_ptr
+snippet unique_ptr std
 	std::unique_ptr<${1:T}>
-# std::auto_ptr
-snippet auto_ptr
+snippet auto_ptr std
 	std::auto_ptr<${1:T}>
-# boost::scoped_ptr
-snippet scoped_ptr
+snippet scoped_ptr boost
 	boost::scoped_ptr<${1:T}>
-# boost::scoped_array
-snippet scoped_array
+snippet scoped_array boost
 	boost::scoped_array<${1:T}>
-# boost::shared_ptr
-snippet shared_ptr
+snippet shared_ptr boost
 	boost::shared_ptr<${1:T}>
-# boost::shared_array
-snippet shared_array
+snippet shared_array boost
 	boost::shared_array<${1:T}>
-# boost::weak_ptr
-snippet weak_ptr
+snippet weak_ptr boost
 	boost::weak_ptr<${1:T}>
-# boost::intrusive_ptr
-snippet intrusive_ptr
+snippet intrusive_ptr boost
 	boost::intrusive_ptr<${1:T}>
-# boost::ptr_deque
-snippet ptr_deque
+snippet ptr_deque boost
 	boost::ptr_deque<${1:T}>
-# boost::ptr_list
-snippet ptr_list
+snippet ptr_list boost
 	boost::ptr_list<${1:T}>
-# boost::ptr_set
-snippet ptr_set
+snippet ptr_set boost
 	boost::ptr_set<${1:T}>
-# boost::ptr_map
-snippet ptr_map
+snippet ptr_map boost
 	boost::ptr_map<${1:key}, ${2:T}>
-# boost::ptr_multiset
-snippet ptr_multiset
+snippet ptr_multiset boost
 	boost::ptr_multiset<${1:T}>
-# boost::ptr_multimap
-snippet ptr_multimap
+snippet ptr_multimap boost
 	boost::ptr_multimap<${1:key}, ${2:T}>
-# boost::ptr_unordered_set
-snippet ptr_unordered_set
+snippet ptr_unordered_set boost
 	boost::ptr_unordered_set<${1:T}>
-# boost::ptr_unordered_map
-snippet ptr_unordered_map
+snippet ptr_unordered_map boost
 	boost::ptr_unordered_map<${1:T}>
-# boost::ptr_vector
-snippet ptr_vector
+snippet ptr_vector boost
 	boost::ptr_vector<${1:T}>
 ##
 ## Filesystem
-# boost::filesystem::path
-snippet path
+snippet path boost::filesystem
 	boost::filesystem::path
-# boost::filesystem::filesystem_error
-snippet filesystem_error
+snippet filesystem_error boost::filesystem
 	boost::filesystem::filesystem_error
-# boost::filesystem::file_status
-snippet file_status
+snippet file_status boost::filesystem
 	boost::filesystem::file_status
-# boost::filesystem::status
-snippet status
+snippet status boost::filesystem
 	boost::filesystem::status( ${1:path} )
-# boost::filesystem::space_info
-snippet space_info
+snippet space_info boost::filesystem
 	boost::filesystem::space_info
-# boost::filesystem::space
-snippet space
+snippet space boost::filesystem
 	boost::filesystem::space( ${1:path} )
-# boost::filesystem::is_directory
-snippet is_directory
+snippet is_directory boost::filesystem
 	boost::filesystem::is_directory( ${1:path} )
-# boost::filesystem::is_regular_file
-snippet is_regular_file
+snippet is_regular_file boost::filesystem
 	boost::filesystem::is_regular_file( ${1:path} )
-# boost::filesystem::is_symlink
-snippet is_symlink
+snippet is_symlink boost::filesystem
 	boost::filesystem::is_symlink( ${1:path} )
-# boost::filesystem::exists
-snippet exists
+snippet exists boost::filesystem
 	boost::filesystem::exists( ${1:path} )
-# boost::filesystem::symlink_status
-snippet symlink_status
+snippet symlink_status boost::filesystem
 	boost::filesystem::symlink_status( ${1:path} )
-# boost::filesystem::file_size
-snippet file_size
+snippet file_size boost::filesystem
 	boost::filesystem::file_size( ${1:path} )
-# boost::filesystem::last_write_time
-snippet last_write_time
+snippet last_write_time boost::filesystem
 	boost::filesystem::last_write_time( ${1:path} )
-# boost::filesystem::rename
-snippet rename
+snippet rename boost::filesystem
 	boost::filesystem::rename( ${1:current}, ${2:new} )
-# boost::filesystem::remove
-snippet remove
+snippet remove  boost::filesystem
 	boost::filesystem::remove( ${1:path} )
-# boost::filesystem::create_directory
-snippet create_directory
+snippet create_directory boost::filesystem
 	boost::filesystem::create_directory( ${1:path} )
-# boost::filesystem::complete
-snippet complete
+snippet complete boost::filesystem
 	boost::filesystem::complete( ${1:path} )
-# boost::filesystem::current_path
-snippet current_path
+snippet current_path boost::filesystem
 	boost::filesystem::current_path()
 ##
 ## Function objects
-# boost::bind
-snippet bind
+snippet bind std
 	boost::bind( ${1:function}, ${2:arguments} )
-# boost::mem_fn
-snippet mem_fn
+snippet mem_fn std
 	boost::mem_fn( ${1:function} )
-# boost::ref
-snippet ref
+snippet ref std
 	boost::ref( ${1:value} )
-# boost::cref
-snippet cref
+snippet cref std
 	boost::cref( ${1:value} )
-# std::not1
-snippet not1
+snippet not1 std
 	std::not1( ${1:unary_predicate} )
-# std::not2
-snippet not2
+snippet not2 std
 	std::not2( ${1:binary_predicate} )
-# std::less
-snippet less
+snippet less std
 	std::less<${1:T}>()
-# std::less_equal
-snippet less_equal
+snippet less_equal std
 	std::less_equal<${1:T}>()
-# std::greater
-snippet greater
+snippet greater std
 	std::greater<${1:T}>()
-# std::greater_equal
-snippet greater_equal
+snippet greater_equal std
 	std::greater_equal<${1:T}>()
-# std::minus
-snippet minus
+snippet minus std
 	std::minus<${1:T}>()
-# std::plus
-snippet plus
+snippet plus std
 	std::plus<${1:T}>()
-# std::equal_to
-snippet equal_to
+snippet equal_to std
 	std::equal_to<${1:T}>()
-# std::not_equal_to
-snippet not_equal_to
+snippet not_equal_to std
 	std::not_equal_to<${1:T}>()
-# std::negate
-snippet negate
+snippet negate std
 	std::negate<${1:T}>()
-# std::divides
-snippet divides
+snippet divides std
 	std::divides<${1:T}>()
-# std::multiplies
-snippet multiplies
+snippet multiplies std
 	std::multiplies<${1:T}>()
-# std::modulus
-snippet modulus
+snippet modulus std
 	std::modulus<${1:T}>()
-# std::mem_fun
-snippet mem_fun
+snippet mem_fun std
 	std::mem_fun( ${1:function} )
-# std::mem_fun_ref
-snippet mem_fun_ref
+snippet mem_fun_ref std
 	std::mem_fun_ref( ${1:function} )
-# std::unary_function
-snippet unary_function
+snippet unary_function std
 	std::unary_function<${1:Arg}, ${2:Result}>
-# std::binary_function
-snippet binary_function
+snippet binary_function std
 	std::binary_function<${1:Arg1}, ${2:Arg2}, ${3:Result}>
 ##
 ## STL Algorithms
-# std::any_of
-snippet any_of
+snippet any_of std
 	${3:std}::any_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
-# std::all_of
+snippet all_of std
 	${3:std}::all_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
-# std::none_of
+snippet none_of std
 	${3:std}::none_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
-# std::for_each
-snippet for_each
+snippet for_each std
 	std::for_each( ${1:collection}.begin(), $1.end(), ${2:unary_functor} )
-# std::count
-snippet count
+snippet count std
 	std::count( ${1:collection}.begin(), $1.end(), ${2:value} )
-# std::count_if
-snippet count_if
+snippet count_if std
 	std::count_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
-# std::mismatch
-snippet mismatch
+snippet mismatch std
 	std::mismatch( ${1:collection}.begin(), $1.end(), ${2:collection}.begin() )
-# std::equal
-snippet equal:collection
+snippet equal:collection std
 	std::equal( ${1:collection}.begin(), $1.end(), ${2:collection}.begin() )
-# std::transform
-snippet transform
+snippet transform std
 	std::transform( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:functor} );
-# std::copy
-snippet copy
-	std::copy( ${1:source}.begin(), ${1}.end(), ${2:destination}.begin() );
-# std::copy_if
-snippet copy_if
-	std::copy_if( ${1:source}.begin(), ${1}.end(), ${2:destination}.begin(), ${3:unary_predicate} );
-# std::remove
-snippet remove
-	std::remove( ${1:collection}.begin(), ${1}.end(), ${2:value} );
-# std::remove_if
-snippet remove_if
-	std::remove_if( ${1:collection}.begin(), ${1}.end(), ${2:unary_predicate} );
-# std::replace
-snippet replace
+snippet copy std
+	std::copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() );
+snippet copy_if std
+	std::copy_if( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate} );
+snippet remove std
+	std::remove( ${1:collection}.begin(), $1.end(), ${2:value} );
+snippet remove_if std
+	std::remove_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} );
+snippet replace std
 	std::replace( ${1:collection}.begin(), $1.end(), ${2:old_value}, ${3:new_value} );
-# std::replace_if
-snippet replace_if
+snippet replace_if std
 	std::replace_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate}, ${3:new_value} );
-# std::replace_copy
-snippet replace_copy
+snippet replace_copy std
 	std::replace_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:old_value}, ${4:new_value} );
-# std::replace_copy_if
-snippet replace_copy_if
+snippet replace_copy_if std
 	std::replace_copy_if( ${1:collection}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate}, ${4:new_value} );
-# std::rotate
-snippet rotate
+snippet rotate std
 	std::rotate( ${1:collection}.begin(), ${2:new_begin_element}, $1.end() );
-# std::rotate_copy
-snippet rotate_copy
+snippet rotate_copy std
 	std::rotate_copy( ${1:collection}.begin(), ${2:new_begin_element}, $1.end(), ${3:destination}.begin() );
-# std::unique
 snippet unique Default binary predicate (std::less)
 	std::unique( ${1:collection}.begin(), $1.end() );
 snippet unique User defined binary predicate
 	std::unique( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-# std::unique_copy
 snippet unique_copy Default binary predicate (std::less)
 	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() );
 snippet unique_copy User defined binary predicate
 	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:binary_predicate} );
-# std::sort
 snippet sort Default binary predicate (std::less)
 	std::sort( ${1:collection}.begin(), $1.end() );
 snippet sort User defined binary predicate
 	std::sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-# std::partial_sort
 snippet partial_sort Default binary predicate (std::less)
 	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end() );
 snippet partial_sort User defined binary predicate
 	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end(), ${3:binary_predicate} );
-# std::partial_sort_copy
 snippet partial_sort_copy Default binary predicate (std::less)
 	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end() );
 snippet partial_sort_copy User defined binary predicate
 	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end(), ${3:binary_predicate} );
-# std::stable_sort
 snippet stable_sort Default binary predicate (std::less)
 	std::stable_sort( ${1:collection}.begin(), $1.end() );
 snippet stable_sort User defined binary predicate
 	std::stable_sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-# std::nth_element
 snippet nth_element Default binary predicate (std::less)
 	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end() );
 snippet nth_element User defined binary predicate
 	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end(), ${3:binary_predicate} );
-# std::lower_bound
 snippet lower_bound Default binary predicate (std::less)
 	std::lower_bound( ${1:collection}.begin(), $1.end(), ${2:value} )
 snippet lower_bound User defined binary predicate
 	std::lower_bound( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
-# std::upper_bound
 snippet upper_bound Default binary predicate (std::less)
 	std::upper_bound( ${1:collection}.begin(), $1.end(), ${2:value} )
 snippet upper_bound User defined binary predicate
 	std::upper_bound( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
-# std::binary_search
 snippet binary_search Default binary predicate (std::less)
 	std::binary_search( ${1:collection}.begin(), $1.end(), ${2:value} )
 snippet binary_search User defined binary predicate
 	std::binary_search( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
-# std::equal_range
 snippet equal_range Default binary predicate (std::less)
 	std::equal_range( ${1:collection}.begin(), $1.end(), ${2:value} )
 snippet equal_range User defined binary predicate
 	std::equal_range( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
-# std::merge
 snippet merge Default binary predicate (std::less)
 	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin() );
 snippet merge User defined binary predicate
 	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-# std::inplace_merge
 snippet inplace_merge Default binary predicate (std::less)
 	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last} );
 snippet inplace_merge User defined binary predicate
 	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last}, ${4:binary_predicate} );
-# std::includes
 snippet includes Default binary predicate (std::less)
 	std::includes( ${1:haystack}.begin(), $1.end(), ${2:needle}.begin(), $2.end() )
 snippet includes User defined binary predicate
 	std::includes( ${1:haystack}.begin(), $1.end(), ${2:needle}.begin(), $2.end(), ${3:binary_predicate} )
-# std::set_difference
 snippet set_difference Default binary predicate (std::less)
 	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
 snippet set_difference User defined binary predicate
 	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-# std::set_intersection
 snippet set_intersection Default binary predicate (std::less)
 	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
 snippet set_intersection User defined binary predicate
 	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-# std::set_symmetric_difference
 snippet set_symmetric_difference Default binary predicate (std::less)
 	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
 snippet set_symmetric_difference User defined binary predicate
 	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-# std::set_union
 snippet set_union Default binary predicate (std::less)
 	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
 snippet set_union User defined binary predicate
 	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-# std::is_heap
-snippet is_heap
+snippet is_heap std
 	${2:std}::is_heap( ${1:collection}.begin(), $1.end() )
-# std::make_heap
 snippet make_heap Default binary predicate (std::less)
 	std::make_heap( ${1:collection}.begin(), $1.end() );
 snippet make_heap User defined binary predicate
 	std::make_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-# std::push_heap
 snippet push_heap Default binary predicate (std::less)
 	std::push_heap( ${1:collection}.begin(), $1.end() );
 snippet push_heap User defined binary predicate
 	std::push_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-# std::pop_heap
 snippet pop_heap Default binary predicate (std::less)
 	std::pop_heap( ${1:collection}.begin(), $1.end() );
 snippet pop_heap User defined binary predicate
 	std::pop_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-# std::sort_heap
 snippet sort_heap Default binary predicate (std::less)
 	std::sort_heap( ${1:collection}.begin(), $1.end() );
 snippet sort_heap User defined binary predicate
 	std::sort_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-# std::minmax
 snippet minmax Default binary predicate (std::less)
 	${3:std}::minmax( ${1:lhs}, ${2:rhs} )
 snippet minmax User defined binary predicate
 	${4:std}::minmax( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
-# std::minmax_element
 snippet minmax_element Default binary predicate (std::less)
 	${2:std}::minmax_element( ${1:collection}.begin(), $1.end() )
 snippet minmax User defined binary predicate
 	${3:std}::minmax_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
-# std::max
 snippet max Default binary predicate (std::less)
 	std::max( ${1:lhs}, ${2:rhs} )
 snippet max User defined binary predicate
 	std::max( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
-# std::max_element
 snippet max_element Default binary predicate (std::less)
 	std::max_element( ${1:collection}.begin(), $1.end() )
 snippet max_element User defined binary predicate
 	std::max_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
-# std::min
 snippet min Default binary predicate (std::less)
 	std::min( ${1:lhs}, ${2:rhs} )
 snippet min User defined binary predicate
 	std::min( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
-# std::min_element
 snippet min_element Default binary predicate (std::less)
 	std::min_element( ${1:collection}.begin(), $1.end() )
 snippet min_element User defined binary predicate
 	std::min_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
-# std::lexicographical_compare
 snippet lexicographical_compare Default binary predicate (std::less)
 	std::lexicographical_compare( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end() )
 snippet lexicographical_compare User defined binary predicate
 	std::lexicographical_compare( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:binary_predicate} )
-# std::is_permutation
 snippet is_permutation Default binary predicate (std::less)
 	${3:std}::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin() )
 snippet is_permutation User defined binary predicate
 	${4:std}::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), ${3:binary_predicate} )
-# std::next_permutation
 snippet next_permutation Default binary predicate (std::less)
 	std::next_permutation( ${1:collection}.begin(), $1.end() )
 snippet next_permutation User defined binary predicate
 	std::next_permutation( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
-# std::prev_permutation
 snippet prev_permutation Default binary predicate (std::less)
 	std::prev_permutation( ${1:collection}.begin(), $1.end() )
 snippet prev_permutation User defined binary predicate
 	std::prev_permutation( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 ##
 ## STL Collections
-# std::array
-snippet array
+snippet array std
 	std::array<${1:T}, ${2:N}> ${3};
-# std::vector
-snippet vector
+snippet vector std
 	std::vector<${1:T}> ${2};
-# std::deque
-snippet deque
+snippet deque std
 	std::deque<${1:T}> ${2};
-# std::forward_list
-snippet flist
+snippet flist std
 	std::forward_list<${1:T}> ${2};
-# std::list
-snippet list
+snippet list std
 	std::list<${1:T}> ${2};
-# std::set
-snippet set
+snippet set std
 	std::set<${1:T}> ${2};
-# std::map
-snippet map
+snippet map std
 	std::map<${1:Key}, ${2:T}> ${3};
-# std::multiset
-snippet mset
+snippet mset std
 	std::multiset<${1:T}> ${2};
-# std::multimap
-snippet mmap
+snippet mmap std
 	std::multimap<${1:Key}, ${2:T}> ${3};
-# std::unordered_set
-snippet uset
+snippet uset std
 	std::unordered_set<${1:T}> ${2};
-# std::unordered_map
-snippet umap
+snippet umap std
 	std::unordered_map<${1:Key}, ${2:T}> ${3};
-# std::unordered_multiset
-snippet umset
+snippet umset std
 	std::unordered_multiset<${1:T}> ${2};
-# std::unordered_multimap
-snippet ummap
+snippet ummap std
 	std::unordered_multimap<${1:Key}, ${2:T}> ${3};
-# std::stack
-snippet stack
+snippet stack std
 	std::stack<${1:T}> ${2};
-# std::queue
-snippet queue
+snippet queue std
 	std::queue<${1:T}> ${2};
-# std::priority_queue
-snippet pqueue
+snippet pqueue std
 	std::priority_queue<${1:T}> ${2};
 ##
 ## Access Modifiers
-# private
 snippet pri
 	private
-# protected
 snippet pro
 	protected
-# public
 snippet pub
 	public
-# friend
 snippet fr
 	friend
-# mutable
 snippet mu
 	mutable
 ##
 ## Class
-# class
 snippet cl
 	class ${1:`vim_snippets#Filename('$1', 'name')`}
 	{
@@ -762,42 +549,34 @@ snippet cl
 
 		$1( $1 const& );
 	};
-# member function implementation
 snippet mfun
 	${4:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
 		${0}
 	}
-# namespace
 snippet ns
 	namespace ${1:`vim_snippets#Filename('', 'my')`} {
 		${0}
 	} /* namespace $1 */
 ##
 ## Input/Output
-# std::cout
 snippet cout
 	std::cout << ${1} << std::endl;
-# std::cin
 snippet cin
 	std::cin >> ${1};
 ##
 ## Iteration
-# for i
 snippet fori
 	for ( int ${2:i} = 0 ; $2 < ${1:count} ; $2${3:++} ) {
 		${4}
 	}
-# foreach
 snippet fore
 	for ( ${1:auto} ${2:i} : ${3:container} ) {
 		${4}
 	}
-# iterator
 snippet iter
 	for ( ${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin() ; $4 != $5.end() ; ++$4 ) {
 		${6}
 	}
-# auto iterator
 snippet itera
 	for ( auto ${1:i} = ${2:container}.begin() ; $1 != $2.end() ; ++$1 ) {
 		${3:std::cout << *$1 << std::endl;}
