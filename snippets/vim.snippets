@@ -9,15 +9,18 @@ snippet guard script reload guard
 	endif
 	let $1 = 1${0}
 snippet f function
-	fun! ${1:`expand('%') =~ 'autoload' ? substitute(matchstr(expand('%:p'),'autoload/\zs.*\ze.vim'),'[/\\]','#','g').'#' : ''`}${2:function_name}(${3})
+	function! ${1:`expand('%') =~ 'autoload' ? substitute(matchstr(expand('%:p'),'autoload/\zs.*\ze.vim'),'[/\\]','#','g').'#' : ''`}${2:function_name}(${3})
 		${0}
-	endf
+	endfunction
 snippet t try ... catch statement
 	try
 		${1}
 	catch ${2}
 		${0}
 	endtry
+snippet catch
+	catch ${0}
+		${1}
 snippet for for ... in loop
 	for ${1} in ${2}
 		${0}
@@ -30,7 +33,7 @@ snippet forkv for [key, value] in loop
 snippet wh while loop
 	while ${1}
 		${0}
-	endw
+	endwhile
 snippet if if statement
 	if ${1}
 		${0}
@@ -56,3 +59,533 @@ snippet bun Vundle.vim Plugin definition
 	Plugin '${0}'
 snippet plug Vundle.vim Plugin definition
 	Plugin '${0}'
+snippet nr2char
+	nr2char( ${1:expr} )
+snippet char2nr
+	char2nr( ${1:expr} )
+snippet str2nr
+	str2nr( ${1:expr}, ${2:base} )
+snippet str2float
+	str2float( ${1:expr} )
+snippet printf
+	printf( ${1:fmt}, ${2:expr} )
+snippet escape
+	escape( ${1:string}, ${2:chars} )
+snippet shellescape
+	shellescape( ${1:string} )
+snippet fnameescape
+	fnameescape( ${1:string} )
+snippet tr
+	tr( ${1:src}, ${2:fromstr}, ${3:tostr} )
+snippet strtrans
+	strtrans( ${1:expr} )
+snippet tolower
+	tolower( ${1:string} )
+snippet toupper
+	toupper( ${1:string} )
+snippet match
+	match( ${1:expr}, ${2:pat} )
+snippet matchend
+	matchend( ${1:expr}, ${2:pat} )
+snippet matchstr
+	matchstr( ${1:expr}, ${2:pat} )
+snippet matchlist
+	matchlist( ${1:expr}, ${2:pat} )
+snippet stridx
+	stridx( ${1:haystack}, ${2:needle} )
+snippet strridx
+	strridx( ${1:haystack}, ${2:needle} )
+snippet strlen
+	strlen( ${1:string} )
+snippet strchars
+	strchars( ${1:expr} )
+snippet strwidth
+	strwidth( ${1:expr} )
+snippet strdisplaywidth
+	strdisplaywidth( ${1:expr} )
+snippet substitute
+	substitute( ${1:expr}, ${2:pat}, ${3:sub}, ${4:flags} )
+snippet submatch
+	submatch( ${1:nr} )
+snippet strpart
+	strpart( ${1:src}, ${2:start} )
+snippet expand
+	expand( ${1:string} )
+snippet iconv
+	iconv( ${1:expr}, ${2:from}, ${3:to} )
+snippet byteidx
+	byteidx( ${1:expr}, ${2:nr} )
+snippet byteidxcomp
+	byteidxcomp( ${1:expr}, ${2:nr} )
+snippet eval
+	eval( ${1:string} )
+snippet insert
+	insert( ${1:list}, ${2:item} )
+snippet add
+	add( ${1:list}, ${2:item} )
+snippet filter
+	filter( ${1:exp}, ${2:string} )
+snippet map
+	map( ${1:exp}, ${2:string} )
+snippet sort
+	sort( ${1:list} )
+snippet reverse
+	reverse( ${1:list} )
+snippet uniq
+	uniq( ${1:list} )
+snippet split
+	split( ${1:expr} )
+snippet join
+	join( ${1:list} )
+snippet range
+	range( ${1:expr} )
+snippet string
+	string( ${1:expr} )
+snippet call
+	call( ${1:func}, ${2:arglist} )
+snippet index
+	index( ${1:list}, ${2:expr} )
+snippet max
+	max( ${1:list} )
+snippet min
+	min( ${1:list} )
+snippet count
+	count( ${1:list} )
+snippet repeat
+	repeat( ${1:expr}, ${2:count} )
+snippet get
+	get( ${1:list}, ${2:idx} )
+snippet float2nr
+	float2nr( ${1:expr} )
+snippet abs
+	abs( ${1:expr} )
+snippet round
+	round( ${1:expr} )
+snippet ceil
+	ceil( ${1:expr} )
+snippet floor
+	floor( ${1:expr} )
+snippet trunc
+	trunc( ${1:expr} )
+snippet fmod
+	fmod( ${1:expr1}, ${2:expr2} )
+snippet exp
+	exp( ${1:expr} )
+snippet log
+	log( ${1:expr} )
+snippet log10
+	log10( ${1:expr} )
+snippet pow
+	pow( ${1:base}, ${1:exponent} )
+snippet sqrt
+	sqrt( ${1:expr} )
+snippet sin
+	sin( ${1:expr} )
+snippet cos
+	cos( ${1:expr} )
+snippet tan
+	tan( ${1:expr} )
+snippet asin
+	asin( ${1:expr} )
+snippet acos
+	acos( ${1:expr} )
+snippet atan
+	atan( ${1:expr} )
+snippet atan2
+	atan2( ${1:expr} )
+snippet sinh
+	sinh( ${1:expr} )
+snippet cosh
+	cosh( ${1:expr} )
+snippet tanh
+	tanh( ${1:expr} )
+snippet len
+	len( ${1:expr} )
+snippet has_key
+	has_key( ${1:dict}, ${2:key} )
+snippet empty
+	empty( ${1:expr} )
+snippet remove
+	remove( ${1:list}, ${2:idx} )
+snippet extend
+	extend( ${1:expr1}, ${2:expr2} )
+snippet keys
+	keys( ${1:dict} )
+snippet values
+	values( ${1:dict} )
+snippet items
+	items( ${1:dict} )
+snippet copy
+	copy( ${1:expr} )
+snippet deepcopy
+	deepcopy( ${1:expr} )
+snippet and
+	and( ${1:expr}, ${2:expr} )
+snippet invert
+	invert( ${1:expr} )
+snippet or
+	or( ${1:expr}, ${2:expr} )
+snippet xor
+	xor( ${1:expr}, ${2:expr} )
+snippet sha256
+	sha256( ${1:string} )
+snippet type
+	type( ${1:expr} )
+snippet islocked
+	islocked( ${1:expr} )
+snippet function
+	function( ${1:name} )
+snippet getbufvar
+	getbufvar()
+snippet setbufvar
+	setbufvar()
+snippet getwinvar
+	getwinvar()
+snippet gettabvar
+	gettabvar()
+snippet gettabwinvar
+	gettabwinvar()
+snippet setwinvar
+	setwinvar()
+snippet settabvar
+	settabvar()
+snippet settabwinvar
+	settabwinvar()
+snippet garbagecollect
+	garbagecollect()
+snippet col
+	col( ${1:expr} )
+snippet virtcol
+	virtcol( ${1:expr} )
+snippet line
+	line( ${1:expr} )
+snippet wincol
+	wincol()
+snippet winline
+	winline()
+snippet cursor
+	cursor()
+snippet screencol
+	screencol()
+snippet screenrow
+	screenrow()
+snippet getpos
+	getpos( ${1:expr} )
+snippet setpos
+	setpos( ${1:expr}, ${2:list} )
+snippet byte2line
+	byte2line()
+snippet line2byte
+	line2byte()
+snippet diff_filler
+	diff_filler()
+snippet screenattr
+	screenattr()
+snippet screenchar
+	screenchar()
+snippet getline
+	getline()
+snippet setline
+	setline()
+snippet append
+	append()
+snippet indent
+	indent()
+snippet cindent
+	cindent()
+snippet lispindent
+	lispindent()
+snippet nextnonblank
+	nextnonblank()
+snippet prevnonblank
+	prevnonblank()
+snippet search
+	search()
+snippet searchpos
+	searchpos()
+snippet searchpair
+	searchpair()
+snippet searchpairpos
+	searchpairpos()
+snippet searchdecl
+	searchdecl()
+snippet glob
+	glob()
+snippet globpath
+	globpath()
+snippet findfile
+	findfile()
+snippet finddir
+	finddir()
+snippet resolve
+	resolve()
+snippet fnamemodify
+	fnamemodify()
+snippet pathshorten
+	pathshorten()
+snippet simplify
+	simplify()
+snippet executable
+	executable()
+snippet filereadable
+	filereadable()
+snippet filewritable
+	filewritable()
+snippet getfperm
+	getfperm()
+snippet getftype
+	getftype()
+snippet isdirectory
+	isdirectory()
+snippet getfsize
+	getfsize()
+snippet getcwd
+	getcwd()
+snippet haslocaldir
+	haslocaldir()
+snippet tempname
+	tempname()
+snippet mkdir
+	mkdir()
+snippet delete
+	delete()
+snippet rename
+	rename()
+snippet system
+	system()
+snippet hostname
+	hostname()
+snippet readfile
+	readfile()
+snippet writefile
+	writefile()
+snippet getftime
+	getftime()
+snippet localtime
+	localtime()
+snippet strftime
+	strftime()
+snippet reltime
+	reltime()
+snippet reltimestr
+	reltimestr()
+snippet argc
+	argc()
+snippet argidx
+	argidx()
+snippet arglistid
+	arglistid()
+snippet argv
+	argv()
+snippet bufexists
+	bufexists()
+snippet buflisted
+	buflisted()
+snippet bufloaded
+	bufloaded()
+snippet bufname
+	bufname()
+snippet bufnr
+	bufnr()
+snippet tabpagebuflist
+	tabpagebuflist()
+snippet tabpagenr
+	tabpagenr()
+snippet tabpagewinnr
+	tabpagewinnr()
+snippet winnr
+	winnr()
+snippet bufwinnr
+	bufwinnr()
+snippet winbufnr
+	winbufnr()
+snippet getbufline
+	getbufline()
+snippet getcmdline
+	getcmdline()
+snippet getcmdpos
+	getcmdpos()
+snippet setcmdpos
+	setcmdpos()
+snippet getcmdtype
+	getcmdtype()
+snippet getqflist
+	getqflist()
+snippet setqflist
+	setqflist()
+snippet getloclist
+	getloclist()
+snippet setloclist
+	setloclist()
+snippet complete
+	complete()
+snippet complete_add
+	complete_add()
+snippet complete_check
+	complete_check()
+snippet pumvisible
+	pumvisible()
+snippet foldclosed
+	foldclosed()
+snippet foldclosedend
+	foldclosedend()
+snippet foldlevel
+	foldlevel()
+snippet foldtext
+	foldtext()
+snippet foldtextresult
+	foldtextresult()
+snippet clearmatches
+	clearmatches()
+snippet getmatches
+	getmatches()
+snippet hlexists
+	hlexists()
+snippet hlID
+	hlID()
+snippet synID
+	synID()
+snippet synIDattr
+	synIDattr()
+snippet synIDtrans
+	synIDtrans()
+snippet synstack
+	synstack()
+snippet synconcealed
+	synconcealed()
+snippet diff_hlID
+	diff_hlID()
+snippet matchadd
+	matchadd()
+snippet matchaddpos
+	matchaddpos()
+snippet matcharg
+	matcharg()
+snippet matchdelete
+	matchdelete()
+snippet setmatches
+	setmatches()
+snippet spellbadword
+	spellbadword()
+snippet spellsuggest
+	spellsuggest()
+snippet soundfold
+	soundfold()
+snippet histadd
+	histadd()
+snippet histdel
+	histdel()
+snippet histget
+	histget()
+snippet histnr
+	histnr()
+snippet browse
+	browse()
+snippet browsedir
+	browsedir()
+snippet confirm
+	confirm( ${1:msg} )
+snippet getchar
+	getchar( ${1:expr} )
+snippet getcharmod
+	getcharmod()
+snippet feedkeys
+	feedkeys()
+snippet input
+	input( ${1:prompt} )
+snippet inputlist
+	inputlist()
+snippet inputsecret
+	inputsecret()
+snippet inputdialog
+	inputdialog()
+snippet inputsave
+	inputsave()
+snippet inputrestore
+	inputrestore()
+snippet getfontname
+	getfontname()
+snippet getwinposx
+	getwinposx()
+snippet getwinposy
+	getwinposy()
+snippet serverlist
+	serverlist()
+snippet remote_send
+	remote_send()
+snippet remote_expr
+	remote_expr()
+snippet server2client
+	server2client()
+snippet remote_peek
+	remote_peek()
+snippet remote_read
+	remote_read()
+snippet foreground
+	foreground()
+snippet remote_foreground
+	remote_foreground()
+snippet winheight
+	winheight()
+snippet winwidth
+	winwidth()
+snippet winrestcmd
+	winrestcmd()
+snippet winsaveview
+	winsaveview()
+snippet winrestview
+	winrestview()
+snippet hasmapto
+	hasmapto()
+snippet mapcheck
+	mapcheck()
+snippet maparg
+	maparg()
+snippet wildmenumode
+	wildmenumode()
+snippet mode
+	mode()
+snippet visualmode
+	visualmode()
+snippet exists
+	exists()
+snippet has
+	has()
+snippet changenr
+	changenr()
+snippet cscope_connection
+	cscope_connection()
+snippet did_filetype
+	did_filetype()
+snippet eventhandler
+	eventhandler()
+snippet getpid
+	getpid()
+snippet libcall
+	libcall()
+snippet libcallnr
+	libcallnr()
+snippet undofile
+	undofile()
+snippet undotree
+	undotree()
+snippet getreg
+	getreg()
+snippet getregtype
+	getregtype()
+snippet setreg
+	setreg()
+snippet shiftwidth
+	shiftwidth()
+snippet taglist
+	taglist()
+snippet tagfiles
+	tagfiles()
+snippet luaeval
+	luaeval()
+snippet mzeval
+	mzeval()
+snippet py3eval
+	py3eval()
+snippet pyeval
+	pyeval()

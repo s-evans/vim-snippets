@@ -15,11 +15,11 @@ snippet cmake
 	TARGET_LINK_LIBRARIES($1
 		${$2_LIBRARIES}
 	)
-snippet include
+snippet include_directories
 	INCLUDE_DIRECTORIES(
 		${${0:INCLUDE_DIR}}
 	)
-snippet find
+snippet find_package
 	FIND_PACKAGE(${0:LIBRARY})
 snippet glob
 	FILE(GLOB ${1:SRCS} *.${0:cpp})
@@ -74,3 +74,126 @@ snippet macro
 	MACRO( ${1:name} ${2:args} )
 		${3}
 	ENDMACRO( $1 )
+snippet add_compile_options
+	ADD_COMPILE_OPTIONS( ${1:options} )
+snippet add_custom_command
+	ADD_CUSTOM_COMMAND( OUTPUT ${1:variable1}
+		COMMAND ${2:command1} ${3:args} )
+snippet add_custom_target
+	ADD_CUSTOM_TARGET( ${1:name} COMMAND ${2:command} ${3:args} )
+snippet add_definitions
+	ADD_DEFINITIONS( ${1:definitions} )
+snippet add_test
+	ADD_TEST( ${1:testname} ${2:exename} ${3:args} )
+snippet aux_source_directory
+	AUX_SOURCE_DIRECTORY( ${1:dir} ${2:variable} )
+snippet build_command
+	BUILD_COMMAND( ${1:variable} ${2:option} ${3:name} )
+snippet cmake_host_system_information
+	CMAKE_HOST_SYSTEM_INFORMATION( RESULT ${1:variable} QUERY ${2:key} )
+snippet cmake_minimum_required
+	CMAKE_MINIMUM_REQUIRED( VERSION ${1:version} )
+snippet cmake_policy
+	CMAKE_POLICY( VERSION ${1:version} )
+snippet configure_file
+	CONFIGURE_FILE( ${1:input} ${2:output} ${3:OPTIONS} )
+snippet create_test_sourcelist
+	CREATE_TEST_SOURCELIST( ${1:sourceListName} ${2:driverName} ${3:test_list} )
+snippet define_property
+	DEFINE_PROPERTY( ${1:OPTION}
+		PROPERTY ${2:name}
+		BRIEF_DOCS ${3:doc_list}
+		FULL_DOCS ${4:doc_list} )
+snippet enable_language
+	ENABLE_LANGUAGE( ${1:lang} )
+snippet enable_testing
+	ENABLE_TESTING()
+snippet execute_process
+	EXECUTE_PROCESS( COMMAND ${1:cmd} ${2:args} )
+snippet export
+	EXPORT( TARGETS ${1:target_list} FILE ${2:filename} )
+snippet file
+	FILE( ${1:OPTION} ${2:output_filename} )
+snippet find_file
+	FIND_FILE( ${1:output_variable} NAMES ${2:name_list} PATHS ${3:path_list} )
+snippet find_library
+	FIND_LIBRARY( ${1:output_variable} NAMES ${2:name_list} PATHS ${3:path_list} )
+snippet find_path
+	FIND_PATH( ${1:output_variable} NAMES ${2:name_list} PATHS ${3:path_list} )
+snippet find_program
+	FIND_PROGRAM( ${1:output_variable} NAMES ${2:name_list} PATHS ${3:path_list} )
+snippet get_cmake_property
+	GET_CMAKE_PROPERTY( ${1:output_variable} ${2:property} )
+snippet get_directory_property
+	GET_DIRECTORY_PROPERTY( ${1:output_variable} ${2:property} )
+snippet get_filename_component
+	GET_FILENAME_COMPONENT( ${1:output_variable} ${2:filename} ${3:component} )
+snippet get_property
+	GET_PROPERTY( ${1:output_variable} PROPERTY ${3:property} )
+snippet get_source_file_property
+	GET_SOURCE_FILE_PROPERTY( ${1:variable} ${2:file} ${3:property} )
+snippet get_target_property
+	GET_TARGET_PROPERTY( ${1:variable} ${2:file} ${3:property} )
+snippet get_test_property
+	GET_TEST_PROPERTY( ${1:variable} ${2:file} ${3:property} )
+snippet include
+	INCLUDE( ${1:object} )
+snippet include_external_msproject
+	INCLUDE_EXTERNAL_MSPROJECT( ${1:projectname} ${2:location} ${3:dependency_list} )
+snippet include_regular_expression
+	INCLUDE_REGULAR_EXPRESSION( ${1:file_regex} )
+snippet install
+	INSTALL( TARGETS ${1:target_list} )
+snippet link_directories
+	LINK_DIRECTORIES( ${1:directory_list} )
+snippet list
+	LIST( ${1:OPERATION} ${2:list} )
+snippet load_cache
+	LOAD_CACHE( ${1:pathToCacheFile} ${2:OPTION} ${3:entry_list} )
+snippet load_command
+	LOAD_COMMAND( ${1:command_name} )
+snippet mark_as_advanced
+	MARK_AS_ADVANCED( ${1:OPTION} ${2:variables} )
+snippet math
+	MATH( EXPR ${1:output_variable} ${2:expression} )
+snippet message
+	MESSAGE( ${1:OPTION} ${2:message} )
+snippet option
+	OPTION( ${1:option_variable} ${2:description} ${3:default_value} )
+snippet project
+	PROJECT( ${1:project_name} ${2:language_list} )
+snippet remove_definitions
+	REMOVE_DEFINITIONS( ${1:DEFINITIONS} )
+snippet return
+	RETURN()
+snippet separate_arguments
+	SEPARATE_ARGUMENTS( ${1:output_variable} ${2:OPTION} ${3:argument_string} )
+snippet set_directory_properties
+	SET_DIRECTORY_PROPERTIES( PROPERTIES ${1:property} ${2:value} )
+snippet set_property
+	SET_PROPERTY( ${1:OPTION} PROPERTY ${2:property} ${3:value} )
+snippet set_source_files_properties
+	SET_SOURCE_FILES_PROPERTIES( ${1:file_list} PROPERTIES ${2:property} ${3:value} )
+snippet set_tests_properties
+	SET_TESTS_PROPERTIES( ${1:test_list} PROPERTIES ${2:property} ${3:value} )
+snippet site_name
+	SITE_NAME( ${1:variable} )
+snippet source_group
+	SOURCE_GROUP( ${1:name} ${2:OPTION} ${3:list} )
+snippet string
+	STRING( ${1:OPERATION} ${2:string} )
+snippet target_compile_definitions
+	TARGET_COMPILE_DEFINITIONS( ${1:target} ${2:definitions} )
+snippet target_compile_options
+	TARGET_COMPILE_OPTIONS( ${1:target} ${2:options} )
+snippet target_include_directories
+	TARGET_INCLUDE_DIRECTORIES( ${1:target} ${2:directory_list} )
+snippet try_compile
+	TRY_COMPILE( ${1:compile_result_variable} ${2:bindir} ${3:srcdir} ${4:project} )
+snippet try_run
+	TRY_RUN( ${1:run_result_variable} ${2:compile_result_variable}
+		${3:bindir} ${4:srcfile} )
+snippet unset
+	UNSET( ${1:variable} ${2:CACHE} )
+snippet variable_watch
+	VARIABLE_WATCH( ${1:variable} ${2:command} )
