@@ -1,3 +1,43 @@
+snippet prologue
+
+	# Prologue
+
+	sp              := $(sp).x
+	dirstack_$(sp)  := $(d)
+	d               := $(dir)
+
+snippet epilogue
+
+	# Epilogue
+
+	-include	$(DEP_$(d))
+
+	d 			:= $(dirstack_$(sp))
+	sp			:= $(basename $(sp))
+
+snippet to
+	# TODO: 
+snippet ph
+	.PHONY: 
+snippet in
+	include ${1:$}	
+snippet -in
+	-include ${1:$}
+snippet ife
+	ifeq ( ${1:arg1}, ${2:arg2} )
+	${3}
+	endif
+snippet ifn
+	ifneq ( ${1:arg1}, ${2:arg2} )
+		${3}
+	endif
+snippet ifd
+	ifdef ${1:$}
+		${2}
+	endif
+snippet el
+	else
+		${1}
 snippet dir
 	$(dir ${0:names})
 snippet notdir
@@ -70,7 +110,7 @@ snippet info
 	$(info ${1:text...})
 snippet shell
 	$(shell ${1:cmd} ${2:args})
-snippet v
+snippet $
 	$(${0:variable_name})
 snippet t
 	${1:labels}: ${2:dependencies} | ${3:order_only_dependencies}
