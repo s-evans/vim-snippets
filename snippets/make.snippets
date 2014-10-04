@@ -4,7 +4,7 @@ snippet prologue
 
 	sp              := $(sp).x
 	dirstack_$(sp)  := $(d)
-	d               := $(dir)
+	d               := $(abspath $(dir))
 
 snippet epilogue
 
@@ -14,6 +14,10 @@ snippet epilogue
 
 	d 			:= $(dirstack_$(sp))
 	sp			:= $(basename $(sp))
+
+snippet rinc
+	dir 			:= ${1:subdir}
+	include 		$(dir)/Rules.mk
 
 snippet to
 	# TODO: 
