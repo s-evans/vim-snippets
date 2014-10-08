@@ -155,15 +155,20 @@ snippet fund
 	${1:void} ${2:function_name}( ${3} );
 ##
 ## Types
-# typedef snippet td
-	typedef ${1:int} ${2:MyCustomType}; # struct
-snippet st struct ${1:`vim_snippets#Filename('$1_t', 'name')`} {
-		${2:/* data */} }${3: /* optional variable list */};
-# typedef struct snippet tds
-	typedef struct ${2:_$1 }{ ${3:/* data */}
-	} ${1:`vim_snippets#Filename('$1_t', 'name')`}; # typedef enum
-snippet tde typedef enum {
-		${1:/* data */} } ${2:foo};
+snippet td
+	typedef ${1:int} ${2:MyCustomType};
+snippet st
+	struct ${1:`vim_snippets#Filename('$1_t', 'name')`} {
+		${2:/* data */}
+	} ${3: /* optional variable list */};
+snippet tds
+	typedef struct ${2:_$1} {
+		${3:/* data */}
+	} ${1:`vim_snippets#Filename('$1_t', 'name')`};
+snippet tde
+	typedef enum {
+		${1:/* data */}
+	} ${2:foo};
 ##
 ## Input/Output
 snippet pr
