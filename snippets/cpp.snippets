@@ -1,5 +1,3 @@
-# TODO:
-# streams;
 ##
 ## Keywords
 snippet string std
@@ -48,6 +46,30 @@ snippet d
 	delete ${1}
 snippet da
 	delete[] ${1}
+## Streams
+##
+snippet ss std
+	std::stringstream ${1:ss};
+snippet iss std
+	std::istringstream ${1:iss};
+snippet oss std
+	std::ostringstream ${1:oss};
+snippet sb std
+	std::stringbuf ${1:sb};
+snippet is std
+	std::istream ${1:is}( ${2:sb} );
+snippet os std
+	std::ostream ${1:os}( ${2:sb} );
+snippet ios std
+	std::iostream ${1:ios};
+snippet ofs std
+	std::ofstream ${1:ofs}( ${2:file} );
+snippet ifs std
+	std::ifstream ${1:ifs}( ${2:file} );
+snippet fs std
+	std::fstream ${1:fs}( ${2:file} );
+snippet fb std
+	std::filebuf ${1:fb};
 ## 
 ## Boost
 ## 
@@ -153,6 +175,24 @@ snippet work boost::asio::io_service
 	boost::asio::io_service::work
 ##
 ## Networking
+snippet socket boost::asio
+	boost::asio::ip::${1:tcp}::socket
+snippet resolver boost::asio
+	boost::asio::ip::${1:tcp}::resolver
+snippet query boost::asio
+	boost::asio::ip::${1:tcp}::resolver::quer
+snippet endpoint boost::asio
+	boost::asio::ip::${1:tcp}::endpoint
+snippet buffer boost::asio
+	boost::asio::buffer( ${1:buffer_bytes} )
+snippet mutable_buffer boost::asio
+	boost::asio::mutable_buffer
+snippet async_read_until boost::asio
+	boost::asio::async_read_until
+snippet streambuf boost::asio
+	boost::asio::streambuf
+snippet address boost::asio
+	boost::asio::ip::address
 ##
 ## Algorithms
 snippet to_upper boost::algorithm
