@@ -46,8 +46,8 @@ snippet d
 	delete ${1}
 snippet da
 	delete[] ${1}
-## Streams
 ##
+## Streams
 snippet ss std
 	std::stringstream ${1:ss};
 snippet iss std
@@ -70,6 +70,26 @@ snippet fs std
 	std::fstream ${1:fs}( ${2:file} );
 snippet fb std
 	std::filebuf ${1:fb};
+##
+## Exceptions
+snippet logic_error std
+	std::logic_error
+snippet invalid_argument
+	std::invalid_argument
+snippet domain_error std
+	std::domain_error
+snippet length_error std
+	std::length_error
+snippet out_of_range std
+	std::out_of_range
+snippet runtime_error std
+	std::runtime_error
+snippet range_error std
+	std::range_error
+snippet overflow_error std
+	std::overflow_error
+snippet underflow_error std
+	std::underflow_error
 ## 
 ## Boost
 ## 
@@ -94,11 +114,19 @@ snippet parse_config_file boost::program_options
 	boost::program_options::parse_config_file( ${1:path}, ${2:options_description} )
 snippet parse_environment boost::program_options
 	boost::program_options::parse_environment( ${1:options_description}, ${2:string_prefix} )
-## System
+## Errors
 snippet error_code boost::system
 	boost::system::error_code
 snippet system_error boost::system
 	boost::system::system_error
+snippet error_condition boost::system
+	boost::system::error_condition
+snippet exception boost
+	boost::exception
+snippet diagnostic_information boost
+	boost::diagnostic_information( ${1:e} )
+snippet get_error_info boost
+	boost::get_error_info<${1:T}>( ${2:e} )
 ## 
 ## Time
 snippet date boost::gregorian
@@ -173,6 +201,8 @@ snippet strand boost::asio::io_service
 	boost::asio::io_service::strand
 snippet work boost::asio::io_service
 	boost::asio::io_service::work
+snippet signal_set boost::asio::signal_set
+	boost::asio::io_service::signal_set
 ##
 ## Networking
 snippet socket boost::asio
@@ -188,11 +218,27 @@ snippet buffer boost::asio
 snippet mutable_buffer boost::asio
 	boost::asio::mutable_buffer
 snippet async_read_until boost::asio
-	boost::asio::async_read_until
+	boost::asio::async_read_until( ${1:stream}, ${2:streambuf}, ${3:condition}, ${4:handler} )
 snippet streambuf boost::asio
 	boost::asio::streambuf
 snippet address boost::asio
 	boost::asio::ip::address
+snippet address_v4 boost::asio
+	boost::asio::ip::address_v4
+snippet address_v6 boost::asio
+	boost::asio::ip::address_v6
+snippet host_name boost::asio
+	boost::asio::ip::host_name( ${1:ec} )
+## 
+## Signals
+snippet signal boost
+	boost::signal<${1:void (void)}>
+snippet connection boost::signals
+	boost::signals::connection
+snippet scoped_connection boost::signals
+	boost::signals::scoped_connection
+snippet trackable boost::signals
+	boost::signals::trackable
 ##
 ## Algorithms
 snippet to_upper boost::algorithm
