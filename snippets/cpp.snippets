@@ -453,14 +453,16 @@ snippet current_path boost::filesystem
 	boost::filesystem::current_path()
 ##
 ## Function objects
-snippet bind std
+snippet bind boost
 	boost::bind( ${1:function}, ${2:arguments} )
-snippet mem_fn std
+snippet mem_fn boost
 	boost::mem_fn( ${1:function} )
-snippet ref std
+snippet ref boost
 	boost::ref( ${1:value} )
-snippet cref std
+snippet cref boost
 	boost::cref( ${1:value} )
+snippet reference_wrapper boost
+	boost::reference_wrapper<${1:T}>
 snippet not1 std
 	std::not1( ${1:unary_predicate} )
 snippet not2 std
