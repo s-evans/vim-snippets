@@ -1,47 +1,43 @@
 snippet prologue
-
-	# Prologue
-
-	sp              := $(sp).x
-	dirstack_$(sp)  := $(d)
-	d               := $(abspath $(dir))
-
+	sp             := $(sp).x
+	dirstack_$(sp) := $(d)
+	d              := $(abspath $(dir))
 snippet epilogue
-
-	# Epilogue
-
-	-include	$(DEP_$(d))
-
-	d 			:= $(dirstack_$(sp))
-	sp			:= $(basename $(sp))
-
+	-include $(DEP_$(d))
+	d        := $(dirstack_$(sp))
+	sp       := $(basename $(sp))
 snippet rinc
-	dir 			:= ${1:subdir}
-	include 		$(dir)/Rules.mk
-
+	${1:var} := ${2:subdir}
+	include ${1}/Rules.mk
 snippet to
 	# TODO: 
 snippet ph
 	.PHONY: 
+snippet inc
+	include ${1:$}
 snippet in
-	include ${1:$}	
+	include ${1:$}
 snippet -in
 	-include ${1:$}
 snippet ife
-	ifeq ( ${1:arg1}, ${2:arg2} )
+	ifeq ( ${1:arg1},${2:arg2} )
 	${3}
 	endif
 snippet ifn
-	ifneq ( ${1:arg1}, ${2:arg2} )
-		${3}
+	ifneq ( ${1:arg1},${2:arg2} )
+	${3}
+	endif
+snippet ifnd
+	ifndef ${1:$}
+	${2}
 	endif
 snippet ifd
 	ifdef ${1:$}
-		${2}
+	${2}
 	endif
 snippet el
 	else
-		${1}
+	${1}
 snippet dir
 	$(dir ${0:names})
 snippet notdir
@@ -51,11 +47,11 @@ snippet suffix
 snippet basename
 	$(basename ${1:names})
 snippet addsuffix
-	$(addsuffix ${1:suffix}, ${2:names})
+	$(addsuffix ${1:suffix},${2:names})
 snippet addprefix
-	$(addprefix ${1:prefix}, ${2:names})
+	$(addprefix ${1:prefix},${2:names})
 snippet join
-	$(join ${1:list1}, ${2:list2})
+	$(join ${1:list1},${2:list2})
 snippet wildcard
 	$(wildcard ${1:pattern})
 snippet realpath
@@ -63,29 +59,29 @@ snippet realpath
 snippet abspath
 	$(abspath ${1:names})
 snippet if
-	$(if ${1:condition}, ${2:then-part}, ${3:else-part})
+	$(if ${1:condition},${2:then-part},${3:else-part})
 snippet or
-	$(or ${1:condition1}, ${2:conditions})
+	$(or ${1:condition1},${2:conditions})
 snippet and
-	$(and ${1:condition1}, ${2:conditions})
+	$(and ${1:condition1},${2:conditions})
 snippet subst
-	$(subst ${1:from}, ${2:to}, ${3:text})
+	$(subst ${1:from},${2:to},${3:text})
 snippet patsubst
-	$(patsubst ${1:pattern}, ${2:replacement}, ${3:text})
+	$(patsubst ${1:pattern},${2:replacement},${3:text})
 snippet strip
 	$(strip ${1:string})
 snippet findstring
-	$(findstring ${1:find}, ${2:in})
+	$(findstring ${1:find},${2:in})
 snippet filter
-	$(filter ${1:pattern...}, ${2:text})
+	$(filter ${1:pattern...},${2:text})
 snippet filter-out
-	$(filter-out ${1:pattern...}, ${2:text})
+	$(filter-out ${1:pattern...},${2:text})
 snippet sort
 	$(sort ${1:list})
 snippet word
-	$(word ${1:n}, ${2:text})
+	$(word ${1:n},${2:text})
 snippet wordlist
-	$(wordlist ${1:s}, ${2:e}, ${3:text})
+	$(wordlist ${1:s},${2:e},${3:text})
 snippet words
 	$(words ${1:text})
 snippet firstword
@@ -93,11 +89,11 @@ snippet firstword
 snippet lastword
 	$(lastword ${1:list})
 snippet foreach
-	$(foreach ${1:var}, ${2:list}, ${3:text})
+	$(foreach ${1:tmp_var_name},${2:value_list},${3:command})
 snippet file
-	$(file ${1:>} ${2:filename}, ${3:text})
+	$(file ${1:>} ${2:filename},${3:text})
 snippet call
-	$(call ${1:variable}, ${2:params})
+	$(call ${1:variable},${2:params})
 snippet value
 	$(value ${1:variable})
 snippet eval
@@ -119,3 +115,20 @@ snippet $
 snippet t
 	${1:labels}: ${2:dependencies} | ${3:order_only_dependencies}
 		${4:rules}
+snippet def
+	define ${1:name} =
+	${2:commands}
+	endef
+snippet fb
+	########################################################################################################################
+	# ${1}
+	########################################################################################################################
+snippet evc
+	$(eval $(call ${1:fxn_name},${2:params}))
+snippet tsv
+	${1:target}: ${2:variable_name} := ${3:value}
+snippet evr
+	$(eval ${1:VARNAME} := $(${2:VARNAME}))
+	$(${1})
+snippet $:
+	$(${1:VAR}:${2:.o}=${3:.c})
