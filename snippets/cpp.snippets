@@ -35,13 +35,13 @@ snippet tn
 ##
 ## Allocation
 snippet n
-	new ${1}
+	new ${1:type}
 snippet na
-	new ${1}[${2}]
+	new ${1:type}[${2:count}]
 snippet pn
-	new (${1}) ${2}
+	new (${1:pointer}) ${2:type}
 snippet pna
-	new (${1}) ${2}[${3}]
+	new (${1:pointer}) ${2:type}[${3:count}]
 snippet d
 	delete ${1}
 snippet da
@@ -93,6 +93,9 @@ snippet underflow_error std
 ## 
 ## Boost
 ## 
+## Misc
+snippet move boost
+	boost::move( ${1:ref} )
 ## Program options
 snippet options_description boost::program_options
 	boost::program_options::options_description
@@ -191,6 +194,10 @@ snippet unique_lock boost
 	boost::unique_lock<${1:mutex}>
 snippet lock_guard boost
 	boost::lock_guard<${1:mutex}>
+snippet packaged_task boost
+	boost::packaged_task<${1:R}>
+snippet unique_future boost
+	boost::unique_future<${1:R}>
 ## 
 ## ASIO
 snippet io_service boost::asio
@@ -231,14 +238,12 @@ snippet host_name boost::asio
 	boost::asio::ip::host_name( ${1:ec} )
 ## 
 ## Signals
-snippet signal boost
-	boost::signal<${1:void (void)}>
-snippet connection boost::signals
-	boost::signals::connection
-snippet scoped_connection boost::signals
-	boost::signals::scoped_connection
-snippet trackable boost::signals
-	boost::signals::trackable
+snippet signal boost::signals2
+	boost::signals2::signal<${1:void (void)}>
+snippet connection boost::signals2
+	boost::signals2::connection
+snippet scoped_connection boost::signals2
+	boost::signals2::scoped_connection
 ##
 ## Algorithms
 snippet to_upper boost::algorithm
