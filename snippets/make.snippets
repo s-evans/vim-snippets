@@ -1,7 +1,7 @@
 snippet prologue
 	sp             := $(sp).x
 	dirstack_$(sp) := $(d)
-	d              := $(abspath $(dir))
+	d              := $(abspath $(dir $(lastword MAKEFILE_LIST)))
 snippet epilogue
 	-include $(DEP_$(d))
 	d        := $(dirstack_$(sp))

@@ -1,7 +1,22 @@
 ##
+## Misc
+snippet cr
+	const& 
+snippet cp
+	const* 
+## Locales
+snippet global std::locale
+	std::locale::global( std::locale( "${1:location}" ) )
+snippet locale std
+	std::locale
+snippet setlocale std
+	std::setlocale( ${1:LC_ALL}, "${2:location}" )
+##
 ## Keywords
-snippet string std
-	std::string
+snippet typeid
+	typeid( ${1:type_or_expression} )
+snippet type_info std
+	std::type_info
 snippet op
 	operator${1}( ${2} )
 snippet try
@@ -23,7 +38,7 @@ snippet dynamic_cast
 snippet reinterpret_cast
 	reinterpret_cast<${1:T}>( ${2:value} )
 snippet const_cast
-	boost::const_cast<${1:T}>( ${2:value} )
+	const_cast<${1:T}>( ${2:value} )
 snippet lexical_cast
 	boost::lexical_cast<${1:T}>( ${2:value} )
 snippet te
@@ -32,6 +47,12 @@ snippet cn
 	class ${1}
 snippet tn
 	typename ${1}
+##
+## Strings
+snippet string std
+	std::string
+snippet char_traits std
+	std::char_traits<${2:T}>
 ##
 ## Allocation
 snippet n
@@ -63,13 +84,81 @@ snippet os std
 snippet ios std
 	std::iostream ${1:ios};
 snippet ofs std
-	std::ofstream ${1:ofs}( ${2:file} );
+	std::ofstream ${1:ofs}( ${2:filename} );
 snippet ifs std
-	std::ifstream ${1:ifs}( ${2:file} );
+	std::ifstream ${1:ifs}( ${2:filename} );
 snippet fs std
-	std::fstream ${1:fs}( ${2:file} );
-snippet fb std
-	std::filebuf ${1:fb};
+	std::fstream ${1:fs}( ${2:filename} );
+snippet fbuf std
+	std::filebuf ${1:fbuf};
+##
+## Manipulators
+snippet boolalpha std
+	std::boolalpha
+snippet showbase std
+	std::showbase
+snippet showpoint std
+	std::showpoint
+snippet showpos std
+	std::showpos
+snippet skipws std
+	std::skipws
+snippet unitbuf std
+	std::unitbuf
+snippet uppercase std
+	std::uppercase
+snippet noboolalpha std
+	std::noboolalpha
+snippet noshowbase std
+	std::noshowbase
+snippet noshowpoint std
+	std::noshowpoint
+snippet noshowpos std
+	std::noshowpos
+snippet noskipws std
+	std::noskipws
+snippet nounitbuf std
+	std::nounitbuf
+snippet nouppercase std
+	std::nouppercase
+snippet dec std
+	std::dec
+snippet hex std
+	std::hex
+snippet oct std
+	std::oct
+snippet fixed std
+	std::fixed
+snippet scientific std
+	std::scientific
+snippet internal std
+	std::internal
+snippet left std
+	std::left
+snippet right std
+	std::right
+snippet ws std
+	std::ws
+snippet endl std
+	std::endl
+snippet ends std
+	std::ends
+snippet flush std
+	std::flush
+##
+## Parameter Manipulators
+snippet setiosflags std
+	std::setiosflags( ${1:iosflags} )
+snippet resetiosflags std
+	std::resetiosflags( ${1:iosflags} )
+snippet setbase std
+	std::setbase( ${1:radix} )
+snippet setfill std
+	std::setfill( '${1:char}' )
+snippet setprecision std
+	std::setprecision( ${1:decimal_places} )
+snippet setw std
+	std::setw( ${1:width} )
 ##
 ## Exceptions
 snippet logic_error std
@@ -90,12 +179,727 @@ snippet overflow_error std
 	std::overflow_error
 snippet underflow_error std
 	std::underflow_error
-## 
+##
 ## Boost
+##
+## Iterator Range
+snippet iterator_range boost
+	boost::iterator_range<${1:IT}>
+snippet make_iterator_range boost
+	boost::make_iterator_range( ${1:begin}, ${2:end} )
+##
+## IPC
+snippet shared_memory_object boost::interprocess
+	boost::interprocess::shared_memory_object
+snippet open_or_create boost::interprocess
+	boost::interprocess::open_or_create
+snippet create_only boost::interprocess
+	boost::interprocess::create_only
+snippet open_only boost::interprocess
+	boost::interprocess::open_only
+snippet open_read_only boost::interprocess
+	boost::interprocess::open_read_only
+snippet open_copy_on_write boost::interprocess
+	boost::interprocess::open_copy_on_write
+snippet read_write boost::interprocess
+	boost::interprocess::read_write
+snippet read_only boost::interprocess
+	boost::interprocess::read_only
+snippet interprocess_exception boost::interprocess
+	boost::interprocess::interprocess_exception
+snippet mapped_region boost::interprocess
+	boost::interprocess::mapped_region
+snippet file_mapping boost::interprocess
+	boost::interprocess::file_mapping
+snippet remove_shared_memory_on_destroy boost::interprocess
+	boost::interprocess::remove_shared_memory_on_destroy
+snippet windows_shared_memory boost::interprocess
+	boost::interprocess::windows_shared_memory
+snippet offset_t boost::interprocess
+	boost::interprocess::offset_t
+snippet managed_shared_memory boost::interprocess
+	boost::interprocess::managed_shared_memory
+snippet remove boost::interprocess::shared_memory_object
+	boost::interprocess::shared_memory_object::remove( ${1:string} )
+snippet bad_alloc boost::interprocess
+	boost::interprocess::bad_alloc
+snippet segment_manager boost::interprocess::managed_shared_memory
+	boost::interprocess::managed_shared_memory::segment_manager
+snippet allocator boost::interprocess
+	boost::interprocess::allocator<${1:T}, ${2:segment_manager}>
+snippet basic_string boost::interprocess
+	boost::interprocess::basic_string<${1:T}>
+snippet vector boost::interprocess
+	boost::interprocess::vector<${1:T}>
+snippet map boost::interprocess
+	boost::interprocess::map<${1:KT}, ${2:VT}>
+snippet named_mutex boost::interprocess
+	boost::interprocess::named_mutex
+snippet remove boost::interprocess::named_mutex
+	boost::interprocess::named_mutex::remove( ${1:string} )
+snippet named_recursive_mutex boost::interprocess
+	boost::interprocess::named_recursive_mutex
+snippet interprocess_recursive_mutex boost::interprocess
+	boost::interprocess::interprocess_recursive_mutex
+snippet named_condition boost::interprocess
+	boost::interprocess::named_condition
+snippet remove boost::interprocess::named_condition
+	boost::interprocess::named_condition::remove( ${1:string} )
+snippet scoped_lock boost::interprocess
+	boost::interprocess::scoped_lock<${1:mutex_type}>
+##
+## Logging Macros
+snippet BOOST_LOG_TRIVIAL boost
+	BOOST_LOG_TRIVIAL(${1:debug}) << "${2:message}"
+snippet BOOST_LOG boost
+	BOOST_LOG(${1:logger}) << "${2:message}"
+snippet BOOST_LOG_SEV boost
+	BOOST_LOG_SEV(${1:severity_logger}, ${2:severity}) << "${3:message}"
+snippet BOOST_LOG_CHANNEL boost
+	BOOST_LOG_CHANNEL(${1:channel_logger}, "${2:channel}") << "${3:message}"
+##
+## Logging Core
+snippet get boost::logging::core
+	boost::logging::core::get()
+##
+## Logging Helpers
+snippet add_file_log boost::logging
+	boost::logging::add_file_log(        
+		boost::logging::keywords::file_name = "${1:sample_%N.log}",
+		boost::logging::keywords::rotation_size = ${2:10 * 1024 * 1024},
+		boost::logging::keywords::time_based_rotation = boost::logging::sinks::file::rotation_at_time_point(0, 0, 0),
+		boost::logging::keywords::format = "${3:[%TimeStamp%]: %Message%}" );
+snippet add_console_log boost::log
+	boost::log::add_console_log( ${1:ostream}, ${2:args} )
+snippet add_common_attributes boost::log
+	boost::log::add_common_attributes();
+##
+## Logging Sinks
+snippet asynchronous_sink boost::logging::sinks
+	boost::logging::sinks::asynchronous_sink<${1:sink_backend}>
+snippet synchronous_sink boost::logging::sinks
+	boost::logging::sinks::synchronous_sink<${1:sink_backend}>
+snippet wtext_ostream_backend boost::logging::sinks
+	boost::logging::sinks::wtext_ostream_backend
+snippet text_ostream_backend boost::logging::sinks
+	boost::logging::sinks::text_ostream_backend
+snippet text_multifile_backend boost::logging::sinks
+	boost::logging::sinks::text_multifile_backend
+snippet text_file_backend boost::logging::sinks
+	boost::logging::sinks::text_file_backend
+snippet syslog_backend boost::logging::sinks
+	boost::logging::sinks::syslog_backend
+snippet rotation_at_time_interval boost::logging::sinks::file
+	boost::logging::sinks::file::rotation_at_time_interval( ${1:time_duration} )
+snippet rotation_at_time_point boost::logging::sinks::file
+	boost::logging::sinks::file::rotation_at_time_point( ${1:hour}, ${2:minute}, ${3:second} )
+##
+## Logging Keywords
+snippet file_name boost::logging::keywords
+	boost::logging::keywords::file_name
+snippet rotation_size boost::logging::keywords
+	boost::logging::keywords::rotation_size
+snippet time_based_rotation boost::logging::keywords
+	boost::logging::keywords::time_based_rotation
+snippet format boost::logging::keywords
+	boost::logging::keywords::format
+##
+## Logging Sources
+snippet logger boost::log::sources
+	boost::log::sources::logger
+snippet logger_mt boost::log::sources
+	boost::log::sources::logger_mt
+snippet wlogger boost::log::sources
+	boost::log::sources::wlogger
+snippet wlogger_mt boost::log::sources
+	boost::log::sources::wlogger_mt
+snippet severity_logger boost::log::sources
+	boost::log::sources::severity_logger<${1:enum_type}>
+snippet severity_logger_mt boost::log::sources
+	boost::log::sources::severity_logger_mt<${1:enum_type}>
+snippet wseverity_logger boost::log::sources
+	boost::log::sources::wseverity_logger<${1:enum_type}>
+snippet wseverity_logger_mt boost::log::sources
+	boost::log::sources::wseverity_logger_mt<${1:enum_type}>
+snippet severity_channel_logger boost::log::sources
+	boost::log::sources::severity_channel_logger<${1:enum_type}, ${2:channel_type}>
+snippet severity_channel_logger_mt boost::log::sources
+	boost::log::sources::severity_channel_logger_mt<${1:enum_type}, ${2:channel_type}>
+snippet wseverity_channel_logger boost::log::sources
+	boost::log::sources::wseverity_channel_logger<${1:enum_type}, ${2:channel_type}>
+snippet wseverity_channel_logger_mt boost::log::sources
+	boost::log::sources::wseverity_channel_logger_mt<${1:enum_type}, ${2:channel_type}>
+##
+## Logging Exceptions
+snippet runtime_error boost::log
+	boost::logg::runtime_error
+snippet missing_value boost::log
+	boost::logg::missing_value
+snippet invalid_type boost::log
+	boost::logg::invalid_type
+snippet invalid_value boost::log
+	boost::logg::invalid_value
+snippet parse_error boost::log
+	boost::logg::parse_error
+snippet conversion_error boost::log
+	boost::logg::conversion_error
+snippet system_error boost::log
+	boost::logg::system_error
+snippet logic_error boost::log
+	boost::logg::logic_error
+snippet odr_violation boost::log
+	boost::logg::odr_violation
+snippet unexpected_call boost::log
+	boost::logg::unexpected_call
+snippet setup_error boost::log
+	boost::logg::setup_error
+snippet limitation_error boost::log
+	boost::logg::limitation_error
+##
+## Python
+##
+## IO Streams
+snippet aggregate_filter boost::iostreams
+	boost::iostreams::aggregate_filter
+snippet array boost::iostreams
+	boost::iostreams::array
+snippet array_sink boost::iostreams
+	boost::iostreams::array_sink
+snippet array_source boost::iostreams
+	boost::iostreams::array_source
+snippet back_insert_device boost::iostreams
+	boost::iostreams::back_insert_device
+snippet basic_array boost::iostreams
+	boost::iostreams::basic_array
+snippet basic_array_sink boost::iostreams
+	boost::iostreams::basic_array_sink
+snippet basic_array_source boost::iostreams
+	boost::iostreams::basic_array_source
+snippet basic_bzip2_compressor boost::iostreams
+	boost::iostreams::basic_bzip2_compressor
+snippet basic_bzip2_decompressor boost::iostreams
+	boost::iostreams::basic_bzip2_decompressor
+snippet basic_counter boost::iostreams
+	boost::iostreams::basic_counter
+snippet basic_file boost::iostreams
+	boost::iostreams::basic_file
+snippet basic_file_sink boost::iostreams
+	boost::iostreams::basic_file_sink
+snippet basic_file_source boost::iostreams
+	boost::iostreams::basic_file_source
+snippet basic_gzip_compressor boost::iostreams
+	boost::iostreams::basic_gzip_compressor
+snippet basic_gzip_decompressor boost::iostreams
+	boost::iostreams::basic_gzip_decompressor
+snippet basic_line_filter boost::iostreams
+	boost::iostreams::basic_line_filter
+snippet basic_null_device boost::iostreams
+	boost::iostreams::basic_null_device
+snippet basic_null_sink boost::iostreams
+	boost::iostreams::basic_null_sink
+snippet basic_null_source boost::iostreams
+	boost::iostreams::basic_null_source
+snippet basic_regex_filter boost::iostreams
+	boost::iostreams::basic_regex_filter
+snippet basic_stdio_filter boost::iostreams
+	boost::iostreams::basic_stdio_filter
+snippet basic_zlib_compressor boost::iostreams
+	boost::iostreams::basic_zlib_compressor
+snippet basic_zlib_decompressor boost::iostreams
+	boost::iostreams::basic_zlib_decompressor
+snippet bzip2_compressor boost::iostreams
+	boost::iostreams::bzip2_compressor
+snippet bzip2_decompressor boost::iostreams
+	boost::iostreams::bzip2_decompressor
+snippet bzip2_error boost::iostreams
+	boost::iostreams::bzip2_error
+snippet bzip2_params boost::iostreams
+	boost::iostreams::bzip2_params
+snippet category_of boost::iostreams
+	boost::iostreams::category_of
+snippet chain boost::iostreams
+	boost::iostreams::chain
+snippet char_traits boost::iostreams
+	boost::iostreams::char_traits
+snippet char_type_of boost::iostreams
+	boost::iostreams::char_type_of
+snippet code_converter boost::iostreams
+	boost::iostreams::code_converter
+snippet combination boost::iostreams
+	boost::iostreams::combination
+snippet composite boost::iostreams
+	boost::iostreams::composite<${1:filter}, ${2:filter_or_device}>
+snippet counter boost::iostreams
+	boost::iostreams::counter
+snippet device boost::iostreams
+	boost::iostreams::device
+snippet dual_use_filter boost::iostreams
+	boost::iostreams::dual_use_filter
+snippet dual_use_wfilter boost::iostreams
+	boost::iostreams::dual_use_wfilter
+snippet file boost::iostreams
+	boost::iostreams::file
+snippet file_descriptor boost::iostreams
+	boost::iostreams::file_descriptor
+snippet file_descriptor_sink boost::iostreams
+	boost::iostreams::file_descriptor_sink
+snippet file_descriptor_source boost::iostreams
+	boost::iostreams::file_descriptor_source
+snippet file_sink boost::iostreams
+	boost::iostreams::file_sink
+snippet file_source boost::iostreams
+	boost::iostreams::file_source
+snippet filter boost::iostreams
+	boost::iostreams::filter
+snippet filtering_stream boost::iostreams
+	boost::iostreams::filtering_stream
+snippet filtering_streambuf boost::iostreams
+	boost::iostreams::filtering_streambuf
+snippet gzip_compressor boost::iostreams
+	boost::iostreams::gzip_compressor
+snippet gzip_decompressor boost::iostreams
+	boost::iostreams::gzip_decompressor
+snippet gzip_error boost::iostreams
+	boost::iostreams::gzip_error
+snippet gzip_params boost::iostreams
+	boost::iostreams::gzip_params
+snippet input_filter boost::iostreams
+	boost::iostreams::input_filter
+snippet input_wfilter boost::iostreams
+	boost::iostreams::input_wfilter
+snippet inverse boost::iostreams
+	boost::iostreams::inverse<${1:filter_type}>
+snippet line_filter boost::iostreams
+	boost::iostreams::line_filter
+snippet mapped_file boost::iostreams
+	boost::iostreams::mapped_file
+snippet mapped_file_sink boost::iostreams
+	boost::iostreams::mapped_file_sink
+snippet mapped_file_source boost::iostreams
+	boost::iostreams::mapped_file_source
+snippet mode_of boost::iostreams
+	boost::iostreams::mode_of
+snippet multichar_dual_use_filter boost::iostreams
+	boost::iostreams::multichar_dual_use_filter
+snippet multichar_dual_use_wfilter boost::iostreams
+	boost::iostreams::multichar_dual_use_wfilter
+snippet multichar_filter boost::iostreams
+	boost::iostreams::multichar_filter
+snippet multichar_input_filter boost::iostreams
+	boost::iostreams::multichar_input_filter
+snippet multichar_input_wfilter boost::iostreams
+	boost::iostreams::multichar_input_wfilter
+snippet multichar_output_filter boost::iostreams
+	boost::iostreams::multichar_output_filter
+snippet multichar_output_wfilter boost::iostreams
+	boost::iostreams::multichar_output_wfilter
+snippet multichar_wfilter boost::iostreams
+	boost::iostreams::multichar_wfilter
+snippet newline_filter boost::iostreams
+	boost::iostreams::newline_filter
+snippet null_sink boost::iostreams
+	boost::iostreams::null_sink
+snippet null_source boost::iostreams
+	boost::iostreams::null_source
+snippet output_filter boost::iostreams
+	boost::iostreams::output_filter
+snippet output_wfilter boost::iostreams
+	boost::iostreams::output_wfilter
+snippet regex_filter boost::iostreams
+	boost::iostreams::regex_filter
+snippet restriction boost::iostreams
+	boost::iostreams::restriction<${1:filter_or_device_type}>
+snippet seekable_filter boost::iostreams
+	boost::iostreams::seekable_filter
+snippet seekable_wfilter boost::iostreams
+	boost::iostreams::seekable_wfilter
+snippet sink boost::iostreams
+	boost::iostreams::sink
+snippet source boost::iostreams
+	boost::iostreams::source
+snippet stdio_filter boost::iostreams
+	boost::iostreams::stdio_filter
+snippet stream boost::iostreams
+	boost::iostreams::stream
+snippet stream_buffer boost::iostreams
+	boost::iostreams::stream_buffer
+snippet symmetric_filter boost::iostreams
+	boost::iostreams::symmetric_filter
+snippet tee_device boost::iostreams
+	boost::iostreams::tee_device
+snippet tee_filter boost::iostreams
+	boost::iostreams::tee_filter
+snippet warray boost::iostreams
+	boost::iostreams::warray
+snippet warray_sink boost::iostreams
+	boost::iostreams::warray_sink
+snippet warray_source boost::iostreams
+	boost::iostreams::warray_source
+snippet wchain boost::iostreams
+	boost::iostreams::wchain
+snippet wcounter boost::iostreams
+	boost::iostreams::wcounter
+snippet wdevice boost::iostreams
+	boost::iostreams::wdevice
+snippet wfile boost::iostreams
+	boost::iostreams::wfile
+snippet wfile_sink boost::iostreams
+	boost::iostreams::wfile_sink
+snippet wfile_source boost::iostreams
+	boost::iostreams::wfile_source
+snippet wfilter boost::iostreams
+	boost::iostreams::wfilter
+snippet wline_filter boost::iostreams
+	boost::iostreams::wline_filter
+snippet wnull_sink boost::iostreams
+	boost::iostreams::wnull_sink
+snippet wnull_source boost::iostreams
+	boost::iostreams::wnull_source
+snippet wregex_filter boost::iostreams
+	boost::iostreams::wregex_filter
+snippet wsink boost::iostreams
+	boost::iostreams::wsink
+snippet wsource boost::iostreams
+	boost::iostreams::wsource
+snippet wstdio_filter boost::iostreams
+	boost::iostreams::wstdio_filter
+snippet zlib_compressor boost::iostreams
+	boost::iostreams::zlib_compressor
+snippet zlib_decompressor boost::iostreams
+	boost::iostreams::zlib_decompressor
+snippet zlib_error boost::iostreams
+	boost::iostreams::zlib_error
+snippet zlib_params boost::iostreams
+	boost::iostreams::zlib_params
+##
+## Boost IO Functions
+snippet back_inserter boost::iostreams
+	boost::iostreams::back_inserter( ${1:container} )
+snippet close boost::iostreams
+	boost::iostreams::close( ${1:device} )
+snippet combine boost::iostreams
+	boost::iostreams::combine( ${1:input}, ${2:output} )
+snippet compose boost::iostreams
+	boost::iostreams::compose( ${1:filter}, ${2:filter_or_device} )
+snippet copy boost::iostreams
+	boost::iostreams::copy( ${1:source}, ${2:sink} )
+snippet flush boost::iostreams
+	boost::iostreams::flush( ${1:T}, ${2:sink} )
+snippet get boost::iostreams
+	boost::iostreams::get( ${1:source} )
+snippet imbue boost::iostreams
+	boost::iostreams::imbue( ${1:T}, ${2:locale} )
+snippet invert boost::iostreams
+	boost::iostreams::invert( ${1:filter} )
+snippet offset_to_position boost::iostreams
+	boost::iostreams::offset_to_position( ${1:stream_offset} )
+snippet optimal_buffer_size boost::iostreams
+	boost::iostreams::optimal_buffer_size( ${2:filter_or_device} )
+snippet position_to_offset boost::iostreams
+	boost::iostreams::position_to_offset( ${1:streampos} )
+snippet put boost::iostreams
+	boost::iostreams::put( ${1:sink}, ${2:char} )
+snippet putback boost::iostreams
+	boost::iostreams::putback( ${1:peekable}, ${2:char} )
+snippet read boost::iostreams
+	boost::iostreams::read( ${1:source}, ${2:char_ptr}, ${3:n} )
+snippet restrict boost::iostreams
+	boost::iostreams::restrict( ${1:filter_or_device}, ${2:stream_offset}, ${3:len = -1} )
+snippet seek boost::iostreams
+	boost::iostreams::seek( ${1:t}, ${2:n}, ${3:way}, ${4:which} )
+snippet tee boost::iostreams
+	boost::iostreams::tee( ${1:sink1}, ${2:sink2} )
+snippet test_filter_pair boost::iostreams
+	boost::iostreams::test_filter_pair( ${1:output_filter}, ${2:input_filter}, ${3:data} )
+snippet test_input_filter boost::iostreams
+	boost::iostreams::test_input_filter( ${1:input_filter}, ${2:input}, ${3:output} )
+snippet test_output_filter boost::iostreams
+	boost::iostreams::test_output_filter( ${1:output_filter}, ${2:input}, ${3:output} )
+snippet write boost::iostreams
+	boost::iostreams::write( ${1:sink}, ${2:char_ptr}, ${3:n} )
+##
+## Boost IO Macros
+snippet BOOST_IOSTREAMS_PIPABLE
+	BOOST_IOSTREAMS_PIPABLE( ${1:filter}, ${2:arity} )
+##
+## Test
+##
+## MPL
+##
+## Format
+snippet format boost
+	boost::format("${1:%1 %2}") % ${2:val % val}
+snippet group boost::io
+	boost::io::group( ${1:manipulators...}, ${2:val} )
+##
+## Tokenizer
+snippet offset_separator boost
+	boost::offset_separator
+snippet escaped_list_separator boost
+	boost::escaped_list_separator<${1:char}>
+snippet char_separator boost
+	boost::char_separator<${1:char}>
+snippet tokenizer boost
+	boost::tokenizer<${1:separator_type}>
+snippet tok_iterator boost::tokenizer
+	boost::tokenizer::iterator
+##
+## Any
+snippet any boost
+	boost::any ${1:a} = ${2:val};
+snippet any_cast boost
+	boost::any_cast<${1:T}>( ${2:any} )
+snippet bad_any_cast boost
+	boost::bad_any_cast 
 ## 
+## Variant
+snippet variant boost
+	boost::variant<${1:type_list}>
+snippet get boost
+	boost::get<${1:T}>( ${2:variant} )
+snippet static_visitor boost
+	boost::static_visitor<>
+snippet apply_visitor boost
+	boost::apply_visitor( ${1:static_visitor}, ${2:variant} )
+##
 ## Misc
 snippet move boost
 	boost::move( ${1:ref} )
+##
+## Optional
+snippet none boost
+	boost::none
+snippet optional boost
+	boost::optional<${1:T}>
+##
+## Serialization
+snippet polymorphic_oarchive boost::archive
+	boost::archive::polymorphic_oarchive
+snippet polymorphic_iarchive boost::archive
+	boost::archive::polymorphic_iarchive
+snippet polymorphic_text_oarchive boost::archive
+	boost::archive::polymorphic_text_oarchive
+snippet polymorphic_text_iarchive boost::archive
+	boost::archive::polymorphic_text_iarchive
+snippet polymorphic_binary_oarchive boost::archive
+	boost::archive::polymorphic_binary_oarchive
+snippet polymorphic_binary_iarchive boost::archive
+	boost::archive::polymorphic_binary_iarchive
+snippet polymorphic_xml_oarchive boost::archive
+	boost::archive::polymorphic_xml_oarchive
+snippet polymorphic_xml_iarchive boost::archive
+	boost::archive::polymorphic_xml_iarchive
+snippet polymorphic_text_woarchive boost::archive
+	boost::archive::polymorphic_text_woarchive
+snippet polymorphic_text_wiarchive boost::archive
+	boost::archive::polymorphic_text_wiarchive
+snippet polymorphic_binary_woarchive boost::archive
+	boost::archive::polymorphic_binary_woarchive
+snippet polymorphic_binary_wiarchive boost::archive
+	boost::archive::polymorphic_binary_wiarchive
+snippet polymorphic_xml_woarchive boost::archive
+	boost::archive::polymorphic_xml_woarchive
+snippet polymorphic_xml_wiarchive boost::archive
+	boost::archive::polymorphic_xml_wiarchive
+snippet text_oarchive boost::archive
+	boost::archive::text_oarchive
+snippet text_oarchive boost::archive
+	boost::archive::text_oarchive
+snippet text_iarchive boost::archive
+	boost::archive::text_iarchive
+snippet xml_oarchive boost::archive
+	boost::archive::xml_oarchive
+snippet xml_iarchive boost::archive
+	boost::archive::xml_iarchive
+snippet text_woarchive boost::archive
+	boost::archive::text_woarchive
+snippet text_wiarchive boost::archive
+	boost::archive::text_wiarchive
+snippet xml_woarchive boost::archive
+	boost::archive::xml_woarchive
+snippet xml_wiarchive boost::archive
+	boost::archive::xml_wiarchive
+snippet binary_oarchive boost::archive
+	boost::archive::binary_oarchive
+snippet binary_iarchive boost::archive
+	boost::archive::binary_iarchive
+snippet SPLIT_MEMBER boost::serialization
+	BOOST_SERIALIZATION_SPLIT_MEMBER()
+snippet CLASS_VERSION boost::serialization
+	BOOST_CLASS_VERSION( ${1:class}, ${2:version_int} )
+snippet access boost::serialization
+	friend class boost::serialization::access;
+snippet base_object boost::serialization
+	boost::serialization::base_object<${1:T}>( ${2:*this} )
+snippet make_array boost::serialization
+	boost::serialization::make_array( ${1:ptr}, ${1:size} )
+snippet make_binary_object boost::serialization
+	boost::serialization::make_binary_object( ${1:ptr}, ${1:size} )
+snippet load boost::serialization
+	template<class Archive>
+	void load( Archive & ar, const unsigned int version )
+	{
+		ar & ${1:member};
+	}
+snippet save boost::serialization
+	template<class Archive>
+	void save( Archive & ar, const unsigned int version )
+	{
+		ar & ${1:member};
+	}
+snippet serialize boost::serialization
+	template<class Archive>
+	void serialize( Archive & ar, const unsigned int version )
+	{
+		ar & ${1:member};
+	}
+snippet serialize_ext boost::serialization
+	namespace boost {
+	namespace serialization {
+	template<class Archive>
+	void serialize( Archive & ar, ${1:`vim_snippets#Filename('$1', 'ClassName')`}& ${2:val}, const unsigned int version )
+	{
+		ar & ${2}.${3:member};
+	}
+	}
+	}
+##
+## Random Generators
+snippet random_device boost::random
+	boost::random::random_device
+snippet minstd_rand0 boost::random  
+	boost::random::minstd_rand0
+snippet minstd_rand boost::random  
+	boost::random::minstd_rand
+snippet rand48 boost::random  
+	boost::random::rand48
+snippet ecuyer1988 boost::random  
+	boost::random::ecuyer1988
+snippet knuth_b boost::random  
+	boost::random::knuth_b
+snippet kreutzer1986 boost::random  
+	boost::random::kreutzer1986
+snippet taus88 boost::random  
+	boost::random::taus88
+snippet hellekalek1995 boost::random  
+	boost::random::hellekalek1995
+snippet mt11213b boost::random  
+	boost::random::mt11213b
+snippet mt19937 boost::random  
+	boost::random::mt19937
+snippet mt19937_64 boost::random  
+	boost::random::mt19937_64
+snippet lagged_fibonacci607 boost::random  
+	boost::random::lagged_fibonacci607
+snippet lagged_fibonacci1279 boost::random  
+	boost::random::lagged_fibonacci1279
+snippet lagged_fibonacci2281 boost::random  
+	boost::random::lagged_fibonacci2281
+snippet lagged_fibonacci3217 boost::random  
+	boost::random::lagged_fibonacci3217
+snippet lagged_fibonacci4423 boost::random  
+	boost::random::lagged_fibonacci4423
+snippet lagged_fibonacci9689 boost::random  
+	boost::random::lagged_fibonacci9689
+snippet lagged_fibonacci19937 boost::random  
+	boost::random::lagged_fibonacci19937
+snippet lagged_fibonacci23209 boost::random  
+	boost::random::lagged_fibonacci23209
+snippet lagged_fibonacci44497 boost::random  
+	boost::random::lagged_fibonacci44497
+snippet ranlux3 boost::random  
+	boost::random::ranlux3
+snippet ranlux4 boost::random  
+	boost::random::ranlux4
+snippet ranlux64_3 boost::random  
+	boost::random::ranlux64_3
+snippet ranlux64_4 boost::random  
+	boost::random::ranlux64_4
+snippet ranlux3_01 boost::random  
+	boost::random::ranlux3_01
+snippet ranlux4_01 boost::random  
+	boost::random::ranlux4_01
+snippet ranlux64_3_01 boost::random  
+	boost::random::ranlux64_3_01
+snippet ranlux64_4_01 boost::random  
+	boost::random::ranlux64_4_01
+snippet ranlux24 boost::random  
+	boost::random::ranlux24
+snippet ranlux48 boost::random  
+	boost::random::ranlux48
+## 
+## Random Distributions
+snippet uniform_int_distribution boost::random
+	boost::random::uniform_int_distribution<${1:int}> ${2:name} ( ${3:range_low}, ${3:range_high} )
+snippet discrete_distribution boost::random
+	boost::random::discrete_distribution<${1:double}> ${2:name} ( ${4:array_of_doubles} )
+snippet uniform_smallint boost::random  
+	boost::random::uniform_smallint
+snippet uniform_01 boost::random  
+	boost::random::uniform_01
+snippet uniform_real_distribution boost::random  
+	boost::random::uniform_real_distribution
+snippet bernoulli_distribution boost::random  
+	boost::random::bernoulli_distribution
+snippet binomial_distribution boost::random  
+	boost::random::binomial_distribution
+snippet geometric_distribution boost::random  
+	boost::random::geometric_distribution
+snippet negative_binomial_distribution boost::random  
+	boost::random::negative_binomial_distribution
+snippet poisson_distribution boost::random  
+	boost::random::poisson_distribution
+snippet exponential_distribution boost::random  
+	boost::random::exponential_distribution
+snippet gamma_distribution boost::random  
+	boost::random::gamma_distribution
+snippet weibull_distribution boost::random  
+	boost::random::weibull_distribution
+snippet extreme_value_distribution boost::random  
+	boost::random::extreme_value_distribution
+snippet beta_distribution boost::random  
+	boost::random::beta_distribution
+snippet laplace_distribution boost::random  
+	boost::random::laplace_distribution
+snippet normal_distribution boost::random  
+	boost::random::normal_distribution
+snippet lognormal_distribution boost::random  
+	boost::random::lognormal_distribution
+snippet chi_squared_distribution boost::random  
+	boost::random::chi_squared_distribution
+snippet cauchy_distribution boost::random  
+	boost::random::cauchy_distribution
+snippet fisher_f_distribution boost::random  
+	boost::random::fisher_f_distribution
+snippet student_t_distribution boost::random  
+	boost::random::student_t_distribution
+snippet piecewise_constant_distribution boost::random  
+	boost::random::piecewise_constant_distribution
+snippet piecewise_linear_distribution boost::random  
+	boost::random::piecewise_linear_distribution
+snippet triangle_distribution boost::random  
+	boost::random::triangle_distribution
+snippet uniform_on_sphere boost::random  
+	boost::random::uniform_on_sphere
+##
+## Tuples
+snippet tuple boost
+	boost::tuple<${1:type_list}>
+snippet make_tuple boost
+	boost::make_tuple( ${1:value_list} )
+snippet tie boost
+	boost::tie( ${1:non_const_reference_list} )
+snippet ignore boost::tuples
+	boost::tuples::ignore
+snippet set_open boost::tuples
+	boost::tuples::set_open( '${1:prepended_value}' ) ${2:<< }
+snippet set_close boost::tuples
+	boost::tuples::set_close( '${1:appended_value}' ) ${2:<< }
+snippet set_delimiter boost::tuples
+	boost::tuples::set_delimiter( '${1:delimiter_value}' ) ${2:<< }
+snippet get boost::tuples
+	boost::tuples::get<${1:N}>( ${2:tuple} )
+##
 ## Program options
 snippet options_description boost::program_options
 	boost::program_options::options_description
@@ -117,6 +921,7 @@ snippet parse_config_file boost::program_options
 	boost::program_options::parse_config_file( ${1:path}, ${2:options_description} )
 snippet parse_environment boost::program_options
 	boost::program_options::parse_environment( ${1:options_description}, ${2:string_prefix} )
+##
 ## Errors
 snippet error_code boost::system
 	boost::system::error_code
@@ -346,6 +1151,14 @@ snippet is_any_of boost::algorithm
 	boost::algorithm::is_any_of( ${1:string} )
 snippet is_from_range boost::algorithm
 	boost::algorithm::is_from_range( ${1:from}, ${2:to} )
+snippet find_regex boost::algorithm
+	boost::algorithm::find_regex( ${1:string}, ${2:regex} )
+snippet replace_regex boost::algorithm
+	boost::algorithm::replace_regex( ${1:string}, ${2:regex}, ${3:format} )
+snippet erase_regex boost::algorithm
+	boost::algorithm::erase_regex( ${1:string}, ${2:regex} )
+snippet split_regex boost::algorithm
+	boost::algorithm::split_regex( ${1:out_string_container}, ${2:in_string}, ${3:regex} )
 ## 
 ## Regex
 snippet regex_match boost
@@ -358,7 +1171,56 @@ snippet smatch boost
 	boost::smatch
 snippet regex boost
 	boost::regex
+snippet format_literal boost::regex_constants
+	boost::regex_constants::format_literal
+##
+## Assign
+snippet push_back boost::assign
+	boost::assign::push_back( ${1:collection} )( ${2:value} )( ${3:value} )
+snippet list_of boost::assign
+	boost::assign::list_of( ${1:value} )( ${2:value} )
+snippet map_list_of boost::assign
+	boost::assign::map_list_of( ${1:value}, ${2:value} )( ${3:value}, ${4:value} ) 
+snippet push_front boost::assign
+	boost::assign::push_front( ${1:collection} )( ${2:value} )( ${3:value} )
+snippet ptr_push_back boost::assign
+	boost::assign::ptr_push_back( ${1:collection} )( ${2:value} )( ${3:value} )
+snippet ptr_push_front boost::assign
+	boost::assign::ptr_push_front( ${1:collection} )( ${2:value} )( ${3:value} )
+snippet ptr_insert boost::assign
+	boost::assign::ptr_insert( ${1:collection} )( ${2:value} )( ${3:value} )
+snippet ptr_map_insert boost::assign
+	boost::assign::ptr_map_insert( ${1:collection} )( ${2:value} )( ${3:value} )
+snippet ptr_list_of boost::assign
+	boost::assign::ptr_list_of( ${1:value} )( ${2:value} )
+snippet insert boost::assign boost::assign
+	boost::assign::insert( ${1:collection} )( ${2:value} )( ${3:value} )
+snippet tuple_list_of boost::assign
+	boost::assign::tuple_list_of( ${1:value} )( ${2:value} )
+snippet ref_list_of boost::assign
+	boost::assign::ref_list_of( ${1:value} )( ${2:value} )
+snippet cref_list_of boost::assign
+	boost::assign::cref_list_of( ${1:value} )( ${2:value} )
 ## 
+## Bimap
+snippet bimap boost
+	boost::bimap<${1:LT}, ${2:RT}>
+snippet set_of boost::bimaps
+	boost::bimaps::set_of<${1:T}>
+snippet multiset_of boost::bimaps
+	boost::bimaps::multiset_of<${1:T}>
+snippet unconstrained_set_of boost::bimaps
+	boost::bimaps::unconstrained_set_of<${1:T}>
+snippet unordered_set_of boost::bimaps
+	boost::bimaps::unordered_set_of<${1:T}>
+snippet unordered_multiset_of boost::bimaps
+	boost::bimaps::unordered_multiset_of<${1:T}>
+snippet list_of boost::bimaps
+	boost::bimaps::list_of<${1:T}>
+snippet vector_of  boost::bimaps
+	boost::bimaps::vector_of <${1:T}>
+snippet unconstrainted_set_of boost::bimaps
+	boost::bimaps::unconstrainted_set_of<${1:T}>
 ## Multi-index
 snippet multi_index_container boost::multi_index
 	boost::multi_index::multi_index_container<${1:T}, ${2:indexed_by}>
@@ -394,6 +1256,10 @@ snippet scoped_array boost
 	boost::scoped_array<${1:T}>
 snippet shared_ptr boost
 	boost::shared_ptr<${1:T}>
+snippet make_shared boost
+	boost::make_shared<${1:T}>( ${2:args...} )
+snippet allocate_shared boost
+	boost::allocate_shared<${1:T}>( ${2:allocator}, ${3:args...} )
 snippet shared_array boost
 	boost::shared_array<${1:T}>
 snippet weak_ptr boost
@@ -458,6 +1324,8 @@ snippet current_path boost::filesystem
 	boost::filesystem::current_path()
 ##
 ## Function objects
+snippet function boost
+	boost::function<${1:void ()}>
 snippet bind boost
 	boost::bind( ${1:function}, ${2:arguments} )
 snippet mem_fn boost
@@ -676,6 +1544,10 @@ snippet prev_permutation User defined binary predicate
 	std::prev_permutation( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 ##
 ## STL Collections
+snippet pair std
+	std::pair<${1:KT}, ${2:VT}>
+snippet make_pair std
+	std::make_pair( ${1:first_value}, ${2:second_value} )
 snippet array std
 	std::array<${1:T}, ${2:N}> ${3};
 snippet vector std
