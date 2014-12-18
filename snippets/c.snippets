@@ -1,5 +1,9 @@
 ##
 ## Other
+snippet c
+	const
+snippet cp
+	const* 
 snippet (
 	( ${1} )
 snippet to
@@ -160,10 +164,14 @@ snippet tds
 	typedef struct ${2:_$1} {
 		${3}
 	} ${1:`vim_snippets#Filename('$1_t', 'name')`};
+snippet en
+	enum ${1:T} {
+		${2}
+	};
 snippet tde
-	typedef enum {
-		${1}
-	} ${2};
+	typedef enum ${1:T} {
+		${2}
+	} $1_T;
 ##
 ## Input/Output
 snippet pr

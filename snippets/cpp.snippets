@@ -1,9 +1,65 @@
 ##
 ## Misc
+snippet vol
+	volatile
+snippet ex
+	explicit
 snippet cr
 	const& 
-snippet cp
-	const* 
+snippet fwd std
+	std::forward<${1:T}>( ${2:val} )
+snippet np
+	nullptr
+snippet dt
+	decltype(${1:expr})
+snippet dta
+	decltype(auto)
+snippet static_assert C++11
+	static_assert( ${1:bool_constexpr}, ${2:message} );
+snippet static_assert C++03
+	BOOST_STATIC_ASSERT_MSG( ${1:bool_constexpr}, ${2:message} );
+##
+## C++11 Enums
+snippet ec
+	enum class ${1:T} {
+		${2}
+	};
+snippet tec
+	typedef enum class ${1:T} {
+		${2}
+	} $1_T;
+snippet es
+	enum struct ${1:T} {
+		${2}
+	};
+snippet tes
+	typedef enum struct ${1:T} {
+		${2}
+	} $1_T;
+snippet eb
+	enum ${1:T} : ${2:base_type} {
+		${3}
+	};
+snippet teb
+	typedef enum ${1:T} : ${2:base_type} {
+		${3}
+	} $1_T;
+snippet esb
+	enum struct ${1:T} : ${2:base_type} {
+		${3}
+	};
+snippet tesb
+	typedef enum struct ${1:T} : ${2:base_type} {
+		${3}
+	} $1_T;
+snippet ecb
+	enum class ${1:T} : ${2:base_type} {
+		${3}
+	};
+snippet tecb
+	typedef enum class ${1:T} : ${2:base_type} {
+		${3}
+	} $1_T;
 ## Locales
 snippet global std::locale
 	std::locale::global( std::locale( "${1:location}" ) )
@@ -19,6 +75,15 @@ snippet type_info std
 	std::type_info
 snippet op
 	operator${1}( ${2} )
+snippet op=
+	$1& ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator=( $1 const& rhs )
+	{
+		if ( this == &rhs ) return *this;
+
+		${0}
+
+		return *this;
+	}
 snippet try
 	try {
 		${1}
@@ -31,15 +96,15 @@ snippet catch
 	}
 snippet throw
 	throw ${1:value};
-snippet static_cast
+snippet scast
 	static_cast<${1:T}>( ${2:value} )
-snippet dynamic_cast
+snippet dcast
 	dynamic_cast<${1:T}>( ${2:value} )
-snippet reinterpret_cast
+snippet rcast
 	reinterpret_cast<${1:T}>( ${2:value} )
-snippet const_cast
+snippet ccast
 	const_cast<${1:T}>( ${2:value} )
-snippet lexical_cast
+snippet lcast
 	boost::lexical_cast<${1:T}>( ${2:value} )
 snippet te
 	template<${1}>
@@ -47,12 +112,6 @@ snippet cn
 	class ${1}
 snippet tn
 	typename ${1}
-##
-## Strings
-snippet string std
-	std::string
-snippet char_traits std
-	std::char_traits<${2:T}>
 ##
 ## Allocation
 snippet n
@@ -64,7 +123,7 @@ snippet pn
 snippet pna
 	new (${1:pointer}) ${2:type}[${3:count}]
 snippet d
-	delete ${1}
+	delete
 snippet da
 	delete[] ${1}
 ##
@@ -185,7 +244,7 @@ snippet underflow_error std
 ## Iterator Range
 snippet iterator_range boost
 	boost::iterator_range<${1:IT}>
-snippet make_iterator_range boost
+snippet mkiterator_range boost
 	boost::make_iterator_range( ${1:begin}, ${2:end} )
 ##
 ## IPC
@@ -356,7 +415,24 @@ snippet setup_error boost::log
 snippet limitation_error boost::log
 	boost::logg::limitation_error
 ##
-## Python
+## CRC
+snippet crc_basic boost
+	boost::crc_basic<${1:n_bits}>
+snippet crc_optimal boost
+	boost::crc_optimal<${1:n_bits}>
+snippet crc boost
+	boost::crc<${1:n_bits}, ${2:0u}, ${3:0u}, ${4:0u}, ${5:false}, ${6:false}>( ${7:p}, ${8:n} )
+snippet augmented_crc boost
+	boost::augmented_crc<${1:n_bits}, ${2:0u}>( ${3:p}, ${4:n}, ${5:initial_remainder} )
+snippet crc_16_type boost
+	boost::crc_16_type
+snippet crc_16_type boost
+	boost::crc_ccitt_type
+snippet crc_16_type boost
+	boost::crc_xmodem_type
+snippet crc_16_type boost
+	boost::crc_32_type
+
 ##
 ## IO Streams
 snippet aggregate_filter boost::iostreams
@@ -626,6 +702,8 @@ snippet BOOST_IOSTREAMS_PIPABLE
 ##
 ## MPL
 ##
+## Python
+##
 ## Format
 snippet format boost
 	boost::format("${1:%1 %2}") % ${2:val % val}
@@ -647,7 +725,7 @@ snippet tok_iterator boost::tokenizer
 ## Any
 snippet any boost
 	boost::any ${1:a} = ${2:val};
-snippet any_cast boost
+snippet acast boost
 	boost::any_cast<${1:T}>( ${2:any} )
 snippet bad_any_cast boost
 	boost::bad_any_cast 
@@ -663,7 +741,7 @@ snippet apply_visitor boost
 	boost::apply_visitor( ${1:static_visitor}, ${2:variant} )
 ##
 ## Misc
-snippet move boost
+snippet mv boost
 	boost::move( ${1:ref} )
 ##
 ## Optional
@@ -731,9 +809,9 @@ snippet access boost::serialization
 	friend class boost::serialization::access;
 snippet base_object boost::serialization
 	boost::serialization::base_object<${1:T}>( ${2:*this} )
-snippet make_array boost::serialization
+snippet mkarray boost::serialization
 	boost::serialization::make_array( ${1:ptr}, ${1:size} )
-snippet make_binary_object boost::serialization
+snippet mkbinary_object boost::serialization
 	boost::serialization::make_binary_object( ${1:ptr}, ${1:size} )
 snippet load boost::serialization
 	template<class Archive>
@@ -885,7 +963,7 @@ snippet uniform_on_sphere boost::random
 ## Tuples
 snippet tuple boost
 	boost::tuple<${1:type_list}>
-snippet make_tuple boost
+snippet mktuple boost
 	boost::make_tuple( ${1:value_list} )
 snippet tie boost
 	boost::tie( ${1:non_const_reference_list} )
@@ -901,6 +979,21 @@ snippet get boost::tuples
 	boost::tuples::get<${1:N}>( ${2:tuple} )
 ##
 ## Program options
+snippet po_example
+	// Declare the supported options.
+	boost::program_options::options_description desc( "Allowed options" );
+	desc.add_options()
+		( "help", "produce help message" )
+	;
+
+	boost::program_options::variables_map vm;
+	boost::program_options::store( boost::program_options::parse_command_line( ac, av, desc ), vm );
+	boost::program_options::notify( vm );
+
+	if ( vm.count( "help" ) ) {
+		cout << desc << "\n";
+		return 1;
+	}
 snippet options_description boost::program_options
 	boost::program_options::options_description
 snippet positional_options_description boost::program_options
@@ -921,6 +1014,8 @@ snippet parse_config_file boost::program_options
 	boost::program_options::parse_config_file( ${1:path}, ${2:options_description} )
 snippet parse_environment boost::program_options
 	boost::program_options::parse_environment( ${1:options_description}, ${2:string_prefix} )
+snippet collect_unrecognized boost::program_options
+	boost::program_options::collect_unrecognized( ${1:options_description}, ${2:mode} )
 ##
 ## Errors
 snippet error_code boost::system
@@ -975,16 +1070,30 @@ snippet from_ftime boost::posix_time
 ## Threading
 snippet thread boost
 	boost::thread
+snippet scoped_thread boost
+	boost::scoped_thread<>
+snippet strict_scoped_thread boost
+	boost::strict_scoped_thread<>
 snippet get_id boost::this_thread
 	boost::this_thread::get_id()
 snippet sleep boost::this_thread
 	boost::this_thread::sleep( ${1:posix_time} )
 snippet hardware_concurrency boost::thread
 	boost::thread::hardware_concurrency()
+snippet physical_concurrency boost::thread
+	boost::thread::physical_concurrency()
+snippet thread_specific_ptr boost::thread
+	boost::thread::thread_specific_ptr
 snippet condition_variable boost
 	boost::condition_variable
+snippet condition_variable_any boost
+	boost::condition_variable_any
+snippet notify_all_at_thread_exit boost
+	boost::notify_all_at_thread_exit( ${1:condition_variable}, ${2:mutex} )
 snippet barrier boost
 	boost::barrier
+snippet latch boost
+	boost::latch
 snippet mutex boost
 	boost::mutex
 snippet rmutex boost
@@ -995,14 +1104,68 @@ snippet rtmutex boost
 	boost::recursive_timed_mutex
 snippet smutex boost
 	boost::shared_mutex
+snippet umutex boost
+	boost::upgrade_mutex
+snippet nmutex boost
+	boost::null_mutex
 snippet unique_lock boost
 	boost::unique_lock<${1:mutex}>
+snippet mkunique_locks boost
+	boost::make_unique_locks( ${1:mutex...} )
+snippet mkunique_lock boost
+	boost::make_unique_lock( ${1:mutex} )
+snippet nested_strict_lock boost
+	boost::nested_strict_lock<${1:mutex}>
+snippet mknested_strict_lock boost
+	boost::make_nested_strict_lock( ${1:lock} )
+snippet strict_lock boost
+	boost::strict_lock<${1:mutex}>
+snippet mkstrict_lock boost
+	boost::make_strict_lock( ${1:lock} )
+snippet externally_locked boost
+	boost::externally_locked
+snippet const_strict_lock_ptr boost
+	boost::const_strict_lock_ptr
+snippet shared_lock boost
+	boost::shared_lock<${1:mutex}>
+snippet upgrade_lock boost
+	boost::upgrade_lock<${1:mutex}>
+snippet upgrade_to_unique_lock boost
+	boost::upgrade_to_unique_lock<${1:mutex}>
+snippet reverse_lock boost
+	boost::reverse_lock<${1:lock}>
 snippet lock_guard boost
 	boost::lock_guard<${1:mutex}>
+snippet lock boost
+	boost::lock( ${1:mutex...} )
+snippet try_lock boost
+	boost::try_lock( ${1:mutex...} )
+snippet mklock_guard boost
+	boost::make_lock_guard( ${1:lockable_mutex} )
 snippet packaged_task boost
 	boost::packaged_task<${1:R}>
+snippet promise boost
+	boost::promise
+snippet future boost
+	boost::future<${1:R}>
+snippet mkready_future boost
+	boost::make_read_future<${1:R}>( ${2:val} )
+snippet shared_future boost
+	boost::shared_future<${1:R}>
 snippet unique_future boost
 	boost::unique_future<${1:R}>
+snippet decay_copy boost
+	boost::decay_copy( ${1:t} )
+snippet async boost
+	boost::async( ${1:launch_policy}, ${2:function}, ${3:args} )
+snippet wait_for_any boost
+	boost::wait_for_any( ${1:futures...} )
+snippet wait_for_all boost
+	boost::wait_for_all( ${1:futures...} )
+snippet when_all boost
+	boost::when_all( ${1:futures} )
+snippet when_any boost
+	boost::when_any( ${1:futures} )
 ## 
 ## ASIO
 snippet io_service boost::asio
@@ -1014,7 +1177,7 @@ snippet strand boost::asio::io_service
 snippet work boost::asio::io_service
 	boost::asio::io_service::work
 snippet signal_set boost::asio::signal_set
-	boost::asio::io_service::signal_set
+	boost::asio::signal_set
 ##
 ## Networking
 snippet socket boost::asio
@@ -1183,15 +1346,15 @@ snippet map_list_of boost::assign
 	boost::assign::map_list_of( ${1:value}, ${2:value} )( ${3:value}, ${4:value} ) 
 snippet push_front boost::assign
 	boost::assign::push_front( ${1:collection} )( ${2:value} )( ${3:value} )
-snippet ptr_push_back boost::assign
+snippet ppush_back boost::assign
 	boost::assign::ptr_push_back( ${1:collection} )( ${2:value} )( ${3:value} )
-snippet ptr_push_front boost::assign
+snippet ppush_front boost::assign
 	boost::assign::ptr_push_front( ${1:collection} )( ${2:value} )( ${3:value} )
-snippet ptr_insert boost::assign
+snippet pinsert boost::assign
 	boost::assign::ptr_insert( ${1:collection} )( ${2:value} )( ${3:value} )
-snippet ptr_map_insert boost::assign
+snippet pmap_insert boost::assign
 	boost::assign::ptr_map_insert( ${1:collection} )( ${2:value} )( ${3:value} )
-snippet ptr_list_of boost::assign
+snippet plist_of boost::assign
 	boost::assign::ptr_list_of( ${1:value} )( ${2:value} )
 snippet insert boost::assign boost::assign
 	boost::assign::insert( ${1:collection} )( ${2:value} )( ${3:value} )
@@ -1221,6 +1384,7 @@ snippet vector_of  boost::bimaps
 	boost::bimaps::vector_of <${1:T}>
 snippet unconstrainted_set_of boost::bimaps
 	boost::bimaps::unconstrainted_set_of<${1:T}>
+##
 ## Multi-index
 snippet multi_index_container boost::multi_index
 	boost::multi_index::multi_index_container<${1:T}, ${2:indexed_by}>
@@ -1246,43 +1410,45 @@ snippet nth_index boost::multi_index
 	nth_index<${1:number}>::type::iterator
 ##
 ## Smart pointers
-snippet unique_ptr std
+snippet up std
 	std::unique_ptr<${1:T}>
-snippet auto_ptr std
+snippet ap std
 	std::auto_ptr<${1:T}>
-snippet scoped_ptr boost
+snippet scp boost
 	boost::scoped_ptr<${1:T}>
-snippet scoped_array boost
-	boost::scoped_array<${1:T}>
-snippet shared_ptr boost
+snippet sp boost
 	boost::shared_ptr<${1:T}>
-snippet make_shared boost
+snippet wp boost
+	boost::weak_ptr<${1:T}>
+snippet ip boost
+	boost::intrusive_ptr<${1:T}>
+snippet mkshared boost
 	boost::make_shared<${1:T}>( ${2:args...} )
 snippet allocate_shared boost
 	boost::allocate_shared<${1:T}>( ${2:allocator}, ${3:args...} )
+snippet get_deleter boost
+	boost::get_deleter( ${1:sp} )
 snippet shared_array boost
 	boost::shared_array<${1:T}>
-snippet weak_ptr boost
-	boost::weak_ptr<${1:T}>
-snippet intrusive_ptr boost
-	boost::intrusive_ptr<${1:T}>
-snippet ptr_deque boost
+snippet scoped_array boost
+	boost::scoped_array<${1:T}>
+snippet pdeque boost
 	boost::ptr_deque<${1:T}>
-snippet ptr_list boost
+snippet plist boost
 	boost::ptr_list<${1:T}>
-snippet ptr_set boost
+snippet pset boost
 	boost::ptr_set<${1:T}>
-snippet ptr_map boost
+snippet pmap boost
 	boost::ptr_map<${1:key}, ${2:T}>
-snippet ptr_multiset boost
+snippet pmultiset boost
 	boost::ptr_multiset<${1:T}>
-snippet ptr_multimap boost
+snippet pmultimap boost
 	boost::ptr_multimap<${1:key}, ${2:T}>
-snippet ptr_unordered_set boost
+snippet punordered_set boost
 	boost::ptr_unordered_set<${1:T}>
-snippet ptr_unordered_map boost
+snippet punordered_map boost
 	boost::ptr_unordered_map<${1:T}>
-snippet ptr_vector boost
+snippet pvector boost
 	boost::ptr_vector<${1:T}>
 ##
 ## Filesystem
@@ -1327,14 +1493,14 @@ snippet current_path boost::filesystem
 snippet function boost
 	boost::function<${1:void ()}>
 snippet bind boost
-	boost::bind( ${1:function}, ${2:arguments} )
+	boost::bind( ${1:function}, ${2:args...} )
 snippet mem_fn boost
 	boost::mem_fn( ${1:function} )
 snippet ref boost
 	boost::ref( ${1:value} )
 snippet cref boost
 	boost::cref( ${1:value} )
-snippet reference_wrapper boost
+snippet refwrapper boost
 	boost::reference_wrapper<${1:T}>
 snippet not1 std
 	std::not1( ${1:unary_predicate} )
@@ -1486,9 +1652,9 @@ snippet set_union User defined binary predicate
 	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
 snippet is_heap std
 	${2:std}::is_heap( ${1:collection}.begin(), $1.end() )
-snippet make_heap Default binary predicate (std::less)
+snippet mkheap Default binary predicate (std::less)
 	std::make_heap( ${1:collection}.begin(), $1.end() );
-snippet make_heap User defined binary predicate
+snippet mkheap User defined binary predicate
 	std::make_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
 snippet push_heap Default binary predicate (std::less)
 	std::push_heap( ${1:collection}.begin(), $1.end() );
@@ -1544,9 +1710,13 @@ snippet prev_permutation User defined binary predicate
 	std::prev_permutation( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 ##
 ## STL Collections
+snippet str std
+	std::string
+snippet ctraits std
+	std::char_traits<${2:T}>
 snippet pair std
 	std::pair<${1:KT}, ${2:VT}>
-snippet make_pair std
+snippet mkpair std
 	std::make_pair( ${1:first_value}, ${2:second_value} )
 snippet array std
 	std::array<${1:T}, ${2:N}> ${3};
@@ -1580,6 +1750,31 @@ snippet queue std
 	std::queue<${1:T}> ${2};
 snippet pqueue std
 	std::priority_queue<${1:T}> ${2};
+##
+## Effective STL
+snippet non_const_iterator Effective STL
+	std::advance( ${1:iterator}, std::distance( $1, ${2:const_iterator} ) )
+snippet erase_remove Effective STL
+	${1:vector}.erase( std::remove( $1.begin(), $1.end(), ${2:val} ), $1.end() );
+snippet insert_or_update Effective STL
+	template< typename MapType, typename KeyArgType, typename ValueArgtype> 
+	typename MapType::iterator efficientAddOrUpdate(
+		MapType& m, const KeyArgType& k, const ValueArgtype& v )
+	{
+		typename MapType::iterator lb = m.lower_bound( k );
+
+		if( lb != m.end() && !( m.key_comp()( k, lb->first ) ) ) { 
+			lb->second = v;
+			return lb;
+		} 
+
+		typedef typename MapType::value_type MVT;
+		return m.insert( lb, MVT( k, v ) );
+	}
+snippet shrink_to_fit C++11
+	${2:collection}.shrink_to_fit();
+snippet shrink_to_fit C++03
+	${1:T}( ${2:collection} ).swap( $2 );
 ##
 ## Access Modifiers
 snippet pri
@@ -1646,10 +1841,18 @@ snippet ns
 	{
 		${0}
 	} /* namespace $1 */
+snippet un
+	using namespace ${1};
+snippet ns=
+	namespace ${1} = ${2};
 ##
 ## Input/Output
 snippet cout
 	std::cout << ${1} << std::endl;
+snippet clog
+	std::clog << ${1} << std::endl;
+snippet cerr
+	std::cerr << ${1} << std::endl;
 snippet cin
 	std::cin >> ${1};
 ##
