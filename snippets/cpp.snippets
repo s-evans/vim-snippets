@@ -140,6 +140,8 @@ snippet is std
 	std::istream ${1:is}( ${2:sb} );
 snippet os std
 	std::ostream ${1:os}( ${2:sb} );
+snippet osi std
+	std::ostream_iterator<${1:T}> ${2:name}( ${3:os}, ${4:deilmiter} );
 snippet ios std
 	std::iostream ${1:ios};
 snippet ofs std
@@ -308,60 +310,90 @@ snippet scoped_lock boost::interprocess
 	boost::interprocess::scoped_lock<${1:mutex_type}>
 ##
 ## Logging Macros
-snippet BOOST_LOG_TRIVIAL boost
-	BOOST_LOG_TRIVIAL(${1:debug}) << "${2:message}"
-snippet BOOST_LOG boost
-	BOOST_LOG(${1:logger}) << "${2:message}"
-snippet BOOST_LOG_SEV boost
-	BOOST_LOG_SEV(${1:severity_logger}, ${2:severity}) << "${3:message}"
-snippet BOOST_LOG_CHANNEL boost
-	BOOST_LOG_CHANNEL(${1:channel_logger}, "${2:channel}") << "${3:message}"
+snippet LOG boost
+	BOOST_LOG( ${1:logger} ) << "${2:message}";
+snippet LOG_TRIVIAL boost
+	BOOST_LOG_TRIVIAL( ${1:debug} ) << "${2:message}";
+snippet LOG_SEV boost
+	BOOST_LOG_SEV( ${1:severity_logger}, ${2:severity} ) << "${3:message}";
+snippet LOG_CHANNEL boost
+	BOOST_LOG_CHANNEL( ${1:channel_logger}, "${2:channel}" ) << "${3:message}";
+snippet LOG_CHANNEL_SEV boost
+	BOOST_LOG_CHANNEL_SEV( ${1:severity_channel_logger}, "${2:channel}", ${3:severity} ) << "${3:message}";
 ##
 ## Logging Core
-snippet get boost::logging::core
-	boost::logging::core::get()
+snippet get boost::log::core
+	boost::log::core::get()
 ##
 ## Logging Helpers
-snippet add_file_log boost::logging
-	boost::logging::add_file_log(        
-		boost::logging::keywords::file_name = "${1:sample_%N.log}",
-		boost::logging::keywords::rotation_size = ${2:10 * 1024 * 1024},
-		boost::logging::keywords::time_based_rotation = boost::logging::sinks::file::rotation_at_time_point(0, 0, 0),
-		boost::logging::keywords::format = "${3:[%TimeStamp%]: %Message%}" );
+snippet add_file_log boost::log
+	boost::log::add_file_log(        
+		boost::log::keywords::file_name = "${1:sample_%N.log}",
+		boost::log::keywords::rotation_size = ${2:10 * 1024 * 1024},
+		boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(0, 0, 0),
+		boost::log::keywords::format = "${3:[%TimeStamp%]: %Message%}" );
 snippet add_console_log boost::log
 	boost::log::add_console_log( ${1:ostream}, ${2:args} )
-snippet add_common_attributes boost::log
-	boost::log::add_common_attributes();
 ##
 ## Logging Sinks
-snippet asynchronous_sink boost::logging::sinks
-	boost::logging::sinks::asynchronous_sink<${1:sink_backend}>
-snippet synchronous_sink boost::logging::sinks
-	boost::logging::sinks::synchronous_sink<${1:sink_backend}>
-snippet wtext_ostream_backend boost::logging::sinks
-	boost::logging::sinks::wtext_ostream_backend
-snippet text_ostream_backend boost::logging::sinks
-	boost::logging::sinks::text_ostream_backend
-snippet text_multifile_backend boost::logging::sinks
-	boost::logging::sinks::text_multifile_backend
-snippet text_file_backend boost::logging::sinks
-	boost::logging::sinks::text_file_backend
-snippet syslog_backend boost::logging::sinks
-	boost::logging::sinks::syslog_backend
-snippet rotation_at_time_interval boost::logging::sinks::file
-	boost::logging::sinks::file::rotation_at_time_interval( ${1:time_duration} )
-snippet rotation_at_time_point boost::logging::sinks::file
-	boost::logging::sinks::file::rotation_at_time_point( ${1:hour}, ${2:minute}, ${3:second} )
+snippet asynchronous_sink boost::log::sinks
+	boost::log::sinks::asynchronous_sink<${1:sink_backend}>
+snippet synchronous_sink boost::log::sinks
+	boost::log::sinks::synchronous_sink<${1:sink_backend}>
+snippet wtext_ostream_backend boost::log::sinks
+	boost::log::sinks::wtext_ostream_backend
+snippet text_ostream_backend boost::log::sinks
+	boost::log::sinks::text_ostream_backend
+snippet text_multifile_backend boost::log::sinks
+	boost::log::sinks::text_multifile_backend
+snippet text_file_backend boost::log::sinks
+	boost::log::sinks::text_file_backend
+snippet syslog_backend boost::log::sinks
+	boost::log::sinks::syslog_backend
+snippet rotation_at_time_interval boost::log::sinks::file
+	boost::log::sinks::file::rotation_at_time_interval( ${1:time_duration} )
+snippet rotation_at_time_point boost::log::sinks::file
+	boost::log::sinks::file::rotation_at_time_point( ${1:hour}, ${2:minute}, ${3:second} )
+snippet threading_model_tag boost::log::sinks
+	boost::log::sinks::threading_model_tag
+snippet single_thread_tag boost::log::sinks
+	boost::log::sinks::single_thread_tag
+snippet backend_synchronization_tag boost::log::sinks
+	boost::log::sinks::backend_synchronization_tag
+snippet frontend_synchronization_tag boost::log::sinks
+	boost::log::sinks::frontend_synchronization_tag
+snippet basic_sink_backend boost::log::sinks
+	boost::log::sinks::basic_sink_backend<${2:requirements}>
+snippet combine_requirements boost::log::sinks
+	boost::log::sinks::combine_requirements<${1:reqs...}>::type
+snippet flushing boost::log::sinks
+	boost::log::sinks::flushing
+snippet synchronized_feeding boost::log::sinks
+	boost::log::sinks::synchronized_feeding
+snippet consume boost::log::sinks
+	void consume( boost::log::record_view const& rec );
+
+# TODO: Complete these
+
+snippet visit boost::log
+	boost::log::visit()
+snippet extract boost::log
+	boost::log::extract<${1:T}>( ${2:attr} )
+
 ##
 ## Logging Keywords
-snippet file_name boost::logging::keywords
-	boost::logging::keywords::file_name
-snippet rotation_size boost::logging::keywords
-	boost::logging::keywords::rotation_size
-snippet time_based_rotation boost::logging::keywords
-	boost::logging::keywords::time_based_rotation
-snippet format boost::logging::keywords
-	boost::logging::keywords::format
+snippet file_name boost::log::keywords
+	boost::log::keywords::file_name
+snippet rotation_size boost::log::keywords
+	boost::log::keywords::rotation_size
+snippet time_based_rotation boost::log::keywords
+	boost::log::keywords::time_based_rotation
+snippet format boost::log::keywords
+	boost::log::keywords::format
+snippet severity boost::log::keywords
+	boost::log::keywords::severity
+snippet channel boost::log::keywords
+	boost::log::keywords::channel
 ##
 ## Logging Sources
 snippet logger boost::log::sources
@@ -389,31 +421,81 @@ snippet wseverity_channel_logger boost::log::sources
 snippet wseverity_channel_logger_mt boost::log::sources
 	boost::log::sources::wseverity_channel_logger_mt<${1:enum_type}, ${2:channel_type}>
 ##
+## Logging Functions
+snippet add_value boost::log
+	boost::log::add_value( "${1:attr_name}", "${2:value}" )
+##
+## Logging Attributes
+snippet add_common_attr boost::log
+	boost::log::add_common_attributes();
+snippet attr_value boost::log
+	boost::log::attribute_value
+snippet attr_value_set boost::log
+	boost::log::attribute_value_set
+snippet attr_name boost::log
+	boost::log::attribute_name
+snippet current_scope_info boost::log::attributes
+	boost::log::attributes::current_scope_info
+snippet constant boost::log::attributes
+	boost::log::attributes::constant<${1:T}>( ${2:val} )
+snippet mutable_constant boost::log::attributes
+	boost::log::attributes::mutable_constant<${1:T}>( ${2:initial_value} )
+snippet counter boost::log::attributes
+	boost::log::attributes::counter<${1:T}>( ${2:initial_value = 0}, ${3:step = 1} )
+snippet timer boost::log::attributes
+	boost::log::attributes::timer()
+snippet local_clock boost::log::attributes
+	boost::log::attributes::local_clock()
+snippet current_process_name boost::log::attributes
+	boost::log::attributes::current_process_name()
+snippet named_scope boost::log::attributes
+	boost::log::attributes::named_scope()
+snippet current_scope boost::log::attributes
+	boost::log::attributes::current_scope()
+snippet make_function boost::log::attributes
+	boost::log::attributes::make_function( ${1:function} )
+snippet current_thread_id boost::log::attributes
+	boost::log::attributes::current_thread_id()
+snippet ATTR_KEYWORD boost::log::attributes
+	BOOST_LOG_ATTRIBUTE_KEYWORD( ${1:keyword}, "${2:attr_name}", ${3:T} )
+snippet SCOPED_LOGGER_TAG boost::log::attributes
+	BOOST_LOG_SCOPED_LOGGER_TAG( ${1:logger}, "${2:tag_name}", ${3:tag_value} );
+snippet SCOPED_THREAD_TAG boost::log::attributes
+	BOOST_LOG_SCOPED_THREAD_TAG( "${1:tag_name}", ${2:tag_value} );
+snippet SCOPED_LOGGER_ATTR boost::log::attributes
+	BOOST_LOG_SCOPED_LOGGER_ATTR( ${1:logger}, "${2:attr_name}", ${3:attr} );
+snippet SCOPED_THREAD_ATTR boost::log::attributes
+	BOOST_LOG_SCOPED_THREAD_ATTR( "${1:attr_name}", ${2:attr} );
+snippet NAMED_SCOPE boost::log::attributes
+	BOOST_LOG_NAMED_SCOPE( "${1:value}" );
+snippet LOG_FXN boost::log::attributes
+	BOOST_LOG_FUNCTION();
+##
 ## Logging Exceptions
 snippet runtime_error boost::log
-	boost::logg::runtime_error
+	boost::log::runtime_error
 snippet missing_value boost::log
-	boost::logg::missing_value
+	boost::log::missing_value
 snippet invalid_type boost::log
-	boost::logg::invalid_type
+	boost::log::invalid_type
 snippet invalid_value boost::log
-	boost::logg::invalid_value
+	boost::log::invalid_value
 snippet parse_error boost::log
-	boost::logg::parse_error
+	boost::log::parse_error
 snippet conversion_error boost::log
-	boost::logg::conversion_error
+	boost::log::conversion_error
 snippet system_error boost::log
-	boost::logg::system_error
+	boost::log::system_error
 snippet logic_error boost::log
-	boost::logg::logic_error
+	boost::log::logic_error
 snippet odr_violation boost::log
-	boost::logg::odr_violation
+	boost::log::odr_violation
 snippet unexpected_call boost::log
-	boost::logg::unexpected_call
+	boost::log::unexpected_call
 snippet setup_error boost::log
-	boost::logg::setup_error
+	boost::log::setup_error
 snippet limitation_error boost::log
-	boost::logg::limitation_error
+	boost::log::limitation_error
 ##
 ## CRC
 snippet crc_basic boost
@@ -432,7 +514,6 @@ snippet crc_16_type boost
 	boost::crc_xmodem_type
 snippet crc_16_type boost
 	boost::crc_32_type
-
 ##
 ## IO Streams
 snippet aggregate_filter boost::iostreams
@@ -979,7 +1060,7 @@ snippet get boost::tuples
 	boost::tuples::get<${1:N}>( ${2:tuple} )
 ##
 ## Program options
-snippet po_example
+snippet po_example boost::program_options
 	// Declare the supported options.
 	boost::program_options::options_description desc( "Allowed options" );
 	desc.add_options()
@@ -1000,6 +1081,10 @@ snippet positional_options_description boost::program_options
 	boost::program_options::positional_options_description
 snippet variables_map boost::program_options
 	boost::program_options::variables_map
+snippet basic_parsed_options boost::program_options
+	boost::program_options::basic_parsed_options<${1:charT}>
+snippet basic_option boost::program_options
+	boost::program_options::basic_option<${1:charT}>
 snippet value boost::program_options
 	boost::program_options::value<${1:T}>
 snippet store boost::program_options
@@ -1084,7 +1169,7 @@ snippet physical_concurrency boost::thread
 	boost::thread::physical_concurrency()
 snippet thread_specific_ptr boost::thread
 	boost::thread::thread_specific_ptr
-snippet condition_variable boost
+snippet cv boost
 	boost::condition_variable
 snippet condition_variable_any boost
 	boost::condition_variable_any
@@ -1450,6 +1535,8 @@ snippet punordered_map boost
 	boost::ptr_unordered_map<${1:T}>
 snippet pvector boost
 	boost::ptr_vector<${1:T}>
+snippet empty_deleter boost
+	boost::empty_deleter()
 ##
 ## Filesystem
 snippet path boost::filesystem
@@ -1841,6 +1928,8 @@ snippet ns
 	{
 		${0}
 	} /* namespace $1 */
+snippet u=
+	using ${1} = ${2};
 snippet un
 	using namespace ${1};
 snippet ns=

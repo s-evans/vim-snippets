@@ -128,11 +128,11 @@ snippet case
 ##
 ## Loops
 snippet for
-	for ( ${2:i} = 0; $2 < ${1:count}; $2${3:++} ) {
+	for ( ${2:i} = 0; $2 < ${1:count}; ${3:++}$2 ) {
 		${4}
 	}
 snippet forr
-	for ( ${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++} ) {
+	for ( ${1:i} = ${2:0}; ${3:$1 < 10}; ${4:++}$1 ) {
 		${5}
 	}
 snippet wh
@@ -159,7 +159,7 @@ snippet td
 snippet st
 	struct ${1:`vim_snippets#Filename('$1_t', 'name')`} {
 		${2}
-	} ${3: /* optional variable list */};
+	};
 snippet tds
 	typedef struct ${2:_$1} {
 		${3}
