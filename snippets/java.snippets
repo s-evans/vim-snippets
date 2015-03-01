@@ -76,13 +76,19 @@ snippet def
 	default:
 		${0}
 snippet el
-	else
+	else {
+		${1}
+	}
 snippet eif
-	else if (${1}) ${0}
+	else if ( ${1} ) {
+		${0}
+	}
 snippet if
-	if (${1}) ${0}
+	if ( ${1} ) {
+		${0}
+	}
 snippet sw
-	switch (${1}) {
+	switch ( ${1} ) {
 		${0}
 	}
 ##

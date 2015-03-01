@@ -326,12 +326,6 @@ snippet get boost::log::core
 	boost::log::core::get()
 ##
 ## Logging Helpers
-snippet add_file_log boost::log
-	boost::log::add_file_log(        
-		boost::log::keywords::file_name = "${1:sample_%N.log}",
-		boost::log::keywords::rotation_size = ${2:10 * 1024 * 1024},
-		boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(0, 0, 0),
-		boost::log::keywords::format = "${3:[%TimeStamp%]: %Message%}" );
 snippet add_console_log boost::log
 	boost::log::add_console_log( ${1:ostream}, ${2:args} )
 ##
@@ -368,18 +362,26 @@ snippet combine_requirements boost::log::sinks
 	boost::log::sinks::combine_requirements<${1:reqs...}>::type
 snippet flushing boost::log::sinks
 	boost::log::sinks::flushing
+snippet formatted_records boost::log::sinks
+	boost::log::sinks::formatted_records
+snippet concurrent_feeding boost::log::sinks
+	boost::log::sinks::concurrent_feeding
 snippet synchronized_feeding boost::log::sinks
 	boost::log::sinks::synchronized_feeding
 snippet consume boost::log::sinks
 	void consume( boost::log::record_view const& rec );
-
-# TODO: Complete these
-
+snippet value_ref boost::log
+	boost::log::value_ref<${1:T}>
 snippet visit boost::log
-	boost::log::visit()
-snippet extract boost::log
+	boost::log::visit<${1:T}>( ${2:attr}, ${3:visitor} )
+snippet visitation_result boost::log
+	boost::log::visitation_result
+snippet extract boost::log::attr
 	boost::log::extract<${1:T}>( ${2:attr} )
-
+snippet extract boost::log::rec
+	boost::log::extract<${1:T}>( ${2:attr}, ${3:rec} )
+snippet filter boost::log
+	boost::log::filter
 ##
 ## Logging Keywords
 snippet file_name boost::log::keywords
@@ -434,6 +436,10 @@ snippet attr_value_set boost::log
 	boost::log::attribute_value_set
 snippet attr_name boost::log
 	boost::log::attribute_name
+snippet record_view boost::log
+	boost::log::record_view
+snippet formatting_ostream boost::log
+	boost::log::formatting_ostream
 snippet current_scope_info boost::log::attributes
 	boost::log::attributes::current_scope_info
 snippet constant boost::log::attributes
@@ -470,6 +476,14 @@ snippet NAMED_SCOPE boost::log::attributes
 	BOOST_LOG_NAMED_SCOPE( "${1:value}" );
 snippet LOG_FXN boost::log::attributes
 	BOOST_LOG_FUNCTION();
+##
+## Logging expressions
+snippet wmessage boost::log::expressions
+	boost::log::expressions::wmessage
+snippet message boost::log::expressions
+	boost::log::expressions::message
+snippet smessage boost::log::expressions
+	boost::log::expressions::smessage
 ##
 ## Logging Exceptions
 snippet runtime_error boost::log
@@ -1535,8 +1549,8 @@ snippet punordered_map boost
 	boost::ptr_unordered_map<${1:T}>
 snippet pvector boost
 	boost::ptr_vector<${1:T}>
-snippet empty_deleter boost
-	boost::empty_deleter()
+snippet empty_deleter boost::log
+	boost::log::empty_deleter()
 ##
 ## Filesystem
 snippet path boost::filesystem
