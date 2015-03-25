@@ -1,31 +1,37 @@
 snippet to
 	# TODO: 
-# Shebang. Executing bash via /usr/bin/env makes scripts more portable.
 snippet #!
 	#!/usr/bin/env bash
-
 snippet if
-	if [[ ${1:condition} ]]; then
-		${0:#statements}
+	if [[ ${1} ]]; then
+		${0}
 	fi
 snippet elif
-	elif [[ ${1:condition} ]]; then
-		${0:#statements}
+	elif [[ ${1} ]]; then
+		${0}
 snippet for
 	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
-		${0:#statements}
+		${0}
 	done
 snippet fori
 	for ${1:needle} in ${2:haystack} ; do
-		${0:#statements}
+		${0}
+	done
+snippet while
+	while [[ ${1} ]]; do
+		${0}
 	done
 snippet wh
-	while [[ ${1:condition} ]]; do
-		${0:#statements}
+	while [[ ${1} ]]; do
+		${0}
+	done
+snippet do
+	until [[ ${1} ]]; do
+		${0}
 	done
 snippet until
-	until [[ ${1:condition} ]]; do
-		${0:#statements}
+	until [[ ${1} ]]; do
+		${0}
 	done
 snippet case
 	case ${1:word} in
@@ -37,7 +43,7 @@ snippet go
 	do
 		case $$2 in
 		${3:o0})
-			${0:#staments};;
+			${0};;
 		esac
 	done
 # Set SCRIPT_DIR variable to directory script is located.
@@ -86,9 +92,9 @@ snippet root
 	if [ \$(id -u) -ne 0 ]; then exec sudo \$0; fi
 snippet fun
 	${1:function_name}() {
-		${0:#function_body}
+		${0}
 	}
 snippet ffun
 	function ${1:function_name}() {
-		${0:#function_body}
+		${0}
 	}

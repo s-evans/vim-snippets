@@ -1,0 +1,78 @@
+##
+## Misc
+snippet u= std
+	using ${1} = ${2};
+snippet static_assert C++11
+	static_assert( ${1:bool_constexpr}, ${2:message} );
+snippet dt std
+	decltype(${1:expr})
+snippet np std
+	nullptr
+snippet fwd std
+	std::forward<${1:T}>( ${2:val} )
+##
+## Enums
+snippet ec std
+	enum class ${1:T} {
+		${2}
+	};
+snippet tec std
+	typedef enum class ${1:T} {
+		${2}
+	} $1_T;
+snippet es std
+	enum struct ${1:T} {
+		${2}
+	};
+snippet tes std
+	typedef enum struct ${1:T} {
+		${2}
+	} $1_T;
+snippet eb std
+	enum ${1:T} : ${2:base_type} {
+		${3}
+	};
+snippet teb std
+	typedef enum ${1:T} : ${2:base_type} {
+		${3}
+	} $1_T;
+snippet esb std
+	enum struct ${1:T} : ${2:base_type} {
+		${3}
+	};
+snippet tesb std
+	typedef enum struct ${1:T} : ${2:base_type} {
+		${3}
+	} $1_T;
+snippet ecb std
+	enum class ${1:T} : ${2:base_type} {
+		${3}
+	};
+snippet tecb std
+	typedef enum class ${1:T} : ${2:base_type} {
+		${3}
+	} $1_T;
+##
+## Lambdas
+# lamda (one line)
+snippet ld std
+	[${1}](${2}){${3}}
+# lambda (multi-line)
+snippet lld std
+	[${1}](${2}){
+		${3}
+	}
+##
+## Iteration
+snippet itera std
+	for ( auto ${1:i} = ${2:container}.begin() ; $1 != $2.end() ; ++$1 ) {
+		${3}
+	}
+snippet fore std
+	for ( ${1:auto} ${2:i} : ${3:container} ) {
+		${4}
+	}
+##
+## Effective STL
+snippet shrink_to_fit C++11
+	${2:collection}.shrink_to_fit();
