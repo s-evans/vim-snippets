@@ -587,8 +587,8 @@ snippet any boost
 snippet acast boost
 	boost::any_cast<${1:T}>( ${2:any} )
 snippet bad_any_cast boost
-	boost::bad_any_cast 
-## 
+	boost::bad_any_cast
+##
 ## Variant
 snippet variant boost
 	boost::variant<${1:type_list}>
@@ -704,119 +704,119 @@ snippet serialize_ext boost::serialization
 ## Random Generators
 snippet random_device boost::random
 	boost::random::random_device
-snippet minstd_rand0 boost::random  
+snippet minstd_rand0 boost::random
 	boost::random::minstd_rand0
-snippet minstd_rand boost::random  
+snippet minstd_rand boost::random
 	boost::random::minstd_rand
-snippet rand48 boost::random  
+snippet rand48 boost::random
 	boost::random::rand48
-snippet ecuyer1988 boost::random  
+snippet ecuyer1988 boost::random
 	boost::random::ecuyer1988
-snippet knuth_b boost::random  
+snippet knuth_b boost::random
 	boost::random::knuth_b
-snippet kreutzer1986 boost::random  
+snippet kreutzer1986 boost::random
 	boost::random::kreutzer1986
-snippet taus88 boost::random  
+snippet taus88 boost::random
 	boost::random::taus88
-snippet hellekalek1995 boost::random  
+snippet hellekalek1995 boost::random
 	boost::random::hellekalek1995
-snippet mt11213b boost::random  
+snippet mt11213b boost::random
 	boost::random::mt11213b
-snippet mt19937 boost::random  
+snippet mt19937 boost::random
 	boost::random::mt19937
-snippet mt19937_64 boost::random  
+snippet mt19937_64 boost::random
 	boost::random::mt19937_64
-snippet lagged_fibonacci607 boost::random  
+snippet lagged_fibonacci607 boost::random
 	boost::random::lagged_fibonacci607
-snippet lagged_fibonacci1279 boost::random  
+snippet lagged_fibonacci1279 boost::random
 	boost::random::lagged_fibonacci1279
-snippet lagged_fibonacci2281 boost::random  
+snippet lagged_fibonacci2281 boost::random
 	boost::random::lagged_fibonacci2281
-snippet lagged_fibonacci3217 boost::random  
+snippet lagged_fibonacci3217 boost::random
 	boost::random::lagged_fibonacci3217
-snippet lagged_fibonacci4423 boost::random  
+snippet lagged_fibonacci4423 boost::random
 	boost::random::lagged_fibonacci4423
-snippet lagged_fibonacci9689 boost::random  
+snippet lagged_fibonacci9689 boost::random
 	boost::random::lagged_fibonacci9689
-snippet lagged_fibonacci19937 boost::random  
+snippet lagged_fibonacci19937 boost::random
 	boost::random::lagged_fibonacci19937
-snippet lagged_fibonacci23209 boost::random  
+snippet lagged_fibonacci23209 boost::random
 	boost::random::lagged_fibonacci23209
-snippet lagged_fibonacci44497 boost::random  
+snippet lagged_fibonacci44497 boost::random
 	boost::random::lagged_fibonacci44497
-snippet ranlux3 boost::random  
+snippet ranlux3 boost::random
 	boost::random::ranlux3
-snippet ranlux4 boost::random  
+snippet ranlux4 boost::random
 	boost::random::ranlux4
-snippet ranlux64_3 boost::random  
+snippet ranlux64_3 boost::random
 	boost::random::ranlux64_3
-snippet ranlux64_4 boost::random  
+snippet ranlux64_4 boost::random
 	boost::random::ranlux64_4
-snippet ranlux3_01 boost::random  
+snippet ranlux3_01 boost::random
 	boost::random::ranlux3_01
-snippet ranlux4_01 boost::random  
+snippet ranlux4_01 boost::random
 	boost::random::ranlux4_01
-snippet ranlux64_3_01 boost::random  
+snippet ranlux64_3_01 boost::random
 	boost::random::ranlux64_3_01
-snippet ranlux64_4_01 boost::random  
+snippet ranlux64_4_01 boost::random
 	boost::random::ranlux64_4_01
-snippet ranlux24 boost::random  
+snippet ranlux24 boost::random
 	boost::random::ranlux24
-snippet ranlux48 boost::random  
+snippet ranlux48 boost::random
 	boost::random::ranlux48
-## 
+##
 ## Random Distributions
 snippet uniform_int_distribution boost::random
 	boost::random::uniform_int_distribution<${1:int}> ${2:name} ( ${3:range_low}, ${3:range_high} )
 snippet discrete_distribution boost::random
 	boost::random::discrete_distribution<${1:double}> ${2:name} ( ${4:array_of_doubles} )
-snippet uniform_smallint boost::random  
+snippet uniform_smallint boost::random
 	boost::random::uniform_smallint
-snippet uniform_01 boost::random  
+snippet uniform_01 boost::random
 	boost::random::uniform_01
-snippet uniform_real_distribution boost::random  
+snippet uniform_real_distribution boost::random
 	boost::random::uniform_real_distribution
-snippet bernoulli_distribution boost::random  
+snippet bernoulli_distribution boost::random
 	boost::random::bernoulli_distribution
-snippet binomial_distribution boost::random  
+snippet binomial_distribution boost::random
 	boost::random::binomial_distribution
-snippet geometric_distribution boost::random  
+snippet geometric_distribution boost::random
 	boost::random::geometric_distribution
-snippet negative_binomial_distribution boost::random  
+snippet negative_binomial_distribution boost::random
 	boost::random::negative_binomial_distribution
-snippet poisson_distribution boost::random  
+snippet poisson_distribution boost::random
 	boost::random::poisson_distribution
-snippet exponential_distribution boost::random  
+snippet exponential_distribution boost::random
 	boost::random::exponential_distribution
-snippet gamma_distribution boost::random  
+snippet gamma_distribution boost::random
 	boost::random::gamma_distribution
-snippet weibull_distribution boost::random  
+snippet weibull_distribution boost::random
 	boost::random::weibull_distribution
-snippet extreme_value_distribution boost::random  
+snippet extreme_value_distribution boost::random
 	boost::random::extreme_value_distribution
-snippet beta_distribution boost::random  
+snippet beta_distribution boost::random
 	boost::random::beta_distribution
-snippet laplace_distribution boost::random  
+snippet laplace_distribution boost::random
 	boost::random::laplace_distribution
-snippet normal_distribution boost::random  
+snippet normal_distribution boost::random
 	boost::random::normal_distribution
-snippet lognormal_distribution boost::random  
+snippet lognormal_distribution boost::random
 	boost::random::lognormal_distribution
-snippet chi_squared_distribution boost::random  
+snippet chi_squared_distribution boost::random
 	boost::random::chi_squared_distribution
-snippet cauchy_distribution boost::random  
+snippet cauchy_distribution boost::random
 	boost::random::cauchy_distribution
-snippet fisher_f_distribution boost::random  
+snippet fisher_f_distribution boost::random
 	boost::random::fisher_f_distribution
-snippet student_t_distribution boost::random  
+snippet student_t_distribution boost::random
 	boost::random::student_t_distribution
-snippet piecewise_constant_distribution boost::random  
+snippet piecewise_constant_distribution boost::random
 	boost::random::piecewise_constant_distribution
-snippet piecewise_linear_distribution boost::random  
+snippet piecewise_linear_distribution boost::random
 	boost::random::piecewise_linear_distribution
-snippet triangle_distribution boost::random  
+snippet triangle_distribution boost::random
 	boost::random::triangle_distribution
-snippet uniform_on_sphere boost::random  
+snippet uniform_on_sphere boost::random
 	boost::random::uniform_on_sphere
 ##
 ## Tuples
@@ -893,7 +893,7 @@ snippet diagnostic_information boost
 	boost::diagnostic_information( ${1:e} )
 snippet get_error_info boost
 	boost::get_error_info<${1:T}>( ${2:e} )
-## 
+##
 ## Time
 snippet date boost::gregorian
 	boost::gregorian::date
@@ -935,6 +935,64 @@ snippet time_point boost::chrono
 	boost::chrono::time_point<${1:clock_type}, ${2:duration_type}>
 snippet duration boost::chrono
 	boost::chrono::duration<${1:period_type}, ${2:tick_type}>
+##
+## Specific chrono clock type snippets
+snippet system_clock boost::chrono
+	boost::chrono::system_clock
+snippet steady_clock boost::chrono
+	boost::chrono::steady_clock
+snippet high_resolution_clock boost::chrono
+	boost::chrono::high_resolution_clock
+snippet process_real_cpu_clock boost::chrono
+	boost::chrono::process_real_cpu_clock
+snippet process_user_cpu_clock boost::chrono
+	boost::chrono::process_user_cpu_clock
+snippet process_system_cpu_clock boost::chrono
+	boost::chrono::process_system_cpu_clock
+snippet process_cpu_clock boost::chrono
+	boost::chrono::process_cpu_clock
+snippet thread_clock boost::chrono
+	boost::chrono::thread_clock
+##
+## General chrono clock type snippets
+snippet clock boost::chrono::system_clock
+	boost::chrono::system_clock
+snippet clock boost::chrono::steady_clock
+	boost::chrono::steady_clock
+snippet clock boost::chrono::high_resolution_clock
+	boost::chrono::high_resolution_clock
+snippet clock boost::chrono::process_real_cpu_clock
+	boost::chrono::process_real_cpu_clock
+snippet clock boost::chrono::process_user_cpu_clock
+	boost::chrono::process_user_cpu_clock
+snippet clock boost::chrono::process_system_cpu_clock
+	boost::chrono::process_system_cpu_clock
+snippet clock boost::chrono::process_cpu_clock
+	boost::chrono::process_cpu_clock
+snippet clock boost::chrono::thread_clock
+	boost::chrono::thread_clock
+##
+## General chrono time_point type snippets
+snippet time_point boost::chrono
+	boost::chrono::time_point<${1:clock_type}, ${2:duration_type}>
+snippet time_point boost::chrono::system_clock
+	boost::chrono::system_clock::time_point
+snippet time_point boost::chrono::steady_clock
+	boost::chrono::steady_clock::time_point
+snippet time_point boost::chrono::high_resolution_clock
+	boost::chrono::high_resolution_clock::time_point
+snippet time_point boost::chrono::process_real_cpu_clock
+	boost::chrono::process_real_cpu_clock::time_point
+snippet time_point boost::chrono::process_user_cpu_clock
+	boost::chrono::process_user_cpu_clock::time_point
+snippet time_point boost::chrono::process_system_cpu_clock
+	boost::chrono::process_system_cpu_clock::time_point
+snippet time_point boost::chrono::process_cpu_clock
+	boost::chrono::process_cpu_clock::time_point
+snippet time_point boost::chrono::thread_clock
+	boost::chrono::thread_clock::time_point
+##
+## Chrono now functions
 snippet now boost::chrono::system_clock
 	boost::chrono::system_clock::now()
 snippet now boost::chrono::steady_clock
@@ -979,8 +1037,6 @@ snippet barrier boost
 	boost::barrier
 snippet latch boost
 	boost::latch
-snippet mutex boost
-	boost::mutex
 snippet rmutex boost
 	boost::recursive_mutex
 snippet tmutex boost
@@ -1051,7 +1107,29 @@ snippet when_all boost
 	boost::when_all( ${1:futures} )
 snippet when_any boost
 	boost::when_any( ${1:futures} )
-## 
+##
+## Mutexes
+snippet mutex boost::mutex
+	boost::mutex
+snippet mutex boost::recursive_mutex
+	boost::recursive_mutex
+snippet mutex boost::timed_mutex
+	boost::timed_mutex
+snippet mutex boost::recursive_timed_mutex
+	boost::recursive_timed_mutex
+snippet mutex boost::shared_mutex
+	boost::shared_mutex
+snippet mutex boost::upgrade_mutex
+	boost::upgrade_mutex
+snippet mutex boost::null_mutex
+	boost::null_mutex
+snippet mutex boost::interprocess::named_mutex
+	boost::interprocess::named_mutex
+snippet mutex boost::interprocess::named_recursive_mutex
+	boost::interprocess::named_recursive_mutex
+snippet mutex boost::interprocess::interprocess_recursive_mutex
+	boost::interprocess::interprocess_recursive_mutex
+##
 ## ASIO
 snippet io_service boost::asio
 	boost::asio::io_service
@@ -1069,6 +1147,16 @@ snippet work boost::asio::io_service
 	boost::asio::io_service::work
 snippet signal_set boost::asio::signal_set
 	boost::asio::signal_set
+##
+## ASIO Timers
+snippet timer boost::asio::system_timer
+	boost::asio::system_timer
+snippet timer boost::asio::steady_timer
+	boost::asio::steady_timer
+snippet timer boost::asio::high_resolution_timer
+	boost::asio::high_resolution_timer
+snippet timer boost::asio::deadline_timer
+	boost::asio::deadline_timer
 ##
 ## Networking
 snippet socket boost::asio
@@ -1095,7 +1183,7 @@ snippet address_v6 boost::asio
 	boost::asio::ip::address_v6
 snippet host_name boost::asio
 	boost::asio::ip::host_name( ${1:ec} )
-## 
+##
 ## Signals
 snippet signal boost::signals2
 	boost::signals2::signal<${1:void (void)}>
@@ -1213,7 +1301,7 @@ snippet erase_regex boost::algorithm
 	boost::algorithm::erase_regex( ${1:string}, ${2:regex} )
 snippet split_regex boost::algorithm
 	boost::algorithm::split_regex( ${1:out_string_container}, ${2:in_string}, ${3:regex} )
-## 
+##
 ## Regex
 snippet regex_match boost
 	boost::regex_match( ${1:string}, ${3:regex} )
@@ -1234,7 +1322,7 @@ snippet push_back boost::assign
 snippet list_of boost::assign
 	boost::assign::list_of( ${1:value} )( ${2:value} )
 snippet map_list_of boost::assign
-	boost::assign::map_list_of( ${1:value}, ${2:value} )( ${3:value}, ${4:value} ) 
+	boost::assign::map_list_of( ${1:value}, ${2:value} )( ${3:value}, ${4:value} )
 snippet push_front boost::assign
 	boost::assign::push_front( ${1:collection} )( ${2:value} )( ${3:value} )
 snippet ppush_back boost::assign
@@ -1255,7 +1343,7 @@ snippet ref_list_of boost::assign
 	boost::assign::ref_list_of( ${1:value} )( ${2:value} )
 snippet cref_list_of boost::assign
 	boost::assign::cref_list_of( ${1:value} )( ${2:value} )
-## 
+##
 ## Bimap
 snippet bimap boost
 	boost::bimap<${1:LT}, ${2:RT}>
@@ -1271,8 +1359,8 @@ snippet unordered_multiset_of boost::bimaps
 	boost::bimaps::unordered_multiset_of<${1:T}>
 snippet list_of boost::bimaps
 	boost::bimaps::list_of<${1:T}>
-snippet vector_of  boost::bimaps
-	boost::bimaps::vector_of <${1:T}>
+snippet vector_of boost::bimaps
+	boost::bimaps::vector_of<${1:T}>
 snippet unconstrainted_set_of boost::bimaps
 	boost::bimaps::unconstrainted_set_of<${1:T}>
 ##
@@ -1280,7 +1368,7 @@ snippet unconstrainted_set_of boost::bimaps
 snippet multi_index_container boost::multi_index
 	boost::multi_index::multi_index_container<${1:T}, ${2:indexed_by}>
 snippet indexed_by boost::multi_index
-	boost::multi_index::indexed_by<${1:T}, ${2:T}> 
+	boost::multi_index::indexed_by<${1:T}, ${2:T}>
 snippet hashed_non_unique boost::multi_index
 	boost::multi_index::hashed_non_unique<${1:T}>
 snippet hashed_unique boost::multi_index
@@ -1369,7 +1457,7 @@ snippet last_write_time boost::filesystem
 	boost::filesystem::last_write_time( ${1:path} )
 snippet rename boost::filesystem
 	boost::filesystem::rename( ${1:current}, ${2:new} )
-snippet remove  boost::filesystem
+snippet remove boost::filesystem
 	boost::filesystem::remove( ${1:path} )
 snippet create_directory boost::filesystem
 	boost::filesystem::create_directory( ${1:path} )
