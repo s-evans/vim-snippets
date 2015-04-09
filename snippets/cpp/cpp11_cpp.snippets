@@ -2,14 +2,22 @@
 ## Misc
 snippet u= std
 	using ${1} = ${2};
+snippet ce std
+	constexpr
 snippet static_assert C++11
 	static_assert( ${1:bool_constexpr}, ${2:message} );
 snippet dt std
 	decltype(${1:expr})
 snippet np std
 	nullptr
+snippet mv std
+	std::move<${1:T}>( ${2:val} )
 snippet fwd std
 	std::forward<${1:T}>( ${2:val} )
+snippet ld std
+	[${1}](${2}){
+		${3}
+	}
 ##
 ## Enums
 snippet ec std
@@ -53,16 +61,6 @@ snippet tecb std
 		${3}
 	} $1_T;
 ##
-## Lambdas
-# lamda (one line)
-snippet ld std
-	[${1}](${2}){${3}}
-# lambda (multi-line)
-snippet lld std
-	[${1}](${2}){
-		${3}
-	}
-##
 ## Iteration
 snippet itera std
 	for ( auto ${1:i} = ${2:container}.begin() ; $1 != $2.end() ; ++$1 ) {
@@ -76,3 +74,171 @@ snippet fore std
 ## Effective STL
 snippet shrink_to_fit C++11
 	${2:collection}.shrink_to_fit();
+## 
+## Type Traits
+snippet integral_constant std
+	std::integral_constant<${1:T}, ${2:T v}>
+snippet true_type std
+	std::true_type
+snippet false_type std
+	std::false_type
+snippet is_void std
+	std::is_void<${1:T}>::value
+snippet is_null_pointer std
+	std::is_null_pointer<${1:T}>::value
+snippet is_integral std
+	std::is_integral<${1:T}>::value
+snippet is_floating_point std
+	is_convertiblestd::is_floating_point<${1:T}>::value
+snippet is_array std
+	std::is_array<${1:T}>::value
+snippet is_pointer std
+	std::is_pointer<${1:T}>::value
+snippet is_lvalue_reference std
+	std::is_lvalue_reference<${1:T}>::value
+snippet is_rvalue_reference std
+	std::is_rvalue_reference<${1:T}>::value
+snippet is_member_object_pointer std
+	std::is_member_object_pointer<${1:T}>::value
+snippet is_member_function_pointer std
+	std::is_member_function_pointer<${1:T}>::value
+snippet is_enum std
+	std::is_enum<${1:T}>::value
+snippet is_union std
+	std::is_union<${1:T}>::value
+snippet is_class std
+	std::is_class<${1:T}>::value
+snippet is_function std
+	std::is_function<${1:T}>::value
+snippet is_reference std
+	std::is_reference<${1:T}>::value
+snippet is_arithmetic std
+	std::is_arithmetic<${1:T}>::value
+snippet is_fundamental std
+	std::is_fundamental<${1:T}>::value
+snippet is_object std
+	std::is_object<${1:T}>::value
+snippet is_scalar std
+	std::is_scalar<${1:T}>::value
+snippet is_compound std
+	std::is_compound<${1:T}>::value
+snippet is_member_pointer std
+	std::is_member_pointer<${1:T}>::value
+snippet is_const std
+	std::is_const<${1:T}>::value
+snippet is_volatile std
+	std::is_volatile<${1:T}>::value
+snippet is_trivial std
+	std::is_trivial<${1:T}>::value
+snippet is_trivially_copyable std
+	std::is_trivially_copyable<${1:T}>::value
+snippet is_standard_layout std
+	std::is_standard_layout<${1:T}>::value
+snippet is_pod std
+	std::is_pod<${1:T}>::value
+snippet is_literal_type std
+	std::is_literal_type<${1:T}>::value
+snippet is_empty std
+	std::is_empty<${1:T}>::value
+snippet is_polymorphic std
+	std::is_polymorphic<${1:T}>::value
+snippet is_abstract std
+	std::is_abstract<${1:T}>::value
+snippet is_signed std
+	std::is_signed<${1:T}>::value
+snippet is_unsigned std
+	std::is_unsigned<${1:T}>::value
+snippet is_constructible std
+	std::is_constructible<${1:T}, ${2:... Args}>::value
+snippet is_default_constructible std
+	std::is_default_constructible<${1:T}>::value
+snippet is_copy_constructible std
+	std::is_copy_constructible<${1:T}>::value
+snippet is_move_constructible std
+	std::is_move_constructible<${1:T}>::value
+snippet is_assignable std
+	std::is_assignable<${1:T}, ${2:U}>::value
+snippet is_copy_assignable std
+	std::is_copy_assignable<${1:T}>::value
+snippet is_move_assignable std
+	std::is_move_assignable<${1:T}>::value
+snippet is_destructible std
+	std::is_destructible<${1:T}>::value
+snippet is_trivially_constructible std
+	std::is_trivially_constructible<${1:T}, ${2:... Args}>::value
+snippet is_trivially_default_constructible std
+	std::is_trivially_default_constructible<${1:T}>::value
+snippet is_trivially_copy_constructible std
+	std::is_trivially_copy_constructible<${1:T}>::value
+snippet is_trivially_move_constructible std
+	std::is_trivially_move_constructible<${1:T}>::value
+snippet is_trivially_assignable std
+	std::is_trivially_assignable<${1:T}, ${2:U}>::value
+snippet is_trivially_copy_assignable std
+	std::is_trivially_copy_assignable<${1:T}>::value
+snippet is_trivially_move_assignable std
+	std::is_trivially_move_assignable<${1:T}>::value
+snippet is_trivially_destructible std
+	std::is_trivially_destructible<${1:T}>::value
+snippet is_nothrow_constructible std
+	std::is_nothrow_constructible<${1:T}, ${2:... Args}>::value
+snippet is_nothrow_default_constructible std
+	std::is_nothrow_default_constructible<${1:T}>::value
+snippet is_nothrow_copy_constructible std
+	std::is_nothrow_copy_constructible<${1:T}>::value
+snippet is_nothrow_move_constructible std
+	std::is_nothrow_move_constructible<${1:T}>::value
+snippet is_nothrow_assignable std
+	std::is_nothrow_assignable<${1:T}, ${2:U}>::value
+snippet is_nothrow_copy_assignable std
+	std::is_nothrow_copy_assignable<${1:T}>::value
+snippet is_nothrow_move_assignable std
+	std::is_nothrow_move_assignable<${1:T}>::value
+snippet is_nothrow_destructible std
+	std::is_nothrow_destructible<${1:T}>::value
+snippet has_virtual_destructor std
+	std::has_virtual_destructor<${1:T}>::value
+snippet alignment_of std
+	std::alignment_of<${1:T}>::value
+snippet rank std
+	std::rank<${1:T}>::value
+snippet extent std
+	std::extent<${1:T}, ${2:I = 0}>::value
+snippet is_same std
+	std::is_same<${1:T}, ${2:U}>::value
+snippet is_base_of std
+	std::is_base_of<${1:Base}, ${2:Derived}>::value
+snippet is_convertible std
+	std::is_convertible<${1:From}, ${2:To}>::value
+snippet add_const std
+	std::add_const<${1:T}>::type
+snippet add_cv std
+	std::add_cv<${1:T}>::type
+snippet add_lvalue_reference std
+	std::add_lvalue_reference<${1:T}>::type
+snippet add_pointer std
+	std::add_pointer<${1:T}>::type
+snippet add_rvalue_reference std
+	std::add_rvalue_reference<${1:T}>::type
+snippet add_volatile std
+	std::add_volatile<${1:T}>::type
+snippet decay std
+	std::decay<${1:T}>::type
+snippet make_signed std
+	std::make_signed<${1:T}>::type
+snippet make_unsigned std
+	std::make_unsigned<${1:T}>::type
+snippet remove_all_extents std
+	std::remove_all_extents<${1:T}>::type
+snippet remove_const std
+	std::remove_const<${1:T}>::type
+snippet remove_cv std
+	std::remove_cv<${1:T}>::type
+snippet remove_extent std
+	std::remove_extent<${1:T}>::type
+snippet remove_pointer std
+	std::remove_pointer<${1:T}>::type
+snippet remove_reference std
+	std::remove_reference<${1:T}>::type
+snippet remove_volatile std
+	std::remove_volatile<${1:T}>::type

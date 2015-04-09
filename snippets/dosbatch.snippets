@@ -1,0 +1,47 @@
+snippet quiet
+	@echo off
+snippet to
+	REM TODO: 
+snippet %
+	%${1:VAR}%
+snippet !
+	NOT
+snippet set
+	SET ${1:VAR}="${2:VAL}"
+snippet ifdef
+	IF DEFINED ${1:VAR} ( ${2:commands} )
+snippet ifex
+	IF EXIST ${1:FILE} ( ${2:commands} )
+snippet if
+	IF ${1:conditional} ( ${2:commands} )
+snippet else 
+	ELSE ( ${1:commands} ) 
+snippet elif
+	ELSE IF ( ${1:commands} ) 
+snippet goto
+	GOTO ${1:label}
+	:$1
+		${2:commands}
+snippet return
+	GOTO :EOF
+snippet for Set
+	FOR ${1:%%VAR} IN ( ${2:space separated list} ) DO ( ${3:commands} )
+snippet for Iterative
+	FOR ${1:%%VAR} IN ( ${2:start},${3:step},${4:end} ) DO ( ${5:commands} )
+snippet for Command
+	FOR ${1:%%VAR} IN ( '${2:command}' ) DO ( ${3:commands} )
+snippet do
+	:${1:DoWhile}
+		${3:commands}
+		IF ${2:condition} GOTO $1
+snippet case
+	:CASE_${1:VAL}
+		${2:commands}
+		GOTO :EOF
+snippet switch
+	CALL :${1:MY_}CASE_%${2:VAR}%
+	IF ERRORLEVEL 1 CALL :$1DEFAULT_CASE
+	:$1CASE_${3:VAL}
+		GOTO :EOF
+	:$1DEFAULT_CASE
+		GOTO :EOF

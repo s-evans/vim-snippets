@@ -2,21 +2,23 @@ snippet to
 	# TODO: 
 snippet #!
 	#!/usr/bin/env sh
-	
 snippet bash
 	#!/usr/bin/env bash
 snippet if
 	if [[ ${1} ]]; then
 		${0}
 	fi
+snippet el
+	else
+		${0}
 snippet elif
 	elif [[ ${1} ]]; then
 		${0}
-snippet for
-	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
+snippet for C-Style
+	for (( ${2:i} = 0; $2 < ${1:VAR}; $2++ )); do
 		${0}
 	done
-snippet fori
+snippet for Set Style
 	for ${1:needle} in ${2:haystack} ; do
 		${0}
 	done
@@ -49,10 +51,8 @@ snippet go
 			${0};;
 		esac
 	done
-# Set SCRIPT_DIR variable to directory script is located.
-snippet sdir
-	SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# getopt
+snippet src
+	${BASH_SOURCE[0]}
 snippet getopt
 	__ScriptVersion="${1:version}"
 

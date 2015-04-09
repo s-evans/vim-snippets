@@ -2,3 +2,33 @@
 ## Misc
 snippet dta std
 	decltype(auto)
+snippet add_const_t std
+	std::add_const_t<${1:T}>
+snippet add_cv_t std
+	std::add_cv_t<${1:T}>
+snippet add_lvalue_reference_t std
+	std::add_lvalue_reference_t<${1:T}>
+snippet add_pointer_t std
+	std::add_pointer_t<${1:T}>
+snippet add_rvalue_reference_t std
+	std::add_rvalue_reference_t<${1:T}>
+snippet add_volatile_t std
+	std::add_volatile_t<${1:T}>
+snippet make_signed_t std
+	std::make_signed_t<${1:T}>
+snippet make_unsigned_t std
+	std::make_unsigned_t<${1:T}>
+snippet remove_all_extents_t std
+	std::remove_all_extents_t<${1:T}>
+snippet remove_const_t std
+	std::remove_const_t<${1:T}>
+snippet remove_cv_t std
+	std::remove_cv_t<${1:T}>
+snippet remove_extent_t std
+	std::remove_extent_t<${1:T}>
+snippet remove_pointer_t std
+	std::remove_pointer_t<${1:T}>
+snippet remove_reference_t std
+	std::remove_reference_t<${1:T}>
+snippet remove_volatile_t std
+	std::remove_volatile_t<${1:T}>
