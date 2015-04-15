@@ -1,6 +1,6 @@
 ##
 ## Misc
-snippet dta std
+snippet dta decltype(auto)
 	decltype(auto)
 snippet add_const_t std
 	std::add_const_t<${1:T}>
@@ -32,3 +32,115 @@ snippet remove_reference_t std
 	std::remove_reference_t<${1:T}>
 snippet remove_volatile_t std
 	std::remove_volatile_t<${1:T}>
+##
+## Operators
+snippet opn Global Declaration (C++14)
+	void* operator new ( std::size_t size );
+
+	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept;
+
+	void* operator new ( std::size_t size, void* ptr ) noexcept;
+
+	void* operator new[] ( std::size_t size );
+
+	void* operator new[] ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept;
+
+	void* operator new[] ( std::size_t size, void* ptr ) noexcept;
+
+	void operator delete ( void* ptr ) noexcept;
+
+	void operator delete ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept;
+
+	void operator delete ( void* ptr, void* voidptr2 ) noexcept;
+
+	void operator delete ( void* ptr, std::size_t size ) noexcept;
+
+	void operator delete ( void* ptr, std::size_t size, const std::nothrow_t& nothrow_constant ) noexcept;
+
+	void operator delete[] ( void* ptr ) noexcept;
+
+	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept;
+
+	void operator delete[] ( void* ptr, void* voidptr2 ) noexcept;
+snippet opn Global Definition (C++14)
+	void* operator new ( std::size_t size )
+	{
+	}
+
+	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept
+	{
+	}
+
+	void* operator new ( std::size_t size, void* ptr ) noexcept
+	{
+		return ptr;
+	}
+
+	void* operator new[] ( std::size_t size )
+	{
+	}
+
+	void* operator new[] ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept
+	{
+	}
+
+	void* operator new[] ( std::size_t size, void* ptr ) noexcept
+	{
+		return ptr;
+	}
+
+	void operator delete ( void* ptr ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, void* voidptr2 ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, std::size_t size ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, std::size_t size, const std::nothrow_t& nothrow_constant ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr, void* voidptr2 ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}

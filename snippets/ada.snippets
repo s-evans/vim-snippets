@@ -82,10 +82,10 @@ snippet casex case expression
 	case ${1} is
 		when ${2} => ${3},${0}
 
-snippet fora for all
+snippet for for all
 	for all ${1} ${2:in} ${3} => ${0}
 
-snippet fors for some
+snippet for for some
 	for some ${1} ${2:in} ${3} => ${0}
 
 snippet if if
@@ -93,18 +93,11 @@ snippet if if
 		${0}
 	end if;
 
-snippet ife if ... else
-	if ${1} then
-		${2}
-	else
-		${0}
-	end if;
-
 snippet el else
 	else
 		${0}
 
-snippet eif elsif
+snippet ei elsif
 	elsif ${1} then
 		${0}
 
@@ -124,18 +117,18 @@ snippet for for
 		${0}
 	end loop;
 
-snippet fore for each
+snippet for for each
 	for ${1} of ${2} loop
 		${0}
 	end loop;
 
-snippet nfor named for
+snippet for named for
 	${1}:
 	for ${2:I} in ${3} loop
 		${0}
 	end loop $1;
 
-snippet nfore named for each
+snippet for named for each
 	${1}:
 	for ${2} of ${3} loop
 		${0}

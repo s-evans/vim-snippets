@@ -1,35 +1,224 @@
 ##
 ## Misc
-snippet vol std
-	volatile
-snippet ex std
-	explicit
-snippet cr std
+snippet vol volatile
+	volatile 
+snippet ex explicit
+	explicit 
+snippet cr const&
 	const& 
-snippet cp std
-	const* 
-snippet typeid std
+snippet tid typeid
 	typeid( ${1:type_or_expression} )
-snippet type_info std
-	std::type_info
-snippet te std
-	template<${1}>
-snippet cn std
-	class ${1}
-snippet tn std
-	typename ${1}
+snippet swp std::swap
+	std::swap( ${1:a}, ${2:b} )
+snippet tnfo std::type_info
+	std::type_info 
+snippet te template
+	template<${1}> 
+snippet tn typename
+	typename 
+snippet it iterator
+	iterator 
+snippet cit const_iterator
+	const_iterator 
 ##
 ## Locales
 snippet global std::locale
 	std::locale::global( std::locale( "${1:location}" ) )
 snippet locale std
-	std::locale
+	std::locale 
 snippet setlocale std
 	std::setlocale( ${1:LC_ALL}, "${2:location}" )
 ##
 ## Operators
-snippet op std
+snippet op Generic operator syntax
 	operator${1}( ${2} )
+# TODO: Create snippet for a std::allocator and allocator class template
+# TODO: Create snippets for non-member operators
+# TODO: Create snippets for C++11 class declaration
+snippet op< Declaration
+	bool operator<( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
+snippet op< Definition
+	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator<( const $1 &rhs ) const
+	{
+	}
+snippet op> Declaration
+	bool operator>( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
+snippet op> Definition
+	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator>( const $1 &rhs ) const
+	{
+	}
+snippet op== Declaration
+	bool operator==( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
+snippet op== Definition
+	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator==( const $1 &rhs ) const
+	{
+	}
+snippet op!= Declaration
+	bool operator!=( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
+snippet op!= Definition
+	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator!=( const $1 &rhs ) const
+	{
+	}
+snippet op<= Declaration
+	bool operator<=( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
+snippet op<= Definition
+	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator<=( const $1 &rhs ) const
+	{
+	}
+snippet op>= Declaration
+	bool operator>=( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
+snippet op>= Definition
+	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator>=( const $1 &rhs ) const
+	{
+	}
+snippet opn Class Declaration
+	void* operator new ( std::size_t count );
+
+	void* operator new[] ( std::size_t count );
+
+	void operator delete ( void* ptr );
+
+	void operator delete[] ( void* ptr );
+
+	void operator delete ( void* ptr, std::size_t sz );
+
+	void operator delete[] ( void* ptr, std::size_t sz );
+snippet opn Class Definition
+	void* ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator new ( std::size_t count )
+	{
+		if ( size != sizeof( $1 ) ) {
+			return ::operator new( size );
+		}
+	}
+
+	void* $1::operator new[] ( std::size_t count )
+	{
+	}
+
+	void $1::operator delete ( void* ptr )
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void $1::operator delete[] ( void* ptr )
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void $1::operator delete ( void* ptr, std::size_t sz )
+	{
+		if ( !ptr ) {
+			return;
+		}
+
+		if ( size != sizeof( $1 ) ) {
+			::operator delete( ptr );
+			return;
+		}
+	}
+
+	void $1::operator delete[] ( void* ptr, std::size_t sz )
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+snippet opn Global Declaration (C++98)
+	void* operator new ( std::size_t size ) throw ( std::bad_alloc );
+
+	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) throw();
+
+	void* operator new ( std::size_t size, void* ptr ) throw();
+
+	void* operator new[] ( std::size_t size ) throw ( std::bad_alloc );
+
+	void* operator new[] ( std::size_t size, const std::nothrow_t& nothrow_value ) throw();
+
+	void* operator new[] ( std::size_t size, void* ptr ) throw();
+
+	void operator delete ( void* ptr ) throw();
+
+	void operator delete ( void* ptr, const std::nothrow_t& nothrow_constant ) throw();
+
+	void operator delete ( void* ptr, void* voidptr2 ) throw();
+
+	void operator delete[] ( void* ptr ) throw();
+
+	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) throw();
+
+	void operator delete[] ( void* ptr, void* voidptr2 ) throw();
+snippet opn Global Definition (C++98)
+	void* operator new ( std::size_t size ) throw ( std::bad_alloc )
+	{
+	}
+
+	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) throw()
+	{
+	}
+
+	void* operator new ( std::size_t size, void* ptr ) throw()
+	{
+		return ptr;
+	}
+
+	void* operator new[] ( std::size_t size ) throw ( std::bad_alloc )
+	{
+	}
+
+	void* operator new[] ( std::size_t size, const std::nothrow_t& nothrow_value ) throw()
+	{
+	}
+
+	void* operator new[] ( std::size_t size, void* ptr ) throw()
+	{
+		return ptr;
+	}
+
+	void operator delete ( void* ptr ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, const std::nothrow_t& nothrow_constant ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, void* voidptr2 ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr, void* voidptr2 ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
 snippet op^ Declaration
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator^=( int rhs );
 
@@ -128,7 +317,7 @@ snippet op| Declaration
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator|=( int rhs );
 
 	const $1 operator|( int rhs ) const;
-snippet op| std
+snippet op| Definition
 	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator|=( int rhs )
 	{
 		${1:// TODO: Implement}
@@ -274,67 +463,69 @@ snippet op= Definition
 	}
 ##
 ## Exceptions
-snippet try std
+snippet try Try catch block
 	try {
 		${1}
 	} catch ( ${2:T}& ${3:name} ) {
 		${4}
 	}
-snippet catch std
+snippet catch Catch block
 	catch ( ${1:T}& ${2:name} ) {
 		${3}
 	}
-snippet throw std
+snippet throw Throw an exception
 	throw ${1:value};
 ##
 ## Casts
-snippet scast std
+snippet sc static_cast
 	static_cast<${1:T}>( ${2:value} )
-snippet dcast std
+snippet dc dynamic_cast
 	dynamic_cast<${1:T}>( ${2:value} )
-snippet rcast std
+snippet rc reinterpret_cast
 	reinterpret_cast<${1:T}>( ${2:value} )
-snippet ccast std
+snippet cc const_cast
 	const_cast<${1:T}>( ${2:value} )
 ##
 ## Allocation
-snippet n std
-	new ${1:type}
-snippet na std
-	new ${1:type}[${2:count}]
-snippet pn std
-	new (${1:pointer}) ${2:type}
-snippet pna std
-	new (${1:pointer}) ${2:type}[${3:count}]
-snippet d std
-	delete
-snippet da std
-	delete[] ${1}
+snippet n Single object new
+	new ${1:T} ( ${2:args...} )
+snippet n Array new
+	new ${1:T} [${2:N}]
+snippet n Single object placement new
+	new ( ${1:ptr} ) ${2:T} ( ${2:args...} )
+snippet p Array placement new
+	new ( ${1:ptr} ) ${2:T} [${3:N}]
+snippet d Single object delete
+	delete 
+snippet d Array delete
+	delete[] 
+snippet nt std::nothrow
+	std::nothrow
 ##
 ## Streams
-snippet ss std
+snippet ss std::stringstream
 	std::stringstream ${1:ss};
-snippet iss std
+snippet iss std::istringstream
 	std::istringstream ${1:iss};
-snippet oss std
+snippet oss std::ostringstream
 	std::ostringstream ${1:oss};
-snippet sb std
+snippet sb std::stringbuf
 	std::stringbuf ${1:sb};
-snippet is std
+snippet is std::istream
 	std::istream ${1:is}( ${2:sb} );
-snippet os std
+snippet os std::ostream
 	std::ostream ${1:os}( ${2:sb} );
-snippet osi std
+snippet osi std::ostream_iterator
 	std::ostream_iterator<${1:T}> ${2:name}( ${3:os}, ${4:deilmiter} );
-snippet ios std
+snippet ios std::iostream
 	std::iostream ${1:ios};
-snippet ofs std
+snippet ofs std::ofstream
 	std::ofstream ${1:ofs}( ${2:filename} );
-snippet ifs std
+snippet ifs std::ifstream
 	std::ifstream ${1:ifs}( ${2:filename} );
-snippet fs std
+snippet fs std::fstream
 	std::fstream ${1:fs}( ${2:filename} );
-snippet fbuf std
+snippet fbuf std::filebuf
 	std::filebuf ${1:fbuf};
 ##
 ## Manipulators
@@ -426,9 +617,7 @@ snippet underflow_error std
 	std::underflow_error
 ##
 ## Smart pointers
-snippet up std
-	std::unique_ptr<${1:T}>
-snippet ap std
+snippet ap std::auto_ptr
 	std::auto_ptr<${1:T}>
 ##
 ## Function objects
@@ -705,19 +894,19 @@ snippet shrink_to_fit C++03
 	${1:T}( ${2:collection} ).swap( $2 );
 ##
 ## Access Modifiers
-snippet pri std
+snippet pri private
 	private
-snippet pro std
+snippet pro protected
 	protected
-snippet pub std
+snippet pub public
 	public
-snippet fr std
+snippet fr friend
 	friend
-snippet mu std
+snippet mu mutable
 	mutable
 ##
 ## Class
-snippet cl std
+snippet cl Class declaration
 	class ${1:`vim_snippets#Filename('$1', 'name')`} 
 	{
 	public:
@@ -751,7 +940,7 @@ snippet cl std
 		$1( $1 const& );
 
 	};
-snippet cld std
+snippet cld Constructor and destructor definition
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}::$1()
 	{
 	}
@@ -759,19 +948,19 @@ snippet cld std
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}::~$1()
 	{
 	}
-snippet mfun std
+snippet mfun Member function definition
 	${4:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}( ${3} )
 	{
 		${0}
 	}
-snippet ns std
+snippet ns namespace
 	namespace ${1:`vim_snippets#Filename('', 'my')`} 
 	{
 		${0}
 	} /* namespace $1 */
-snippet un std
+snippet un Create ambiguity
 	using namespace ${1};
-snippet ns= std
+snippet ns= Namespace alias
 	namespace ${1} = ${2};
 ##
 ## Input/Output
@@ -785,11 +974,7 @@ snippet cin std
 	std::cin >> ${1};
 ##
 ## Iteration
-snippet fori std
-	for ( int ${2:i} = 0 ; $2 < ${1:count} ; ${3:++}$2 ) {
+snippet for For loop using iterators (C++98)
+	for ( ${1:container_type}::iterator ${2:i} = ${3:container}.begin() ; $2 != $3.end() ; ++$2 ) {
 		${4}
-	}
-snippet iter std
-	for ( ${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin() ; $4 != $5.end() ; ++$4 ) {
-		${6}
 	}
