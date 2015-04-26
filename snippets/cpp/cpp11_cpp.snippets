@@ -1,5 +1,7 @@
 ##
 ## Misc
+snippet ovr override
+	override 
 snippet up std::unique_ptr
 	std::unique_ptr<${1:T}>
 snippet u= Alias declaration
@@ -23,7 +25,7 @@ snippet mv std
 snippet fwd std
 	std::forward<${1:T}>( ${2:val} )
 snippet ld Lambda expression
-	[${1}](${2}){
+	[${1:capture_expression}]( ${2:args...} ){
 		${3}
 	}
 ##
@@ -344,3 +346,79 @@ snippet remove_reference std
 	std::remove_reference<${1:T}>::type
 snippet remove_volatile std
 	std::remove_volatile<${1:T}>::type
+##
+## Class
+snippet cl Class declaration (C++11)
+	class ${1:`vim_snippets#Filename('$1', 'name')`} 
+	{
+	public:
+
+		/**
+		 * CTOR
+		 */
+		$1( ${2} );
+
+		/**
+		 * DTOR
+		 */
+		~$1();
+
+		/**
+		 * Default CTOR
+		 */
+		$1() = delete;
+
+		/**
+		 * Copy constructor
+		 */
+		$1( $1 const& ) = delete;
+
+		/**
+		 * Assignment operator
+		 */
+		$1& operator=( $1 const& ) = delete;
+
+		/**
+		 * Move constructor
+		 */
+		$1( $1&& ) = delete;
+
+		/**
+		 * Move assignment operator
+		 */
+		$1& operator=( $1&& ) = delete;
+
+	private:
+		${0:/* data */}
+
+	};
+snippet op= Declaration (C++11)
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}( $1 const& rhs );
+
+	$1& operator=( $1 const& rhs );
+
+	$1( $1&& );
+
+	$1& operator=( $1&& );
+snippet op= Definition (C++11)
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}::$1( $1 const& rhs )
+	{
+	}
+
+	$1& $1::operator=( $1 const& rhs )
+	{
+		if ( this == &rhs ) return *this;
+
+		return *this;
+	}
+
+	$1::$1( $1&& rhs )
+	{
+	}
+
+	$1& $1::operator=( $1&& rhs )
+	{
+		if ( this == &rhs ) return *this;
+
+		return *this;
+	}

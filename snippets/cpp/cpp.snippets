@@ -34,7 +34,6 @@ snippet op Generic operator syntax
 	operator${1}( ${2} )
 # TODO: Create snippet for a std::allocator and allocator class template
 # TODO: Create snippets for non-member operators
-# TODO: Create snippets for C++11 class declaration
 snippet op< Declaration
 	bool operator<( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
 snippet op< Definition
@@ -224,15 +223,14 @@ snippet op^ Declaration
 
 	const $1 operator^( int rhs ) const;
 snippet op^ Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator^=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator^=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator^( int rhs ) const
+	const $1 $1::operator^( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value ^= rhs;
 		return value;
 	}
@@ -241,15 +239,14 @@ snippet op<< Declaration
 
 	const $1 operator<<( int rhs ) const;
 snippet op<< Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator<<=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator<<=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator<<( int rhs ) const
+	const $1 $1::operator<<( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value <<= rhs;
 		return value;
 	}
@@ -258,15 +255,14 @@ snippet op>> Declaration
 
 	const $1 operator>>( int rhs ) const;
 snippet op>> Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator>>=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator>>=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator>>( int rhs ) const
+	const $1 $1::operator>>( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value >>= rhs;
 		return value;
 	}
@@ -275,15 +271,14 @@ snippet op& Declaration
 
 	const $1 operator&( int rhs ) const;
 snippet op& Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator&=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator&=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator&( int rhs ) const
+	const $1 $1::operator&( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value &= rhs;
 		return value;
 	}
@@ -292,25 +287,23 @@ snippet op% Declaration
 
 	const $1 operator%( int rhs ) const;
 snippet op% Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator%=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator%=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator%( int rhs ) const
+	const $1 $1::operator%( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value %= rhs;
 		return value;
 	}
 snippet op~ Declaration
 	const $1 operator~() const;
 snippet op~ Definition
-	const $2 $2::operator~() const
+	const $1 $1::operator~() const
 	{
-		$2 value( *this );
-		${1:// TODO: Implement}
+		$1 value( *this );
 		return value;
 	}
 snippet op| Declaration
@@ -318,15 +311,14 @@ snippet op| Declaration
 
 	const $1 operator|( int rhs ) const;
 snippet op| Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator|=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator|=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator|( int rhs ) const
+	const $1 $1::operator|( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value |= rhs;
 		return value;
 	}
@@ -335,15 +327,14 @@ snippet op* Declaration
 
 	const $1 operator*( int rhs ) const;
 snippet op* Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator*=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator*=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator*( int rhs ) const
+	const $1 $1::operator*( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value *= rhs;
 		return value;
 	}
@@ -352,15 +343,14 @@ snippet op/ Declaration
 
 	const $1 operator/( int rhs ) const;
 snippet op/ Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator/=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator/=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator/( int rhs ) const
+	const $1 $1::operator/( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value /= rhs;
 		return value;
 	}
@@ -373,28 +363,27 @@ snippet op+ Declaration
 
 	const $1 operator++( int );
 snippet op+ Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator+=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator+=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator+( int rhs ) const
+	const $1 $1::operator+( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value += rhs;
 		return value;
 	}
 
-	$2& $2::operator++()
+	$1& $1::operator++()
 	{
 		*this += 1; // increment
 		return *this; // fetch
 	}
 
-	const $2 $2::operator++( int )
+	const $1 $1::operator++( int )
 	{
-		const $2 oldValue = *this; // fetch
+		const $1 oldValue = *this; // fetch
 		++(*this); // increment
 		return oldValue; // return what was
 	}
@@ -409,55 +398,49 @@ snippet op- Declaration
 
 	const $1 operator--( int );
 snippet op- Definition
-	${2:`vim_snippets#Filename('$2', 'ClassName')`}& $2::operator-=( int rhs )
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator-=( int rhs )
 	{
-		${1:// TODO: Implement}
 		return *this;
 	}
 
-	const $2 $2::operator-() const
+	const $1 $1::operator-() const
 	{
-		$2 value( *this );
-
-		${3:// TODO: Implement}
+		$1 value( *this );
 
 		return value;
 	}
 
-	const $2 $2::operator-( int rhs ) const
+	const $1 $1::operator-( int rhs ) const
 	{
-		$2 value( *this );
+		$1 value( *this );
 		value += rhs;
 		return value;
 	}
 
-	$2& $2::operator--()
+	$1& $1::operator--()
 	{
 		*this -= 1; // increment
 		return *this; // fetch
 	}
 
-	const $2 $2::operator--( int )
+	const $1 $1::operator--( int )
 	{
-		const $2 oldValue = *this; // fetch
+		const $1 oldValue = *this; // fetch
 		--(*this); // increment
 		return oldValue; // return what was
 	}
-snippet op= Declaration
+snippet op= Declaration (C++98)
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}( $1 const& rhs );
 
 	$1& operator=( $1 const& rhs );
-snippet op= Definition
-	${3:`vim_snippets#Filename('$3', 'ClassName')`}::$3( $3 const& rhs )
+snippet op= Definition (C++98)
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}::$1( $1 const& rhs )
 	{
-		${1}
 	}
 
-	$3& $3::operator=( $3 const& rhs )
+	$1& $1::operator=( $1 const& rhs )
 	{
 		if ( this == &rhs ) return *this;
-
-		${2}
 
 		return *this;
 	}
@@ -906,7 +889,7 @@ snippet mu mutable
 	mutable
 ##
 ## Class
-snippet cl Class declaration
+snippet cl Class declaration (C++98)
 	class ${1:`vim_snippets#Filename('$1', 'name')`} 
 	{
 	public:
