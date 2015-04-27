@@ -32,8 +32,6 @@ snippet setlocale std
 ## Operators
 snippet op Generic operator syntax
 	operator${1}( ${2} )
-# TODO: Create snippet for a std::allocator and allocator class template
-# TODO: Create snippets for non-member operators
 snippet op< Declaration
 	bool operator<( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
 snippet op< Definition
@@ -961,3 +959,165 @@ snippet for For loop using iterators (C++98)
 	for ( ${1:container_type}::iterator ${2:i} = ${3:container}.begin() ; $2 != $3.end() ; ++$2 ) {
 		${4}
 	}
+##
+## Allocator
+snippet alloc custom allocator class template outline (C++98)
+	#include <cstddef>
+	#include <new>
+
+	template <class T>
+	class ${1:`vim_snippets#Filename('$1', 'name')`} 
+	{
+
+	public:
+
+		// Member types
+		typedef T                 value_type;
+		typedef value_type*       pointer;
+		typedef const value_type* const_pointer;
+		typedef value_type&       reference;
+		typedef const value_type& const_reference;
+		typedef std::size_t       size_type;
+		typedef std::ptrdiff_t    difference_type;
+
+		template <class U>
+		struct rebind {
+			typedef $1<U> other;
+		};
+
+		/**
+		 * Default constructor
+		 */
+		$1() throw()
+		{
+			// TODO: Implement
+		}
+
+		/**
+		 * Copy constructor
+		 */
+		$1( const $1& rhs ) throw()
+		{
+			// TODO: Implement
+		}
+
+		/**
+		 * Rebind constructor
+		 */
+		template <class U>
+		$1( const $1<U>& rhs ) throw()
+		{
+			// TODO: Implement
+		}
+
+		/**
+		 * Destructor
+		 */
+		~$1() throw()
+		{
+			// TODO: Implement
+		}
+
+		/**
+		 * Obtains the address of an object, even if operator& is overloaded
+		 */
+		pointer address( reference x ) const throw()
+		{
+			return &x;
+		}
+
+		/**
+		 * Obtains the address of an object, even if operator& is overloaded
+		 */
+		const_pointer address( const_reference x ) const throw()
+		{
+			return &x;
+		}
+
+		/**
+		 * Allocates uninitialized storage
+		 */
+		pointer allocate( size_type n, const_pointer hint = 0 )
+		{
+			// TODO: Implement
+			void* p = 0;
+
+			if ( !p ) {
+				throw std::bad_alloc();
+			}
+
+			return static_cast<pointer>( p );
+		}
+
+		/**
+		 * Deallocates storage
+		 */
+		void deallocate( pointer p, size_type n ) throw()
+		{
+			// TODO: Implement
+		}
+
+		/**
+		 * Returns the largest supported allocation size
+		 */
+		size_type max_size() const throw()
+		{
+			return static_cast<size_type>( -1 ) / sizeof( value_type );
+		}
+
+		/**
+		 * Constructs an object in allocated storage
+		 */
+		void construct( pointer p, const value_type& x )
+		{
+			new( p ) value_type( x );
+		}
+
+		/**
+		 * Destructs an object in allocated storage
+		 */
+		void destroy( pointer p )
+		{
+			p->~value_type();
+		}
+
+	private:
+		
+		// data
+
+	};
+
+	// Void specialization
+
+	template<>
+	class $1<void>
+	{
+
+	public:
+
+		// Member Types
+		typedef void        value_type;
+		typedef void*       pointer;
+		typedef const void* const_pointer;
+
+		template <class U>
+		struct rebind {
+			typedef $1<U> other;
+		};
+
+	};
+
+	// Free Functions
+
+	template <class T>
+	inline bool operator==( const $1<T>&, const $1<T>& ) throw()
+	{
+		return true;
+	}
+
+	template <class T>
+	inline bool operator!=( const $1<T>&, const $1<T>& ) throw()
+	{
+		return false;
+	}
+
