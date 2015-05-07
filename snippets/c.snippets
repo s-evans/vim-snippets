@@ -379,3 +379,23 @@ snippet gpl GPL license
 	 */
 
 	${0}
+##
+## Compiler
+snippet asm msvc
+	__asm {
+		${1}
+	};
+snippet asm gcc/clang
+	__asm__ (
+		"${1}"
+	);
+snippet pack structure packing
+	#pragma pack(${1:push_pop, }${2:alignment})
+snippet stdcall msvc
+	__stdcall
+snippet stdcall gcc/clang
+	__attribute__((stdcall))
+snippet cdecl msvc
+	__cdecl
+snippet cdecl gcc/clang
+	__attribute__((cdecl))
