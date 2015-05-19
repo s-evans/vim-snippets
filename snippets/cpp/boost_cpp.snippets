@@ -937,6 +937,22 @@ snippet time_point boost::chrono
 	boost::chrono::time_point<${1:clock_type}, ${2:duration_type}>
 snippet duration boost::chrono
 	boost::chrono::duration<${1:period_type}, ${2:tick_type}>
+snippet hours boost::chrono
+	boost::chrono::hours( ${1:count} )
+snippet minutes boost::chrono
+	boost::chrono::minutes( ${1:count} )
+snippet seconds boost::chrono
+	boost::chrono::seconds( ${1:count} )
+snippet milliseconds boost::chrono
+	boost::chrono::milliseconds( ${1:count} )
+snippet microseconds boost::chrono
+	boost::chrono::microseconds( ${1:count} )
+snippet nanoseconds boost::chrono
+	boost::chrono::nanoseconds( ${1:count} )
+snippet tpc boost::chrono
+	boost::chrono::time_point_cast<${1:duration_type}>( ${2:time_point_value} )
+snippet durc boost::chrono
+	boost::chrono::duration_cast<${1:duration_type}>( ${2:duration_value} )
 ##
 ## Specific chrono clock type snippets
 snippet system_clock boost::chrono
