@@ -827,7 +827,7 @@ snippet tuple boost
 snippet mktuple boost
 	boost::make_tuple( ${1:value_list} )
 snippet tie boost
-	boost::tie( ${1:non_const_reference_list} )
+	boost::tie( ${1:non_const_reference, ...} )
 snippet ignore boost::tuples
 	boost::tuples::ignore
 snippet set_open boost::tuples
@@ -1683,3 +1683,390 @@ snippet remove_reference boost
 	boost::remove_reference<${1:T}>::type
 snippet remove_volatile boost
 	boost::remove_volatile<${1:T}>::type
+##
+## Boost Graph Library (BGL)
+## 
+## BGL Graph Classes
+snippet adjacency_list boost
+	boost::adjacency_list<${1:OutEdgeList = boost::vecS}, ${2:VertexList = boost::vecS}, ${3:Directed = boost::directedS}, ${4:VertexProperties = boost::no_property}, ${5:EdgeProperties = boost::no_property}, ${6:GraphProperties = boost::no_property}, ${7:EdgeList = boost::listS}>
+snippet directed_graph boost
+	boost::directed_graph<${1:VertexProp}, ${2:EdgeProp}, ${3:GraphProp}>
+snippet undirected_graph boost
+	boost::undirected_graph<${1:VertexProp}, ${2:EdgeProp}, ${3:GraphProp}>
+snippet adjacency_matrix boost
+	boost::adjacency_matrix<${1:Directed = boost::directedS}, ${2:VertexProperty = boost::no_property}, ${3:EdgeProperty = boost::no_property}, ${4:GraphProperty = boost::no_property}>
+snippet compressed_sparse_row_graph boost
+	boost::compressed_sparse_row_graph<${1:Directed = boost::directedS}, ${2:VertexProperty = void}, ${3:EdgeProperty = void}, ${4:GraphProperty = boost::no_property}, ${5:Vertex = std::size_t}, ${6:EdgeIndex = Vertex}>
+## 
+## BGL Iterators
+snippet adjacency_iterator boost
+	boost::graph_traits<${1:GraphType}>::adjacency_iterator 
+snippet vertex_iterator boost
+	boost::graph_traits<${1:GraphType}>::vertex_iterator 
+## 
+## BGL Iterator Adaptors
+snippet adjacency_iterator_generator boost
+	boost::adjacency_iterator_generator<${1:Graph}, ${2:VertexDescriptor}, ${3:OutEdgeIter}>::type
+snippet inv_adjacency_iterator_generator boost
+	boost::inv_adjacency_iterator_generator<${1:Graph}, ${2:VertexDescriptor}, ${3:InEdgeIter}>::type
+##
+## BGL Traits
+snippet graph_traits boost
+	boost::graph_traits<${1:GraphType}>
+snippet property_map boost
+	boost::property_map<${1:GraphType}, ${2:boost::vertex_index_t}>
+snippet adjacency_list_traits boost
+	boost::adjacency_list_traits<${1:AdjacencyListType}>
+## 
+## BGL Algorithms
+snippet copy_graph boost
+	boost::copy_graph( ${1:GraphConstRef}, ${2:GraphRef} )
+snippet transpose_graph boost
+	boost::transpose_graph( ${1:GraphConstRef}, ${2:GraphRef} )
+## 
+## BGL Algorithms TODO
+snippet breadth_first_search boost
+	boost::breadth_first_search()
+snippet breadth_first_visit boost
+	boost::breadth_first_visit()
+snippet depth_first_search boost
+	boost::depth_first_search()
+snippet depth_first_visit boost
+	boost::depth_first_visit()
+snippet undirected_dfs boost
+	boost::undirected_dfs()
+snippet topological_sort boost
+	boost::topological_sort()
+snippet transitive_closure boost
+	boost::transitive_closure()
+snippet lengauer_tarjan_dominator_tree boost
+	boost::lengauer_tarjan_dominator_tree()
+snippet dijkstra_shortest_paths boost
+	boost::dijkstra_shortest_paths()
+snippet dijkstra_shortest_paths_no_color_map boost
+	boost::dijkstra_shortest_paths_no_color_map()
+snippet bellman_ford_shortest_paths boost
+	boost::bellman_ford_shortest_paths()
+snippet dag_shortest_paths boost
+	boost::dag_shortest_paths()
+snippet johnson_all_pairs_shortest_paths boost
+	boost::johnson_all_pairs_shortest_paths()
+snippet floyd_warshall_all_pairs_shortest_paths boost
+	boost::floyd_warshall_all_pairs_shortest_paths()
+snippet r_c_shortest_paths boost
+	boost::r_c_shortest_paths()
+snippet astar_search boost
+	boost::astar_search()
+snippet kruskal_minimum_spanning_tree boost
+	boost::kruskal_minimum_spanning_tree()
+snippet prim_minimum_spanning_tree boost
+	boost::prim_minimum_spanning_tree()
+snippet random_spanning_tree boost
+	boost::random_spanning_tree()
+snippet two_graphs_common_spanning_trees boost
+	boost::two_graphs_common_spanning_trees()
+snippet connected_components boost
+	boost::connected_components()
+snippet strong_components boost
+	boost::strong_components()
+snippet biconnected_components boost
+	boost::biconnected_components()
+snippet articulation_points boost
+	boost::articulation_points()
+snippet initialize_incremental_components boost
+	boost::initialize_incremental_components()
+snippet incremental_components boost
+	boost::incremental_components()
+snippet same_component boost
+	boost::same_component()
+snippet component_index boost
+	boost::component_index()
+snippet edmonds_karp_max_flow boost
+	boost::edmonds_karp_max_flow()
+snippet push_relabel_max_flow boost
+	boost::push_relabel_max_flow()
+snippet boykov_kolmogorov_max_flow boost
+	boost::boykov_kolmogorov_max_flow()
+snippet edmonds_maximum_cardinality_matching boost
+	boost::edmonds_maximum_cardinality_matching()
+snippet cycle_canceling boost
+	boost::cycle_canceling()
+snippet successive_shortest_path_nonnegative_weights boost
+	boost::successive_shortest_path_nonnegative_weights()
+snippet find_flow_cost boost
+	boost::find_flow_cost()
+snippet stoer_wagner_min_cut boost
+	boost::stoer_wagner_min_cut()
+snippet cuthill_mckee_ordering boost
+	boost::cuthill_mckee_ordering()
+snippet king_ordering boost
+	boost::king_ordering()
+snippet minimum_degree_ordering boost
+	boost::minimum_degree_ordering()
+snippet sloan_ordering boost
+	boost::sloan_ordering()
+snippet sloan_start_end_vertices boost
+	boost::sloan_start_end_vertices()
+snippet ith_wavefront boost
+	boost::ith_wavefront()
+snippet max_wavefront boost
+	boost::max_wavefront()
+snippet aver_wavefront boost
+	boost::aver_wavefront()
+snippet rms_wavefront boost
+	boost::rms_wavefront()
+snippet bandwidth boost
+	boost::bandwidth()
+snippet ith_bandwidth boost
+	boost::ith_bandwidth()
+snippet brandes_betweenness_centrality boost
+	boost::brandes_betweenness_centrality()
+snippet minimum_cycle_ratio and maximum_cycle_ratio boost
+	boost::minimum_cycle_ratio and maximum_cycle_ratio()
+snippet isomorphism boost
+	boost::isomorphism()
+snippet vf2_sub_graph_iso boost
+	boost::vf2_sub_graph_iso()
+snippet mcgregor_common_subgraphs boost
+	boost::mcgregor_common_subgraphs()
+snippet random_graph_layout boost
+	boost::random_graph_layout()
+snippet circle_layout boost
+	boost::circle_layout()
+snippet kamada_kawai_spring_layout boost
+	boost::kamada_kawai_spring_layout()
+snippet fruchterman_reingold_force_directed_layout boost
+	boost::fruchterman_reingold_force_directed_layout()
+snippet gursoy_atun_layout boost
+	boost::gursoy_atun_layout()
+snippet betweenness_centrality_clustering boost
+	boost::betweenness_centrality_clustering()
+snippet boyer_myrvold_planarity_test boost
+	boost::boyer_myrvold_planarity_test()
+snippet planar_face_traversal boost
+	boost::planar_face_traversal()
+snippet planar_canonical_ordering boost
+	boost::planar_canonical_ordering()
+snippet chrobak_payne_straight_line_drawing boost
+	boost::chrobak_payne_straight_line_drawing()
+snippet is_straight_line_drawing boost
+	boost::is_straight_line_drawing()
+snippet is_kuratowski_subgraph boost
+	boost::is_kuratowski_subgraph()
+snippet make_connected boost
+	boost::make_connected()
+snippet make_biconnected_planar boost
+	boost::make_biconnected_planar()
+snippet make_maximal_planar boost
+	boost::make_maximal_planar()
+snippet metric_tsp_approx boost
+	boost::metric_tsp_approx()
+snippet sequential_vertex_coloring boost
+	boost::sequential_vertex_coloring()
+snippet edge_coloring boost
+	boost::edge_coloring()
+snippet is_bipartite boost
+	boost::is_bipartite()
+snippet find_odd_cycle boost
+	boost::find_odd_cycle()
+snippet maximum_adjacency_search boost
+	boost::maximum_adjacency_search()
+snippet hawick_circuits boost
+	boost::hawick_circuits()
+##
+## BGL Graph Adaptors
+snippet subgraph boost
+	boost::subgraph<${1:GraphType}>
+snippet edge_list boost
+	boost::edge_list<${1:EdgeIterator}, ${2:ValueType}, ${3:DiffType}>
+snippet reverse_graph boost
+	boost::reverse_graph<${1:BidirectionalGraph}, ${2:GraphReference = const BidirectionalGraph&}>
+snippet make_reverse_graph boost
+	boost::make_reverse_graph( ${1:graph} )
+snippet filtered_graph  boost
+	boost::filtered_graph<${1:Graph}, ${2:EdgePredicate}, ${3:VertexPredicate = boost::keep_all}>
+##
+## BGL Visitors Concepts TODO
+snippet bfs_visitor boost
+	boost::bfs_visitor
+snippet dfs_visitor boost
+	boost::dfs_visitor
+snippet dijkstra_visitor boost
+	boost::dijkstra_visitor
+snippet bellman_visitor boost
+	boost::bellman_visitor
+snippet astar_visitor boost
+	boost::astar_visitor
+##
+## BGL Visitors
+snippet predecessor_recorder boost
+	boost::predecessor_recorder<${1:PredecesorMap}, ${2:EventTag}>
+snippet edge_predecessor_recorder boost
+	boost::edge_predecessor_recorder<${1:PredEdgeMap}, ${2:EventTag}>
+snippet distance_recorder boost
+	boost::distance_recorder<${1:DistanceMap}, ${2:EventTag}>
+snippet time_stamper boost
+	boost::time_stamper<${1:TimeMap}, ${2:TimeT}, ${3:EventTag}>
+snippet property_writer boost
+	boost::property_writer<${1:PropertyMap}, ${2:OutputIterator}, ${3:EventTag}>
+snippet property_put boost
+	boost::property_put<${1:PropertyMap}, ${2:EventTag}>
+snippet tsp_tour_visitor boost
+	boost::tsp_tour_visitor<${1:OutputIterator}>
+snippet tsp_tour_len_visitor boost
+	boost::tsp_tour_len_visitor<${1:Graph}, ${2:WeightMap}, ${3:OutputIterator}, ${4:Length}>
+##
+## BGL Other Types
+snippet vertex_descriptor boost
+	boost::graph_traits<${1:GraphType}>::vertex_descriptor 
+snippet edge_descriptor boost
+	boost::graph_traits<${1:GraphType}>::edge_descriptor 
+## 
+## BGL Graph Properties
+snippet property boost
+	boost::property<${1:PropertyTag}, ${2:PropertyType}, ${3:NextProperty}>
+snippet property_kind boost
+	boost::property_kind<${1:PropertyTag}>::type
+snippet property_num boost
+	boost::property_num<${1:PropertyTag}>::value
+snippet edge_property_tag boost
+	boost::edge_property_tag
+snippet vertex_property_tag boost
+	boost::vertex_property_tag
+snippet graph_property_tag boost
+	boost::graph_property_tag
+snippet custom_tag boost
+	// type based
+	struct ${1:T}_t {
+		typedef boost::${2:edge/vertex/graph}_property_tag kind;
+	};
+
+	// enum based
+	namespace boost {
+		enum $2_$1_t { $2_$1 };
+		BOOST_INSTALL_PROPERTY($2, $1);
+	}
+snippet vertex_index_t boost
+	boost::vertex_index_t
+snippet vertex_index1_t boost
+	boost::vertex_index1_t
+snippet vertex_index2_t boost
+	boost::vertex_index2_t
+snippet edge_index_t boost
+	boost::edge_index_t
+snippet graph_name_t boost
+	boost::graph_name_t
+snippet vertex_name_t boost
+	boost::vertex_name_t
+snippet edge_name_t boost
+	boost::edge_name_t
+snippet edge_weight_t boost
+	boost::edge_weight_t
+snippet edge_weight2_t boost
+	boost::edge_weight2_t
+snippet edge_capacity_t boost
+	boost::edge_capacity_t
+snippet edge_residual_capacity_t boost
+	boost::edge_residual_capacity_t
+snippet edge_reverse_t boost
+	boost::edge_reverse_t
+snippet vertex_distance_t boost
+	boost::vertex_distance_t
+snippet vertex_root_t boost
+	boost::vertex_root_t
+snippet vertex_all_t boost
+	boost::vertex_all_t
+snippet edge_all_t boost
+	boost::edge_all_t
+snippet graph_all_t boost
+	boost::graph_all_t
+snippet vertex_color_t boost
+	boost::vertex_color_t
+snippet vertex_rank_t boost
+	boost::vertex_rank_t
+snippet vertex_predecessor_t boost
+	boost::vertex_predecessor_t
+snippet vertex_isomorphism_t boost
+	boost::vertex_isomorphism_t
+snippet vertex_invariant_t boost
+	boost::vertex_invariant_t
+snippet vertex_invariant1_t boost
+	boost::vertex_invariant1_t
+snippet vertex_invariant2_t boost
+	boost::vertex_invariant2_t
+snippet vertex_degree_t boost
+	boost::vertex_degree_t
+snippet vertex_out_degree_t boost
+	boost::vertex_out_degree_t
+snippet vertex_in_degree_t boost
+	boost::vertex_in_degree_t
+snippet vertex_discover_time_t boost
+	boost::vertex_discover_time_t
+snippet vertex_finish_time_t boost
+	boost::vertex_finish_time_t
+##
+## BGL Storage Types
+snippet vecS boost
+	boost::vecS
+snippet listS boost
+	boost::listS
+snippet slistS boost
+	boost::slistS
+snippet setS boost
+	boost::setS
+snippet multisetS boost
+	boost::multisetS
+snippet hash_setS boost
+	boost::hash_setS
+##
+## BGL Accessors
+snippet source boost
+	boost::source( ${1:edge_descriptor}, ${2:graph} )
+snippet target boost
+	boost::target( ${1:edge_descriptor}, ${2:graph} )
+snippet out_edges boost
+	boost::out_edges( ${1:vertex_descriptor}, ${2:graph} )
+snippet in_edges boost
+	boost::in_edges( ${1:vertex_descriptor}, ${2:graph} )
+snippet out_degree boost
+	boost::out_degree( ${1:vertex_descriptor}, ${2:graph} )
+snippet in_degree boost
+	boost::in_degree( ${1:vertex_descriptor}, ${2:graph} )
+snippet degree boost
+	boost::degree( ${1:vertex_descriptor}, ${2:graph} )
+snippet adjacent_vertices boost
+	boost::adjacent_vertices( ${1:vertex_descriptor}, ${2:graph} )
+snippet vertices boost
+	boost::vertices( ${1:graph} )
+snippet num_vertices boost
+	boost::num_vertices( ${1:graph} )
+snippet add_edge boost (mutable graph)
+	boost::add_edge( ${1:vertex_descriptor}, ${2:vertex_descriptor}, ${3:graph} )
+snippet add_edge boost (mutable property graph)
+	boost::add_edge( ${1:vertex_descriptor}, ${2:vertex_descriptor}, ${3:ep}, ${4:graph} )
+snippet add_vertex boost (mutable graph)
+	boost::add_vertex( ${1:graph} )
+snippet add_vertex boost (mutable property graph)
+	boost::add_vertex( ${1:vp}, ${2:graph} )
+snippet clear_vertex boost
+	boost::clear_vertex( ${1:vertex_descriptor}, ${2:graph} )
+snippet edge boost
+	boost::edge( ${1:vertex_descriptor}, ${2:vertex_descriptor}, ${3:graph} )
+snippet edges boost
+	boost::edges( ${1:graph} )
+snippet get boost (get property map)
+	boost::get( ${1:property}, ${2:graph} )
+snippet get boost (get property value)
+	boost::get( ${1:property}, ${2:graph}, ${1:vertex_descriptor} )
+snippet num_edges boost
+	boost::num_edges( ${1:graph} )
+snippet put boost (set property value)
+	boost::put( ${1:property}, ${2:graph}, ${1:vertex_descriptor}, ${4:vertex_descriptor} )
+snippet remove_edge boost (edge descriptor)
+	boost::remove_edge( ${1:edge_descriptor}, ${2:graph} )
+snippet remove_edge boost (edge iterator)
+	boost::remove_edge( ${1:edge_iterator}, ${2:graph} )
+snippet remove_edge boost (vertex specified edge)
+	boost::remove_edge( ${1:vertex_descriptor}, ${2:vertex_descriptor}, ${3:graph} )
+snippet remove_vertex boost
+	boost::remove_vertex( ${1:vertex_descriptor}, ${2:graph} )
