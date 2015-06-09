@@ -465,6 +465,38 @@ snippet alloc custom allocator class template outline (C++11)
 		}
 
 		/**
+		 * Move constructor
+		 */
+		$1( const $1&& rhs ) noexcept
+		{
+			// TODO: Implement
+		}
+
+		/**
+		 * Move assignment operator
+		 */
+		$1& operator=( $1&& rhs ) noexcept
+		{
+			if ( this == &rhs ) return *this;
+
+			// TODO: Implement
+
+			return *this;
+		}
+
+		/**
+		 * Assignment operator
+		 */
+		$1& operator=( const $1& rhs ) noexcept
+		{
+			if ( this == &rhs ) return *this;
+
+			// TODO: Implement
+
+			return *this;
+		}
+
+		/**
 		 * Rebind constructor
 		 */
 		template <class U>
