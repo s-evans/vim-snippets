@@ -853,9 +853,49 @@ snippet queue std
 snippet pqueue std
 	std::priority_queue<${1:T}> ${2};
 ##
+## STL Iterators
+snippet adv std
+	std::advance( ${1:effected_iterator}, std::distance( ${2:first_iterator}, ${3:last_iterator} ) )
+snippet dist std
+	std::distance( ${1:first_iterator}, ${2:last_iterator} )
+snippet iterator_traits std
+	std::iterator_traits<${1:T}>
+snippet iterator_base std
+	std::iterator<${1:iterator_category}, ${2:value_type}, ${3:difference_type = std::ptrdiff_t}, ${4:pointer = value_type*}, ${5:reference = value_type&}>
+snippet iterator_category std::input_iterator_tag
+	std::input_iterator_tag
+snippet iterator_category std::output_iterator_tag
+	std::output_iterator_tag
+snippet iterator_category std::forward_iterator_tag
+	std::forward_iterator_tag
+snippet iterator_category std::bidirectional_iterator_tag
+	std::bidirectional_iterator_tag
+snippet iterator_category std::random_access_iterator_tag
+	std::random_access_iterator_tag
+snippet back_inserter std
+	std::back_inserter( ${1:container} )
+snippet front_inserter std
+	std::front_inserter( ${1:container} )
+snippet inserter std
+	std::inserter( ${1:container} )
+snippet reverse_iterator std
+	std::reverse_iterator<${1:bidirectional_iterator_type}>
+snippet back_insert_iterator std
+	std::back_insert_iterator<${1:container_type}>
+snippet front_insert_iterator std
+	std::front_insert_iterator<${1:container_type}>
+snippet insert_iterator std
+	std::insert_iterator<${1:container_type}>
+snippet istream_iterator std
+	std::istream_iterator<${1:element_type}>
+snippet ostream_iterator std
+	std::ostream_iterator<${1:element_type}>
+snippet istreambuf_iterator std
+	std::istreambuf_iterator<${1:char_type}>
+snippet ostreambuf_iterator std
+	std::ostreambuf_iterator<${1:char_type}>
+##
 ## Effective STL
-snippet non_const_iterator Effective STL
-	std::advance( ${1:iterator}, std::distance( $1, ${2:const_iterator} ) )
 snippet erase_remove Effective STL std
 	${1:vector}.erase( std::remove( $1.begin(), $1.end(), ${2:val} ), $1.end() );
 snippet insert_or_update Effective STL
@@ -892,6 +932,7 @@ snippet mu mutable
 snippet cl Class declaration (C++98)
 	class ${1:`vim_snippets#Filename('$1', 'name')`} 
 	{
+
 	public:
 
 		/**
@@ -905,7 +946,6 @@ snippet cl Class declaration (C++98)
 		~$1();
 
 	private:
-		${0:/* data */}
 
 		/**
 		 * Hidden
