@@ -322,6 +322,27 @@ snippet op| Definition
 		value |= rhs;
 		return value;
 	}
+snippet op-> Declaration
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator*( void );
+
+	$1* operator->( void );
+
+	$2& operator[]( std::size_t );
+snippet op-> Definition
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator*( void )
+	{
+		return *this;
+	}
+
+	$1* $1::operator->( void )
+	{
+		return this;
+	}
+
+	$1& $1::operator[]( std::size_t )
+	{
+		return *this;
+	}
 snippet op* Declaration
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator*=( int rhs );
 
@@ -899,19 +920,18 @@ snippet ostreambuf_iterator std
 snippet erase_remove Effective STL std
 	${1:vector}.erase( std::remove( $1.begin(), $1.end(), ${2:val} ), $1.end() );
 snippet insert_or_update Effective STL
-	template< typename MapType, typename KeyArgType, typename ValueArgtype> 
-	typename MapType::iterator efficientAddOrUpdate(
-		MapType& m, const KeyArgType& k, const ValueArgtype& v )
+	template<typename T> 
+	typename T::iterator map_insert_or_update(
+		T& m, typename T::key_type const& k, typename T::mapped_type const& v )
 	{
-		typename MapType::iterator lb = m.lower_bound( k );
+		typename T::iterator lb = m.lower_bound( k );
 
 		if( lb != m.end() && !( m.key_comp()( k, lb->first ) ) ) { 
 			lb->second = v;
 			return lb;
 		} 
 
-		typedef typename MapType::value_type MVT;
-		return m.insert( lb, MVT( k, v ) );
+		return m.insert( lb, typename T::value_type( k, v ) );
 	}
 snippet shrink_to_fit C++03
 	${1:T}( ${2:collection} ).swap( $2 );
@@ -995,12 +1015,6 @@ snippet cerr std
 	std::cerr << ${1} << std::endl;
 snippet cin std
 	std::cin >> ${1};
-##
-## Iteration
-snippet for For loop using iterators (C++98)
-	for ( ${1:container_type}::iterator ${2:i} = ${3:container}.begin() ; $2 != $3.end() ; ++$2 ) {
-		${4}
-	}
 ##
 ## Allocator
 snippet alloc custom allocator class template outline (C++98)
