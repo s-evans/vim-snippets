@@ -14,8 +14,10 @@ snippet tnfo std::type_info
 	std::type_info 
 snippet te template
 	template<${1}> 
-snippet tt template template
+snippet tt template template parameter
 	template<template <typename> class ${1}>
+snippet ttt recursive template
+	typedef typename ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:type} $2;
 snippet tn typename
 	typename 
 snippet it iterator
@@ -955,31 +957,12 @@ snippet cl Class declaration (C++98)
 
 	public:
 
-		/**
-		 * CTOR
-		 */
-		$1( ${2} );
-
-		/**
-		 * DTOR
-		 */
-		~$1();
-
-	private:
-
-		/**
-		 * Hidden
-		 */
 		$1();
 
-		/**
-		 * Hidden
-		 */
+		~$1();
+
 		$1& operator=( $1 const& );
 
-		/**
-		 * Hidden
-		 */
 		$1( $1 const& );
 
 	};

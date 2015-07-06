@@ -344,42 +344,17 @@ snippet cl Class declaration (C++11)
 
 	public:
 
-		/**
-		 * CTOR
-		 */
-		$1( ${2} );
+		$1();
 
-		/**
-		 * DTOR
-		 */
 		~$1();
 
-		/**
-		 * Default CTOR
-		 */
-		$1() = delete;
+		$1( $1 const& );
 
-		/**
-		 * Copy constructor
-		 */
-		$1( $1 const& ) = delete;
+		$1& operator=( $1 const& );
 
-		/**
-		 * Assignment operator
-		 */
-		$1& operator=( $1 const& ) = delete;
+		$1( $1&& );
 
-		/**
-		 * Move constructor
-		 */
-		$1( $1&& ) = delete;
-
-		/**
-		 * Move assignment operator
-		 */
-		$1& operator=( $1&& ) = delete;
-
-	private:
+		$1& operator=( $1&& );
 
 	};
 snippet op= Declaration (C++11)
