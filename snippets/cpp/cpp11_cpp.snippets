@@ -30,7 +30,7 @@ snippet ld Lambda expression
 	}
 ##
 ## Operators
-snippet opn Global Declaration (C++11)
+snippet allocation_operators Global Declaration (C++11)
 	void* operator new ( std::size_t size );
 
 	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept;
@@ -54,7 +54,7 @@ snippet opn Global Declaration (C++11)
 	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept;
 
 	void operator delete[] ( void* ptr, void* voidptr2 ) noexcept;
-snippet opn Global Definition (C++11)
+snippet allocation_operators Global Definition (C++11)
 	void* operator new ( std::size_t size )
 	{
 	}
@@ -357,7 +357,7 @@ snippet cl Class declaration (C++11)
 		$1& operator=( $1&& );
 
 	};
-snippet op= Declaration (C++11)
+snippet assignment_operators Declaration (C++11)
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}( $1 const& rhs );
 
 	$1& operator=( $1 const& rhs );
@@ -365,7 +365,7 @@ snippet op= Declaration (C++11)
 	$1( $1&& );
 
 	$1& operator=( $1&& );
-snippet op= Definition (C++11)
+snippet assignment_operators Definition (C++11)
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}::$1( $1 const& rhs )
 	{
 	}
@@ -399,7 +399,6 @@ snippet alloc custom allocator class template outline (C++11)
 
 	public:
 
-		// Member types
 		typedef T                 value_type;
 		typedef value_type*       pointer;
 		typedef const value_type* const_pointer;
@@ -413,93 +412,53 @@ snippet alloc custom allocator class template outline (C++11)
 			typedef $1<U> other;
 		};
 
-		/**
-		 * Default constructor
-		 */
 		$1() noexcept
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Copy constructor
-		 */
 		$1( const $1& rhs ) noexcept
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Move constructor
-		 */
 		$1( const $1&& rhs ) noexcept
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Move assignment operator
-		 */
 		$1& operator=( $1&& rhs ) noexcept
 		{
 			if ( this == &rhs ) return *this;
 
-			// TODO: Implement
-
 			return *this;
 		}
 
-		/**
-		 * Assignment operator
-		 */
 		$1& operator=( const $1& rhs ) noexcept
 		{
 			if ( this == &rhs ) return *this;
 
-			// TODO: Implement
-
 			return *this;
 		}
 
-		/**
-		 * Rebind constructor
-		 */
 		template <class U>
 		$1( const $1<U>& rhs ) noexcept
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Destructor
-		 */
 		~$1() noexcept
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Obtains the address of an object, even if operator& is overloaded
-		 */
 		pointer address( reference x ) const noexcept
 		{
 			return &x;
 		}
 
-		/**
-		 * Obtains the address of an object, even if operator& is overloaded
-		 */
 		const_pointer address( const_reference x ) const noexcept
 		{
 			return &x;
 		}
 
-		/**
-		 * Allocates uninitialized storage
-		 */
 		pointer allocate( size_type n, const_pointer hint = 0 )
 		{
-			// TODO: Implement
 			void* p = 0;
 
 			if ( !p ) {
@@ -509,33 +468,20 @@ snippet alloc custom allocator class template outline (C++11)
 			return static_cast<pointer>( p );
 		}
 
-		/**
-		 * Deallocates storage
-		 */
 		void deallocate( pointer p, size_type n ) noexcept
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Returns the largest supported allocation size
-		 */
 		size_type max_size() const noexcept
 		{
 			return static_cast<size_type>( -1 ) / sizeof( value_type );
 		}
 
-		/**
-		 * Constructs an object in allocated storage
-		 */
 		void construct( pointer p, const value_type& x )
 		{
 			new( p ) value_type( x );
 		}
 
-		/**
-		 * Destructs an object in allocated storage
-		 */
 		void destroy( pointer p )
 		{
 			p->~value_type();
@@ -543,11 +489,7 @@ snippet alloc custom allocator class template outline (C++11)
 
 	private:
 
-		// data
-
 	};
-
-	// Void specialization
 
 	template<>
 	class $1<void>
@@ -566,8 +508,6 @@ snippet alloc custom allocator class template outline (C++11)
 		};
 
 	};
-
-	// Free Functions
 
 	template <class T>
 	inline bool operator==( const $1<T>&, const $1<T>& ) noexcept

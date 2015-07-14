@@ -36,43 +36,46 @@ snippet setlocale std
 ## Operators
 snippet op Generic operator syntax
 	operator${1}( ${2} )
-snippet op< Declaration
-	bool operator<( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
-snippet op< Definition
-	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator<( const $1 &rhs ) const
+snippet comparison_operators Declaration
+	friend bool operator<( ${1:`vim_snippets#Filename('$1', 'ClassName')`} const& lhs, $1 const& rhs );
+
+	friend bool operator<=( $1 const& lhs, $1 const& rhs );
+
+	friend bool operator>( $1 const& lhs, $1 const& rhs );
+
+	friend bool operator>=( $1 const& lhs, $1 const& rhs );
+
+	friend bool operator==( $1 const& lhs, $1 const& rhs );
+
+	friend bool operator!=( $1 const& lhs, $1 const& rhs );
+snippet comparison_operators Definition
+	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator<( $1 const& lhs, $1 const& rhs )
 	{
 	}
-snippet op> Declaration
-	bool operator>( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
-snippet op> Definition
-	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator>( const $1 &rhs ) const
+
+	bool $1::operator<=( $1 const& lhs, $1 const& rhs )
+	{
+		return !( lhs > rhs );
+	}
+
+	bool $1::operator>( $1 const& lhs, $1 const& rhs )
 	{
 	}
-snippet op== Declaration
-	bool operator==( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
-snippet op== Definition
-	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator==( const $1 &rhs ) const
+
+	bool $1::operator>=( $1 const& lhs, $1 const& rhs )
+	{
+		return !( lhs < rhs );
+	}
+
+	bool $1::operator==( $1 const& lhs, $1 const& rhs )
 	{
 	}
-snippet op!= Declaration
-	bool operator!=( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
-snippet op!= Definition
-	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator!=( const $1 &rhs ) const
+
+	bool $1::operator!=( $1 const& lhs, $1 const& rhs )
 	{
+		return !( lhs == rhs );
 	}
-snippet op<= Declaration
-	bool operator<=( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
-snippet op<= Definition
-	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator<=( const $1 &rhs ) const
-	{
-	}
-snippet op>= Declaration
-	bool operator>=( const ${1:`vim_snippets#Filename('$1', 'ClassName')`} &rhs ) const;
-snippet op>= Definition
-	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator>=( const $1 &rhs ) const
-	{
-	}
-snippet opn Class Declaration
+snippet allocation_operators Class Declaration
 	void* operator new ( std::size_t count );
 
 	void* operator new[] ( std::size_t count );
@@ -84,7 +87,7 @@ snippet opn Class Declaration
 	void operator delete ( void* ptr, std::size_t sz );
 
 	void operator delete[] ( void* ptr, std::size_t sz );
-snippet opn Class Definition
+snippet allocation_operators Class Definition
 	void* ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator new ( std::size_t count )
 	{
 		if ( size != sizeof( $1 ) ) {
@@ -128,7 +131,7 @@ snippet opn Class Definition
 			return;
 		}
 	}
-snippet opn Global Declaration (C++98)
+snippet allocation_operators Global Declaration (C++98)
 	void* operator new ( std::size_t size ) throw ( std::bad_alloc );
 
 	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) throw();
@@ -152,7 +155,7 @@ snippet opn Global Declaration (C++98)
 	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) throw();
 
 	void operator delete[] ( void* ptr, void* voidptr2 ) throw();
-snippet opn Global Definition (C++98)
+snippet allocation_operators Global Definition (C++98)
 	void* operator new ( std::size_t size ) throw ( std::bad_alloc )
 	{
 	}
@@ -220,178 +223,176 @@ snippet opn Global Definition (C++98)
 			return;
 		}
 	}
-snippet op^ Declaration
+snippet bitwise_operators Declaration
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator^=( int rhs );
 
-	const $1 operator^( int rhs ) const;
-snippet op^ Definition
+	friend $1 operator^( $1 const& lhs, int rhs );
+
+	$1& operator&=( int rhs );
+
+	friend $1 operator&( $1 const& lhs, int rhs );
+
+	$1& operator|=( int rhs );
+
+	friend $1 operator|( $1 const& lhs, int rhs );
+
+	$1& operator<<=( int rhs );
+
+	friend $1 operator<<( $1 const& lhs, int rhs );
+
+	$1& operator>>=( int rhs );
+
+	friend $1 operator>>( $1 const& lhs, int rhs );
+
+	$1 operator~() const;
+snippet bitwise_operators Definition
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator^=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator^( int rhs ) const
+	$1 $1::operator^( $1 const& lhs, int rhs )
 	{
-		$1 value( *this );
+		$1 value( lhs );
 		value ^= rhs;
 		return value;
 	}
-snippet op<< Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator<<=( int rhs );
 
-	const $1 operator<<( int rhs ) const;
-snippet op<< Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator<<=( int rhs )
+	$1& $1::operator<<=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator<<( int rhs ) const
+	$1 $1::operator<<( $1 const& lhs, int rhs )
 	{
-		$1 value( *this );
+		$1 value( lhs );
 		value <<= rhs;
 		return value;
 	}
-snippet op>> Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator>>=( int rhs );
 
-	const $1 operator>>( int rhs ) const;
-snippet op>> Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator>>=( int rhs )
+	$1& $1::operator>>=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator>>( int rhs ) const
+	$1 $1::operator>>( $1 const& lhs, int rhs )
 	{
-		$1 value( *this );
+		$1 value( lhs );
 		value >>= rhs;
 		return value;
 	}
-snippet op& Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator&=( int rhs );
 
-	const $1 operator&( int rhs ) const;
-snippet op& Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator&=( int rhs )
+	$1& $1::operator&=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator&( int rhs ) const
+	$1 $1::operator&( $1 const& lhs, int rhs )
 	{
-		$1 value( *this );
+		$1 value( lhs );
 		value &= rhs;
 		return value;
 	}
-snippet op% Declaration
+
+	$1 $1::operator~() const
+	{
+		$1 value( *this );
+		return value;
+	}
+
+	$1& $1::operator|=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator|( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value |= rhs;
+		return value;
+	}
+snippet arithmetic_operators Declaration
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator%=( int rhs );
 
-	const $1 operator%( int rhs ) const;
-snippet op% Definition
+	friend $1 operator%( $1 const& lhs, int rhs );
+
+	$1& operator*=( int rhs );
+
+	friend $1 operator*( $1 const& lhs, int rhs );
+
+	$1& operator/=( int rhs );
+
+	friend $1 operator/( $1 const& lhs, int rhs );
+
+	$1& operator+=( int rhs )
+
+	$1 operator+();
+
+	friend $1 operator+( $1 const& lhs, int rhs );
+
+	$1& operator++();
+
+	$1 operator++( int );
+
+	$1& operator-=( int rhs );
+
+	$1 operator-();
+
+	friend $1 operator-( $1 const& lhs, int rhs );
+
+	$1& operator--();
+
+	$1 operator--( int );
+snippet arithmetic_operators Definition
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator%=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator%( int rhs ) const
+	$1 $1::operator%( $1 const& lhs, int rhs )
 	{
 		$1 value( *this );
 		value %= rhs;
 		return value;
 	}
-snippet op~ Declaration
-	const $1 operator~() const;
-snippet op~ Definition
-	const $1 $1::operator~() const
-	{
-		$1 value( *this );
-		return value;
-	}
-snippet op| Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator|=( int rhs );
 
-	const $1 operator|( int rhs ) const;
-snippet op| Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator|=( int rhs )
+	$1& $1::operator*=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator|( int rhs ) const
+	$1 $1::operator*( $1 const& lhs, int rhs )
 	{
-		$1 value( *this );
-		value |= rhs;
-		return value;
-	}
-snippet op-> Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator*( void );
-
-	$1* operator->( void );
-
-	$2& operator[]( std::size_t );
-snippet op-> Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator*( void )
-	{
-		return *this;
-	}
-
-	$1* $1::operator->( void )
-	{
-		return this;
-	}
-
-	$1& $1::operator[]( std::size_t )
-	{
-		return *this;
-	}
-snippet op* Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator*=( int rhs );
-
-	const $1 operator*( int rhs ) const;
-snippet op* Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator*=( int rhs )
-	{
-		return *this;
-	}
-
-	const $1 $1::operator*( int rhs ) const
-	{
-		$1 value( *this );
+		$1 value( lhs );
 		value *= rhs;
 		return value;
 	}
-snippet op/ Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator/=( int rhs );
 
-	const $1 operator/( int rhs ) const;
-snippet op/ Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator/=( int rhs )
+	$1& $1::operator/=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator/( int rhs ) const
+	$1 $1::operator/( $1 const& lhs, int rhs )
 	{
-		$1 value( *this );
+		$1 value( lhs );
 		value /= rhs;
 		return value;
 	}
-snippet op+ Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator+=( int rhs )
 
-	const $1 operator+( int rhs ) const;
-
-	$1& operator++();
-
-	const $1 operator++( int );
-snippet op+ Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator+=( int rhs )
+	$1& $1::operator+=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator+( int rhs ) const
+	$1 $1::operator+()
+	{
+		$1 value( *this );
+
+		return value;
+	}
+
+	$1 $1::operator+( $1 const& lhs, int rhs )
 	{
 		$1 value( *this );
 		value += rhs;
@@ -400,63 +401,74 @@ snippet op+ Definition
 
 	$1& $1::operator++()
 	{
-		*this += 1; // increment
-		return *this; // fetch
+		*this += 1;
+		return *this;
 	}
 
-	const $1 $1::operator++( int )
+	$1 $1::operator++( int )
 	{
-		const $1 oldValue = *this; // fetch
-		++(*this); // increment
-		return oldValue; // return what was
+		const $1 oldValue = *this;
+		++(*this);
+		return oldValue;
 	}
-snippet op- Declaration
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator-=( int rhs );
 
-	const $1 operator-() const;
-
-	const $1 operator-( int rhs ) const;
-
-	$1& operator--();
-
-	const $1 operator--( int );
-snippet op- Definition
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator-=( int rhs )
+	$1& $1::operator-=( int rhs )
 	{
 		return *this;
 	}
 
-	const $1 $1::operator-() const
+	$1 $1::operator-()
 	{
 		$1 value( *this );
 
 		return value;
 	}
 
-	const $1 $1::operator-( int rhs ) const
+	$1 $1::operator-( $1 const& lhs, int rhs )
 	{
-		$1 value( *this );
+		$1 value( lhs );
 		value += rhs;
 		return value;
 	}
 
 	$1& $1::operator--()
 	{
-		*this -= 1; // increment
-		return *this; // fetch
+		*this -= 1;
+		return *this;
 	}
 
-	const $1 $1::operator--( int )
+	$1 $1::operator--( int )
 	{
-		const $1 oldValue = *this; // fetch
-		--(*this); // increment
-		return oldValue; // return what was
+		const $1 oldValue = *this;
+		--(*this);
+		return oldValue;
 	}
-snippet op= Declaration (C++98)
+snippet dereference_operators Declaration
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator*();
+
+	$1* operator->();
+
+	$2& operator[]( std::size_t );
+snippet dereference_operators Definition
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator*()
+	{
+		return *this;
+	}
+
+	$1* $1::operator->()
+	{
+		return this;
+	}
+
+	$1& $1::operator[]( std::size_t )
+	{
+		return *this;
+	}
+snippet assignment_operators Declaration (C++98)
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}( $1 const& rhs );
 
 	$1& operator=( $1 const& rhs );
-snippet op= Definition (C++98)
+snippet assignment_operators Definition (C++98)
 	${1:`vim_snippets#Filename('$1', 'ClassName')`}::$1( $1 const& rhs )
 	{
 	}
@@ -1010,7 +1022,6 @@ snippet alloc custom allocator class template outline (C++98)
 
 	public:
 
-		// Member types
 		typedef T                 value_type;
 		typedef value_type*       pointer;
 		typedef const value_type* const_pointer;
@@ -1024,73 +1035,42 @@ snippet alloc custom allocator class template outline (C++98)
 			typedef $1<U> other;
 		};
 
-		/**
-		 * Default constructor
-		 */
 		$1() throw()
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Copy constructor
-		 */
 		$1( const $1& rhs ) throw()
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Assignment operator
-		 */
 		$1& operator=( const $1& rhs ) throw()
 		{
 			if ( this == &rhs ) return *this;
 
-			// TODO: Implement
-
 			return *this;
 		}
 
-		/**
-		 * Rebind constructor
-		 */
 		template <class U>
 		$1( const $1<U>& rhs ) throw()
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Destructor
-		 */
 		~$1() throw()
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Obtains the address of an object, even if operator& is overloaded
-		 */
 		pointer address( reference x ) const throw()
 		{
 			return &x;
 		}
 
-		/**
-		 * Obtains the address of an object, even if operator& is overloaded
-		 */
 		const_pointer address( const_reference x ) const throw()
 		{
 			return &x;
 		}
 
-		/**
-		 * Allocates uninitialized storage
-		 */
 		pointer allocate( size_type n, const_pointer hint = 0 )
 		{
-			// TODO: Implement
 			void* p = 0;
 
 			if ( !p ) {
@@ -1100,45 +1080,28 @@ snippet alloc custom allocator class template outline (C++98)
 			return static_cast<pointer>( p );
 		}
 
-		/**
-		 * Deallocates storage
-		 */
 		void deallocate( pointer p, size_type n ) throw()
 		{
-			// TODO: Implement
 		}
 
-		/**
-		 * Returns the largest supported allocation size
-		 */
 		size_type max_size() const throw()
 		{
 			return static_cast<size_type>( -1 ) / sizeof( value_type );
 		}
 
-		/**
-		 * Constructs an object in allocated storage
-		 */
 		void construct( pointer p, const value_type& x )
 		{
 			new( p ) value_type( x );
 		}
 
-		/**
-		 * Destructs an object in allocated storage
-		 */
 		void destroy( pointer p )
 		{
 			p->~value_type();
 		}
 
 	private:
-		
-		// data
 
 	};
-
-	// Void specialization
 
 	template<>
 	class $1<void>
@@ -1158,8 +1121,6 @@ snippet alloc custom allocator class template outline (C++98)
 
 	};
 
-	// Free Functions
-
 	template <class T>
 	inline bool operator==( const $1<T>&, const $1<T>& ) throw()
 	{
@@ -1171,6 +1132,136 @@ snippet alloc custom allocator class template outline (C++98)
 	{
 		return false;
 	}
+
+##
+## Iterator
+snippet iter custom iterator
+	include <iterator>
+
+	template<typename T>
+	class ${1:`vim_snippets#Filename('$1', 'name')`}
+	{
+
+	public:
+
+		typedef T                               value_type;
+		typedef std::ptrdiff_t                  difference_type;
+		typedef value_type*                     pointer;
+		typedef value_type&                     reference;
+		typedef std::random_access_iterator_tag iterator_category;
+
+		$1()
+		{
+		}
+
+		$1( value_type& rhs )
+		{
+		}
+
+		$1( $1 const& rhs )
+		{
+		}
+
+		$1& operator=( $1 const& rhs )
+		{
+			if ( this == &rhs )
+				return *this;
+
+			return *this;
+		}
+
+		reference operator*( void )
+		{
+		}
+
+		pointer operator->( void )
+		{
+		}
+
+		reference operator[]( difference_type off )
+		{
+		}
+
+		$1& operator+=( difference_type rhs )
+		{
+			return *this;
+		}
+
+		$1& operator++()
+		{
+			return (*this += 1);
+		}
+
+		$1 operator++( int )
+		{
+			$1 tmp( *this );
+			*this += 1;
+			return tmp;
+		}
+
+		$1& operator-=( difference_type rhs )
+		{
+			return *this;
+		}
+
+		$1& operator--()
+		{
+			return (*this -= 1);
+		}
+
+		$1 operator--( int )
+		{
+			$1 tmp( *this );
+			*this -= 1;
+			return tmp;
+		}
+
+		friend bool operator==( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator!=( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator<( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator<=( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator>( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator>=( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend $1 operator+( $1 const& lhs, difference_type rhs )
+		{
+			return $1( lhs ) += rhs;
+		}
+
+		friend $1 operator+( difference_type lhs, $1 const& rhs )
+		{
+			return $1( rhs ) += lhs;
+		}
+
+		friend $1 operator-( $1 const& lhs, difference_type rhs )
+		{
+			return $1( lhs ) -= rhs;
+		}
+
+		friend difference_type operator-( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+	private:
+
+	};
 
 ##
 ## Compiler
