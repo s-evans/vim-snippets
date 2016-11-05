@@ -1,245 +1,11 @@
 ##
 ## Misc
-snippet vol
-	volatile
-snippet ex
-	explicit
-snippet cr
-	const& 
-snippet fwd std
-	std::forward<${1:T}>( ${2:val} )
-snippet np
-	nullptr
-snippet dt
-	decltype(${1:expr})
-snippet dta
-	decltype(auto)
-snippet static_assert C++11
-	static_assert( ${1:bool_constexpr}, ${2:message} );
 snippet static_assert C++03
 	BOOST_STATIC_ASSERT_MSG( ${1:bool_constexpr}, ${2:message} );
 ##
-## C++11 Enums
-snippet ec
-	enum class ${1:T} {
-		${2}
-	};
-snippet tec
-	typedef enum class ${1:T} {
-		${2}
-	} $1_T;
-snippet es
-	enum struct ${1:T} {
-		${2}
-	};
-snippet tes
-	typedef enum struct ${1:T} {
-		${2}
-	} $1_T;
-snippet eb
-	enum ${1:T} : ${2:base_type} {
-		${3}
-	};
-snippet teb
-	typedef enum ${1:T} : ${2:base_type} {
-		${3}
-	} $1_T;
-snippet esb
-	enum struct ${1:T} : ${2:base_type} {
-		${3}
-	};
-snippet tesb
-	typedef enum struct ${1:T} : ${2:base_type} {
-		${3}
-	} $1_T;
-snippet ecb
-	enum class ${1:T} : ${2:base_type} {
-		${3}
-	};
-snippet tecb
-	typedef enum class ${1:T} : ${2:base_type} {
-		${3}
-	} $1_T;
-## Locales
-snippet global std::locale
-	std::locale::global( std::locale( "${1:location}" ) )
-snippet locale std
-	std::locale
-snippet setlocale std
-	std::setlocale( ${1:LC_ALL}, "${2:location}" )
-##
 ## Keywords
-snippet typeid
-	typeid( ${1:type_or_expression} )
-snippet type_info std
-	std::type_info
-snippet op
-	operator${1}( ${2} )
-snippet op=
-	$1& ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator=( $1 const& rhs )
-	{
-		if ( this == &rhs ) return *this;
-
-		${0}
-
-		return *this;
-	}
-snippet try
-	try {
-		${1}
-	} catch ( ${2:T}& ${3:name} ) {
-		${4}
-	}
-snippet catch
-	catch ( ${1:T}& ${2:name} ) {
-		${3}
-	}
-snippet throw
-	throw ${1:value};
-snippet scast
-	static_cast<${1:T}>( ${2:value} )
-snippet dcast
-	dynamic_cast<${1:T}>( ${2:value} )
-snippet rcast
-	reinterpret_cast<${1:T}>( ${2:value} )
-snippet ccast
-	const_cast<${1:T}>( ${2:value} )
-snippet lcast
+snippet lc boost
 	boost::lexical_cast<${1:T}>( ${2:value} )
-snippet te
-	template<${1}>
-snippet cn
-	class ${1}
-snippet tn
-	typename ${1}
-##
-## Allocation
-snippet n
-	new ${1:type}
-snippet na
-	new ${1:type}[${2:count}]
-snippet pn
-	new (${1:pointer}) ${2:type}
-snippet pna
-	new (${1:pointer}) ${2:type}[${3:count}]
-snippet d
-	delete
-snippet da
-	delete[] ${1}
-##
-## Streams
-snippet ss std
-	std::stringstream ${1:ss};
-snippet iss std
-	std::istringstream ${1:iss};
-snippet oss std
-	std::ostringstream ${1:oss};
-snippet sb std
-	std::stringbuf ${1:sb};
-snippet is std
-	std::istream ${1:is}( ${2:sb} );
-snippet os std
-	std::ostream ${1:os}( ${2:sb} );
-snippet ios std
-	std::iostream ${1:ios};
-snippet ofs std
-	std::ofstream ${1:ofs}( ${2:filename} );
-snippet ifs std
-	std::ifstream ${1:ifs}( ${2:filename} );
-snippet fs std
-	std::fstream ${1:fs}( ${2:filename} );
-snippet fbuf std
-	std::filebuf ${1:fbuf};
-##
-## Manipulators
-snippet boolalpha std
-	std::boolalpha
-snippet showbase std
-	std::showbase
-snippet showpoint std
-	std::showpoint
-snippet showpos std
-	std::showpos
-snippet skipws std
-	std::skipws
-snippet unitbuf std
-	std::unitbuf
-snippet uppercase std
-	std::uppercase
-snippet noboolalpha std
-	std::noboolalpha
-snippet noshowbase std
-	std::noshowbase
-snippet noshowpoint std
-	std::noshowpoint
-snippet noshowpos std
-	std::noshowpos
-snippet noskipws std
-	std::noskipws
-snippet nounitbuf std
-	std::nounitbuf
-snippet nouppercase std
-	std::nouppercase
-snippet dec std
-	std::dec
-snippet hex std
-	std::hex
-snippet oct std
-	std::oct
-snippet fixed std
-	std::fixed
-snippet scientific std
-	std::scientific
-snippet internal std
-	std::internal
-snippet left std
-	std::left
-snippet right std
-	std::right
-snippet ws std
-	std::ws
-snippet endl std
-	std::endl
-snippet ends std
-	std::ends
-snippet flush std
-	std::flush
-##
-## Parameter Manipulators
-snippet setiosflags std
-	std::setiosflags( ${1:iosflags} )
-snippet resetiosflags std
-	std::resetiosflags( ${1:iosflags} )
-snippet setbase std
-	std::setbase( ${1:radix} )
-snippet setfill std
-	std::setfill( '${1:char}' )
-snippet setprecision std
-	std::setprecision( ${1:decimal_places} )
-snippet setw std
-	std::setw( ${1:width} )
-##
-## Exceptions
-snippet logic_error std
-	std::logic_error
-snippet invalid_argument
-	std::invalid_argument
-snippet domain_error std
-	std::domain_error
-snippet length_error std
-	std::length_error
-snippet out_of_range std
-	std::out_of_range
-snippet runtime_error std
-	std::runtime_error
-snippet range_error std
-	std::range_error
-snippet overflow_error std
-	std::overflow_error
-snippet underflow_error std
-	std::underflow_error
-##
-## Boost
 ##
 ## Iterator Range
 snippet iterator_range boost
@@ -308,60 +74,92 @@ snippet scoped_lock boost::interprocess
 	boost::interprocess::scoped_lock<${1:mutex_type}>
 ##
 ## Logging Macros
-snippet BOOST_LOG_TRIVIAL boost
-	BOOST_LOG_TRIVIAL(${1:debug}) << "${2:message}"
-snippet BOOST_LOG boost
-	BOOST_LOG(${1:logger}) << "${2:message}"
-snippet BOOST_LOG_SEV boost
-	BOOST_LOG_SEV(${1:severity_logger}, ${2:severity}) << "${3:message}"
-snippet BOOST_LOG_CHANNEL boost
-	BOOST_LOG_CHANNEL(${1:channel_logger}, "${2:channel}") << "${3:message}"
+snippet LOG boost
+	BOOST_LOG( ${1:logger} ) << "${2:message}";
+snippet LOG_TRIVIAL boost
+	BOOST_LOG_TRIVIAL( ${1:debug} ) << "${2:message}";
+snippet LOG_SEV boost
+	BOOST_LOG_SEV( ${1:severity_logger}, ${2:severity} ) << "${3:message}";
+snippet LOG_CHANNEL boost
+	BOOST_LOG_CHANNEL( ${1:channel_logger}, "${2:channel}" ) << "${3:message}";
+snippet LOG_CHANNEL_SEV boost
+	BOOST_LOG_CHANNEL_SEV( ${1:severity_channel_logger}, "${2:channel}", ${3:severity} ) << "${3:message}";
 ##
 ## Logging Core
-snippet get boost::logging::core
-	boost::logging::core::get()
+snippet get boost::log::core
+	boost::log::core::get()
 ##
 ## Logging Helpers
-snippet add_file_log boost::logging
-	boost::logging::add_file_log(        
-		boost::logging::keywords::file_name = "${1:sample_%N.log}",
-		boost::logging::keywords::rotation_size = ${2:10 * 1024 * 1024},
-		boost::logging::keywords::time_based_rotation = boost::logging::sinks::file::rotation_at_time_point(0, 0, 0),
-		boost::logging::keywords::format = "${3:[%TimeStamp%]: %Message%}" );
 snippet add_console_log boost::log
 	boost::log::add_console_log( ${1:ostream}, ${2:args} )
-snippet add_common_attributes boost::log
-	boost::log::add_common_attributes();
 ##
 ## Logging Sinks
-snippet asynchronous_sink boost::logging::sinks
-	boost::logging::sinks::asynchronous_sink<${1:sink_backend}>
-snippet synchronous_sink boost::logging::sinks
-	boost::logging::sinks::synchronous_sink<${1:sink_backend}>
-snippet wtext_ostream_backend boost::logging::sinks
-	boost::logging::sinks::wtext_ostream_backend
-snippet text_ostream_backend boost::logging::sinks
-	boost::logging::sinks::text_ostream_backend
-snippet text_multifile_backend boost::logging::sinks
-	boost::logging::sinks::text_multifile_backend
-snippet text_file_backend boost::logging::sinks
-	boost::logging::sinks::text_file_backend
-snippet syslog_backend boost::logging::sinks
-	boost::logging::sinks::syslog_backend
-snippet rotation_at_time_interval boost::logging::sinks::file
-	boost::logging::sinks::file::rotation_at_time_interval( ${1:time_duration} )
-snippet rotation_at_time_point boost::logging::sinks::file
-	boost::logging::sinks::file::rotation_at_time_point( ${1:hour}, ${2:minute}, ${3:second} )
+snippet asynchronous_sink boost::log::sinks
+	boost::log::sinks::asynchronous_sink<${1:sink_backend}>
+snippet synchronous_sink boost::log::sinks
+	boost::log::sinks::synchronous_sink<${1:sink_backend}>
+snippet wtext_ostream_backend boost::log::sinks
+	boost::log::sinks::wtext_ostream_backend
+snippet text_ostream_backend boost::log::sinks
+	boost::log::sinks::text_ostream_backend
+snippet text_multifile_backend boost::log::sinks
+	boost::log::sinks::text_multifile_backend
+snippet text_file_backend boost::log::sinks
+	boost::log::sinks::text_file_backend
+snippet syslog_backend boost::log::sinks
+	boost::log::sinks::syslog_backend
+snippet rotation_at_time_interval boost::log::sinks::file
+	boost::log::sinks::file::rotation_at_time_interval( ${1:time_duration} )
+snippet rotation_at_time_point boost::log::sinks::file
+	boost::log::sinks::file::rotation_at_time_point( ${1:hour}, ${2:minute}, ${3:second} )
+snippet threading_model_tag boost::log::sinks
+	boost::log::sinks::threading_model_tag
+snippet single_thread_tag boost::log::sinks
+	boost::log::sinks::single_thread_tag
+snippet backend_synchronization_tag boost::log::sinks
+	boost::log::sinks::backend_synchronization_tag
+snippet frontend_synchronization_tag boost::log::sinks
+	boost::log::sinks::frontend_synchronization_tag
+snippet basic_sink_backend boost::log::sinks
+	boost::log::sinks::basic_sink_backend<${2:requirements}>
+snippet combine_requirements boost::log::sinks
+	boost::log::sinks::combine_requirements<${1:reqs...}>::type
+snippet flushing boost::log::sinks
+	boost::log::sinks::flushing
+snippet formatted_records boost::log::sinks
+	boost::log::sinks::formatted_records
+snippet concurrent_feeding boost::log::sinks
+	boost::log::sinks::concurrent_feeding
+snippet synchronized_feeding boost::log::sinks
+	boost::log::sinks::synchronized_feeding
+snippet consume boost::log::sinks
+	void consume( boost::log::record_view const& rec );
+snippet value_ref boost::log
+	boost::log::value_ref<${1:T}>
+snippet visit boost::log
+	boost::log::visit<${1:T}>( ${2:attr}, ${3:visitor} )
+snippet visitation_result boost::log
+	boost::log::visitation_result
+snippet extract boost::log::attr
+	boost::log::extract<${1:T}>( ${2:attr} )
+snippet extract boost::log::rec
+	boost::log::extract<${1:T}>( ${2:attr}, ${3:rec} )
+snippet filter boost::log
+	boost::log::filter
 ##
 ## Logging Keywords
-snippet file_name boost::logging::keywords
-	boost::logging::keywords::file_name
-snippet rotation_size boost::logging::keywords
-	boost::logging::keywords::rotation_size
-snippet time_based_rotation boost::logging::keywords
-	boost::logging::keywords::time_based_rotation
-snippet format boost::logging::keywords
-	boost::logging::keywords::format
+snippet file_name boost::log::keywords
+	boost::log::keywords::file_name
+snippet rotation_size boost::log::keywords
+	boost::log::keywords::rotation_size
+snippet time_based_rotation boost::log::keywords
+	boost::log::keywords::time_based_rotation
+snippet format boost::log::keywords
+	boost::log::keywords::format
+snippet severity boost::log::keywords
+	boost::log::keywords::severity
+snippet channel boost::log::keywords
+	boost::log::keywords::channel
 ##
 ## Logging Sources
 snippet logger boost::log::sources
@@ -389,31 +187,93 @@ snippet wseverity_channel_logger boost::log::sources
 snippet wseverity_channel_logger_mt boost::log::sources
 	boost::log::sources::wseverity_channel_logger_mt<${1:enum_type}, ${2:channel_type}>
 ##
+## Logging Functions
+snippet add_value boost::log
+	boost::log::add_value( "${1:attr_name}", "${2:value}" )
+##
+## Logging Attributes
+snippet add_common_attr boost::log
+	boost::log::add_common_attributes();
+snippet attr_value boost::log
+	boost::log::attribute_value
+snippet attr_value_set boost::log
+	boost::log::attribute_value_set
+snippet attr_name boost::log
+	boost::log::attribute_name
+snippet record_view boost::log
+	boost::log::record_view
+snippet formatting_ostream boost::log
+	boost::log::formatting_ostream
+snippet current_scope_info boost::log::attributes
+	boost::log::attributes::current_scope_info
+snippet constant boost::log::attributes
+	boost::log::attributes::constant<${1:T}>( ${2:val} )
+snippet mutable_constant boost::log::attributes
+	boost::log::attributes::mutable_constant<${1:T}>( ${2:initial_value} )
+snippet counter boost::log::attributes
+	boost::log::attributes::counter<${1:T}>( ${2:initial_value = 0}, ${3:step = 1} )
+snippet timer boost::log::attributes
+	boost::log::attributes::timer()
+snippet local_clock boost::log::attributes
+	boost::log::attributes::local_clock()
+snippet current_process_name boost::log::attributes
+	boost::log::attributes::current_process_name()
+snippet named_scope boost::log::attributes
+	boost::log::attributes::named_scope()
+snippet current_scope boost::log::attributes
+	boost::log::attributes::current_scope()
+snippet make_function boost::log::attributes
+	boost::log::attributes::make_function( ${1:function} )
+snippet current_thread_id boost::log::attributes
+	boost::log::attributes::current_thread_id()
+snippet ATTR_KEYWORD boost::log::attributes
+	BOOST_LOG_ATTRIBUTE_KEYWORD( ${1:keyword}, "${2:attr_name}", ${3:T} )
+snippet SCOPED_LOGGER_TAG boost::log::attributes
+	BOOST_LOG_SCOPED_LOGGER_TAG( ${1:logger}, "${2:tag_name}", ${3:tag_value} );
+snippet SCOPED_THREAD_TAG boost::log::attributes
+	BOOST_LOG_SCOPED_THREAD_TAG( "${1:tag_name}", ${2:tag_value} );
+snippet SCOPED_LOGGER_ATTR boost::log::attributes
+	BOOST_LOG_SCOPED_LOGGER_ATTR( ${1:logger}, "${2:attr_name}", ${3:attr} );
+snippet SCOPED_THREAD_ATTR boost::log::attributes
+	BOOST_LOG_SCOPED_THREAD_ATTR( "${1:attr_name}", ${2:attr} );
+snippet NAMED_SCOPE boost::log::attributes
+	BOOST_LOG_NAMED_SCOPE( "${1:value}" );
+snippet LOG_FXN boost::log::attributes
+	BOOST_LOG_FUNCTION();
+##
+## Logging expressions
+snippet wmessage boost::log::expressions
+	boost::log::expressions::wmessage
+snippet message boost::log::expressions
+	boost::log::expressions::message
+snippet smessage boost::log::expressions
+	boost::log::expressions::smessage
+##
 ## Logging Exceptions
 snippet runtime_error boost::log
-	boost::logg::runtime_error
+	boost::log::runtime_error
 snippet missing_value boost::log
-	boost::logg::missing_value
+	boost::log::missing_value
 snippet invalid_type boost::log
-	boost::logg::invalid_type
+	boost::log::invalid_type
 snippet invalid_value boost::log
-	boost::logg::invalid_value
+	boost::log::invalid_value
 snippet parse_error boost::log
-	boost::logg::parse_error
+	boost::log::parse_error
 snippet conversion_error boost::log
-	boost::logg::conversion_error
+	boost::log::conversion_error
 snippet system_error boost::log
-	boost::logg::system_error
+	boost::log::system_error
 snippet logic_error boost::log
-	boost::logg::logic_error
+	boost::log::logic_error
 snippet odr_violation boost::log
-	boost::logg::odr_violation
+	boost::log::odr_violation
 snippet unexpected_call boost::log
-	boost::logg::unexpected_call
+	boost::log::unexpected_call
 snippet setup_error boost::log
-	boost::logg::setup_error
+	boost::log::setup_error
 snippet limitation_error boost::log
-	boost::logg::limitation_error
+	boost::log::limitation_error
 ##
 ## CRC
 snippet crc_basic boost
@@ -432,7 +292,6 @@ snippet crc_16_type boost
 	boost::crc_xmodem_type
 snippet crc_16_type boost
 	boost::crc_32_type
-
 ##
 ## IO Streams
 snippet aggregate_filter boost::iostreams
@@ -728,8 +587,8 @@ snippet any boost
 snippet acast boost
 	boost::any_cast<${1:T}>( ${2:any} )
 snippet bad_any_cast boost
-	boost::bad_any_cast 
-## 
+	boost::bad_any_cast
+##
 ## Variant
 snippet variant boost
 	boost::variant<${1:type_list}>
@@ -741,6 +600,8 @@ snippet apply_visitor boost
 	boost::apply_visitor( ${1:static_visitor}, ${2:variant} )
 ##
 ## Misc
+snippet fwd boost
+	boost::forward( ${1:ref} )
 snippet mv boost
 	boost::move( ${1:ref} )
 ##
@@ -845,119 +706,119 @@ snippet serialize_ext boost::serialization
 ## Random Generators
 snippet random_device boost::random
 	boost::random::random_device
-snippet minstd_rand0 boost::random  
+snippet minstd_rand0 boost::random
 	boost::random::minstd_rand0
-snippet minstd_rand boost::random  
+snippet minstd_rand boost::random
 	boost::random::minstd_rand
-snippet rand48 boost::random  
+snippet rand48 boost::random
 	boost::random::rand48
-snippet ecuyer1988 boost::random  
+snippet ecuyer1988 boost::random
 	boost::random::ecuyer1988
-snippet knuth_b boost::random  
+snippet knuth_b boost::random
 	boost::random::knuth_b
-snippet kreutzer1986 boost::random  
+snippet kreutzer1986 boost::random
 	boost::random::kreutzer1986
-snippet taus88 boost::random  
+snippet taus88 boost::random
 	boost::random::taus88
-snippet hellekalek1995 boost::random  
+snippet hellekalek1995 boost::random
 	boost::random::hellekalek1995
-snippet mt11213b boost::random  
+snippet mt11213b boost::random
 	boost::random::mt11213b
-snippet mt19937 boost::random  
+snippet mt19937 boost::random
 	boost::random::mt19937
-snippet mt19937_64 boost::random  
+snippet mt19937_64 boost::random
 	boost::random::mt19937_64
-snippet lagged_fibonacci607 boost::random  
+snippet lagged_fibonacci607 boost::random
 	boost::random::lagged_fibonacci607
-snippet lagged_fibonacci1279 boost::random  
+snippet lagged_fibonacci1279 boost::random
 	boost::random::lagged_fibonacci1279
-snippet lagged_fibonacci2281 boost::random  
+snippet lagged_fibonacci2281 boost::random
 	boost::random::lagged_fibonacci2281
-snippet lagged_fibonacci3217 boost::random  
+snippet lagged_fibonacci3217 boost::random
 	boost::random::lagged_fibonacci3217
-snippet lagged_fibonacci4423 boost::random  
+snippet lagged_fibonacci4423 boost::random
 	boost::random::lagged_fibonacci4423
-snippet lagged_fibonacci9689 boost::random  
+snippet lagged_fibonacci9689 boost::random
 	boost::random::lagged_fibonacci9689
-snippet lagged_fibonacci19937 boost::random  
+snippet lagged_fibonacci19937 boost::random
 	boost::random::lagged_fibonacci19937
-snippet lagged_fibonacci23209 boost::random  
+snippet lagged_fibonacci23209 boost::random
 	boost::random::lagged_fibonacci23209
-snippet lagged_fibonacci44497 boost::random  
+snippet lagged_fibonacci44497 boost::random
 	boost::random::lagged_fibonacci44497
-snippet ranlux3 boost::random  
+snippet ranlux3 boost::random
 	boost::random::ranlux3
-snippet ranlux4 boost::random  
+snippet ranlux4 boost::random
 	boost::random::ranlux4
-snippet ranlux64_3 boost::random  
+snippet ranlux64_3 boost::random
 	boost::random::ranlux64_3
-snippet ranlux64_4 boost::random  
+snippet ranlux64_4 boost::random
 	boost::random::ranlux64_4
-snippet ranlux3_01 boost::random  
+snippet ranlux3_01 boost::random
 	boost::random::ranlux3_01
-snippet ranlux4_01 boost::random  
+snippet ranlux4_01 boost::random
 	boost::random::ranlux4_01
-snippet ranlux64_3_01 boost::random  
+snippet ranlux64_3_01 boost::random
 	boost::random::ranlux64_3_01
-snippet ranlux64_4_01 boost::random  
+snippet ranlux64_4_01 boost::random
 	boost::random::ranlux64_4_01
-snippet ranlux24 boost::random  
+snippet ranlux24 boost::random
 	boost::random::ranlux24
-snippet ranlux48 boost::random  
+snippet ranlux48 boost::random
 	boost::random::ranlux48
-## 
+##
 ## Random Distributions
 snippet uniform_int_distribution boost::random
 	boost::random::uniform_int_distribution<${1:int}> ${2:name} ( ${3:range_low}, ${3:range_high} )
 snippet discrete_distribution boost::random
 	boost::random::discrete_distribution<${1:double}> ${2:name} ( ${4:array_of_doubles} )
-snippet uniform_smallint boost::random  
+snippet uniform_smallint boost::random
 	boost::random::uniform_smallint
-snippet uniform_01 boost::random  
+snippet uniform_01 boost::random
 	boost::random::uniform_01
-snippet uniform_real_distribution boost::random  
+snippet uniform_real_distribution boost::random
 	boost::random::uniform_real_distribution
-snippet bernoulli_distribution boost::random  
+snippet bernoulli_distribution boost::random
 	boost::random::bernoulli_distribution
-snippet binomial_distribution boost::random  
+snippet binomial_distribution boost::random
 	boost::random::binomial_distribution
-snippet geometric_distribution boost::random  
+snippet geometric_distribution boost::random
 	boost::random::geometric_distribution
-snippet negative_binomial_distribution boost::random  
+snippet negative_binomial_distribution boost::random
 	boost::random::negative_binomial_distribution
-snippet poisson_distribution boost::random  
+snippet poisson_distribution boost::random
 	boost::random::poisson_distribution
-snippet exponential_distribution boost::random  
+snippet exponential_distribution boost::random
 	boost::random::exponential_distribution
-snippet gamma_distribution boost::random  
+snippet gamma_distribution boost::random
 	boost::random::gamma_distribution
-snippet weibull_distribution boost::random  
+snippet weibull_distribution boost::random
 	boost::random::weibull_distribution
-snippet extreme_value_distribution boost::random  
+snippet extreme_value_distribution boost::random
 	boost::random::extreme_value_distribution
-snippet beta_distribution boost::random  
+snippet beta_distribution boost::random
 	boost::random::beta_distribution
-snippet laplace_distribution boost::random  
+snippet laplace_distribution boost::random
 	boost::random::laplace_distribution
-snippet normal_distribution boost::random  
+snippet normal_distribution boost::random
 	boost::random::normal_distribution
-snippet lognormal_distribution boost::random  
+snippet lognormal_distribution boost::random
 	boost::random::lognormal_distribution
-snippet chi_squared_distribution boost::random  
+snippet chi_squared_distribution boost::random
 	boost::random::chi_squared_distribution
-snippet cauchy_distribution boost::random  
+snippet cauchy_distribution boost::random
 	boost::random::cauchy_distribution
-snippet fisher_f_distribution boost::random  
+snippet fisher_f_distribution boost::random
 	boost::random::fisher_f_distribution
-snippet student_t_distribution boost::random  
+snippet student_t_distribution boost::random
 	boost::random::student_t_distribution
-snippet piecewise_constant_distribution boost::random  
+snippet piecewise_constant_distribution boost::random
 	boost::random::piecewise_constant_distribution
-snippet piecewise_linear_distribution boost::random  
+snippet piecewise_linear_distribution boost::random
 	boost::random::piecewise_linear_distribution
-snippet triangle_distribution boost::random  
+snippet triangle_distribution boost::random
 	boost::random::triangle_distribution
-snippet uniform_on_sphere boost::random  
+snippet uniform_on_sphere boost::random
 	boost::random::uniform_on_sphere
 ##
 ## Tuples
@@ -966,7 +827,7 @@ snippet tuple boost
 snippet mktuple boost
 	boost::make_tuple( ${1:value_list} )
 snippet tie boost
-	boost::tie( ${1:non_const_reference_list} )
+	boost::tie( ${1:non_const_reference, ...} )
 snippet ignore boost::tuples
 	boost::tuples::ignore
 snippet set_open boost::tuples
@@ -979,7 +840,7 @@ snippet get boost::tuples
 	boost::tuples::get<${1:N}>( ${2:tuple} )
 ##
 ## Program options
-snippet po_example
+snippet po_example boost::program_options
 	// Declare the supported options.
 	boost::program_options::options_description desc( "Allowed options" );
 	desc.add_options()
@@ -1000,6 +861,10 @@ snippet positional_options_description boost::program_options
 	boost::program_options::positional_options_description
 snippet variables_map boost::program_options
 	boost::program_options::variables_map
+snippet basic_parsed_options boost::program_options
+	boost::program_options::basic_parsed_options<${1:charT}>
+snippet basic_option boost::program_options
+	boost::program_options::basic_option<${1:charT}>
 snippet value boost::program_options
 	boost::program_options::value<${1:T}>
 snippet store boost::program_options
@@ -1030,7 +895,7 @@ snippet diagnostic_information boost
 	boost::diagnostic_information( ${1:e} )
 snippet get_error_info boost
 	boost::get_error_info<${1:T}>( ${2:e} )
-## 
+##
 ## Time
 snippet date boost::gregorian
 	boost::gregorian::date
@@ -1067,11 +932,111 @@ snippet from_time_t boost::posix_time
 snippet from_ftime boost::posix_time
 	boost::posix_time::from_ftime<ptime>( ${1:FILETIME} )
 ##
+## Chrono
+snippet time_point boost::chrono
+	boost::chrono::time_point<${1:clock_type}, ${2:duration_type}>
+snippet duration boost::chrono
+	boost::chrono::duration<${1:period_type}, ${2:tick_type}>
+snippet hours boost::chrono
+	boost::chrono::hours( ${1:count} )
+snippet minutes boost::chrono
+	boost::chrono::minutes( ${1:count} )
+snippet seconds boost::chrono
+	boost::chrono::seconds( ${1:count} )
+snippet milliseconds boost::chrono
+	boost::chrono::milliseconds( ${1:count} )
+snippet microseconds boost::chrono
+	boost::chrono::microseconds( ${1:count} )
+snippet nanoseconds boost::chrono
+	boost::chrono::nanoseconds( ${1:count} )
+snippet tpc boost::chrono
+	boost::chrono::time_point_cast<${1:duration_type}>( ${2:time_point_value} )
+snippet durc boost::chrono
+	boost::chrono::duration_cast<${1:duration_type}>( ${2:duration_value} )
+##
+## Specific chrono clock type snippets
+snippet system_clock boost::chrono
+	boost::chrono::system_clock
+snippet steady_clock boost::chrono
+	boost::chrono::steady_clock
+snippet high_resolution_clock boost::chrono
+	boost::chrono::high_resolution_clock
+snippet process_real_cpu_clock boost::chrono
+	boost::chrono::process_real_cpu_clock
+snippet process_user_cpu_clock boost::chrono
+	boost::chrono::process_user_cpu_clock
+snippet process_system_cpu_clock boost::chrono
+	boost::chrono::process_system_cpu_clock
+snippet process_cpu_clock boost::chrono
+	boost::chrono::process_cpu_clock
+snippet thread_clock boost::chrono
+	boost::chrono::thread_clock
+##
+## General chrono clock type snippets
+snippet clock boost::chrono::system_clock
+	boost::chrono::system_clock
+snippet clock boost::chrono::steady_clock
+	boost::chrono::steady_clock
+snippet clock boost::chrono::high_resolution_clock
+	boost::chrono::high_resolution_clock
+snippet clock boost::chrono::process_real_cpu_clock
+	boost::chrono::process_real_cpu_clock
+snippet clock boost::chrono::process_user_cpu_clock
+	boost::chrono::process_user_cpu_clock
+snippet clock boost::chrono::process_system_cpu_clock
+	boost::chrono::process_system_cpu_clock
+snippet clock boost::chrono::process_cpu_clock
+	boost::chrono::process_cpu_clock
+snippet clock boost::chrono::thread_clock
+	boost::chrono::thread_clock
+##
+## General chrono time_point type snippets
+snippet time_point boost::chrono
+	boost::chrono::time_point<${1:clock_type}, ${2:duration_type}>
+snippet time_point boost::chrono::system_clock
+	boost::chrono::system_clock::time_point
+snippet time_point boost::chrono::steady_clock
+	boost::chrono::steady_clock::time_point
+snippet time_point boost::chrono::high_resolution_clock
+	boost::chrono::high_resolution_clock::time_point
+snippet time_point boost::chrono::process_real_cpu_clock
+	boost::chrono::process_real_cpu_clock::time_point
+snippet time_point boost::chrono::process_user_cpu_clock
+	boost::chrono::process_user_cpu_clock::time_point
+snippet time_point boost::chrono::process_system_cpu_clock
+	boost::chrono::process_system_cpu_clock::time_point
+snippet time_point boost::chrono::process_cpu_clock
+	boost::chrono::process_cpu_clock::time_point
+snippet time_point boost::chrono::thread_clock
+	boost::chrono::thread_clock::time_point
+##
+## Chrono now functions
+snippet now boost::chrono::system_clock
+	boost::chrono::system_clock::now()
+snippet now boost::chrono::steady_clock
+	boost::chrono::steady_clock::now()
+snippet now boost::chrono::high_resolution_clock
+	boost::chrono::high_resolution_clock::now()
+snippet now boost::chrono::process_real_cpu_clock
+	boost::chrono::process_real_cpu_clock::now()
+snippet now boost::chrono::process_user_cpu_clock
+	boost::chrono::process_user_cpu_clock::now()
+snippet now boost::chrono::process_system_cpu_clock
+	boost::chrono::process_system_cpu_clock::now()
+snippet now boost::chrono::process_cpu_clock
+	boost::chrono::process_cpu_clock::now()
+snippet now boost::chrono::thread_clock
+	boost::chrono::thread_clock::now()
+##
 ## Threading
 snippet thread boost
 	boost::thread
+snippet thread_joiner boost
+	boost::thread_joiner
 snippet scoped_thread boost
 	boost::scoped_thread<>
+snippet thread_group boost
+	boost::thread_group
 snippet strict_scoped_thread boost
 	boost::strict_scoped_thread<>
 snippet get_id boost::this_thread
@@ -1084,7 +1049,7 @@ snippet physical_concurrency boost::thread
 	boost::thread::physical_concurrency()
 snippet thread_specific_ptr boost::thread
 	boost::thread::thread_specific_ptr
-snippet condition_variable boost
+snippet cv boost
 	boost::condition_variable
 snippet condition_variable_any boost
 	boost::condition_variable_any
@@ -1094,8 +1059,6 @@ snippet barrier boost
 	boost::barrier
 snippet latch boost
 	boost::latch
-snippet mutex boost
-	boost::mutex
 snippet rmutex boost
 	boost::recursive_mutex
 snippet tmutex boost
@@ -1145,11 +1108,11 @@ snippet mklock_guard boost
 snippet packaged_task boost
 	boost::packaged_task<${1:R}>
 snippet promise boost
-	boost::promise
+	boost::promise<${1:R}>
 snippet future boost
 	boost::future<${1:R}>
 snippet mkready_future boost
-	boost::make_read_future<${1:R}>( ${2:val} )
+	boost::make_ready_future<${1:R}>( ${2:val} )
 snippet shared_future boost
 	boost::shared_future<${1:R}>
 snippet unique_future boost
@@ -1157,7 +1120,7 @@ snippet unique_future boost
 snippet decay_copy boost
 	boost::decay_copy( ${1:t} )
 snippet async boost
-	boost::async( ${1:launch_policy}, ${2:function}, ${3:args} )
+	boost::async( ${1:launch_policy}, ${2:callable_entity}, ${3:args} )
 snippet wait_for_any boost
 	boost::wait_for_any( ${1:futures...} )
 snippet wait_for_all boost
@@ -1166,10 +1129,48 @@ snippet when_all boost
 	boost::when_all( ${1:futures} )
 snippet when_any boost
 	boost::when_any( ${1:futures} )
+snippet atomic boost
+	boost::atomic<${1:T}>
 ## 
+## Launch Policies
+snippet async boost::launch
+	boost::launch::async
+snippet any boost::launch
+	boost::launch::any
+snippet deferred boost::launch
+	boost::launch::deferred
+##
+## Mutexes
+snippet mutex boost::mutex
+	boost::mutex
+snippet mutex boost::recursive_mutex
+	boost::recursive_mutex
+snippet mutex boost::timed_mutex
+	boost::timed_mutex
+snippet mutex boost::recursive_timed_mutex
+	boost::recursive_timed_mutex
+snippet mutex boost::shared_mutex
+	boost::shared_mutex
+snippet mutex boost::upgrade_mutex
+	boost::upgrade_mutex
+snippet mutex boost::null_mutex
+	boost::null_mutex
+snippet mutex boost::interprocess::named_mutex
+	boost::interprocess::named_mutex
+snippet mutex boost::interprocess::named_recursive_mutex
+	boost::interprocess::named_recursive_mutex
+snippet mutex boost::interprocess::interprocess_recursive_mutex
+	boost::interprocess::interprocess_recursive_mutex
+##
 ## ASIO
 snippet io_service boost::asio
 	boost::asio::io_service
+snippet system_timer boost::asio
+	boost::asio::system_timer
+snippet steady_timer boost::asio
+	boost::asio::steady_timer
+snippet high_resolution_timer boost::asio
+	boost::asio::high_resolution_timer
 snippet deadline_timer boost::asio
 	boost::asio::deadline_timer
 snippet strand boost::asio::io_service
@@ -1178,6 +1179,16 @@ snippet work boost::asio::io_service
 	boost::asio::io_service::work
 snippet signal_set boost::asio::signal_set
 	boost::asio::signal_set
+##
+## ASIO Timers
+snippet timer boost::asio::system_timer
+	boost::asio::system_timer
+snippet timer boost::asio::steady_timer
+	boost::asio::steady_timer
+snippet timer boost::asio::high_resolution_timer
+	boost::asio::high_resolution_timer
+snippet timer boost::asio::deadline_timer
+	boost::asio::deadline_timer
 ##
 ## Networking
 snippet socket boost::asio
@@ -1204,7 +1215,7 @@ snippet address_v6 boost::asio
 	boost::asio::ip::address_v6
 snippet host_name boost::asio
 	boost::asio::ip::host_name( ${1:ec} )
-## 
+##
 ## Signals
 snippet signal boost::signals2
 	boost::signals2::signal<${1:void (void)}>
@@ -1322,7 +1333,7 @@ snippet erase_regex boost::algorithm
 	boost::algorithm::erase_regex( ${1:string}, ${2:regex} )
 snippet split_regex boost::algorithm
 	boost::algorithm::split_regex( ${1:out_string_container}, ${2:in_string}, ${3:regex} )
-## 
+##
 ## Regex
 snippet regex_match boost
 	boost::regex_match( ${1:string}, ${3:regex} )
@@ -1343,7 +1354,7 @@ snippet push_back boost::assign
 snippet list_of boost::assign
 	boost::assign::list_of( ${1:value} )( ${2:value} )
 snippet map_list_of boost::assign
-	boost::assign::map_list_of( ${1:value}, ${2:value} )( ${3:value}, ${4:value} ) 
+	boost::assign::map_list_of( ${1:value}, ${2:value} )( ${3:value}, ${4:value} )
 snippet push_front boost::assign
 	boost::assign::push_front( ${1:collection} )( ${2:value} )( ${3:value} )
 snippet ppush_back boost::assign
@@ -1364,7 +1375,7 @@ snippet ref_list_of boost::assign
 	boost::assign::ref_list_of( ${1:value} )( ${2:value} )
 snippet cref_list_of boost::assign
 	boost::assign::cref_list_of( ${1:value} )( ${2:value} )
-## 
+##
 ## Bimap
 snippet bimap boost
 	boost::bimap<${1:LT}, ${2:RT}>
@@ -1380,8 +1391,8 @@ snippet unordered_multiset_of boost::bimaps
 	boost::bimaps::unordered_multiset_of<${1:T}>
 snippet list_of boost::bimaps
 	boost::bimaps::list_of<${1:T}>
-snippet vector_of  boost::bimaps
-	boost::bimaps::vector_of <${1:T}>
+snippet vector_of boost::bimaps
+	boost::bimaps::vector_of<${1:T}>
 snippet unconstrainted_set_of boost::bimaps
 	boost::bimaps::unconstrainted_set_of<${1:T}>
 ##
@@ -1389,7 +1400,7 @@ snippet unconstrainted_set_of boost::bimaps
 snippet multi_index_container boost::multi_index
 	boost::multi_index::multi_index_container<${1:T}, ${2:indexed_by}>
 snippet indexed_by boost::multi_index
-	boost::multi_index::indexed_by<${1:T}, ${2:T}> 
+	boost::multi_index::indexed_by<${1:T}, ${2:T}>
 snippet hashed_non_unique boost::multi_index
 	boost::multi_index::hashed_non_unique<${1:T}>
 snippet hashed_unique boost::multi_index
@@ -1407,22 +1418,22 @@ snippet random_access boost::multi_index
 snippet sequenced boost::multi_index
 	boost::multi_index::sequenced<>
 snippet nth_index boost::multi_index
-	nth_index<${1:number}>::type::iterator
+	boost::multi_index::nth_index<${1:number}>::type::iterator
 ##
 ## Smart pointers
-snippet up std
-	std::unique_ptr<${1:T}>
-snippet ap std
-	std::auto_ptr<${1:T}>
 snippet scp boost
 	boost::scoped_ptr<${1:T}>
 snippet sp boost
 	boost::shared_ptr<${1:T}>
+snippet up boost
+	boost::unique_ptr<${1:T}, ${2:D}>
 snippet wp boost
 	boost::weak_ptr<${1:T}>
 snippet ip boost
 	boost::intrusive_ptr<${1:T}>
-snippet mkshared boost
+snippet mkup boost
+	boost::make_unique<${1:T}>( ${2:args...} )
+snippet mksp boost
 	boost::make_shared<${1:T}>( ${2:args...} )
 snippet allocate_shared boost
 	boost::allocate_shared<${1:T}>( ${2:allocator}, ${3:args...} )
@@ -1450,6 +1461,8 @@ snippet punordered_map boost
 	boost::ptr_unordered_map<${1:T}>
 snippet pvector boost
 	boost::ptr_vector<${1:T}>
+snippet empty_deleter boost::log
+	boost::log::empty_deleter()
 ##
 ## Filesystem
 snippet path boost::filesystem
@@ -1480,7 +1493,7 @@ snippet last_write_time boost::filesystem
 	boost::filesystem::last_write_time( ${1:path} )
 snippet rename boost::filesystem
 	boost::filesystem::rename( ${1:current}, ${2:new} )
-snippet remove  boost::filesystem
+snippet remove boost::filesystem
 	boost::filesystem::remove( ${1:path} )
 snippet create_directory boost::filesystem
 	boost::filesystem::create_directory( ${1:path} )
@@ -1502,384 +1515,558 @@ snippet cref boost
 	boost::cref( ${1:value} )
 snippet refwrapper boost
 	boost::reference_wrapper<${1:T}>
-snippet not1 std
-	std::not1( ${1:unary_predicate} )
-snippet not2 std
-	std::not2( ${1:binary_predicate} )
-snippet less std
-	std::less<${1:T}>()
-snippet less_equal std
-	std::less_equal<${1:T}>()
-snippet greater std
-	std::greater<${1:T}>()
-snippet greater_equal std
-	std::greater_equal<${1:T}>()
-snippet minus std
-	std::minus<${1:T}>()
-snippet plus std
-	std::plus<${1:T}>()
-snippet equal_to std
-	std::equal_to<${1:T}>()
-snippet not_equal_to std
-	std::not_equal_to<${1:T}>()
-snippet negate std
-	std::negate<${1:T}>()
-snippet divides std
-	std::divides<${1:T}>()
-snippet multiplies std
-	std::multiplies<${1:T}>()
-snippet modulus std
-	std::modulus<${1:T}>()
-snippet mem_fun std
-	std::mem_fun( ${1:function} )
-snippet mem_fun_ref std
-	std::mem_fun_ref( ${1:function} )
-snippet unary_function std
-	std::unary_function<${1:Arg}, ${2:Result}>
-snippet binary_function std
-	std::binary_function<${1:Arg1}, ${2:Arg2}, ${3:Result}>
+## 
+## Type Traits
+snippet integral_constant boost
+	boost::integral_constant<${1:T}, ${2:T v}>
+snippet true_type boost
+	boost::true_type
+snippet false_type boost
+	boost::false_type
+snippet is_void boost
+	boost::is_void<${1:T}>::value
+snippet is_null_pointer boost
+	boost::is_null_pointer<${1:T}>::value
+snippet is_integral boost
+	boost::is_integral<${1:T}>::value
+snippet is_floating_point boost
+	is_convertibleboost::is_floating_point<${1:T}>::value
+snippet is_array boost
+	boost::is_array<${1:T}>::value
+snippet is_pointer boost
+	boost::is_pointer<${1:T}>::value
+snippet is_lvalue_reference boost
+	boost::is_lvalue_reference<${1:T}>::value
+snippet is_rvalue_reference boost
+	boost::is_rvalue_reference<${1:T}>::value
+snippet is_member_object_pointer boost
+	boost::is_member_object_pointer<${1:T}>::value
+snippet is_member_function_pointer boost
+	boost::is_member_function_pointer<${1:T}>::value
+snippet is_enum boost
+	boost::is_enum<${1:T}>::value
+snippet is_union boost
+	boost::is_union<${1:T}>::value
+snippet is_class boost
+	boost::is_class<${1:T}>::value
+snippet is_function boost
+	boost::is_function<${1:T}>::value
+snippet is_reference boost
+	boost::is_reference<${1:T}>::value
+snippet is_arithmetic boost
+	boost::is_arithmetic<${1:T}>::value
+snippet is_fundamental boost
+	boost::is_fundamental<${1:T}>::value
+snippet is_object boost
+	boost::is_object<${1:T}>::value
+snippet is_scalar boost
+	boost::is_scalar<${1:T}>::value
+snippet is_compound boost
+	boost::is_compound<${1:T}>::value
+snippet is_member_pointer boost
+	boost::is_member_pointer<${1:T}>::value
+snippet is_const boost
+	boost::is_const<${1:T}>::value
+snippet is_volatile boost
+	boost::is_volatile<${1:T}>::value
+snippet is_trivial boost
+	boost::is_trivial<${1:T}>::value
+snippet is_trivially_copyable boost
+	boost::is_trivially_copyable<${1:T}>::value
+snippet is_standard_layout boost
+	boost::is_standard_layout<${1:T}>::value
+snippet is_pod boost
+	boost::is_pod<${1:T}>::value
+snippet is_literal_type boost
+	boost::is_literal_type<${1:T}>::value
+snippet is_empty boost
+	boost::is_empty<${1:T}>::value
+snippet is_polymorphic boost
+	boost::is_polymorphic<${1:T}>::value
+snippet is_abstract boost
+	boost::is_abstract<${1:T}>::value
+snippet is_signed boost
+	boost::is_signed<${1:T}>::value
+snippet is_unsigned boost
+	boost::is_unsigned<${1:T}>::value
+snippet is_constructible boost
+	boost::is_constructible<${1:T}, ${2:... Args}>::value
+snippet is_default_constructible boost
+	boost::is_default_constructible<${1:T}>::value
+snippet is_copy_constructible boost
+	boost::is_copy_constructible<${1:T}>::value
+snippet is_move_constructible boost
+	boost::is_move_constructible<${1:T}>::value
+snippet is_assignable boost
+	boost::is_assignable<${1:T}, ${2:U}>::value
+snippet is_copy_assignable boost
+	boost::is_copy_assignable<${1:T}>::value
+snippet is_move_assignable boost
+	boost::is_move_assignable<${1:T}>::value
+snippet is_destructible boost
+	boost::is_destructible<${1:T}>::value
+snippet is_trivially_constructible boost
+	boost::is_trivially_constructible<${1:T}, ${2:... Args}>::value
+snippet is_trivially_default_constructible boost
+	boost::is_trivially_default_constructible<${1:T}>::value
+snippet is_trivially_copy_constructible boost
+	boost::is_trivially_copy_constructible<${1:T}>::value
+snippet is_trivially_move_constructible boost
+	boost::is_trivially_move_constructible<${1:T}>::value
+snippet is_trivially_assignable boost
+	boost::is_trivially_assignable<${1:T}, ${2:U}>::value
+snippet is_trivially_copy_assignable boost
+	boost::is_trivially_copy_assignable<${1:T}>::value
+snippet is_trivially_move_assignable boost
+	boost::is_trivially_move_assignable<${1:T}>::value
+snippet is_trivially_destructible boost
+	boost::is_trivially_destructible<${1:T}>::value
+snippet is_nothrow_constructible boost
+	boost::is_nothrow_constructible<${1:T}, ${2:... Args}>::value
+snippet is_nothrow_default_constructible boost
+	boost::is_nothrow_default_constructible<${1:T}>::value
+snippet is_nothrow_copy_constructible boost
+	boost::is_nothrow_copy_constructible<${1:T}>::value
+snippet is_nothrow_move_constructible boost
+	boost::is_nothrow_move_constructible<${1:T}>::value
+snippet is_nothrow_assignable boost
+	boost::is_nothrow_assignable<${1:T}, ${2:U}>::value
+snippet is_nothrow_copy_assignable boost
+	boost::is_nothrow_copy_assignable<${1:T}>::value
+snippet is_nothrow_move_assignable boost
+	boost::is_nothrow_move_assignable<${1:T}>::value
+snippet is_nothrow_destructible boost
+	boost::is_nothrow_destructible<${1:T}>::value
+snippet has_virtual_destructor boost
+	boost::has_virtual_destructor<${1:T}>::value
+snippet alignment_of boost
+	boost::alignment_of<${1:T}>::value
+snippet rank boost
+	boost::rank<${1:T}>::value
+snippet extent boost
+	boost::extent<${1:T}, ${2:I = 0}>::value
+snippet is_same boost
+	boost::is_same<${1:T}, ${2:U}>::value
+snippet is_base_of boost
+	boost::is_base_of<${1:Base}, ${2:Derived}>::value
+snippet is_convertible boost
+	boost::is_convertible<${1:From}, ${2:To}>::value
+snippet add_const boost
+	boost::add_const<${1:T}>::type
+snippet add_cv boost
+	boost::add_cv<${1:T}>::type
+snippet add_lvalue_reference boost
+	boost::add_lvalue_reference<${1:T}>::type
+snippet add_pointer boost
+	boost::add_pointer<${1:T}>::type
+snippet add_rvalue_reference boost
+	boost::add_rvalue_reference<${1:T}>::type
+snippet add_volatile boost
+	boost::add_volatile<${1:T}>::type
+snippet decay boost
+	boost::decay<${1:T}>::type
+snippet make_signed boost
+	boost::make_signed<${1:T}>::type
+snippet make_unsigned boost
+	boost::make_unsigned<${1:T}>::type
+snippet remove_all_extents boost
+	boost::remove_all_extents<${1:T}>::type
+snippet remove_const boost
+	boost::remove_const<${1:T}>::type
+snippet remove_cv boost
+	boost::remove_cv<${1:T}>::type
+snippet remove_extent boost
+	boost::remove_extent<${1:T}>::type
+snippet remove_pointer boost
+	boost::remove_pointer<${1:T}>::type
+snippet remove_reference boost
+	boost::remove_reference<${1:T}>::type
+snippet remove_volatile boost
+	boost::remove_volatile<${1:T}>::type
 ##
-## STL Algorithms
-snippet any_of std
-	${3:std}::any_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
-snippet all_of std
-	${3:std}::all_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
-snippet none_of std
-	${3:std}::none_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
-snippet for_each std
-	std::for_each( ${1:collection}.begin(), $1.end(), ${2:unary_functor} )
-snippet count std
-	std::count( ${1:collection}.begin(), $1.end(), ${2:value} )
-snippet count_if std
-	std::count_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
-snippet mismatch std
-	std::mismatch( ${1:collection}.begin(), $1.end(), ${2:collection}.begin() )
-snippet equal:collection std
-	std::equal( ${1:collection}.begin(), $1.end(), ${2:collection}.begin() )
-snippet transform std
-	std::transform( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:functor} );
-snippet copy std
-	std::copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() );
-snippet copy_if std
-	std::copy_if( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate} );
-snippet remove std
-	std::remove( ${1:collection}.begin(), $1.end(), ${2:value} );
-snippet remove_if std
-	std::remove_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} );
-snippet replace std
-	std::replace( ${1:collection}.begin(), $1.end(), ${2:old_value}, ${3:new_value} );
-snippet replace_if std
-	std::replace_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate}, ${3:new_value} );
-snippet replace_copy std
-	std::replace_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:old_value}, ${4:new_value} );
-snippet replace_copy_if std
-	std::replace_copy_if( ${1:collection}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate}, ${4:new_value} );
-snippet rotate std
-	std::rotate( ${1:collection}.begin(), ${2:new_begin_element}, $1.end() );
-snippet rotate_copy std
-	std::rotate_copy( ${1:collection}.begin(), ${2:new_begin_element}, $1.end(), ${3:destination}.begin() );
-snippet unique Default binary predicate (std::less)
-	std::unique( ${1:collection}.begin(), $1.end() );
-snippet unique User defined binary predicate
-	std::unique( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-snippet unique_copy Default binary predicate (std::less)
-	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() );
-snippet unique_copy User defined binary predicate
-	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:binary_predicate} );
-snippet sort Default binary predicate (std::less)
-	std::sort( ${1:collection}.begin(), $1.end() );
-snippet sort User defined binary predicate
-	std::sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-snippet partial_sort Default binary predicate (std::less)
-	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end() );
-snippet partial_sort User defined binary predicate
-	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end(), ${3:binary_predicate} );
-snippet partial_sort_copy Default binary predicate (std::less)
-	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end() );
-snippet partial_sort_copy User defined binary predicate
-	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end(), ${3:binary_predicate} );
-snippet stable_sort Default binary predicate (std::less)
-	std::stable_sort( ${1:collection}.begin(), $1.end() );
-snippet stable_sort User defined binary predicate
-	std::stable_sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-snippet nth_element Default binary predicate (std::less)
-	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end() );
-snippet nth_element User defined binary predicate
-	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end(), ${3:binary_predicate} );
-snippet lower_bound Default binary predicate (std::less)
-	std::lower_bound( ${1:collection}.begin(), $1.end(), ${2:value} )
-snippet lower_bound User defined binary predicate
-	std::lower_bound( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
-snippet upper_bound Default binary predicate (std::less)
-	std::upper_bound( ${1:collection}.begin(), $1.end(), ${2:value} )
-snippet upper_bound User defined binary predicate
-	std::upper_bound( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
-snippet binary_search Default binary predicate (std::less)
-	std::binary_search( ${1:collection}.begin(), $1.end(), ${2:value} )
-snippet binary_search User defined binary predicate
-	std::binary_search( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
-snippet equal_range Default binary predicate (std::less)
-	std::equal_range( ${1:collection}.begin(), $1.end(), ${2:value} )
-snippet equal_range User defined binary predicate
-	std::equal_range( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
-snippet merge Default binary predicate (std::less)
-	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin() );
-snippet merge User defined binary predicate
-	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-snippet inplace_merge Default binary predicate (std::less)
-	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last} );
-snippet inplace_merge User defined binary predicate
-	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last}, ${4:binary_predicate} );
-snippet includes Default binary predicate (std::less)
-	std::includes( ${1:haystack}.begin(), $1.end(), ${2:needle}.begin(), $2.end() )
-snippet includes User defined binary predicate
-	std::includes( ${1:haystack}.begin(), $1.end(), ${2:needle}.begin(), $2.end(), ${3:binary_predicate} )
-snippet set_difference Default binary predicate (std::less)
-	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
-snippet set_difference User defined binary predicate
-	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-snippet set_intersection Default binary predicate (std::less)
-	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
-snippet set_intersection User defined binary predicate
-	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-snippet set_symmetric_difference Default binary predicate (std::less)
-	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
-snippet set_symmetric_difference User defined binary predicate
-	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-snippet set_union Default binary predicate (std::less)
-	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
-snippet set_union User defined binary predicate
-	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
-snippet is_heap std
-	${2:std}::is_heap( ${1:collection}.begin(), $1.end() )
-snippet mkheap Default binary predicate (std::less)
-	std::make_heap( ${1:collection}.begin(), $1.end() );
-snippet mkheap User defined binary predicate
-	std::make_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-snippet push_heap Default binary predicate (std::less)
-	std::push_heap( ${1:collection}.begin(), $1.end() );
-snippet push_heap User defined binary predicate
-	std::push_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-snippet pop_heap Default binary predicate (std::less)
-	std::pop_heap( ${1:collection}.begin(), $1.end() );
-snippet pop_heap User defined binary predicate
-	std::pop_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-snippet sort_heap Default binary predicate (std::less)
-	std::sort_heap( ${1:collection}.begin(), $1.end() );
-snippet sort_heap User defined binary predicate
-	std::sort_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
-snippet minmax Default binary predicate (std::less)
-	${3:std}::minmax( ${1:lhs}, ${2:rhs} )
-snippet minmax User defined binary predicate
-	${4:std}::minmax( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
-snippet minmax_element Default binary predicate (std::less)
-	${2:std}::minmax_element( ${1:collection}.begin(), $1.end() )
-snippet minmax User defined binary predicate
-	${3:std}::minmax_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
-snippet max Default binary predicate (std::less)
-	std::max( ${1:lhs}, ${2:rhs} )
-snippet max User defined binary predicate
-	std::max( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
-snippet max_element Default binary predicate (std::less)
-	std::max_element( ${1:collection}.begin(), $1.end() )
-snippet max_element User defined binary predicate
-	std::max_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
-snippet min Default binary predicate (std::less)
-	std::min( ${1:lhs}, ${2:rhs} )
-snippet min User defined binary predicate
-	std::min( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
-snippet min_element Default binary predicate (std::less)
-	std::min_element( ${1:collection}.begin(), $1.end() )
-snippet min_element User defined binary predicate
-	std::min_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
-snippet lexicographical_compare Default binary predicate (std::less)
-	std::lexicographical_compare( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end() )
-snippet lexicographical_compare User defined binary predicate
-	std::lexicographical_compare( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:binary_predicate} )
-snippet is_permutation Default binary predicate (std::less)
-	${3:std}::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin() )
-snippet is_permutation User defined binary predicate
-	${4:std}::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), ${3:binary_predicate} )
-snippet next_permutation Default binary predicate (std::less)
-	std::next_permutation( ${1:collection}.begin(), $1.end() )
-snippet next_permutation User defined binary predicate
-	std::next_permutation( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
-snippet prev_permutation Default binary predicate (std::less)
-	std::prev_permutation( ${1:collection}.begin(), $1.end() )
-snippet prev_permutation User defined binary predicate
-	std::prev_permutation( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
+## Boost Graph Library (BGL)
+## 
+## BGL Graph Classes
+snippet adjacency_list boost
+	boost::adjacency_list<${1:OutEdgeList = boost::vecS}, ${2:VertexList = boost::vecS}, ${3:Directed = boost::directedS}, ${4:VertexProperties = boost::no_property}, ${5:EdgeProperties = boost::no_property}, ${6:GraphProperties = boost::no_property}, ${7:EdgeList = boost::listS}>
+snippet directed_graph boost
+	boost::directed_graph<${1:VertexProp}, ${2:EdgeProp}, ${3:GraphProp}>
+snippet undirected_graph boost
+	boost::undirected_graph<${1:VertexProp}, ${2:EdgeProp}, ${3:GraphProp}>
+snippet adjacency_matrix boost
+	boost::adjacency_matrix<${1:Directed = boost::directedS}, ${2:VertexProperty = boost::no_property}, ${3:EdgeProperty = boost::no_property}, ${4:GraphProperty = boost::no_property}>
+snippet compressed_sparse_row_graph boost
+	boost::compressed_sparse_row_graph<${1:Directed = boost::directedS}, ${2:VertexProperty = void}, ${3:EdgeProperty = void}, ${4:GraphProperty = boost::no_property}, ${5:Vertex = std::size_t}, ${6:EdgeIndex = Vertex}>
+## 
+## BGL Iterators
+snippet adjacency_iterator boost
+	boost::graph_traits<${1:GraphType}>::adjacency_iterator 
+snippet vertex_iterator boost
+	boost::graph_traits<${1:GraphType}>::vertex_iterator 
+## 
+## BGL Iterator Adaptors
+snippet adjacency_iterator_generator boost
+	boost::adjacency_iterator_generator<${1:Graph}, ${2:VertexDescriptor}, ${3:OutEdgeIter}>::type
+snippet inv_adjacency_iterator_generator boost
+	boost::inv_adjacency_iterator_generator<${1:Graph}, ${2:VertexDescriptor}, ${3:InEdgeIter}>::type
 ##
-## STL Collections
-snippet str std
-	std::string
-snippet ctraits std
-	std::char_traits<${2:T}>
-snippet pair std
-	std::pair<${1:KT}, ${2:VT}>
-snippet mkpair std
-	std::make_pair( ${1:first_value}, ${2:second_value} )
-snippet array std
-	std::array<${1:T}, ${2:N}> ${3};
-snippet vector std
-	std::vector<${1:T}> ${2};
-snippet deque std
-	std::deque<${1:T}> ${2};
-snippet flist std
-	std::forward_list<${1:T}> ${2};
-snippet list std
-	std::list<${1:T}> ${2};
-snippet set std
-	std::set<${1:T}> ${2};
-snippet map std
-	std::map<${1:Key}, ${2:T}> ${3};
-snippet mset std
-	std::multiset<${1:T}> ${2};
-snippet mmap std
-	std::multimap<${1:Key}, ${2:T}> ${3};
-snippet uset std
-	std::unordered_set<${1:T}> ${2};
-snippet umap std
-	std::unordered_map<${1:Key}, ${2:T}> ${3};
-snippet umset std
-	std::unordered_multiset<${1:T}> ${2};
-snippet ummap std
-	std::unordered_multimap<${1:Key}, ${2:T}> ${3};
-snippet stack std
-	std::stack<${1:T}> ${2};
-snippet queue std
-	std::queue<${1:T}> ${2};
-snippet pqueue std
-	std::priority_queue<${1:T}> ${2};
+## BGL Traits
+snippet graph_traits boost
+	boost::graph_traits<${1:GraphType}>
+snippet property_map boost
+	boost::property_map<${1:GraphType}, ${2:boost::vertex_index_t}>
+snippet adjacency_list_traits boost
+	boost::adjacency_list_traits<${1:AdjacencyListType}>
+## 
+## BGL Algorithms
+snippet copy_graph boost
+	boost::copy_graph( ${1:GraphConstRef}, ${2:GraphRef} )
+snippet transpose_graph boost
+	boost::transpose_graph( ${1:GraphConstRef}, ${2:GraphRef} )
+## 
+## BGL Algorithms TODO
+snippet breadth_first_search boost
+	boost::breadth_first_search()
+snippet breadth_first_visit boost
+	boost::breadth_first_visit()
+snippet depth_first_search boost
+	boost::depth_first_search()
+snippet depth_first_visit boost
+	boost::depth_first_visit()
+snippet undirected_dfs boost
+	boost::undirected_dfs()
+snippet topological_sort boost
+	boost::topological_sort()
+snippet transitive_closure boost
+	boost::transitive_closure()
+snippet lengauer_tarjan_dominator_tree boost
+	boost::lengauer_tarjan_dominator_tree()
+snippet dijkstra_shortest_paths boost
+	boost::dijkstra_shortest_paths()
+snippet dijkstra_shortest_paths_no_color_map boost
+	boost::dijkstra_shortest_paths_no_color_map()
+snippet bellman_ford_shortest_paths boost
+	boost::bellman_ford_shortest_paths()
+snippet dag_shortest_paths boost
+	boost::dag_shortest_paths()
+snippet johnson_all_pairs_shortest_paths boost
+	boost::johnson_all_pairs_shortest_paths()
+snippet floyd_warshall_all_pairs_shortest_paths boost
+	boost::floyd_warshall_all_pairs_shortest_paths()
+snippet r_c_shortest_paths boost
+	boost::r_c_shortest_paths()
+snippet astar_search boost
+	boost::astar_search()
+snippet kruskal_minimum_spanning_tree boost
+	boost::kruskal_minimum_spanning_tree()
+snippet prim_minimum_spanning_tree boost
+	boost::prim_minimum_spanning_tree()
+snippet random_spanning_tree boost
+	boost::random_spanning_tree()
+snippet two_graphs_common_spanning_trees boost
+	boost::two_graphs_common_spanning_trees()
+snippet connected_components boost
+	boost::connected_components()
+snippet strong_components boost
+	boost::strong_components()
+snippet biconnected_components boost
+	boost::biconnected_components()
+snippet articulation_points boost
+	boost::articulation_points()
+snippet initialize_incremental_components boost
+	boost::initialize_incremental_components()
+snippet incremental_components boost
+	boost::incremental_components()
+snippet same_component boost
+	boost::same_component()
+snippet component_index boost
+	boost::component_index()
+snippet edmonds_karp_max_flow boost
+	boost::edmonds_karp_max_flow()
+snippet push_relabel_max_flow boost
+	boost::push_relabel_max_flow()
+snippet boykov_kolmogorov_max_flow boost
+	boost::boykov_kolmogorov_max_flow()
+snippet edmonds_maximum_cardinality_matching boost
+	boost::edmonds_maximum_cardinality_matching()
+snippet cycle_canceling boost
+	boost::cycle_canceling()
+snippet successive_shortest_path_nonnegative_weights boost
+	boost::successive_shortest_path_nonnegative_weights()
+snippet find_flow_cost boost
+	boost::find_flow_cost()
+snippet stoer_wagner_min_cut boost
+	boost::stoer_wagner_min_cut()
+snippet cuthill_mckee_ordering boost
+	boost::cuthill_mckee_ordering()
+snippet king_ordering boost
+	boost::king_ordering()
+snippet minimum_degree_ordering boost
+	boost::minimum_degree_ordering()
+snippet sloan_ordering boost
+	boost::sloan_ordering()
+snippet sloan_start_end_vertices boost
+	boost::sloan_start_end_vertices()
+snippet ith_wavefront boost
+	boost::ith_wavefront()
+snippet max_wavefront boost
+	boost::max_wavefront()
+snippet aver_wavefront boost
+	boost::aver_wavefront()
+snippet rms_wavefront boost
+	boost::rms_wavefront()
+snippet bandwidth boost
+	boost::bandwidth()
+snippet ith_bandwidth boost
+	boost::ith_bandwidth()
+snippet brandes_betweenness_centrality boost
+	boost::brandes_betweenness_centrality()
+snippet minimum_cycle_ratio and maximum_cycle_ratio boost
+	boost::minimum_cycle_ratio and maximum_cycle_ratio()
+snippet isomorphism boost
+	boost::isomorphism()
+snippet vf2_sub_graph_iso boost
+	boost::vf2_sub_graph_iso()
+snippet mcgregor_common_subgraphs boost
+	boost::mcgregor_common_subgraphs()
+snippet random_graph_layout boost
+	boost::random_graph_layout()
+snippet circle_layout boost
+	boost::circle_layout()
+snippet kamada_kawai_spring_layout boost
+	boost::kamada_kawai_spring_layout()
+snippet fruchterman_reingold_force_directed_layout boost
+	boost::fruchterman_reingold_force_directed_layout()
+snippet gursoy_atun_layout boost
+	boost::gursoy_atun_layout()
+snippet betweenness_centrality_clustering boost
+	boost::betweenness_centrality_clustering()
+snippet boyer_myrvold_planarity_test boost
+	boost::boyer_myrvold_planarity_test()
+snippet planar_face_traversal boost
+	boost::planar_face_traversal()
+snippet planar_canonical_ordering boost
+	boost::planar_canonical_ordering()
+snippet chrobak_payne_straight_line_drawing boost
+	boost::chrobak_payne_straight_line_drawing()
+snippet is_straight_line_drawing boost
+	boost::is_straight_line_drawing()
+snippet is_kuratowski_subgraph boost
+	boost::is_kuratowski_subgraph()
+snippet make_connected boost
+	boost::make_connected()
+snippet make_biconnected_planar boost
+	boost::make_biconnected_planar()
+snippet make_maximal_planar boost
+	boost::make_maximal_planar()
+snippet metric_tsp_approx boost
+	boost::metric_tsp_approx()
+snippet sequential_vertex_coloring boost
+	boost::sequential_vertex_coloring()
+snippet edge_coloring boost
+	boost::edge_coloring()
+snippet is_bipartite boost
+	boost::is_bipartite()
+snippet find_odd_cycle boost
+	boost::find_odd_cycle()
+snippet maximum_adjacency_search boost
+	boost::maximum_adjacency_search()
+snippet hawick_circuits boost
+	boost::hawick_circuits()
 ##
-## Effective STL
-snippet non_const_iterator Effective STL
-	std::advance( ${1:iterator}, std::distance( $1, ${2:const_iterator} ) )
-snippet erase_remove Effective STL
-	${1:vector}.erase( std::remove( $1.begin(), $1.end(), ${2:val} ), $1.end() );
-snippet insert_or_update Effective STL
-	template< typename MapType, typename KeyArgType, typename ValueArgtype> 
-	typename MapType::iterator efficientAddOrUpdate(
-		MapType& m, const KeyArgType& k, const ValueArgtype& v )
-	{
-		typename MapType::iterator lb = m.lower_bound( k );
-
-		if( lb != m.end() && !( m.key_comp()( k, lb->first ) ) ) { 
-			lb->second = v;
-			return lb;
-		} 
-
-		typedef typename MapType::value_type MVT;
-		return m.insert( lb, MVT( k, v ) );
-	}
-snippet shrink_to_fit C++11
-	${2:collection}.shrink_to_fit();
-snippet shrink_to_fit C++03
-	${1:T}( ${2:collection} ).swap( $2 );
+## BGL Graph Adaptors
+snippet subgraph boost
+	boost::subgraph<${1:GraphType}>
+snippet edge_list boost
+	boost::edge_list<${1:EdgeIterator}, ${2:ValueType}, ${3:DiffType}>
+snippet reverse_graph boost
+	boost::reverse_graph<${1:BidirectionalGraph}, ${2:GraphReference = const BidirectionalGraph&}>
+snippet make_reverse_graph boost
+	boost::make_reverse_graph( ${1:graph} )
+snippet filtered_graph  boost
+	boost::filtered_graph<${1:Graph}, ${2:EdgePredicate}, ${3:VertexPredicate = boost::keep_all}>
 ##
-## Access Modifiers
-snippet pri
-	private
-snippet pro
-	protected
-snippet pub
-	public
-snippet fr
-	friend
-snippet mu
-	mutable
+## BGL Visitors Concepts TODO
+snippet bfs_visitor boost
+	boost::bfs_visitor
+snippet dfs_visitor boost
+	boost::dfs_visitor
+snippet dijkstra_visitor boost
+	boost::dijkstra_visitor
+snippet bellman_visitor boost
+	boost::bellman_visitor
+snippet astar_visitor boost
+	boost::astar_visitor
 ##
-## Class
-snippet cl
-	class ${1:`vim_snippets#Filename('$1', 'name')`} 
-	{
-	public:
-
-		/**
-		 * CTOR
-		 */
-		$1( ${2} );
-
-		/**
-		 * DTOR
-		 */
-		~$1();
-
-	private:
-		${0:/* data */}
-
-		/**
-		 * Hidden
-		 */
-		$1();
-
-		/**
-		 * Hidden
-		 */
-		$1& operator=( $1 const& );
-
-		/**
-		 * Hidden
-		 */
-		$1( $1 const& );
-
+## BGL Visitors
+snippet predecessor_recorder boost
+	boost::predecessor_recorder<${1:PredecesorMap}, ${2:EventTag}>
+snippet edge_predecessor_recorder boost
+	boost::edge_predecessor_recorder<${1:PredEdgeMap}, ${2:EventTag}>
+snippet distance_recorder boost
+	boost::distance_recorder<${1:DistanceMap}, ${2:EventTag}>
+snippet time_stamper boost
+	boost::time_stamper<${1:TimeMap}, ${2:TimeT}, ${3:EventTag}>
+snippet property_writer boost
+	boost::property_writer<${1:PropertyMap}, ${2:OutputIterator}, ${3:EventTag}>
+snippet property_put boost
+	boost::property_put<${1:PropertyMap}, ${2:EventTag}>
+snippet tsp_tour_visitor boost
+	boost::tsp_tour_visitor<${1:OutputIterator}>
+snippet tsp_tour_len_visitor boost
+	boost::tsp_tour_len_visitor<${1:Graph}, ${2:WeightMap}, ${3:OutputIterator}, ${4:Length}>
+##
+## BGL Other Types
+snippet vertex_descriptor boost
+	boost::graph_traits<${1:GraphType}>::vertex_descriptor 
+snippet edge_descriptor boost
+	boost::graph_traits<${1:GraphType}>::edge_descriptor 
+## 
+## BGL Graph Properties
+snippet property boost
+	boost::property<${1:PropertyTag}, ${2:PropertyType}, ${3:NextProperty}>
+snippet property_kind boost
+	boost::property_kind<${1:PropertyTag}>::type
+snippet property_num boost
+	boost::property_num<${1:PropertyTag}>::value
+snippet edge_property_tag boost
+	boost::edge_property_tag
+snippet vertex_property_tag boost
+	boost::vertex_property_tag
+snippet graph_property_tag boost
+	boost::graph_property_tag
+snippet custom_tag boost
+	// type based
+	struct ${1:T}_t {
+		typedef boost::${2:edge/vertex/graph}_property_tag kind;
 	};
-snippet cld
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}::$1()
-	{
-	}
 
-	${1:`vim_snippets#Filename('$1', 'ClassName')`}::~$1()
-	{
+	// enum based
+	namespace boost {
+		enum $2_$1_t { $2_$1 };
+		BOOST_INSTALL_PROPERTY($2, $1);
 	}
-snippet mfun
-	${4:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}( ${3} )
-	{
-		${0}
-	}
-snippet ns
-	namespace ${1:`vim_snippets#Filename('', 'my')`} 
-	{
-		${0}
-	} /* namespace $1 */
-snippet un
-	using namespace ${1};
-snippet ns=
-	namespace ${1} = ${2};
+snippet vertex_index_t boost
+	boost::vertex_index_t
+snippet vertex_index1_t boost
+	boost::vertex_index1_t
+snippet vertex_index2_t boost
+	boost::vertex_index2_t
+snippet edge_index_t boost
+	boost::edge_index_t
+snippet graph_name_t boost
+	boost::graph_name_t
+snippet vertex_name_t boost
+	boost::vertex_name_t
+snippet edge_name_t boost
+	boost::edge_name_t
+snippet edge_weight_t boost
+	boost::edge_weight_t
+snippet edge_weight2_t boost
+	boost::edge_weight2_t
+snippet edge_capacity_t boost
+	boost::edge_capacity_t
+snippet edge_residual_capacity_t boost
+	boost::edge_residual_capacity_t
+snippet edge_reverse_t boost
+	boost::edge_reverse_t
+snippet vertex_distance_t boost
+	boost::vertex_distance_t
+snippet vertex_root_t boost
+	boost::vertex_root_t
+snippet vertex_all_t boost
+	boost::vertex_all_t
+snippet edge_all_t boost
+	boost::edge_all_t
+snippet graph_all_t boost
+	boost::graph_all_t
+snippet vertex_color_t boost
+	boost::vertex_color_t
+snippet vertex_rank_t boost
+	boost::vertex_rank_t
+snippet vertex_predecessor_t boost
+	boost::vertex_predecessor_t
+snippet vertex_isomorphism_t boost
+	boost::vertex_isomorphism_t
+snippet vertex_invariant_t boost
+	boost::vertex_invariant_t
+snippet vertex_invariant1_t boost
+	boost::vertex_invariant1_t
+snippet vertex_invariant2_t boost
+	boost::vertex_invariant2_t
+snippet vertex_degree_t boost
+	boost::vertex_degree_t
+snippet vertex_out_degree_t boost
+	boost::vertex_out_degree_t
+snippet vertex_in_degree_t boost
+	boost::vertex_in_degree_t
+snippet vertex_discover_time_t boost
+	boost::vertex_discover_time_t
+snippet vertex_finish_time_t boost
+	boost::vertex_finish_time_t
 ##
-## Input/Output
-snippet cout
-	std::cout << ${1} << std::endl;
-snippet clog
-	std::clog << ${1} << std::endl;
-snippet cerr
-	std::cerr << ${1} << std::endl;
-snippet cin
-	std::cin >> ${1};
+## BGL Storage Types
+snippet vecS boost
+	boost::vecS
+snippet listS boost
+	boost::listS
+snippet slistS boost
+	boost::slistS
+snippet setS boost
+	boost::setS
+snippet multisetS boost
+	boost::multisetS
+snippet hash_setS boost
+	boost::hash_setS
 ##
-## Iteration
-snippet fori
-	for ( int ${2:i} = 0 ; $2 < ${1:count} ; $2${3:++} ) {
-		${4}
-	}
-snippet fore
-	for ( ${1:auto} ${2:i} : ${3:container} ) {
-		${4}
-	}
-snippet iter
-	for ( ${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin() ; $4 != $5.end() ; ++$4 ) {
-		${6}
-	}
-snippet itera
-	for ( auto ${1:i} = ${2:container}.begin() ; $1 != $2.end() ; ++$1 ) {
-		${3:std::cout << *$1 << std::endl;}
-	}
-##
-## Lambdas
-# lamda (one line)
-snippet ld
-	[${1}](${2}){${3}}
-# lambda (multi-line)
-snippet lld
-	[${1}](${2}){
-		${3}
-	}
+## BGL Accessors
+snippet source boost
+	boost::source( ${1:edge_descriptor}, ${2:graph} )
+snippet target boost
+	boost::target( ${1:edge_descriptor}, ${2:graph} )
+snippet out_edges boost
+	boost::out_edges( ${1:vertex_descriptor}, ${2:graph} )
+snippet in_edges boost
+	boost::in_edges( ${1:vertex_descriptor}, ${2:graph} )
+snippet out_degree boost
+	boost::out_degree( ${1:vertex_descriptor}, ${2:graph} )
+snippet in_degree boost
+	boost::in_degree( ${1:vertex_descriptor}, ${2:graph} )
+snippet degree boost
+	boost::degree( ${1:vertex_descriptor}, ${2:graph} )
+snippet adjacent_vertices boost
+	boost::adjacent_vertices( ${1:vertex_descriptor}, ${2:graph} )
+snippet vertices boost
+	boost::vertices( ${1:graph} )
+snippet num_vertices boost
+	boost::num_vertices( ${1:graph} )
+snippet add_edge boost (mutable graph)
+	boost::add_edge( ${1:vertex_descriptor}, ${2:vertex_descriptor}, ${3:graph} )
+snippet add_edge boost (mutable property graph)
+	boost::add_edge( ${1:vertex_descriptor}, ${2:vertex_descriptor}, ${3:ep}, ${4:graph} )
+snippet add_vertex boost (mutable graph)
+	boost::add_vertex( ${1:graph} )
+snippet add_vertex boost (mutable property graph)
+	boost::add_vertex( ${1:vp}, ${2:graph} )
+snippet clear_vertex boost
+	boost::clear_vertex( ${1:vertex_descriptor}, ${2:graph} )
+snippet edge boost
+	boost::edge( ${1:vertex_descriptor}, ${2:vertex_descriptor}, ${3:graph} )
+snippet edges boost
+	boost::edges( ${1:graph} )
+snippet get boost (get property map)
+	boost::get( ${1:property}, ${2:graph} )
+snippet get boost (get property value)
+	boost::get( ${1:property}, ${2:graph}, ${1:vertex_descriptor} )
+snippet num_edges boost
+	boost::num_edges( ${1:graph} )
+snippet put boost (set property value)
+	boost::put( ${1:property}, ${2:graph}, ${1:vertex_descriptor}, ${4:vertex_descriptor} )
+snippet remove_edge boost (edge descriptor)
+	boost::remove_edge( ${1:edge_descriptor}, ${2:graph} )
+snippet remove_edge boost (edge iterator)
+	boost::remove_edge( ${1:edge_iterator}, ${2:graph} )
+snippet remove_edge boost (vertex specified edge)
+	boost::remove_edge( ${1:vertex_descriptor}, ${2:vertex_descriptor}, ${3:graph} )
+snippet remove_vertex boost
+	boost::remove_vertex( ${1:vertex_descriptor}, ${2:graph} )

@@ -1,0 +1,1271 @@
+##
+## Misc
+snippet vol volatile
+	volatile 
+snippet ex explicit
+	explicit 
+snippet cr const&
+	const& 
+snippet tid typeid
+	typeid( ${1:type_or_expression} )
+snippet swp std::swap
+	std::swap( ${1:a}, ${2:b} )
+snippet tnfo std::type_info
+	std::type_info 
+snippet te template
+	template<${1}> 
+snippet tt template template parameter
+	template<template <typename> class ${1}>
+snippet ttt recursive template
+	typedef typename ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:type} $2;
+snippet tn typename
+	typename 
+snippet it iterator
+	iterator 
+snippet cit const_iterator
+	const_iterator 
+##
+## Locales
+snippet global std::locale
+	std::locale::global( std::locale( "${1:location}" ) )
+snippet locale std
+	std::locale 
+snippet setlocale std
+	std::setlocale( ${1:LC_ALL}, "${2:location}" )
+##
+## Operators
+snippet op Generic operator syntax
+	operator${1}( ${2} )
+snippet comparison_operators Declaration
+	friend bool operator<( ${1:`vim_snippets#Filename('$1', 'ClassName')`} const& lhs, $1 const& rhs );
+
+	friend bool operator<=( $1 const& lhs, $1 const& rhs );
+
+	friend bool operator>( $1 const& lhs, $1 const& rhs );
+
+	friend bool operator>=( $1 const& lhs, $1 const& rhs );
+
+	friend bool operator==( $1 const& lhs, $1 const& rhs );
+
+	friend bool operator!=( $1 const& lhs, $1 const& rhs );
+snippet comparison_operators Definition
+	bool ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator<( $1 const& lhs, $1 const& rhs )
+	{
+	}
+
+	bool $1::operator<=( $1 const& lhs, $1 const& rhs )
+	{
+		return !( lhs > rhs );
+	}
+
+	bool $1::operator>( $1 const& lhs, $1 const& rhs )
+	{
+	}
+
+	bool $1::operator>=( $1 const& lhs, $1 const& rhs )
+	{
+		return !( lhs < rhs );
+	}
+
+	bool $1::operator==( $1 const& lhs, $1 const& rhs )
+	{
+	}
+
+	bool $1::operator!=( $1 const& lhs, $1 const& rhs )
+	{
+		return !( lhs == rhs );
+	}
+snippet allocation_operators Class Declaration
+	void* operator new ( std::size_t count );
+
+	void* operator new[] ( std::size_t count );
+
+	void operator delete ( void* ptr );
+
+	void operator delete[] ( void* ptr );
+
+	void operator delete ( void* ptr, std::size_t sz );
+
+	void operator delete[] ( void* ptr, std::size_t sz );
+snippet allocation_operators Class Definition
+	void* ${1:`vim_snippets#Filename('$1', 'ClassName')`}::operator new ( std::size_t count )
+	{
+		if ( size != sizeof( $1 ) ) {
+			return ::operator new( size );
+		}
+	}
+
+	void* $1::operator new[] ( std::size_t count )
+	{
+	}
+
+	void $1::operator delete ( void* ptr )
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void $1::operator delete[] ( void* ptr )
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void $1::operator delete ( void* ptr, std::size_t sz )
+	{
+		if ( !ptr ) {
+			return;
+		}
+
+		if ( size != sizeof( $1 ) ) {
+			::operator delete( ptr );
+			return;
+		}
+	}
+
+	void $1::operator delete[] ( void* ptr, std::size_t sz )
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+snippet allocation_operators Global Declaration (C++98)
+	void* operator new ( std::size_t size ) throw ( std::bad_alloc );
+
+	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) throw();
+
+	void* operator new ( std::size_t size, void* ptr ) throw();
+
+	void* operator new[] ( std::size_t size ) throw ( std::bad_alloc );
+
+	void* operator new[] ( std::size_t size, const std::nothrow_t& nothrow_value ) throw();
+
+	void* operator new[] ( std::size_t size, void* ptr ) throw();
+
+	void operator delete ( void* ptr ) throw();
+
+	void operator delete ( void* ptr, const std::nothrow_t& nothrow_constant ) throw();
+
+	void operator delete ( void* ptr, void* voidptr2 ) throw();
+
+	void operator delete[] ( void* ptr ) throw();
+
+	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) throw();
+
+	void operator delete[] ( void* ptr, void* voidptr2 ) throw();
+snippet allocation_operators Global Definition (C++98)
+	void* operator new ( std::size_t size ) throw ( std::bad_alloc )
+	{
+	}
+
+	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) throw()
+	{
+	}
+
+	void* operator new ( std::size_t size, void* ptr ) throw()
+	{
+		return ptr;
+	}
+
+	void* operator new[] ( std::size_t size ) throw ( std::bad_alloc )
+	{
+	}
+
+	void* operator new[] ( std::size_t size, const std::nothrow_t& nothrow_value ) throw()
+	{
+	}
+
+	void* operator new[] ( std::size_t size, void* ptr ) throw()
+	{
+		return ptr;
+	}
+
+	void operator delete ( void* ptr ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, const std::nothrow_t& nothrow_constant ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, void* voidptr2 ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr, void* voidptr2 ) throw()
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+snippet bitwise_operators Declaration
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator^=( int rhs );
+
+	friend $1 operator^( $1 const& lhs, int rhs );
+
+	$1& operator&=( int rhs );
+
+	friend $1 operator&( $1 const& lhs, int rhs );
+
+	$1& operator|=( int rhs );
+
+	friend $1 operator|( $1 const& lhs, int rhs );
+
+	$1& operator<<=( int rhs );
+
+	friend $1 operator<<( $1 const& lhs, int rhs );
+
+	$1& operator>>=( int rhs );
+
+	friend $1 operator>>( $1 const& lhs, int rhs );
+
+	$1 operator~() const;
+snippet bitwise_operators Definition
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator^=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator^( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value ^= rhs;
+		return value;
+	}
+
+	$1& $1::operator<<=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator<<( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value <<= rhs;
+		return value;
+	}
+
+	$1& $1::operator>>=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator>>( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value >>= rhs;
+		return value;
+	}
+
+	$1& $1::operator&=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator&( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value &= rhs;
+		return value;
+	}
+
+	$1 $1::operator~() const
+	{
+		$1 value( *this );
+		return value;
+	}
+
+	$1& $1::operator|=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator|( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value |= rhs;
+		return value;
+	}
+snippet arithmetic_operators Declaration
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator%=( int rhs );
+
+	friend $1 operator%( $1 const& lhs, int rhs );
+
+	$1& operator*=( int rhs );
+
+	friend $1 operator*( $1 const& lhs, int rhs );
+
+	$1& operator/=( int rhs );
+
+	friend $1 operator/( $1 const& lhs, int rhs );
+
+	$1& operator+=( int rhs )
+
+	$1 operator+();
+
+	friend $1 operator+( $1 const& lhs, int rhs );
+
+	$1& operator++();
+
+	$1 operator++( int );
+
+	$1& operator-=( int rhs );
+
+	$1 operator-();
+
+	friend $1 operator-( $1 const& lhs, int rhs );
+
+	$1& operator--();
+
+	$1 operator--( int );
+snippet arithmetic_operators Definition
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator%=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator%( $1 const& lhs, int rhs )
+	{
+		$1 value( *this );
+		value %= rhs;
+		return value;
+	}
+
+	$1& $1::operator*=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator*( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value *= rhs;
+		return value;
+	}
+
+	$1& $1::operator/=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator/( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value /= rhs;
+		return value;
+	}
+
+	$1& $1::operator+=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator+()
+	{
+		$1 value( *this );
+
+		return value;
+	}
+
+	$1 $1::operator+( $1 const& lhs, int rhs )
+	{
+		$1 value( *this );
+		value += rhs;
+		return value;
+	}
+
+	$1& $1::operator++()
+	{
+		*this += 1;
+		return *this;
+	}
+
+	$1 $1::operator++( int )
+	{
+		const $1 oldValue = *this;
+		++(*this);
+		return oldValue;
+	}
+
+	$1& $1::operator-=( int rhs )
+	{
+		return *this;
+	}
+
+	$1 $1::operator-()
+	{
+		$1 value( *this );
+
+		return value;
+	}
+
+	$1 $1::operator-( $1 const& lhs, int rhs )
+	{
+		$1 value( lhs );
+		value += rhs;
+		return value;
+	}
+
+	$1& $1::operator--()
+	{
+		*this -= 1;
+		return *this;
+	}
+
+	$1 $1::operator--( int )
+	{
+		const $1 oldValue = *this;
+		--(*this);
+		return oldValue;
+	}
+snippet dereference_operators Declaration
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& operator*();
+
+	$1* operator->();
+
+	$2& operator[]( std::size_t );
+snippet dereference_operators Definition
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}& $1::operator*()
+	{
+		return *this;
+	}
+
+	$1* $1::operator->()
+	{
+		return this;
+	}
+
+	$1& $1::operator[]( std::size_t )
+	{
+		return *this;
+	}
+snippet assignment_operators Declaration (C++98)
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}( $1 const& rhs );
+
+	$1& operator=( $1 const& rhs );
+snippet assignment_operators Definition (C++98)
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}::$1( $1 const& rhs )
+	{
+	}
+
+	$1& $1::operator=( $1 const& rhs )
+	{
+		if ( this == &rhs ) return *this;
+
+		return *this;
+	}
+##
+## Exceptions
+snippet try Try catch block
+	try {
+		${1}
+	} catch ( ${2:T}& ${3:name} ) {
+		${4}
+	}
+snippet catch Catch block
+	catch ( ${1:T}& ${2:name} ) {
+		${3}
+	}
+snippet throw Throw an exception
+	throw ${1:value};
+##
+## Casts
+snippet sc static_cast
+	static_cast<${1:T}>( ${2:value} )
+snippet dc dynamic_cast
+	dynamic_cast<${1:T}>( ${2:value} )
+snippet rc reinterpret_cast
+	reinterpret_cast<${1:T}>( ${2:value} )
+snippet cc const_cast
+	const_cast<${1:T}>( ${2:value} )
+##
+## Allocation
+snippet n Single object new
+	new ${1:T} ( ${2:args...} )
+snippet n Array new
+	new ${1:T} [${2:N}]
+snippet n Single object placement new
+	new ( ${1:ptr} ) ${2:T} ( ${2:args...} )
+snippet p Array placement new
+	new ( ${1:ptr} ) ${2:T} [${3:N}]
+snippet d Single object delete
+	delete 
+snippet d Array delete
+	delete[] 
+snippet nt std::nothrow
+	std::nothrow
+##
+## Streams
+snippet ss std::stringstream
+	std::stringstream ${1:ss};
+snippet iss std::istringstream
+	std::istringstream ${1:iss};
+snippet oss std::ostringstream
+	std::ostringstream ${1:oss};
+snippet sb std::stringbuf
+	std::stringbuf ${1:sb};
+snippet is std::istream
+	std::istream ${1:is}( ${2:sb} );
+snippet os std::ostream
+	std::ostream ${1:os}( ${2:sb} );
+snippet osi std::ostream_iterator
+	std::ostream_iterator<${1:T}> ${2:name}( ${3:os}, ${4:deilmiter} );
+snippet ios std::iostream
+	std::iostream ${1:ios};
+snippet ofs std::ofstream
+	std::ofstream ${1:ofs}( ${2:filename} );
+snippet ifs std::ifstream
+	std::ifstream ${1:ifs}( ${2:filename} );
+snippet fs std::fstream
+	std::fstream ${1:fs}( ${2:filename} );
+snippet fbuf std::filebuf
+	std::filebuf ${1:fbuf};
+##
+## Manipulators
+snippet boolalpha std
+	std::boolalpha
+snippet showbase std
+	std::showbase
+snippet showpoint std
+	std::showpoint
+snippet showpos std
+	std::showpos
+snippet skipws std
+	std::skipws
+snippet unitbuf std
+	std::unitbuf
+snippet uppercase std
+	std::uppercase
+snippet noboolalpha std
+	std::noboolalpha
+snippet noshowbase std
+	std::noshowbase
+snippet noshowpoint std
+	std::noshowpoint
+snippet noshowpos std
+	std::noshowpos
+snippet noskipws std
+	std::noskipws
+snippet nounitbuf std
+	std::nounitbuf
+snippet nouppercase std
+	std::nouppercase
+snippet dec std
+	std::dec
+snippet hex std
+	std::hex
+snippet oct std
+	std::oct
+snippet fixed std
+	std::fixed
+snippet scientific std
+	std::scientific
+snippet internal std
+	std::internal
+snippet left std
+	std::left
+snippet right std
+	std::right
+snippet ws std
+	std::ws
+snippet endl std
+	std::endl
+snippet ends std
+	std::ends
+snippet flush std
+	std::flush
+##
+## Parameter Manipulators
+snippet setiosflags std
+	std::setiosflags( ${1:iosflags} )
+snippet resetiosflags std
+	std::resetiosflags( ${1:iosflags} )
+snippet setbase std
+	std::setbase( ${1:radix} )
+snippet setfill std
+	std::setfill( '${1:char}' )
+snippet setprecision std
+	std::setprecision( ${1:decimal_places} )
+snippet setw std
+	std::setw( ${1:width} )
+##
+## Exceptions
+snippet logic_error std
+	std::logic_error
+snippet invalid_argument std
+	std::invalid_argument
+snippet domain_error std
+	std::domain_error
+snippet length_error std
+	std::length_error
+snippet out_of_range std
+	std::out_of_range
+snippet runtime_error std
+	std::runtime_error
+snippet range_error std
+	std::range_error
+snippet overflow_error std
+	std::overflow_error
+snippet underflow_error std
+	std::underflow_error
+##
+## Smart pointers
+snippet ap std::auto_ptr
+	std::auto_ptr<${1:T}>
+##
+## Function objects
+snippet not1 std
+	std::not1( ${1:unary_predicate} )
+snippet not2 std
+	std::not2( ${1:binary_predicate} )
+snippet less std
+	std::less<${1:T}>()
+snippet less_equal std
+	std::less_equal<${1:T}>()
+snippet greater std
+	std::greater<${1:T}>()
+snippet greater_equal std
+	std::greater_equal<${1:T}>()
+snippet minus std
+	std::minus<${1:T}>()
+snippet plus std
+	std::plus<${1:T}>()
+snippet equal_to std
+	std::equal_to<${1:T}>()
+snippet not_equal_to std
+	std::not_equal_to<${1:T}>()
+snippet negate std
+	std::negate<${1:T}>()
+snippet divides std
+	std::divides<${1:T}>()
+snippet multiplies std
+	std::multiplies<${1:T}>()
+snippet modulus std
+	std::modulus<${1:T}>()
+snippet mem_fun std
+	std::mem_fun( ${1:function} )
+snippet mem_fun_ref std
+	std::mem_fun_ref( ${1:function} )
+snippet unary_function std
+	std::unary_function<${1:Arg}, ${2:Result}>
+snippet binary_function std
+	std::binary_function<${1:Arg1}, ${2:Arg2}, ${3:Result}>
+##
+## STL Algorithms
+snippet any_of std
+	${3:std}::any_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
+snippet all_of std
+	${3:std}::all_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
+snippet none_of std
+	${3:std}::none_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
+snippet for_each std
+	std::for_each( ${1:collection}.begin(), $1.end(), ${2:unary_functor} )
+snippet count std
+	std::count( ${1:collection}.begin(), $1.end(), ${2:value} )
+snippet count_if std
+	std::count_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
+snippet mismatch std
+	std::mismatch( ${1:collection}.begin(), $1.end(), ${2:collection}.begin() )
+snippet equal:collection std
+	std::equal( ${1:collection}.begin(), $1.end(), ${2:collection}.begin() )
+snippet transform std
+	std::transform( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:functor} );
+snippet copy std
+	std::copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() );
+snippet copy_if std
+	std::copy_if( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate} );
+snippet remove std
+	std::remove( ${1:collection}.begin(), $1.end(), ${2:value} );
+snippet remove_if std
+	std::remove_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} );
+snippet replace std
+	std::replace( ${1:collection}.begin(), $1.end(), ${2:old_value}, ${3:new_value} );
+snippet replace_if std
+	std::replace_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate}, ${3:new_value} );
+snippet replace_copy std
+	std::replace_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:old_value}, ${4:new_value} );
+snippet replace_copy_if std
+	std::replace_copy_if( ${1:collection}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate}, ${4:new_value} );
+snippet rotate std
+	std::rotate( ${1:collection}.begin(), ${2:new_begin_element}, $1.end() );
+snippet rotate_copy std
+	std::rotate_copy( ${1:collection}.begin(), ${2:new_begin_element}, $1.end(), ${3:destination}.begin() );
+snippet unique Default binary predicate (std::less) std
+	std::unique( ${1:collection}.begin(), $1.end() );
+snippet unique User defined binary predicate std
+	std::unique( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+snippet unique_copy Default binary predicate (std::less) std
+	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() );
+snippet unique_copy User defined binary predicate std
+	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:binary_predicate} );
+snippet sort Default binary predicate (std::less) std
+	std::sort( ${1:collection}.begin(), $1.end() );
+snippet sort User defined binary predicate std
+	std::sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+snippet partial_sort Default binary predicate (std::less) std
+	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end() );
+snippet partial_sort User defined binary predicate std
+	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end(), ${3:binary_predicate} );
+snippet partial_sort_copy Default binary predicate (std::less) std
+	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end() );
+snippet partial_sort_copy User defined binary predicate std
+	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end(), ${3:binary_predicate} );
+snippet stable_sort Default binary predicate (std::less) std
+	std::stable_sort( ${1:collection}.begin(), $1.end() );
+snippet stable_sort User defined binary predicate std
+	std::stable_sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+snippet nth_element Default binary predicate (std::less) std
+	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end() );
+snippet nth_element User defined binary predicate std
+	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end(), ${3:binary_predicate} );
+snippet lower_bound Default binary predicate (std::less) std
+	std::lower_bound( ${1:collection}.begin(), $1.end(), ${2:value} )
+snippet lower_bound User defined binary predicate std
+	std::lower_bound( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
+snippet upper_bound Default binary predicate (std::less) std
+	std::upper_bound( ${1:collection}.begin(), $1.end(), ${2:value} )
+snippet upper_bound User defined binary predicate std
+	std::upper_bound( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
+snippet binary_search Default binary predicate (std::less) std
+	std::binary_search( ${1:collection}.begin(), $1.end(), ${2:value} )
+snippet binary_search User defined binary predicate std
+	std::binary_search( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
+snippet equal_range Default binary predicate (std::less) std
+	std::equal_range( ${1:collection}.begin(), $1.end(), ${2:value} )
+snippet equal_range User defined binary predicate std
+	std::equal_range( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
+snippet merge Default binary predicate (std::less) std
+	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin() );
+snippet merge User defined binary predicate std
+	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+snippet inplace_merge Default binary predicate (std::less) std
+	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last} );
+snippet inplace_merge User defined binary predicate std
+	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last}, ${4:binary_predicate} );
+snippet includes Default binary predicate (std::less) std
+	std::includes( ${1:haystack}.begin(), $1.end(), ${2:needle}.begin(), $2.end() )
+snippet includes User defined binary predicate std
+	std::includes( ${1:haystack}.begin(), $1.end(), ${2:needle}.begin(), $2.end(), ${3:binary_predicate} )
+snippet set_difference Default binary predicate (std::less) std
+	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
+snippet set_difference User defined binary predicate std
+	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+snippet set_intersection Default binary predicate (std::less) std
+	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
+snippet set_intersection User defined binary predicate std
+	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+snippet set_symmetric_difference Default binary predicate (std::less) std
+	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
+snippet set_symmetric_difference User defined binary predicate std
+	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+snippet set_union Default binary predicate (std::less) std
+	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
+snippet set_union User defined binary predicate std
+	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+snippet is_heap std
+	${2:std}::is_heap( ${1:collection}.begin(), $1.end() )
+snippet mkheap Default binary predicate (std::less) std
+	std::make_heap( ${1:collection}.begin(), $1.end() );
+snippet mkheap User defined binary predicate std
+	std::make_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+snippet push_heap Default binary predicate (std::less) std
+	std::push_heap( ${1:collection}.begin(), $1.end() );
+snippet push_heap User defined binary predicate std
+	std::push_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+snippet pop_heap Default binary predicate (std::less) std
+	std::pop_heap( ${1:collection}.begin(), $1.end() );
+snippet pop_heap User defined binary predicate std
+	std::pop_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+snippet sort_heap Default binary predicate (std::less) std
+	std::sort_heap( ${1:collection}.begin(), $1.end() );
+snippet sort_heap User defined binary predicate std
+	std::sort_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+snippet minmax Default binary predicate (std::less) std
+	${3:std}::minmax( ${1:lhs}, ${2:rhs} )
+snippet minmax User defined binary predicate std
+	${4:std}::minmax( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
+snippet minmax_element Default binary predicate (std::less) std
+	${2:std}::minmax_element( ${1:collection}.begin(), $1.end() )
+snippet minmax User defined binary predicate std
+	${3:std}::minmax_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
+snippet max Default binary predicate (std::less) std
+	std::max( ${1:lhs}, ${2:rhs} )
+snippet max User defined binary predicate std
+	std::max( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
+snippet max_element Default binary predicate (std::less) std
+	std::max_element( ${1:collection}.begin(), $1.end() )
+snippet max_element User defined binary predicate std
+	std::max_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
+snippet min Default binary predicate (std::less) std
+	std::min( ${1:lhs}, ${2:rhs} )
+snippet min User defined binary predicate std
+	std::min( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
+snippet min_element Default binary predicate (std::less) std
+	std::min_element( ${1:collection}.begin(), $1.end() )
+snippet min_element User defined binary predicate std
+	std::min_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
+snippet lexicographical_compare Default binary predicate (std::less) std
+	std::lexicographical_compare( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end() )
+snippet lexicographical_compare User defined binary predicate std
+	std::lexicographical_compare( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:binary_predicate} )
+snippet is_permutation Default binary predicate (std::less) std
+	${3:std}::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin() )
+snippet is_permutation User defined binary predicate std
+	${4:std}::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), ${3:binary_predicate} )
+snippet next_permutation Default binary predicate (std::less) std
+	std::next_permutation( ${1:collection}.begin(), $1.end() )
+snippet next_permutation User defined binary predicate std
+	std::next_permutation( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
+snippet prev_permutation Default binary predicate (std::less) std
+	std::prev_permutation( ${1:collection}.begin(), $1.end() )
+snippet prev_permutation User defined binary predicate std
+	std::prev_permutation( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
+##
+## STL Collections
+snippet str std
+	std::string
+snippet ctraits std
+	std::char_traits<${2:T}>
+snippet pair std
+	std::pair<${1:KT}, ${2:VT}>
+snippet mkpair std
+	std::make_pair( ${1:first_value}, ${2:second_value} )
+snippet array std
+	std::array<${1:T}, ${2:N}>
+snippet vector std
+	std::vector<${1:T}>
+snippet deque std
+	std::deque<${1:T}>
+snippet flist std
+	std::forward_list<${1:T}>
+snippet list std
+	std::list<${1:T}>
+snippet set std
+	std::set<${1:T}>
+snippet map std
+	std::map<${1:Key}, ${2:T}>
+snippet mset std
+	std::multiset<${1:T}>
+snippet mmap std
+	std::multimap<${1:Key}, ${2:T}>
+snippet uset std
+	std::unordered_set<${1:T}>
+snippet umap std
+	std::unordered_map<${1:Key}, ${2:T}>
+snippet umset std
+	std::unordered_multiset<${1:T}>
+snippet ummap std
+	std::unordered_multimap<${1:Key}, ${2:T}>
+snippet stack std
+	std::stack<${1:T}>
+snippet queue std
+	std::queue<${1:T}>
+snippet pqueue std
+	std::priority_queue<${1:T}>
+##
+## STL Iterators
+snippet adv std
+	std::advance( ${1:effected_iterator}, std::distance( ${2:first_iterator}, ${3:last_iterator} ) )
+snippet dist std
+	std::distance( ${1:first_iterator}, ${2:last_iterator} )
+snippet iterator_traits std
+	std::iterator_traits<${1:T}>
+snippet iterator_base std
+	std::iterator<${1:iterator_category}, ${2:value_type}, ${3:difference_type = std::ptrdiff_t}, ${4:pointer = value_type*}, ${5:reference = value_type&}>
+snippet iterator_category std::input_iterator_tag
+	std::input_iterator_tag
+snippet iterator_category std::output_iterator_tag
+	std::output_iterator_tag
+snippet iterator_category std::forward_iterator_tag
+	std::forward_iterator_tag
+snippet iterator_category std::bidirectional_iterator_tag
+	std::bidirectional_iterator_tag
+snippet iterator_category std::random_access_iterator_tag
+	std::random_access_iterator_tag
+snippet back_inserter std
+	std::back_inserter( ${1:container} )
+snippet front_inserter std
+	std::front_inserter( ${1:container} )
+snippet inserter std
+	std::inserter( ${1:container} )
+snippet reverse_iterator std
+	std::reverse_iterator<${1:bidirectional_iterator_type}>
+snippet back_insert_iterator std
+	std::back_insert_iterator<${1:container_type}>
+snippet front_insert_iterator std
+	std::front_insert_iterator<${1:container_type}>
+snippet insert_iterator std
+	std::insert_iterator<${1:container_type}>
+snippet istream_iterator std
+	std::istream_iterator<${1:element_type}>
+snippet ostream_iterator std
+	std::ostream_iterator<${1:element_type}>
+snippet istreambuf_iterator std
+	std::istreambuf_iterator<${1:char_type}>
+snippet ostreambuf_iterator std
+	std::ostreambuf_iterator<${1:char_type}>
+##
+## Effective STL
+snippet erase_remove Effective STL std
+	${1:vector}.erase( std::remove( $1.begin(), $1.end(), ${2:val} ), $1.end() );
+snippet insert_or_update Effective STL
+	template<typename T> 
+	typename T::iterator map_insert_or_update(
+		T& m, typename T::key_type const& k, typename T::mapped_type const& v )
+	{
+		typename T::iterator lb = m.lower_bound( k );
+
+		if( lb != m.end() && !( m.key_comp()( k, lb->first ) ) ) { 
+			lb->second = v;
+			return lb;
+		} 
+
+		return m.insert( lb, typename T::value_type( k, v ) );
+	}
+snippet shrink_to_fit C++03
+	${1:T}( ${2:collection} ).swap( $2 );
+##
+## Access Modifiers
+snippet pri private
+	private
+snippet pro protected
+	protected
+snippet pub public
+	public
+snippet fr friend
+	friend
+snippet mu mutable
+	mutable
+##
+## Class
+snippet cl Class declaration (C++98)
+	class ${1:`vim_snippets#Filename('$1', 'name')`} 
+	{
+
+	public:
+
+		$1();
+
+		~$1();
+
+		$1& operator=( $1 const& );
+
+		$1( $1 const& );
+
+	};
+snippet cld Constructor and destructor definition
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}::$1()
+	{
+	}
+
+	${1:`vim_snippets#Filename('$1', 'ClassName')`}::~$1()
+	{
+	}
+snippet mfun Member function definition
+	${4:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}( ${3} )
+	{
+		${0}
+	}
+snippet ns namespace
+	namespace ${1:`vim_snippets#Filename('', 'my')`} 
+	{
+		${0}
+	} /* namespace $1 */
+snippet un Create ambiguity
+	using namespace ${1};
+snippet ns= Namespace alias
+	namespace ${1} = ${2};
+##
+## Input/Output
+snippet cout std
+	std::cout << ${1} << std::endl;
+snippet clog std
+	std::clog << ${1} << std::endl;
+snippet cerr std
+	std::cerr << ${1} << std::endl;
+snippet cin std
+	std::cin >> ${1};
+##
+## Allocator
+snippet alloc custom allocator class template outline (C++98)
+	#include <cstddef>
+	#include <new>
+
+	template <class T>
+	class ${1:`vim_snippets#Filename('$1', 'name')`} 
+	{
+
+	public:
+
+		typedef T                 value_type;
+		typedef value_type*       pointer;
+		typedef const value_type* const_pointer;
+		typedef value_type&       reference;
+		typedef const value_type& const_reference;
+		typedef std::size_t       size_type;
+		typedef std::ptrdiff_t    difference_type;
+
+		template <class U>
+		struct rebind {
+			typedef $1<U> other;
+		};
+
+		$1() throw()
+		{
+		}
+
+		$1( const $1& rhs ) throw()
+		{
+		}
+
+		$1& operator=( const $1& rhs ) throw()
+		{
+			if ( this == &rhs ) return *this;
+
+			return *this;
+		}
+
+		template <class U>
+		$1( const $1<U>& rhs ) throw()
+		{
+		}
+
+		~$1() throw()
+		{
+		}
+
+		pointer address( reference x ) const throw()
+		{
+			return &x;
+		}
+
+		const_pointer address( const_reference x ) const throw()
+		{
+			return &x;
+		}
+
+		pointer allocate( size_type n, const_pointer hint = 0 )
+		{
+			void* p = 0;
+
+			if ( !p ) {
+				throw std::bad_alloc();
+			}
+
+			return static_cast<pointer>( p );
+		}
+
+		void deallocate( pointer p, size_type n ) throw()
+		{
+		}
+
+		size_type max_size() const throw()
+		{
+			return static_cast<size_type>( -1 ) / sizeof( value_type );
+		}
+
+		void construct( pointer p, const value_type& x )
+		{
+			new( p ) value_type( x );
+		}
+
+		void destroy( pointer p )
+		{
+			p->~value_type();
+		}
+
+	private:
+
+	};
+
+	template<>
+	class $1<void>
+	{
+
+	public:
+
+		// Member Types
+		typedef void        value_type;
+		typedef void*       pointer;
+		typedef const void* const_pointer;
+
+		template <class U>
+		struct rebind {
+			typedef $1<U> other;
+		};
+
+	};
+
+	template <class T>
+	inline bool operator==( const $1<T>&, const $1<T>& ) throw()
+	{
+		return true;
+	}
+
+	template <class T>
+	inline bool operator!=( const $1<T>&, const $1<T>& ) throw()
+	{
+		return false;
+	}
+
+##
+## Iterator
+snippet iter custom iterator
+	include <iterator>
+
+	template<typename T>
+	class ${1:`vim_snippets#Filename('$1', 'name')`}
+	{
+
+	public:
+
+		typedef T                               value_type;
+		typedef std::ptrdiff_t                  difference_type;
+		typedef value_type*                     pointer;
+		typedef value_type&                     reference;
+		typedef std::random_access_iterator_tag iterator_category;
+
+		$1()
+		{
+		}
+
+		$1( value_type& rhs )
+		{
+		}
+
+		$1( $1 const& rhs )
+		{
+		}
+
+		$1& operator=( $1 const& rhs )
+		{
+			if ( this == &rhs )
+				return *this;
+
+			return *this;
+		}
+
+		reference operator*( void )
+		{
+		}
+
+		pointer operator->( void )
+		{
+		}
+
+		reference operator[]( difference_type off )
+		{
+		}
+
+		$1& operator+=( difference_type rhs )
+		{
+			return *this;
+		}
+
+		$1& operator++()
+		{
+			return (*this += 1);
+		}
+
+		$1 operator++( int )
+		{
+			$1 tmp( *this );
+			*this += 1;
+			return tmp;
+		}
+
+		$1& operator-=( difference_type rhs )
+		{
+			return *this;
+		}
+
+		$1& operator--()
+		{
+			return (*this -= 1);
+		}
+
+		$1 operator--( int )
+		{
+			$1 tmp( *this );
+			*this -= 1;
+			return tmp;
+		}
+
+		friend bool operator==( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator!=( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator<( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator<=( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator>( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend bool operator>=( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+		friend $1 operator+( $1 const& lhs, difference_type rhs )
+		{
+			return $1( lhs ) += rhs;
+		}
+
+		friend $1 operator+( difference_type lhs, $1 const& rhs )
+		{
+			return $1( rhs ) += lhs;
+		}
+
+		friend $1 operator-( $1 const& lhs, difference_type rhs )
+		{
+			return $1( lhs ) -= rhs;
+		}
+
+		friend difference_type operator-( $1 const& lhs, $1 const& rhs )
+		{
+		}
+
+	private:
+
+	};
+
+##
+## Compiler
+snippet extc extern "C"
+	extern "C" {
+		${1}
+	}

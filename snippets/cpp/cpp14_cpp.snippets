@@ -1,0 +1,146 @@
+##
+## Misc
+snippet dta decltype(auto)
+	decltype(auto)
+snippet add_const_t std
+	std::add_const_t<${1:T}>
+snippet add_cv_t std
+	std::add_cv_t<${1:T}>
+snippet add_lvalue_reference_t std
+	std::add_lvalue_reference_t<${1:T}>
+snippet add_pointer_t std
+	std::add_pointer_t<${1:T}>
+snippet add_rvalue_reference_t std
+	std::add_rvalue_reference_t<${1:T}>
+snippet add_volatile_t std
+	std::add_volatile_t<${1:T}>
+snippet make_signed_t std
+	std::make_signed_t<${1:T}>
+snippet make_unsigned_t std
+	std::make_unsigned_t<${1:T}>
+snippet remove_all_extents_t std
+	std::remove_all_extents_t<${1:T}>
+snippet remove_const_t std
+	std::remove_const_t<${1:T}>
+snippet remove_cv_t std
+	std::remove_cv_t<${1:T}>
+snippet remove_extent_t std
+	std::remove_extent_t<${1:T}>
+snippet remove_pointer_t std
+	std::remove_pointer_t<${1:T}>
+snippet remove_reference_t std
+	std::remove_reference_t<${1:T}>
+snippet remove_volatile_t std
+	std::remove_volatile_t<${1:T}>
+##
+## Operators
+snippet opn Global Declaration (C++14)
+	void* operator new ( std::size_t size );
+
+	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept;
+
+	void* operator new ( std::size_t size, void* ptr ) noexcept;
+
+	void* operator new[] ( std::size_t size );
+
+	void* operator new[] ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept;
+
+	void* operator new[] ( std::size_t size, void* ptr ) noexcept;
+
+	void operator delete ( void* ptr ) noexcept;
+
+	void operator delete ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept;
+
+	void operator delete ( void* ptr, void* voidptr2 ) noexcept;
+
+	void operator delete ( void* ptr, std::size_t size ) noexcept;
+
+	void operator delete ( void* ptr, std::size_t size, const std::nothrow_t& nothrow_constant ) noexcept;
+
+	void operator delete[] ( void* ptr ) noexcept;
+
+	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept;
+
+	void operator delete[] ( void* ptr, void* voidptr2 ) noexcept;
+snippet opn Global Definition (C++14)
+	void* operator new ( std::size_t size )
+	{
+	}
+
+	void* operator new ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept
+	{
+	}
+
+	void* operator new ( std::size_t size, void* ptr ) noexcept
+	{
+		return ptr;
+	}
+
+	void* operator new[] ( std::size_t size )
+	{
+	}
+
+	void* operator new[] ( std::size_t size, const std::nothrow_t& nothrow_value ) noexcept
+	{
+	}
+
+	void* operator new[] ( std::size_t size, void* ptr ) noexcept
+	{
+		return ptr;
+	}
+
+	void operator delete ( void* ptr ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, void* voidptr2 ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, std::size_t size ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete ( void* ptr, std::size_t size, const std::nothrow_t& nothrow_constant ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr, const std::nothrow_t& nothrow_constant ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
+
+	void operator delete[] ( void* ptr, void* voidptr2 ) noexcept
+	{
+		if ( !ptr ) {
+			return;
+		}
+	}
