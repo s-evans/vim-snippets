@@ -1,0 +1,135 @@
+
+#
+# Intrinsics
+#
+
+# TODO:
+# __cosf(x)
+# __cosf(x)
+# __dadd_[rn,rz,ru,rd](x,y)
+# __ddiv_[rn,rz,ru,rd](x,y)(x,y)
+# __dma _[rn,rz,ru,rd](x,y,z)
+# __dmul_[rn,rz,ru,rd](x,y)
+# __drcp_[rn,rz,ru,rd](x)
+# __dsqrt_[rn,rz,ru,rd](x)
+# __exp10f(x)
+# __exp10f(x)
+# __expf(x)
+# __fadd_[rn,rz,ru,rd](x,y)
+# __fdiv_[rn,rz,ru,rd](x,y)
+# __fdividef(x,y)
+# __fdividef(x,y)
+# __fmaf_[rn,rz,ru,rd](x,y,z)
+# __fmul_[rn,rz,ru,rd](x,y)
+# __frcp_[rn,rz,ru,rd](x)
+# __frsqrt_rn(x)
+# __fsqrt_[rn,rz,ru,rd](x)
+# __log10f(x)
+# __log10f(x)
+# __log2f(x)
+# __log2f(x)
+# __logf(x)
+# __logf(x)
+# __logf(x)
+# __powf(x, y)
+# __powf(x,y)
+# __powf(x,y)(x)
+# __sincosf(x,sptr,cptr)
+# __sincosf(x,sptr,cptr)
+# __sinf(x)
+# __sinf(x)
+# __tanf(x)
+# __tanf(x)
+
+#
+# Keywords
+#
+
+snippet bd cuda
+	blockDim.${1:x}
+snippet bi cuda
+	blockIdx.${1:x}
+snippet ti cuda
+	threadIdx.${1:x}
+snippet gd cuda
+	gridDim.${1:x}
+snippet _g cuda
+	__global__
+snippet _d cuda
+	__device__
+snippet _s cuda
+	__shared__
+
+# TODO:
+# warpSize
+
+#
+# Functions
+#
+
+snippet devsync cuda
+	cudaDeviceSynchronize();
+snippet memcpy cuda
+	cudaMemcpy(${1:d}, ${2:s}, ${3:size}, ${4:cudaMemcpyDeviceToHost});
+snippet d2h cuda
+	cudaMemcpyDeviceToHost
+snippet h2d cuda
+	cudaMemcpyHostToDevice
+snippet mallocd cuda
+	cudaMalloc(&${1:dp}, ${2:size});
+snippet freed cuda
+	cudaFree(${1:dp});
+snippet freeh cuda
+	cudaFreeHost(${1:hp});
+snippet alloch cuda
+	cudaHostAlloc(${1:size});
+snippet malloch cuda
+	cudaMallocHost(${1:size});
+snippet mallocr cuda
+	cudaHostRegister(${1:hp});
+snippet memcpya cuda
+	cudaMemcpyAsync(${1:d}, ${2:s}, ${3:size}, ${4:cudaMemcpyDeviceToHost}, ${5:stream});
+snippet memset cuda
+	cudaMemset(${1:dp}, ${2:v}, ${3:size});
+snippet memseta cuda
+	cudaMemsetAsync(${1:dp}, ${2:v}, ${3:size}, ${4:stream});
+snippet streamc cuda
+	cudaStreamCreate();
+snippet streamd cuda
+	cudaStreamDestroy();
+
+# TODO:
+# cudaMemcpy2DAsync
+# cudaMemcpy3DAsync
+# cudaMemset2DAsync
+# cudaMemset3DAsync
+# cudaDeviceGetCacheConfig
+# cudaDeviceGetLimit
+# cudaEventCreateWithFlags
+# cudaEventDestroy
+# cudaEventRecord
+# cudaFuncGetAttributes
+# cudaGetDevice
+# cudaGetDeviceCount
+# cudaGetDeviceProperty
+# cudaGetErrorString
+# cudaGetLastError
+# cudaOccupancyMaxActiveBlocksPerMultiprocessor
+# cudaOccupancyMaxPotentialBlockSize
+# cudaOccupancyMaxPotentialBlockSizeVariableSMem
+# cudaPeekAtLastError
+# cudaRuntimeGetVersion
+# cudaStreamCreateWithFlags
+# cudaStreamWaitEvent
+
+#
+# Warp Sync
+#
+
+snippet sync cuda
+	__syncthreads();
+
+# TODO:
+# __syncthreads_and(int predicate);
+# __syncthreads_count(int predicate);
+# __syncthreads_or(int predicate);
