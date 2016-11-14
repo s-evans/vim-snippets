@@ -1,8 +1,6 @@
-
 #
 # Intrinsics
 #
-
 # TODO:
 # __cosf(x)
 # __cosf(x)
@@ -40,11 +38,9 @@
 # __sinf(x)
 # __tanf(x)
 # __tanf(x)
-
 #
 # Keywords
 #
-
 snippet bd cuda
 	blockDim.${1:x}
 snippet bi cuda
@@ -59,45 +55,41 @@ snippet _d cuda
 	__device__
 snippet _s cuda
 	__shared__
-
 # TODO:
 # warpSize
-
 #
 # Functions
 #
-
 snippet devsync cuda
 	cudaDeviceSynchronize();
 snippet memcpy cuda
-	cudaMemcpy(${1:d}, ${2:s}, ${3:size}, ${4:cudaMemcpyDeviceToHost});
+	cudaMemcpy(${1:d}, ${2:s}, ${3:size}, ${4:cudaMemcpyDeviceToHost})
 snippet d2h cuda
 	cudaMemcpyDeviceToHost
 snippet h2d cuda
 	cudaMemcpyHostToDevice
 snippet mallocd cuda
-	cudaMalloc(&${1:dp}, ${2:size});
+	cudaMalloc(&${1:dp}, ${2:size})
 snippet freed cuda
-	cudaFree(${1:dp});
+	cudaFree(${1:dp})
 snippet freeh cuda
-	cudaFreeHost(${1:hp});
+	cudaFreeHost(${1:hp})
 snippet alloch cuda
-	cudaHostAlloc(${1:size});
+	cudaHostAlloc(${1:size})
 snippet malloch cuda
-	cudaMallocHost(${1:size});
+	cudaMallocHost(${1:size})
 snippet mallocr cuda
-	cudaHostRegister(${1:hp});
+	cudaHostRegister(${1:hp})
 snippet memcpya cuda
-	cudaMemcpyAsync(${1:d}, ${2:s}, ${3:size}, ${4:cudaMemcpyDeviceToHost}, ${5:stream});
+	cudaMemcpyAsync(${1:d}, ${2:s}, ${3:size}, ${4:cudaMemcpyDeviceToHost}, ${5:stream})
 snippet memset cuda
-	cudaMemset(${1:dp}, ${2:v}, ${3:size});
+	cudaMemset(${1:dp}, ${2:v}, ${3:size})
 snippet memseta cuda
-	cudaMemsetAsync(${1:dp}, ${2:v}, ${3:size}, ${4:stream});
+	cudaMemsetAsync(${1:dp}, ${2:v}, ${3:size}, ${4:stream})
 snippet streamc cuda
-	cudaStreamCreate();
+	cudaStreamCreate()
 snippet streamd cuda
-	cudaStreamDestroy();
-
+	cudaStreamDestroy()
 # TODO:
 # cudaMemcpy2DAsync
 # cudaMemcpy3DAsync
@@ -121,14 +113,11 @@ snippet streamd cuda
 # cudaRuntimeGetVersion
 # cudaStreamCreateWithFlags
 # cudaStreamWaitEvent
-
 #
 # Warp Sync
 #
-
 snippet sync cuda
 	__syncthreads();
-
 # TODO:
 # __syncthreads_and(int predicate);
 # __syncthreads_count(int predicate);
