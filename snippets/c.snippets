@@ -17,6 +17,36 @@ snippet fb fileblock
 	// ${1}
 	//----------------------------------------------------------------------------------------------------------------------
 ##
+## Integer Types
+snippet i64 int
+	int64_t
+snippet i32 int
+	int32_t
+snippet i16 int
+	int16_t
+snippet i8 int
+	int8_t
+snippet u64 int
+	uint64_t
+snippet u32 int
+	uint32_t
+snippet u16 int
+	uint16_t
+snippet u8 int
+	uint8_t
+snippet sz int
+	size_t
+snippet ssz int
+	ssize_t
+snippet ul int
+	unsigned long
+snippet ull int
+	unsigned long long
+snippet us int
+	unsigned short
+snippet uc int
+	unsigned char
+##
 ## cstdlib
 snippet malloc cstdlib
 	malloc( ${1:size} )
@@ -389,8 +419,10 @@ snippet asm gcc/clang
 	__asm__ (
 		"${1}"
 	);
-snippet pack structure packing
+snippet pack msvc
 	#pragma pack(${1:push_pop, }${2:alignment})
+snippet pack gcc
+	__attribute__((pack))
 snippet stdcall msvc
 	__stdcall
 snippet stdcall gcc/clang

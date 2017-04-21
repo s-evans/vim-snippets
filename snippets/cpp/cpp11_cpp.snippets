@@ -1,9 +1,191 @@
 ##
+## Containers
+snippet uset std
+	std::unordered_set<${1:T}>
+snippet umap std
+	std::unordered_map<${1:K}, ${2:V}>
+snippet umset std
+	std::unordered_multiset<${1:T}>
+snippet ummap std
+	std::unordered_multimap<${1:K}, ${2:V}>
+##
+## Memory
+snippet up std
+	std::unique_ptr
+snippet sp std
+	std::shared_ptr
+snippet wp std
+	std::weak_ptr
+##
+## Iterators
+snippet mi std
+	std::move_iterator
+snippet mkmi std
+	std::make_move_iterator( ${1} )
+##
+## Strings
+snippet to_str std
+	std::to_string( ${1} )
+##
+## Tuples
+snippet tuple std
+	std::tuple
+snippet mktuple std
+	std::make_tuple( ${1} )
+snippet tie std
+	std::tie
+snippet ignore std::tuples
+	std::tuples::ignore
+##
+## Regex
+snippet regex_match std
+	std::regex_match( ${1:string}, ${3:regex} )
+snippet regex_search std
+	std::regex_search( ${1:string}, ${2:smatch}, ${3:regex} )
+snippet regex_replace std
+	std::regex_replace( ${1:string}, ${2:regex}, ${3:replace_format_string} )
+snippet smatch std
+	std::smatch
+snippet regex std
+	std::regex
+snippet format_literal std::regex_constants
+	std::regex_constants::format_literal
+##
+## Function objects
+snippet function std
+	std::function
+snippet bind std
+	std::bind( ${1:function}, ${2:args...} )
+snippet mem_fn std
+	std::mem_fn( ${1:function} )
+snippet ref std
+	std::ref( ${1:value} )
+snippet cref std
+	std::cref( ${1:value} )
+snippet refwrapper std
+	std::reference_wrapper
+##
+## Random Generators
+snippet random_device std::random
+	std::random::random_device
+snippet minstd_rand0 std::random
+	std::random::minstd_rand0
+snippet minstd_rand std::random
+	std::random::minstd_rand
+snippet rand48 std::random
+	std::random::rand48
+snippet ecuyer1988 std::random
+	std::random::ecuyer1988
+snippet knuth_b std::random
+	std::random::knuth_b
+snippet kreutzer1986 std::random
+	std::random::kreutzer1986
+snippet taus88 std::random
+	std::random::taus88
+snippet hellekalek1995 std::random
+	std::random::hellekalek1995
+snippet mt11213b std::random
+	std::random::mt11213b
+snippet mt19937 std::random
+	std::random::mt19937
+snippet mt19937_64 std::random
+	std::random::mt19937_64
+snippet lagged_fibonacci607 std::random
+	std::random::lagged_fibonacci607
+snippet lagged_fibonacci1279 std::random
+	std::random::lagged_fibonacci1279
+snippet lagged_fibonacci2281 std::random
+	std::random::lagged_fibonacci2281
+snippet lagged_fibonacci3217 std::random
+	std::random::lagged_fibonacci3217
+snippet lagged_fibonacci4423 std::random
+	std::random::lagged_fibonacci4423
+snippet lagged_fibonacci9689 std::random
+	std::random::lagged_fibonacci9689
+snippet lagged_fibonacci19937 std::random
+	std::random::lagged_fibonacci19937
+snippet lagged_fibonacci23209 std::random
+	std::random::lagged_fibonacci23209
+snippet lagged_fibonacci44497 std::random
+	std::random::lagged_fibonacci44497
+snippet ranlux3 std::random
+	std::random::ranlux3
+snippet ranlux4 std::random
+	std::random::ranlux4
+snippet ranlux64_3 std::random
+	std::random::ranlux64_3
+snippet ranlux64_4 std::random
+	std::random::ranlux64_4
+snippet ranlux3_01 std::random
+	std::random::ranlux3_01
+snippet ranlux4_01 std::random
+	std::random::ranlux4_01
+snippet ranlux64_3_01 std::random
+	std::random::ranlux64_3_01
+snippet ranlux64_4_01 std::random
+	std::random::ranlux64_4_01
+snippet ranlux24 std::random
+	std::random::ranlux24
+snippet ranlux48 std::random
+	std::random::ranlux48
+##
+## Random Distributions
+snippet uniform_int_distribution std::random
+	std::random::uniform_int_distribution<${1:int}> ${2:name} ( ${3:range_low}, ${3:range_high} )
+snippet discrete_distribution std::random
+	std::random::discrete_distribution<${1:double}> ${2:name} ( ${4:array_of_doubles} )
+snippet uniform_smallint std::random
+	std::random::uniform_smallint
+snippet uniform_01 std::random
+	std::random::uniform_01
+snippet uniform_real_distribution std::random
+	std::random::uniform_real_distribution
+snippet bernoulli_distribution std::random
+	std::random::bernoulli_distribution
+snippet binomial_distribution std::random
+	std::random::binomial_distribution
+snippet geometric_distribution std::random
+	std::random::geometric_distribution
+snippet negative_binomial_distribution std::random
+	std::random::negative_binomial_distribution
+snippet poisson_distribution std::random
+	std::random::poisson_distribution
+snippet exponential_distribution std::random
+	std::random::exponential_distribution
+snippet gamma_distribution std::random
+	std::random::gamma_distribution
+snippet weibull_distribution std::random
+	std::random::weibull_distribution
+snippet extreme_value_distribution std::random
+	std::random::extreme_value_distribution
+snippet beta_distribution std::random
+	std::random::beta_distribution
+snippet laplace_distribution std::random
+	std::random::laplace_distribution
+snippet normal_distribution std::random
+	std::random::normal_distribution
+snippet lognormal_distribution std::random
+	std::random::lognormal_distribution
+snippet chi_squared_distribution std::random
+	std::random::chi_squared_distribution
+snippet cauchy_distribution std::random
+	std::random::cauchy_distribution
+snippet fisher_f_distribution std::random
+	std::random::fisher_f_distribution
+snippet student_t_distribution std::random
+	std::random::student_t_distribution
+snippet piecewise_constant_distribution std::random
+	std::random::piecewise_constant_distribution
+snippet piecewise_linear_distribution std::random
+	std::random::piecewise_linear_distribution
+snippet triangle_distribution std::random
+	std::random::triangle_distribution
+snippet uniform_on_sphere std::random
+	std::random::uniform_on_sphere
+##
 ## Misc
 snippet ovr override
 	override 
-snippet up std::unique_ptr
-	std::unique_ptr<${1:T}>
 snippet u= Alias declaration
 	using ${1} = ${2};
 snippet =dl = delete
@@ -15,19 +197,355 @@ snippet ce constexpr
 snippet ne noexcept
 	noexcept
 snippet static_assert C++11
-	static_assert( ${1:bool_constexpr}, ${2:message} );
+	static_assert( ${1:bool_constexpr}, ${2:message} )
 snippet dt decltype
-	decltype(${1:expr})
+	decltype
 snippet np nullptr
 	nullptr
 snippet mv std
-	std::move<${1:T}>( ${2:val} )
+	std::move
 snippet fwd std
-	std::forward<${1:T}>( ${2:val} )
+	std::forward
 snippet ld Lambda expression
 	[${1:capture_expression}]( ${2:args...} ){
 		${3}
 	}
+##
+## Mutexes
+snippet mutex std::mutex
+	std::mutex
+snippet mutex std::timed_mutex
+	std::timed_mutex
+snippet mutex std::shared_mutex
+	std::shared_mutex
+snippet mutex std::timed_mutex
+	std::timed_mutex
+snippet mutex std::recursive_timed_mutex
+	std::recursive_timed_mutex
+snippet mutex std
+	std::recursive_mutex
+##
+## Launch Policies
+snippet async std::launch
+	std::launch::async
+snippet any std::launch
+	std::launch::any
+snippet deferred std::launch
+	std::launch::deferred
+##
+## Generic Locking Algorithms
+snippet lock std
+	std::lock( ${1:mutex...} )
+snippet try_lock std
+	std::try_lock( ${1:mutex...} )
+##
+## Call Once
+snippet once_flag std
+	std::once_flag
+snippet call_once std
+	std::call_once( ${1} )
+##
+## Threading
+snippet thread std
+	std::thread
+snippet cv std
+	std::condition_variable
+snippet cva std
+	std::condition_variable_any
+snippet sleep_for std::this_thread
+	std::this_thread::sleep_for( ${1} )
+snippet sleep_until std::this_thread
+	std::this_thread::sleep_until( ${1} )
+snippet yield std::this_thread
+	std::this_thread::yield( ${1} )
+snippet get_id std::this_thread
+	std::this_thread::get_id()
+snippet hardware_concurrency std::thread
+	std::thread::hardware_concurrency()
+snippet unique_lock std
+	std::unique_lock<std::mutex>
+snippet lock_guard std
+	std::lock_guard<std::mutex>
+snippet shared_lock std
+	std::shared_lock<std::mutex>
+snippet scoped_lock std
+	std::scoped_lock<std::mutex>
+snippet atomic std
+	std::atomic<${1:T}>
+snippet async std
+	std::async( ${1:func} )
+snippet packaged_task std
+	std::packaged_task<${1:R}>
+snippet promise std
+	std::promise<${1:R}>
+snippet future std
+	std::future<${1:R}>
+snippet shared_future std
+	std::shared_future<${1:R}>
+##
+## Type Traits
+snippet integral_constant std
+	std::integral_constant<${1:T}, ${2:T v}>
+snippet true_type std
+	std::true_type
+snippet false_type std
+	std::false_type
+snippet is_void std
+	std::is_void<${1:T}>::value
+snippet is_null_pointer std
+	std::is_null_pointer<${1:T}>::value
+snippet is_integral std
+	std::is_integral<${1:T}>::value
+snippet is_floating_point std
+	std::is_floating_point<${1:T}>::value
+snippet is_array std
+	std::is_array<${1:T}>::value
+snippet is_pointer std
+	std::is_pointer<${1:T}>::value
+snippet is_lvalue_reference std
+	std::is_lvalue_reference<${1:T}>::value
+snippet is_rvalue_reference std
+	std::is_rvalue_reference<${1:T}>::value
+snippet is_member_object_pointer std
+	std::is_member_object_pointer<${1:T}>::value
+snippet is_member_function_pointer std
+	std::is_member_function_pointer<${1:T}>::value
+snippet is_enum std
+	std::is_enum<${1:T}>::value
+snippet is_union std
+	std::is_union<${1:T}>::value
+snippet is_class std
+	std::is_class<${1:T}>::value
+snippet is_function std
+	std::is_function<${1:T}>::value
+snippet is_reference std
+	std::is_reference<${1:T}>::value
+snippet is_arithmetic std
+	std::is_arithmetic<${1:T}>::value
+snippet is_fundamental std
+	std::is_fundamental<${1:T}>::value
+snippet is_object std
+	std::is_object<${1:T}>::value
+snippet is_scalar std
+	std::is_scalar<${1:T}>::value
+snippet is_compound std
+	std::is_compound<${1:T}>::value
+snippet is_member_pointer std
+	std::is_member_pointer<${1:T}>::value
+snippet is_const std
+	std::is_const<${1:T}>::value
+snippet is_volatile std
+	std::is_volatile<${1:T}>::value
+snippet is_trivial std
+	std::is_trivial<${1:T}>::value
+snippet is_trivially_copyable std
+	std::is_trivially_copyable<${1:T}>::value
+snippet is_standard_layout std
+	std::is_standard_layout<${1:T}>::value
+snippet is_pod std
+	std::is_pod<${1:T}>::value
+snippet is_literal_type std
+	std::is_literal_type<${1:T}>::value
+snippet is_empty std
+	std::is_empty<${1:T}>::value
+snippet is_polymorphic std
+	std::is_polymorphic<${1:T}>::value
+snippet is_abstract std
+	std::is_abstract<${1:T}>::value
+snippet is_signed std
+	std::is_signed<${1:T}>::value
+snippet is_unsigned std
+	std::is_unsigned<${1:T}>::value
+snippet is_constructible std
+	std::is_constructible<${1:T}, ${2:... Args}>::value
+snippet is_default_constructible std
+	std::is_default_constructible<${1:T}>::value
+snippet is_copy_constructible std
+	std::is_copy_constructible<${1:T}>::value
+snippet is_move_constructible std
+	std::is_move_constructible<${1:T}>::value
+snippet is_assignable std
+	std::is_assignable<${1:T}, ${2:U}>::value
+snippet is_copy_assignable std
+	std::is_copy_assignable<${1:T}>::value
+snippet is_move_assignable std
+	std::is_move_assignable<${1:T}>::value
+snippet is_destructible std
+	std::is_destructible<${1:T}>::value
+snippet is_trivially_constructible std
+	std::is_trivially_constructible<${1:T}, ${2:... Args}>::value
+snippet is_trivially_default_constructible std
+	std::is_trivially_default_constructible<${1:T}>::value
+snippet is_trivially_copy_constructible std
+	std::is_trivially_copy_constructible<${1:T}>::value
+snippet is_trivially_move_constructible std
+	std::is_trivially_move_constructible<${1:T}>::value
+snippet is_trivially_assignable std
+	std::is_trivially_assignable<${1:T}, ${2:U}>::value
+snippet is_trivially_copy_assignable std
+	std::is_trivially_copy_assignable<${1:T}>::value
+snippet is_trivially_move_assignable std
+	std::is_trivially_move_assignable<${1:T}>::value
+snippet is_trivially_destructible std
+	std::is_trivially_destructible<${1:T}>::value
+snippet is_nothrow_constructible std
+	std::is_nothrow_constructible<${1:T}, ${2:... Args}>::value
+snippet is_nothrow_default_constructible std
+	std::is_nothrow_default_constructible<${1:T}>::value
+snippet is_nothrow_copy_constructible std
+	std::is_nothrow_copy_constructible<${1:T}>::value
+snippet is_nothrow_move_constructible std
+	std::is_nothrow_move_constructible<${1:T}>::value
+snippet is_nothrow_assignable std
+	std::is_nothrow_assignable<${1:T}, ${2:U}>::value
+snippet is_nothrow_copy_assignable std
+	std::is_nothrow_copy_assignable<${1:T}>::value
+snippet is_nothrow_move_assignable std
+	std::is_nothrow_move_assignable<${1:T}>::value
+snippet is_nothrow_destructible std
+	std::is_nothrow_destructible<${1:T}>::value
+snippet has_virtual_destructor std
+	std::has_virtual_destructor<${1:T}>::value
+snippet alignment_of std
+	std::alignment_of<${1:T}>::value
+snippet rank std
+	std::rank<${1:T}>::value
+snippet extent std
+	std::extent<${1:T}, ${2:I = 0}>::value
+snippet is_same std
+	std::is_same<${1:T}, ${2:U}>::value
+snippet is_base_of std
+	std::is_base_of<${1:Base}, ${2:Derived}>::value
+snippet is_convertible std
+	std::is_convertible<${1:From}, ${2:To}>::value
+snippet add_const std
+	std::add_const<${1:T}>::type
+snippet add_cv std
+	std::add_cv<${1:T}>::type
+snippet add_lvalue_reference std
+	std::add_lvalue_reference<${1:T}>::type
+snippet add_pointer std
+	std::add_pointer<${1:T}>::type
+snippet add_rvalue_reference std
+	std::add_rvalue_reference<${1:T}>::type
+snippet add_volatile std
+	std::add_volatile<${1:T}>::type
+snippet decay std
+	std::decay<${1:T}>::type
+snippet make_signed std
+	std::make_signed<${1:T}>::type
+snippet make_unsigned std
+	std::make_unsigned<${1:T}>::type
+snippet remove_all_extents std
+	std::remove_all_extents<${1:T}>::type
+snippet remove_const std
+	std::remove_const<${1:T}>::type
+snippet remove_cv std
+	std::remove_cv<${1:T}>::type
+snippet remove_extent std
+	std::remove_extent<${1:T}>::type
+snippet remove_pointer std
+	std::remove_pointer<${1:T}>::type
+snippet remove_reference std
+	std::remove_reference<${1:T}>::type
+snippet remove_volatile std
+	std::remove_volatile<${1:T}>::type
+##
+## Chrono
+snippet time_point std::chrono
+	std::chrono::time_point<${1:clock_type}, ${2:duration_type}>
+snippet duration std::chrono
+	std::chrono::duration<${1:period_type}, ${2:tick_type}>
+snippet hours std::chrono
+	std::chrono::hours
+snippet minutes std::chrono
+	std::chrono::minutes
+snippet seconds std::chrono
+	std::chrono::seconds
+snippet milliseconds std::chrono
+	std::chrono::milliseconds
+snippet microseconds std::chrono
+	std::chrono::microseconds
+snippet nanoseconds std::chrono
+	std::chrono::nanoseconds
+snippet tpc std::chrono
+	std::chrono::time_point_cast<${1:duration_type}>( ${2:time_point_value} )
+snippet durc std::chrono
+	std::chrono::duration_cast<${1:duration_type}>( ${2:duration_value} )
+##
+## Specific chrono clock type snippets
+snippet system_clock std::chrono
+	std::chrono::system_clock
+snippet steady_clock std::chrono
+	std::chrono::steady_clock
+snippet high_resolution_clock std::chrono
+	std::chrono::high_resolution_clock
+snippet process_real_cpu_clock std::chrono
+	std::chrono::process_real_cpu_clock
+snippet process_user_cpu_clock std::chrono
+	std::chrono::process_user_cpu_clock
+snippet process_system_cpu_clock std::chrono
+	std::chrono::process_system_cpu_clock
+snippet process_cpu_clock std::chrono
+	std::chrono::process_cpu_clock
+snippet thread_clock std::chrono
+	std::chrono::thread_clock
+##
+## General chrono clock type snippets
+snippet clock std::chrono::system_clock
+	std::chrono::system_clock
+snippet clock std::chrono::steady_clock
+	std::chrono::steady_clock
+snippet clock std::chrono::high_resolution_clock
+	std::chrono::high_resolution_clock
+snippet clock std::chrono::process_real_cpu_clock
+	std::chrono::process_real_cpu_clock
+snippet clock std::chrono::process_user_cpu_clock
+	std::chrono::process_user_cpu_clock
+snippet clock std::chrono::process_system_cpu_clock
+	std::chrono::process_system_cpu_clock
+snippet clock std::chrono::process_cpu_clock
+	std::chrono::process_cpu_clock
+snippet clock std::chrono::thread_clock
+	std::chrono::thread_clock
+##
+## General chrono time_point type snippets
+snippet time_point std::chrono
+	std::chrono::time_point<${1:clock_type}, ${2:duration_type}>
+snippet time_point std::chrono::system_clock
+	std::chrono::system_clock::time_point
+snippet time_point std::chrono::steady_clock
+	std::chrono::steady_clock::time_point
+snippet time_point std::chrono::high_resolution_clock
+	std::chrono::high_resolution_clock::time_point
+snippet time_point std::chrono::process_real_cpu_clock
+	std::chrono::process_real_cpu_clock::time_point
+snippet time_point std::chrono::process_user_cpu_clock
+	std::chrono::process_user_cpu_clock::time_point
+snippet time_point std::chrono::process_system_cpu_clock
+	std::chrono::process_system_cpu_clock::time_point
+snippet time_point std::chrono::process_cpu_clock
+	std::chrono::process_cpu_clock::time_point
+snippet time_point std::chrono::thread_clock
+	std::chrono::thread_clock::time_point
+##
+## Chrono now functions
+snippet now std::chrono::system_clock
+	std::chrono::system_clock::now()
+snippet now std::chrono::steady_clock
+	std::chrono::steady_clock::now()
+snippet now std::chrono::high_resolution_clock
+	std::chrono::high_resolution_clock::now()
+snippet now std::chrono::process_real_cpu_clock
+	std::chrono::process_real_cpu_clock::now()
+snippet now std::chrono::process_user_cpu_clock
+	std::chrono::process_user_cpu_clock::now()
+snippet now std::chrono::process_system_cpu_clock
+	std::chrono::process_system_cpu_clock::now()
+snippet now std::chrono::process_cpu_clock
+	std::chrono::process_cpu_clock::now()
+snippet now std::chrono::thread_clock
+	std::chrono::thread_clock::now()
 ##
 ## Operators
 snippet allocation_operators Global Declaration (C++11)

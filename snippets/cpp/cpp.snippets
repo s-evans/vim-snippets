@@ -634,10 +634,6 @@ snippet overflow_error std
 snippet underflow_error std
 	std::underflow_error
 ##
-## Smart pointers
-snippet ap std::auto_ptr
-	std::auto_ptr<${1:T}>
-##
 ## Function objects
 snippet not1 std
 	std::not1( ${1:unary_predicate} )
@@ -678,11 +674,11 @@ snippet binary_function std
 ##
 ## STL Algorithms
 snippet any_of std
-	${3:std}::any_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
+	std::any_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
 snippet all_of std
-	${3:std}::all_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
+	std::all_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
 snippet none_of std
-	${3:std}::none_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
+	std::none_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
 snippet for_each std
 	std::for_each( ${1:collection}.begin(), $1.end(), ${2:unary_functor} )
 snippet count std
@@ -788,7 +784,7 @@ snippet set_union Default binary predicate (std::less) std
 snippet set_union User defined binary predicate std
 	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
 snippet is_heap std
-	${2:std}::is_heap( ${1:collection}.begin(), $1.end() )
+	std::is_heap( ${1:collection}.begin(), $1.end() )
 snippet mkheap Default binary predicate (std::less) std
 	std::make_heap( ${1:collection}.begin(), $1.end() );
 snippet mkheap User defined binary predicate std
@@ -806,13 +802,13 @@ snippet sort_heap Default binary predicate (std::less) std
 snippet sort_heap User defined binary predicate std
 	std::sort_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
 snippet minmax Default binary predicate (std::less) std
-	${3:std}::minmax( ${1:lhs}, ${2:rhs} )
+	std::minmax( ${1:lhs}, ${2:rhs} )
 snippet minmax User defined binary predicate std
-	${4:std}::minmax( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
+	std::minmax( ${1:lhs}, ${2:rhs}, ${3:binary_predicate} )
 snippet minmax_element Default binary predicate (std::less) std
-	${2:std}::minmax_element( ${1:collection}.begin(), $1.end() )
+	std::minmax_element( ${1:collection}.begin(), $1.end() )
 snippet minmax User defined binary predicate std
-	${3:std}::minmax_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
+	std::minmax_element( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 snippet max Default binary predicate (std::less) std
 	std::max( ${1:lhs}, ${2:rhs} )
 snippet max User defined binary predicate std
@@ -834,9 +830,9 @@ snippet lexicographical_compare Default binary predicate (std::less) std
 snippet lexicographical_compare User defined binary predicate std
 	std::lexicographical_compare( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:binary_predicate} )
 snippet is_permutation Default binary predicate (std::less) std
-	${3:std}::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin() )
+	std::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin() )
 snippet is_permutation User defined binary predicate std
-	${4:std}::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), ${3:binary_predicate} )
+	std::is_permutation( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), ${3:binary_predicate} )
 snippet next_permutation Default binary predicate (std::less) std
 	std::next_permutation( ${1:collection}.begin(), $1.end() )
 snippet next_permutation User defined binary predicate std
@@ -868,19 +864,11 @@ snippet list std
 snippet set std
 	std::set<${1:T}>
 snippet map std
-	std::map<${1:Key}, ${2:T}>
+	std::map<${1:K}, ${2:V}>
 snippet mset std
 	std::multiset<${1:T}>
 snippet mmap std
-	std::multimap<${1:Key}, ${2:T}>
-snippet uset std
-	std::unordered_set<${1:T}>
-snippet umap std
-	std::unordered_map<${1:Key}, ${2:T}>
-snippet umset std
-	std::unordered_multiset<${1:T}>
-snippet ummap std
-	std::unordered_multimap<${1:Key}, ${2:T}>
+	std::multimap<${1:K}, ${2:V}>
 snippet stack std
 	std::stack<${1:T}>
 snippet queue std
@@ -963,6 +951,8 @@ snippet mu mutable
 	mutable
 ##
 ## Class
+snippet cn Class name
+	`vim_snippets#Filename('$1', 'ClassName')`
 snippet cl Class declaration (C++98)
 	class ${1:`vim_snippets#Filename('$1', 'name')`} 
 	{

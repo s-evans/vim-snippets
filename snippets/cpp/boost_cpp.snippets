@@ -599,12 +599,6 @@ snippet static_visitor boost
 snippet apply_visitor boost
 	boost::apply_visitor( ${1:static_visitor}, ${2:variant} )
 ##
-## Misc
-snippet fwd boost
-	boost::forward( ${1:ref} )
-snippet mv boost
-	boost::move( ${1:ref} )
-##
 ## Optional
 snippet none boost
 	boost::none
@@ -703,142 +697,6 @@ snippet serialize_ext boost::serialization
 	}
 	}
 ##
-## Random Generators
-snippet random_device boost::random
-	boost::random::random_device
-snippet minstd_rand0 boost::random
-	boost::random::minstd_rand0
-snippet minstd_rand boost::random
-	boost::random::minstd_rand
-snippet rand48 boost::random
-	boost::random::rand48
-snippet ecuyer1988 boost::random
-	boost::random::ecuyer1988
-snippet knuth_b boost::random
-	boost::random::knuth_b
-snippet kreutzer1986 boost::random
-	boost::random::kreutzer1986
-snippet taus88 boost::random
-	boost::random::taus88
-snippet hellekalek1995 boost::random
-	boost::random::hellekalek1995
-snippet mt11213b boost::random
-	boost::random::mt11213b
-snippet mt19937 boost::random
-	boost::random::mt19937
-snippet mt19937_64 boost::random
-	boost::random::mt19937_64
-snippet lagged_fibonacci607 boost::random
-	boost::random::lagged_fibonacci607
-snippet lagged_fibonacci1279 boost::random
-	boost::random::lagged_fibonacci1279
-snippet lagged_fibonacci2281 boost::random
-	boost::random::lagged_fibonacci2281
-snippet lagged_fibonacci3217 boost::random
-	boost::random::lagged_fibonacci3217
-snippet lagged_fibonacci4423 boost::random
-	boost::random::lagged_fibonacci4423
-snippet lagged_fibonacci9689 boost::random
-	boost::random::lagged_fibonacci9689
-snippet lagged_fibonacci19937 boost::random
-	boost::random::lagged_fibonacci19937
-snippet lagged_fibonacci23209 boost::random
-	boost::random::lagged_fibonacci23209
-snippet lagged_fibonacci44497 boost::random
-	boost::random::lagged_fibonacci44497
-snippet ranlux3 boost::random
-	boost::random::ranlux3
-snippet ranlux4 boost::random
-	boost::random::ranlux4
-snippet ranlux64_3 boost::random
-	boost::random::ranlux64_3
-snippet ranlux64_4 boost::random
-	boost::random::ranlux64_4
-snippet ranlux3_01 boost::random
-	boost::random::ranlux3_01
-snippet ranlux4_01 boost::random
-	boost::random::ranlux4_01
-snippet ranlux64_3_01 boost::random
-	boost::random::ranlux64_3_01
-snippet ranlux64_4_01 boost::random
-	boost::random::ranlux64_4_01
-snippet ranlux24 boost::random
-	boost::random::ranlux24
-snippet ranlux48 boost::random
-	boost::random::ranlux48
-##
-## Random Distributions
-snippet uniform_int_distribution boost::random
-	boost::random::uniform_int_distribution<${1:int}> ${2:name} ( ${3:range_low}, ${3:range_high} )
-snippet discrete_distribution boost::random
-	boost::random::discrete_distribution<${1:double}> ${2:name} ( ${4:array_of_doubles} )
-snippet uniform_smallint boost::random
-	boost::random::uniform_smallint
-snippet uniform_01 boost::random
-	boost::random::uniform_01
-snippet uniform_real_distribution boost::random
-	boost::random::uniform_real_distribution
-snippet bernoulli_distribution boost::random
-	boost::random::bernoulli_distribution
-snippet binomial_distribution boost::random
-	boost::random::binomial_distribution
-snippet geometric_distribution boost::random
-	boost::random::geometric_distribution
-snippet negative_binomial_distribution boost::random
-	boost::random::negative_binomial_distribution
-snippet poisson_distribution boost::random
-	boost::random::poisson_distribution
-snippet exponential_distribution boost::random
-	boost::random::exponential_distribution
-snippet gamma_distribution boost::random
-	boost::random::gamma_distribution
-snippet weibull_distribution boost::random
-	boost::random::weibull_distribution
-snippet extreme_value_distribution boost::random
-	boost::random::extreme_value_distribution
-snippet beta_distribution boost::random
-	boost::random::beta_distribution
-snippet laplace_distribution boost::random
-	boost::random::laplace_distribution
-snippet normal_distribution boost::random
-	boost::random::normal_distribution
-snippet lognormal_distribution boost::random
-	boost::random::lognormal_distribution
-snippet chi_squared_distribution boost::random
-	boost::random::chi_squared_distribution
-snippet cauchy_distribution boost::random
-	boost::random::cauchy_distribution
-snippet fisher_f_distribution boost::random
-	boost::random::fisher_f_distribution
-snippet student_t_distribution boost::random
-	boost::random::student_t_distribution
-snippet piecewise_constant_distribution boost::random
-	boost::random::piecewise_constant_distribution
-snippet piecewise_linear_distribution boost::random
-	boost::random::piecewise_linear_distribution
-snippet triangle_distribution boost::random
-	boost::random::triangle_distribution
-snippet uniform_on_sphere boost::random
-	boost::random::uniform_on_sphere
-##
-## Tuples
-snippet tuple boost
-	boost::tuple<${1:type_list}>
-snippet mktuple boost
-	boost::make_tuple( ${1:value_list} )
-snippet tie boost
-	boost::tie( ${1:non_const_reference, ...} )
-snippet ignore boost::tuples
-	boost::tuples::ignore
-snippet set_open boost::tuples
-	boost::tuples::set_open( '${1:prepended_value}' ) ${2:<< }
-snippet set_close boost::tuples
-	boost::tuples::set_close( '${1:appended_value}' ) ${2:<< }
-snippet set_delimiter boost::tuples
-	boost::tuples::set_delimiter( '${1:delimiter_value}' ) ${2:<< }
-snippet get boost::tuples
-	boost::tuples::get<${1:N}>( ${2:tuple} )
-##
 ## Program options
 snippet po_example boost::program_options
 	// Declare the supported options.
@@ -932,105 +790,7 @@ snippet from_time_t boost::posix_time
 snippet from_ftime boost::posix_time
 	boost::posix_time::from_ftime<ptime>( ${1:FILETIME} )
 ##
-## Chrono
-snippet time_point boost::chrono
-	boost::chrono::time_point<${1:clock_type}, ${2:duration_type}>
-snippet duration boost::chrono
-	boost::chrono::duration<${1:period_type}, ${2:tick_type}>
-snippet hours boost::chrono
-	boost::chrono::hours( ${1:count} )
-snippet minutes boost::chrono
-	boost::chrono::minutes( ${1:count} )
-snippet seconds boost::chrono
-	boost::chrono::seconds( ${1:count} )
-snippet milliseconds boost::chrono
-	boost::chrono::milliseconds( ${1:count} )
-snippet microseconds boost::chrono
-	boost::chrono::microseconds( ${1:count} )
-snippet nanoseconds boost::chrono
-	boost::chrono::nanoseconds( ${1:count} )
-snippet tpc boost::chrono
-	boost::chrono::time_point_cast<${1:duration_type}>( ${2:time_point_value} )
-snippet durc boost::chrono
-	boost::chrono::duration_cast<${1:duration_type}>( ${2:duration_value} )
-##
-## Specific chrono clock type snippets
-snippet system_clock boost::chrono
-	boost::chrono::system_clock
-snippet steady_clock boost::chrono
-	boost::chrono::steady_clock
-snippet high_resolution_clock boost::chrono
-	boost::chrono::high_resolution_clock
-snippet process_real_cpu_clock boost::chrono
-	boost::chrono::process_real_cpu_clock
-snippet process_user_cpu_clock boost::chrono
-	boost::chrono::process_user_cpu_clock
-snippet process_system_cpu_clock boost::chrono
-	boost::chrono::process_system_cpu_clock
-snippet process_cpu_clock boost::chrono
-	boost::chrono::process_cpu_clock
-snippet thread_clock boost::chrono
-	boost::chrono::thread_clock
-##
-## General chrono clock type snippets
-snippet clock boost::chrono::system_clock
-	boost::chrono::system_clock
-snippet clock boost::chrono::steady_clock
-	boost::chrono::steady_clock
-snippet clock boost::chrono::high_resolution_clock
-	boost::chrono::high_resolution_clock
-snippet clock boost::chrono::process_real_cpu_clock
-	boost::chrono::process_real_cpu_clock
-snippet clock boost::chrono::process_user_cpu_clock
-	boost::chrono::process_user_cpu_clock
-snippet clock boost::chrono::process_system_cpu_clock
-	boost::chrono::process_system_cpu_clock
-snippet clock boost::chrono::process_cpu_clock
-	boost::chrono::process_cpu_clock
-snippet clock boost::chrono::thread_clock
-	boost::chrono::thread_clock
-##
-## General chrono time_point type snippets
-snippet time_point boost::chrono
-	boost::chrono::time_point<${1:clock_type}, ${2:duration_type}>
-snippet time_point boost::chrono::system_clock
-	boost::chrono::system_clock::time_point
-snippet time_point boost::chrono::steady_clock
-	boost::chrono::steady_clock::time_point
-snippet time_point boost::chrono::high_resolution_clock
-	boost::chrono::high_resolution_clock::time_point
-snippet time_point boost::chrono::process_real_cpu_clock
-	boost::chrono::process_real_cpu_clock::time_point
-snippet time_point boost::chrono::process_user_cpu_clock
-	boost::chrono::process_user_cpu_clock::time_point
-snippet time_point boost::chrono::process_system_cpu_clock
-	boost::chrono::process_system_cpu_clock::time_point
-snippet time_point boost::chrono::process_cpu_clock
-	boost::chrono::process_cpu_clock::time_point
-snippet time_point boost::chrono::thread_clock
-	boost::chrono::thread_clock::time_point
-##
-## Chrono now functions
-snippet now boost::chrono::system_clock
-	boost::chrono::system_clock::now()
-snippet now boost::chrono::steady_clock
-	boost::chrono::steady_clock::now()
-snippet now boost::chrono::high_resolution_clock
-	boost::chrono::high_resolution_clock::now()
-snippet now boost::chrono::process_real_cpu_clock
-	boost::chrono::process_real_cpu_clock::now()
-snippet now boost::chrono::process_user_cpu_clock
-	boost::chrono::process_user_cpu_clock::now()
-snippet now boost::chrono::process_system_cpu_clock
-	boost::chrono::process_system_cpu_clock::now()
-snippet now boost::chrono::process_cpu_clock
-	boost::chrono::process_cpu_clock::now()
-snippet now boost::chrono::thread_clock
-	boost::chrono::thread_clock::now()
-##
 ## Threading
-snippet thread boost
-	boost::thread
 snippet thread_joiner boost
 	boost::thread_joiner
 snippet scoped_thread boost
@@ -1039,18 +799,10 @@ snippet thread_group boost
 	boost::thread_group
 snippet strict_scoped_thread boost
 	boost::strict_scoped_thread<>
-snippet get_id boost::this_thread
-	boost::this_thread::get_id()
-snippet sleep boost::this_thread
-	boost::this_thread::sleep( ${1:posix_time} )
-snippet hardware_concurrency boost::thread
-	boost::thread::hardware_concurrency()
 snippet physical_concurrency boost::thread
 	boost::thread::physical_concurrency()
 snippet thread_specific_ptr boost::thread
 	boost::thread::thread_specific_ptr
-snippet cv boost
-	boost::condition_variable
 snippet condition_variable_any boost
 	boost::condition_variable_any
 snippet notify_all_at_thread_exit boost
@@ -1071,8 +823,6 @@ snippet umutex boost
 	boost::upgrade_mutex
 snippet nmutex boost
 	boost::null_mutex
-snippet unique_lock boost
-	boost::unique_lock<${1:mutex}>
 snippet mkunique_locks boost
 	boost::make_unique_locks( ${1:mutex...} )
 snippet mkunique_lock boost
@@ -1089,38 +839,18 @@ snippet externally_locked boost
 	boost::externally_locked
 snippet const_strict_lock_ptr boost
 	boost::const_strict_lock_ptr
-snippet shared_lock boost
-	boost::shared_lock<${1:mutex}>
 snippet upgrade_lock boost
 	boost::upgrade_lock<${1:mutex}>
 snippet upgrade_to_unique_lock boost
 	boost::upgrade_to_unique_lock<${1:mutex}>
 snippet reverse_lock boost
 	boost::reverse_lock<${1:lock}>
-snippet lock_guard boost
-	boost::lock_guard<${1:mutex}>
-snippet lock boost
-	boost::lock( ${1:mutex...} )
-snippet try_lock boost
-	boost::try_lock( ${1:mutex...} )
 snippet mklock_guard boost
 	boost::make_lock_guard( ${1:lockable_mutex} )
-snippet packaged_task boost
-	boost::packaged_task<${1:R}>
-snippet promise boost
-	boost::promise<${1:R}>
-snippet future boost
-	boost::future<${1:R}>
 snippet mkready_future boost
 	boost::make_ready_future<${1:R}>( ${2:val} )
-snippet shared_future boost
-	boost::shared_future<${1:R}>
-snippet unique_future boost
-	boost::unique_future<${1:R}>
 snippet decay_copy boost
 	boost::decay_copy( ${1:t} )
-snippet async boost
-	boost::async( ${1:launch_policy}, ${2:callable_entity}, ${3:args} )
 snippet wait_for_any boost
 	boost::wait_for_any( ${1:futures...} )
 snippet wait_for_all boost
@@ -1129,28 +859,8 @@ snippet when_all boost
 	boost::when_all( ${1:futures} )
 snippet when_any boost
 	boost::when_any( ${1:futures} )
-snippet atomic boost
-	boost::atomic<${1:T}>
-## 
-## Launch Policies
-snippet async boost::launch
-	boost::launch::async
-snippet any boost::launch
-	boost::launch::any
-snippet deferred boost::launch
-	boost::launch::deferred
 ##
 ## Mutexes
-snippet mutex boost::mutex
-	boost::mutex
-snippet mutex boost::recursive_mutex
-	boost::recursive_mutex
-snippet mutex boost::timed_mutex
-	boost::timed_mutex
-snippet mutex boost::recursive_timed_mutex
-	boost::recursive_timed_mutex
-snippet mutex boost::shared_mutex
-	boost::shared_mutex
 snippet mutex boost::upgrade_mutex
 	boost::upgrade_mutex
 snippet mutex boost::null_mutex
@@ -1334,20 +1044,6 @@ snippet erase_regex boost::algorithm
 snippet split_regex boost::algorithm
 	boost::algorithm::split_regex( ${1:out_string_container}, ${2:in_string}, ${3:regex} )
 ##
-## Regex
-snippet regex_match boost
-	boost::regex_match( ${1:string}, ${3:regex} )
-snippet regex_search boost
-	boost::regex_search( ${1:string}, ${2:smatch}, ${3:regex} )
-snippet regex_replace boost
-	boost::regex_replace( ${1:string}, ${2:regex}, ${3:replace_format_string} )
-snippet smatch boost
-	boost::smatch
-snippet regex boost
-	boost::regex
-snippet format_literal boost::regex_constants
-	boost::regex_constants::format_literal
-##
 ## Assign
 snippet push_back boost::assign
 	boost::assign::push_back( ${1:collection} )( ${2:value} )( ${3:value} )
@@ -1423,18 +1119,8 @@ snippet nth_index boost::multi_index
 ## Smart pointers
 snippet scp boost
 	boost::scoped_ptr<${1:T}>
-snippet sp boost
-	boost::shared_ptr<${1:T}>
-snippet up boost
-	boost::unique_ptr<${1:T}, ${2:D}>
-snippet wp boost
-	boost::weak_ptr<${1:T}>
 snippet ip boost
 	boost::intrusive_ptr<${1:T}>
-snippet mkup boost
-	boost::make_unique<${1:T}>( ${2:args...} )
-snippet mksp boost
-	boost::make_shared<${1:T}>( ${2:args...} )
 snippet allocate_shared boost
 	boost::allocate_shared<${1:T}>( ${2:allocator}, ${3:args...} )
 snippet get_deleter boost
@@ -1501,188 +1187,6 @@ snippet complete boost::filesystem
 	boost::filesystem::complete( ${1:path} )
 snippet current_path boost::filesystem
 	boost::filesystem::current_path()
-##
-## Function objects
-snippet function boost
-	boost::function<${1:void ()}>
-snippet bind boost
-	boost::bind( ${1:function}, ${2:args...} )
-snippet mem_fn boost
-	boost::mem_fn( ${1:function} )
-snippet ref boost
-	boost::ref( ${1:value} )
-snippet cref boost
-	boost::cref( ${1:value} )
-snippet refwrapper boost
-	boost::reference_wrapper<${1:T}>
-## 
-## Type Traits
-snippet integral_constant boost
-	boost::integral_constant<${1:T}, ${2:T v}>
-snippet true_type boost
-	boost::true_type
-snippet false_type boost
-	boost::false_type
-snippet is_void boost
-	boost::is_void<${1:T}>::value
-snippet is_null_pointer boost
-	boost::is_null_pointer<${1:T}>::value
-snippet is_integral boost
-	boost::is_integral<${1:T}>::value
-snippet is_floating_point boost
-	is_convertibleboost::is_floating_point<${1:T}>::value
-snippet is_array boost
-	boost::is_array<${1:T}>::value
-snippet is_pointer boost
-	boost::is_pointer<${1:T}>::value
-snippet is_lvalue_reference boost
-	boost::is_lvalue_reference<${1:T}>::value
-snippet is_rvalue_reference boost
-	boost::is_rvalue_reference<${1:T}>::value
-snippet is_member_object_pointer boost
-	boost::is_member_object_pointer<${1:T}>::value
-snippet is_member_function_pointer boost
-	boost::is_member_function_pointer<${1:T}>::value
-snippet is_enum boost
-	boost::is_enum<${1:T}>::value
-snippet is_union boost
-	boost::is_union<${1:T}>::value
-snippet is_class boost
-	boost::is_class<${1:T}>::value
-snippet is_function boost
-	boost::is_function<${1:T}>::value
-snippet is_reference boost
-	boost::is_reference<${1:T}>::value
-snippet is_arithmetic boost
-	boost::is_arithmetic<${1:T}>::value
-snippet is_fundamental boost
-	boost::is_fundamental<${1:T}>::value
-snippet is_object boost
-	boost::is_object<${1:T}>::value
-snippet is_scalar boost
-	boost::is_scalar<${1:T}>::value
-snippet is_compound boost
-	boost::is_compound<${1:T}>::value
-snippet is_member_pointer boost
-	boost::is_member_pointer<${1:T}>::value
-snippet is_const boost
-	boost::is_const<${1:T}>::value
-snippet is_volatile boost
-	boost::is_volatile<${1:T}>::value
-snippet is_trivial boost
-	boost::is_trivial<${1:T}>::value
-snippet is_trivially_copyable boost
-	boost::is_trivially_copyable<${1:T}>::value
-snippet is_standard_layout boost
-	boost::is_standard_layout<${1:T}>::value
-snippet is_pod boost
-	boost::is_pod<${1:T}>::value
-snippet is_literal_type boost
-	boost::is_literal_type<${1:T}>::value
-snippet is_empty boost
-	boost::is_empty<${1:T}>::value
-snippet is_polymorphic boost
-	boost::is_polymorphic<${1:T}>::value
-snippet is_abstract boost
-	boost::is_abstract<${1:T}>::value
-snippet is_signed boost
-	boost::is_signed<${1:T}>::value
-snippet is_unsigned boost
-	boost::is_unsigned<${1:T}>::value
-snippet is_constructible boost
-	boost::is_constructible<${1:T}, ${2:... Args}>::value
-snippet is_default_constructible boost
-	boost::is_default_constructible<${1:T}>::value
-snippet is_copy_constructible boost
-	boost::is_copy_constructible<${1:T}>::value
-snippet is_move_constructible boost
-	boost::is_move_constructible<${1:T}>::value
-snippet is_assignable boost
-	boost::is_assignable<${1:T}, ${2:U}>::value
-snippet is_copy_assignable boost
-	boost::is_copy_assignable<${1:T}>::value
-snippet is_move_assignable boost
-	boost::is_move_assignable<${1:T}>::value
-snippet is_destructible boost
-	boost::is_destructible<${1:T}>::value
-snippet is_trivially_constructible boost
-	boost::is_trivially_constructible<${1:T}, ${2:... Args}>::value
-snippet is_trivially_default_constructible boost
-	boost::is_trivially_default_constructible<${1:T}>::value
-snippet is_trivially_copy_constructible boost
-	boost::is_trivially_copy_constructible<${1:T}>::value
-snippet is_trivially_move_constructible boost
-	boost::is_trivially_move_constructible<${1:T}>::value
-snippet is_trivially_assignable boost
-	boost::is_trivially_assignable<${1:T}, ${2:U}>::value
-snippet is_trivially_copy_assignable boost
-	boost::is_trivially_copy_assignable<${1:T}>::value
-snippet is_trivially_move_assignable boost
-	boost::is_trivially_move_assignable<${1:T}>::value
-snippet is_trivially_destructible boost
-	boost::is_trivially_destructible<${1:T}>::value
-snippet is_nothrow_constructible boost
-	boost::is_nothrow_constructible<${1:T}, ${2:... Args}>::value
-snippet is_nothrow_default_constructible boost
-	boost::is_nothrow_default_constructible<${1:T}>::value
-snippet is_nothrow_copy_constructible boost
-	boost::is_nothrow_copy_constructible<${1:T}>::value
-snippet is_nothrow_move_constructible boost
-	boost::is_nothrow_move_constructible<${1:T}>::value
-snippet is_nothrow_assignable boost
-	boost::is_nothrow_assignable<${1:T}, ${2:U}>::value
-snippet is_nothrow_copy_assignable boost
-	boost::is_nothrow_copy_assignable<${1:T}>::value
-snippet is_nothrow_move_assignable boost
-	boost::is_nothrow_move_assignable<${1:T}>::value
-snippet is_nothrow_destructible boost
-	boost::is_nothrow_destructible<${1:T}>::value
-snippet has_virtual_destructor boost
-	boost::has_virtual_destructor<${1:T}>::value
-snippet alignment_of boost
-	boost::alignment_of<${1:T}>::value
-snippet rank boost
-	boost::rank<${1:T}>::value
-snippet extent boost
-	boost::extent<${1:T}, ${2:I = 0}>::value
-snippet is_same boost
-	boost::is_same<${1:T}, ${2:U}>::value
-snippet is_base_of boost
-	boost::is_base_of<${1:Base}, ${2:Derived}>::value
-snippet is_convertible boost
-	boost::is_convertible<${1:From}, ${2:To}>::value
-snippet add_const boost
-	boost::add_const<${1:T}>::type
-snippet add_cv boost
-	boost::add_cv<${1:T}>::type
-snippet add_lvalue_reference boost
-	boost::add_lvalue_reference<${1:T}>::type
-snippet add_pointer boost
-	boost::add_pointer<${1:T}>::type
-snippet add_rvalue_reference boost
-	boost::add_rvalue_reference<${1:T}>::type
-snippet add_volatile boost
-	boost::add_volatile<${1:T}>::type
-snippet decay boost
-	boost::decay<${1:T}>::type
-snippet make_signed boost
-	boost::make_signed<${1:T}>::type
-snippet make_unsigned boost
-	boost::make_unsigned<${1:T}>::type
-snippet remove_all_extents boost
-	boost::remove_all_extents<${1:T}>::type
-snippet remove_const boost
-	boost::remove_const<${1:T}>::type
-snippet remove_cv boost
-	boost::remove_cv<${1:T}>::type
-snippet remove_extent boost
-	boost::remove_extent<${1:T}>::type
-snippet remove_pointer boost
-	boost::remove_pointer<${1:T}>::type
-snippet remove_reference boost
-	boost::remove_reference<${1:T}>::type
-snippet remove_volatile boost
-	boost::remove_volatile<${1:T}>::type
 ##
 ## Boost Graph Library (BGL)
 ## 
