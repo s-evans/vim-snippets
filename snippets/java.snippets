@@ -1,13 +1,26 @@
-# todo
+##
+## Misc
 snippet to
 	// TODO: ${0}
+##
 ## Access Modifiers
-snippet po
+snippet pro
 	protected ${0}
-snippet pu
+snippet pub
 	public ${0}
-snippet pr
+snippet pri
 	private ${0}
+##
+## Enums
+snippet enum
+	${4:public} enum ${1:`vim_snippets#Filename("$1", "TypeName")`} {
+		${2:IdentifierList, ...};
+		${3:OtherDeclarationsAndDefinitions;}
+	}
+snippet bitfield
+	EnumSet.of(${1:`vim_snippets#Filename("$1", "EnumTypeName")`.}${2:VALUE_NAME}${3:, ...})
+snippet index
+	EnumMap<${1:`vim_snippets#Filename("$1", "EnumTypeName")`}, ${2:ValueType}>($1.class)
 ##
 ## Annotations
 snippet before
@@ -25,6 +38,14 @@ snippet om
 snippet oo
 	@OneToOne
 	${1}
+snippet ov
+	@Override ${0}
+snippet df
+	default ${0}
+snippet vol
+	volatile ${0}
+snippet sync
+	synchronized ${0}
 ##
 ## Basic Java packages and import
 snippet im
@@ -42,13 +63,71 @@ snippet j.u
 ##
 ## Class
 snippet cl
-	class ${1:`vim_snippets#Filename("$1", "untitled")`} ${0}
-snippet pcl
-	public class ${1:`vim_snippets#Filename("$1", "untitled")`} ${0}
+	${3:public} class ${1:`vim_snippets#Filename("$1", "TypeName")`} ${0} {
+	}
 snippet in
-	interface ${1:`vim_snippets#Filename("$1", "untitled")`} ${2:extends Parent}
-snippet tc
-	public class ${1:`vim_snippets#Filename("$1")`} extends ${0:TestCase}
+	${3:public} interface ${1:`vim_snippets#Filename("$1", "TypeName")`} ${2:extends Parent} {
+	}
+##
+## CTOR / DTOR
+snippet ctor
+	${3:public} ${1:`vim_snippets#Filename("$1", "TypeName")`}(${2}) {
+		${0}
+	}
+snippet copy
+	${3:public} ${1:`vim_snippets#Filename("$1", "TypeName")`}(${1} ${2:other}) {
+		${0}
+	}
+snippet dtor
+	protected void finalize() throws Throwable {
+		${0}
+	}
+##
+## Common Overrides
+snippet ts
+	@Override public String toString() {
+		${0}
+	}
+snippet eq
+	@Override public boolean equals(Object o) {
+		${0}
+	}
+
+	@Override public int hashCode() {
+		${1}
+	}
+snippet clo
+	@Override public ${1:`vim_snippets#Filename("$1", "TypeName")`} clone() {
+		${0}
+	}
+snippet comp
+	public int compareTo(${1:`vim_snippets#Filename("$1", "TypeName")`} ${2:other}) {
+		${0}
+	}
+snippet close
+	public void close() throws IOException {
+		${0}
+	}
+snippet call
+	public ${1:R} call() throws Exception {
+		${0}
+	}
+snippet run
+	public void run() {
+		${0}
+	}
+snippet serialize
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		${0}
+	}
+
+	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+		${1}
+	}
+
+	private void readObjectNoData() throws ObjectStreamException {
+		${2}
+	}
 ##
 ## Class Enhancements
 snippet ext
@@ -69,34 +148,36 @@ snippet cos
 	static public final String ${1:var} = "${2}";
 ##
 ## Control Statements
+snippet sw
+	switch ( ${1} ) {
+		${0}
+	}
 snippet case
 	case ${1}:
 		${0}
 snippet def
 	default:
 		${0}
-snippet el
-	else {
-		${1}
+snippet if
+	if ( ${1} ) {
+		${0}
 	}
 snippet ei
 	else if ( ${1} ) {
 		${0}
 	}
-snippet if
-	if ( ${1} ) {
-		${0}
-	}
-snippet sw
-	switch ( ${1} ) {
-		${0}
+snippet el
+	else {
+		${1}
 	}
 ##
-## Create a Method
+## Method
 snippet m
-	${1:void} ${2:method}(${3}) ${4:throws }
+	${5:public} ${1:void} ${2:method}(${3}) ${4:throws } {
+		${6}
+	}
 ##
-## Create a Variable
+## Variable
 snippet v
 	${1:String} ${2:var}${3: = null}${4};
 ##
@@ -114,7 +195,7 @@ snippet d.st
 	Stack<${1:Object}> ${2:stack} = new Stack<$1>();${0}
 ##
 ## Singleton Pattern
-snippet singlet
+snippet singlet old
 	private static class Holder {
 		private static final ${1:`vim_snippets#Filename("$1")`} INSTANCE = new $1();
 	}
@@ -123,6 +204,12 @@ snippet singlet
 
 	public static $1 getInstance() {
 		return Holder.INSTANCE;
+	}
+snippet singlet new
+	public enum ${1:`vim_snippets#Filename("$1", "TypeName")`} {
+		INSTANCE;
+
+		${0}
 	}
 ##
 ## Enhancements to Methods, variables, classes, etc.
@@ -164,10 +251,6 @@ snippet asns
 	assertNotSame( "${1:Failure message}", ${2:expected}, ${3:actual} );
 snippet fa
 	fail( "${1:Failure message}" );
-snippet ca
-	catch ( ${1:Exception} ${2:e} ) {
-		${0}
-	}
 snippet thr
 	throw ${0}
 snippet ths
@@ -175,13 +258,18 @@ snippet ths
 snippet try
 	try {
 		${0}
-	} catch ( ${1:Exception} ${2:e} ) {
+	}
+snippet tryr
+	try ( ${1:TypeName} ${2:var} = ${3:rhs} ) {
+		${0}
+	}
+snippet ca
+	catch ( ${1:Exception} ${2:e} ) {
+		${0}
 	}
 snippet tryf
-	try {
+	finally {
 		${0}
-	} catch ( ${1:Exception} ${2:e} ) {
-	} finally {
 	}
 ##
 ## Find Methods
@@ -221,7 +309,7 @@ snippet do
 	do {
 		${2}
 	} while ( ${1} );
-snippet enfor
+snippet fore
 	for ( ${1} : ${2} ) { 
 		${0} 
 	}
@@ -274,9 +362,11 @@ snippet get
 ##
 ## Terminate Methods or Loops
 snippet re
-	return ${0}
+	return${0: };
 snippet br
 	break;
+snippet cont
+	continue;
 ##
 ## Test Methods
 snippet t
