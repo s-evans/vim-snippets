@@ -1,16 +1,6 @@
 # http://kgroll.com/blog/2010/10/03/vhdl-snippets-for-vim
 #
 
-# Case statement
-snippet case
-	case ${1:expression} is
-	  when ${2:choices} =>
-	    ${3:--sequential statement(s)};
-	  when ${4:choice2} =>
-	    ${5:--sequential statement(s)};
-	  ${6:--...}
-	end case;
-
 # Component declaration
 snippet comp
 	component ${1:identifier} is
@@ -62,49 +52,16 @@ snippet ffre
 	  end if;
 	end process;
 
-# Entity declaration (no generic)
-snippet ent
-	entity ${1:<ent_name>} is
-	  port (
-	    ${2:--I/O}
-	  );
-	end entity $1;
-	
-	architecture ${3:rtl} of $1 is
-	
-	begin
-	  ${4}
-	end $3;
-
-# If Condition
-snippet if
-	if (${1:--condition}) then
-	  ${2:--do something};
-	end if;
 # Else if...
 snippet ei
 	elsif (${1:--condition}) then
 	  ${2:--do something else};
-# Else
-snippet el
-	else
-	  ${1:--do something else};
-
-# library ieee
-snippet lib
-	library ieee;  use ieee.${1:std_logic_1164}.all;
-	               use ieee.${2:numeric_std}.all;${3}
-
 # Process (plain)
 snippet proc
 	${1:proc name} : process is
 	begin
 	  ${2:--sequential statements;}
 	end process $1;
-
-# Signal declaration
-snippet sig
-	signal ${1:name}  : ${2:type};${3}
 
 # std_logic;
 snippet sl
@@ -121,3 +78,137 @@ snippet td
 snippet st
 	subtype ${1:identifier} is ${2:subtype indication};${3}
 
+
+
+
+
+
+
+=======
+#
+## Libraries
+
+snippet lib
+	library ${1}
+	use ${1}.${2}
+
+# Standard Libraries
+snippet libs
+	library IEEE;
+	use IEEE.std_logic_1164.ALL;
+	use IEEE.numeric_std.ALL;
+
+# Xilinx Library
+snippet libx
+	library UNISIM;
+	use UNISIM.VCOMPONENTS.ALL;
+
+## Entity Declaration
+snippet ent
+	entity ${1:`vim_snippets#Filename()`} is
+		generic (
+			${2}
+		);
+		port (
+			${3}
+		);
+	end entity $1;
+
+## Architecture
+snippet arc
+	architecture ${1:behav} of ${2:`vim_snippets#Filename()`} is
+
+		${3}
+
+	begin
+
+
+	end $1;
+
+## Declarations
+# std_logic
+snippet st
+	signal ${1} : std_logic;
+# std_logic_vector
+snippet sv
+	signal ${1} : std_logic_vector (${2} downto 0);
+# std_logic in
+snippet ist
+	${1} : in std_logic;
+# std_logic_vector in
+snippet isv
+	${1} : in std_logic_vector (${2} downto 0);
+# std_logic out
+snippet ost
+	${1} : out std_logic;
+# std_logic_vector out
+snippet osv
+	${1} : out std_logic_vector (${2} downto 0);
+# unsigned
+snippet un
+	signal ${1} : unsigned (${2} downto 0);
+## Process Statements
+# process
+snippet pr
+	process (${1})
+	begin
+		${2}
+	end process;
+# process with clock
+snippet prc
+	process (${1:clk})
+	begin
+		if rising_edge ($1) then
+			${2}
+		end if;
+	end process;
+# process all
+snippet pra
+	process (${1:all})
+	begin
+		${2}
+	end process;
+## Control Statements
+# if
+snippet if
+	if ${1} then
+		${2}
+	end if;
+# if
+snippet ife
+	if ${1} then
+		${2}
+	else
+		${3}
+	end if;
+# else
+snippet el
+	else
+		${1}
+# if
+snippet eif
+	elsif ${1} then
+		${2}
+# case
+snippet ca
+	case ${1} is
+		${2}
+	end case;
+# when
+snippet wh
+	when ${1} =>
+		${2}
+# for
+snippet for
+	for ${1:i} in ${2} ${3:to} ${4} loop
+		${5}
+	end loop;
+# while
+snippet wh
+	while ${1} loop
+		${2}
+	end loop;
+## Misc
+# others
+snippet oth
+	(others => '${1:0}');

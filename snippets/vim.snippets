@@ -20,7 +20,7 @@ snippet f function
 	endfunction
 snippet t try ... catch statement
 	try
-		${1}
+		${1:${VISUAL}}
 	catch ${2}
 		${0}
 	endtry
@@ -29,7 +29,7 @@ snippet catch
 		${1}
 snippet for for ... in loop
 	for ${1} in ${2}
-		${0}
+		${0:${VISUAL}}
 	endfor
 snippet for for [key, value] in loop
 	for [${1},${2}] in items(${3})
@@ -42,7 +42,7 @@ snippet wh while loop
 	endwhile
 snippet if if statement
 	if ${1}
-		${0}
+		${0:${VISUAL}}
 	endif
 snippet	el
 	else 

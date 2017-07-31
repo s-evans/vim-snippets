@@ -184,17 +184,6 @@ snippet cover  covergroup .. endgroup
 	covergroup ${1:function_name};
 	    ${2}
 	endgroup: $1
-snippet if  if() .. 
-	if(${1:condition}) begin
-	    ${2}
-	end
-snippet ife  if() .. else
-	if(${1:condition}) begin
-	    ${2}
-	end
-	else begin
-	    ${3}
-	end
 snippet initial  initial ..
 	initial begin
 	    ${1}
@@ -264,10 +253,6 @@ snippet randcase  randcase .. endcase
 	        ${3}
 	    ${2:weight2}:
 	endcase
-snippet repeat  repeat(N) ..
-	repeat(${1:N}) begin
-	    ${2}
-	end
 snippet struct  struct ... { ... }
 	typedef struct {
 	    ${2}
@@ -283,10 +268,6 @@ snippet union  union ... { ... }
 	typedef union {
 	    ${2}
 	} ${1:name_u};
-snippet while  while() ..
-	while (${1:condition}) begin
-	    ${2}
-	end
 snippet ovm  OVM Agent
 	class ${1:ovc_name}_agent extends ovm_agent;
 	   ${3}
@@ -1501,3 +1482,41 @@ snippet ovmtop  OVM Top
 	
 	endmodule: top
 
+
+
+
+
+
+# if statement
+snippet if
+	if (${1}) begin
+		${0}
+	end
+# If/else statements
+snippet ife
+	if (${1}) begin
+		${2}
+	end
+	else begin
+		${1}
+	end
+# Else if statement
+snippet eif
+	else if (${1}) begin
+		${0}
+	end
+#Else statement
+snippet el
+	else begin
+		${0}
+	end
+# While statement
+snippet wh
+	while (${1}) begin
+		${0}
+	end
+# Repeat Loop
+snippet rep
+	repeat (${1}) begin
+		${0}
+	end

@@ -141,6 +141,8 @@ snippet case Case statement
 	case ${1}:
 		${2}
 		${3:break;}
+snippet ret
+	return ${0};
 ##
 ## Loops
 snippet for C-style for loop
@@ -387,6 +389,11 @@ snippet strtok string
 snippet strxfrm string
 	strxfrm( ${1:destination}, ${2:source}, ${3:num} )
 ##
+# TODO section
+snippet todo
+	/*! TODO: ${1:Todo description here}
+	 *  \todo $1
+	 */
 ## Miscellaneous
 snippet . Array index
 	[${1}]
