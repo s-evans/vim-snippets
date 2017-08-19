@@ -23,7 +23,6 @@ snippet ife
 	ifeq ( ${1:arg1},${2:arg2} )
 	${3}
 	endif
-# base
 snippet base
 	.PHONY: clean, mrproper
 	CC = gcc
@@ -42,21 +41,21 @@ snippet base
 
 	mrproper: clean
 		rm -f $1
-# add
 snippet add
 	${1:out}: $1.o
 		$(CC) $(CFLAGS) -o $@ $+
-# print
 snippet print
 	print-%: ; @echo $*=$($*)
 snippet ifn
 	ifneq ( ${1:arg1},${2:arg2} )
 	${3}
 	endif
-snippet ifnd
+snippet ifnd block
 	ifndef ${1:$}
 	${2}
 	endif
+snippet ifnd variable
+	${1:VARIABLE_NAME} ?= ${2:value}
 snippet ifd
 	ifdef ${1:$}
 	${2}
