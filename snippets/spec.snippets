@@ -7,6 +7,81 @@ snippet fb
 	# ${1}
 	########################################################################################################################
 ##
+## Conditionals
+snippet ifos
+	%ifos ${1:os}
+	${2:...}
+	%endif
+snippet ifa
+	%ifarch ${1:arch}
+	${2:...}
+	%endif
+snippet ifna
+	%ifnarch ${1:arch}
+	${2:...}
+	%endif
+snippet if
+	%if ${1:cond}
+	${2:...}
+	%endif
+snippet el
+	%else
+	${1:...}
+##
+## Macros
+snippet %
+	%{${1:name}}
+snippet ?
+	%{?${1:name}}
+snippet 0
+	0%{?${1:name}}
+snippet d
+	%define ${1:name}(${2:opts}) ${3:body}
+snippet u
+	%undefine ${1:name}
+snippet g
+	%global ${1:name}(${2:opts}) ${3:body}
+##
+## Built-in Macros
+snippet !
+	%(${1:shell_cmd})
+snippet tr
+	%trace
+snippet du
+	%dump
+snippet v
+	%verbose
+snippet echo
+	%{echo:${1:msg}}
+snippet warn
+	%{warn:${1:msg}}
+snippet error
+	%{error:${1:msg}}
+snippet expand
+	%{expand:${1:syntax}}
+snippet lua
+	%{lua:${1:syntax}}
+snippet uncompress
+	%{uncompress:${1:file_path}}
+snippet bn
+	%{basename:${1:file_path}}
+snippet dn
+	%{dirname:${1:file_path}}
+snippet sf
+	%{suffix:${1:file_path}}
+snippet up
+	%{url2path:${1:url}}
+snippet ge
+	%{getenv:${1:VAR_NAME}}
+snippet gcd
+	%{getconfdir}
+snippet S
+	%{S:${1:source_file_path}}
+snippet P
+	%{P:${1:patch_file_path}}
+snippet F
+	%{F:${1:file_path}}
+##
 ## Files Directives
 snippet c
 	%config
@@ -29,7 +104,7 @@ snippet do
 snippet dd
 	%docdir
 ##
-## Variables
+## Autoconf-like Built-in Macros
 snippet bd
 	%{_builddir}
 snippet bi
