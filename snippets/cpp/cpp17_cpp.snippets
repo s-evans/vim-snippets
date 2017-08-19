@@ -1,0 +1,116 @@
+##
+## TODO: Deduction Guides
+##
+## Attributes
+snippet [[f attribute
+	[[fallthrough]]
+snippet [[n attribute
+	[[nodiscard]]
+snippet [[m attribute
+	[[maybe_unused]]
+##
+## constexpr if
+snippet cif constexpr if
+	if constexpr( ${1} ) {
+		${2}
+	}
+snippet cei constexpr else if
+	else if constexpr( ${1} ) {
+		${2}
+	}
+##
+## Types
+snippet byte std
+	std::byte
+snippet string_view std
+	std::string_view
+##
+## Numerics
+snippet gcd std
+	std::gdc( ${1}, ${2} )
+snippet lcm std
+	std::lcm( ${1}, ${2} )
+##
+## Invoke
+snippet invoke std
+	std::invoke( ${1:callable}${2:, args...} )
+##
+## Iterators
+snippet size std
+	std::size( ${1} )
+snippet empty std
+	std::empty( ${1} )
+snippet data std
+	std::data( ${1} )
+##
+## Algorithms
+snippet clamp std
+	std::clamp( ${1:v}, ${2:lo} , ${3:hi} )
+snippet reduce std
+	std::reduce( ${1:first}, ${2:last}, ${3:init}, ${4:binary_op} )
+##
+## Array
+snippet to_array std
+	std::to_array( ${1:array} )
+##
+## Optional
+snippet none std
+	std::none
+snippet optional std
+	std::optional<${1:T}>
+##
+## Any
+snippet any std
+	std::any ${1:a} = ${2:val};
+snippet acast std
+	std::any_cast<${1:T}>( ${2:any} )
+snippet bad_any_cast std
+	std::bad_any_cast
+##
+## Variant
+snippet variant std
+	std::variant<${1:type_list}>
+snippet getv std
+	std::get<${1:T}>( ${2:variant} )
+snippet static_visitor std
+	std::static_visitor<>
+snippet apply_visitor std
+	std::apply_visitor( ${1:static_visitor}, ${2:variant} )
+##
+## Filesystem
+snippet path std::filesystem
+	std::filesystem::path
+snippet filesystem_error std::filesystem
+	std::filesystem::filesystem_error
+snippet file_status std::filesystem
+	std::filesystem::file_status
+snippet status std::filesystem
+	std::filesystem::status( ${1:path} )
+snippet space_info std::filesystem
+	std::filesystem::space_info
+snippet space std::filesystem
+	std::filesystem::space( ${1:path} )
+snippet is_directory std::filesystem
+	std::filesystem::is_directory( ${1:path} )
+snippet is_regular_file std::filesystem
+	std::filesystem::is_regular_file( ${1:path} )
+snippet is_symlink std::filesystem
+	std::filesystem::is_symlink( ${1:path} )
+snippet exists std::filesystem
+	std::filesystem::exists( ${1:path} )
+snippet symlink_status std::filesystem
+	std::filesystem::symlink_status( ${1:path} )
+snippet file_size std::filesystem
+	std::filesystem::file_size( ${1:path} )
+snippet last_write_time std::filesystem
+	std::filesystem::last_write_time( ${1:path} )
+snippet rename std::filesystem
+	std::filesystem::rename( ${1:current}, ${2:new} )
+snippet remove std::filesystem
+	std::filesystem::remove( ${1:path} )
+snippet create_directory std::filesystem
+	std::filesystem::create_directory( ${1:path} )
+snippet complete std::filesystem
+	std::filesystem::complete( ${1:path} )
+snippet current_path std::filesystem
+	std::filesystem::current_path()

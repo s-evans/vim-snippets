@@ -1,4 +1,10 @@
 ##
+## Utilities
+snippet exchange std
+	std::exchange( ${1:ref}, ${2:new_val} )
+snippet integer_seq std
+	std::integer_sequence<${1:int_type}, ${2:int_values...}>
+##
 ## Memory
 snippet mkup std
 	std::make_unique

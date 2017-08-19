@@ -581,30 +581,6 @@ snippet tokenizer boost
 snippet tok_iterator boost::tokenizer
 	boost::tokenizer::iterator
 ##
-## Any
-snippet any boost
-	boost::any ${1:a} = ${2:val};
-snippet acast boost
-	boost::any_cast<${1:T}>( ${2:any} )
-snippet bad_any_cast boost
-	boost::bad_any_cast
-##
-## Variant
-snippet variant boost
-	boost::variant<${1:type_list}>
-snippet get boost
-	boost::get<${1:T}>( ${2:variant} )
-snippet static_visitor boost
-	boost::static_visitor<>
-snippet apply_visitor boost
-	boost::apply_visitor( ${1:static_visitor}, ${2:variant} )
-##
-## Optional
-snippet none boost
-	boost::none
-snippet optional boost
-	boost::optional<${1:T}>
-##
 ## Serialization
 snippet polymorphic_oarchive boost::archive
 	boost::archive::polymorphic_oarchive
@@ -1149,44 +1125,6 @@ snippet pvector boost
 	boost::ptr_vector<${1:T}>
 snippet empty_deleter boost::log
 	boost::log::empty_deleter()
-##
-## Filesystem
-snippet path boost::filesystem
-	boost::filesystem::path
-snippet filesystem_error boost::filesystem
-	boost::filesystem::filesystem_error
-snippet file_status boost::filesystem
-	boost::filesystem::file_status
-snippet status boost::filesystem
-	boost::filesystem::status( ${1:path} )
-snippet space_info boost::filesystem
-	boost::filesystem::space_info
-snippet space boost::filesystem
-	boost::filesystem::space( ${1:path} )
-snippet is_directory boost::filesystem
-	boost::filesystem::is_directory( ${1:path} )
-snippet is_regular_file boost::filesystem
-	boost::filesystem::is_regular_file( ${1:path} )
-snippet is_symlink boost::filesystem
-	boost::filesystem::is_symlink( ${1:path} )
-snippet exists boost::filesystem
-	boost::filesystem::exists( ${1:path} )
-snippet symlink_status boost::filesystem
-	boost::filesystem::symlink_status( ${1:path} )
-snippet file_size boost::filesystem
-	boost::filesystem::file_size( ${1:path} )
-snippet last_write_time boost::filesystem
-	boost::filesystem::last_write_time( ${1:path} )
-snippet rename boost::filesystem
-	boost::filesystem::rename( ${1:current}, ${2:new} )
-snippet remove boost::filesystem
-	boost::filesystem::remove( ${1:path} )
-snippet create_directory boost::filesystem
-	boost::filesystem::create_directory( ${1:path} )
-snippet complete boost::filesystem
-	boost::filesystem::complete( ${1:path} )
-snippet current_path boost::filesystem
-	boost::filesystem::current_path()
 ##
 ## Boost Graph Library (BGL)
 ## 

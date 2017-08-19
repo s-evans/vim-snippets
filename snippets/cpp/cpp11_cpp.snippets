@@ -22,6 +22,14 @@ snippet mi std
 	std::move_iterator
 snippet mkmi std
 	std::make_move_iterator( ${1} )
+snippet begin std
+	std::begin( ${1} )
+snippet cbegin std
+	std::cbegin( ${1} )
+snippet end std
+	std::end( ${1} )
+snippet cend std
+	std::cend( ${1} )
 ##
 ## Strings
 snippet to_str std
@@ -30,6 +38,8 @@ snippet to_str std
 ## Tuples
 snippet tuple std
 	std::tuple
+snippet gett std
+	std::get<${1:0}>( ${2:tuple} )
 snippet mktuple std
 	std::make_tuple( ${1} )
 snippet tie std
