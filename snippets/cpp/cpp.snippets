@@ -1,9 +1,17 @@
 extends c
 ##
 ## Preprocessor
-# #include <...>
-snippet incc
+snippet! inc Built-in include
 	#include <${1:iostream}>
+snippet! Inc User include
+	#include "${1:`vim_snippets#Filename("$1.hpp")`}"
+snippet! once Include guards
+	#ifndef ${1:`toupper(vim_snippets#Filename('$1_HPP', 'UNTITLED_HPP'))`}
+	#define $1
+
+	${2}
+
+	#endif // $1
 ##
 ## Misc
 snippet vol volatile
