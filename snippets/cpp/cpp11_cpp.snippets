@@ -1,4 +1,8 @@
 ##
+## Fold
+snippet fold emulated fold expression in cpp11 to cpp14
+	(void)std::initializer_list<int>{ 0, ((void)${1:expandable_expression}, 0)... };
+##
 ## Containers
 snippet uset std
 	std::unordered_set<${1:T}>
