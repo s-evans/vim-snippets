@@ -15,35 +15,35 @@ snippet! once Include guards
 ##
 ## Misc
 snippet vol volatile
-	volatile 
+	volatile
 snippet ex explicit
-	explicit 
+	explicit
 snippet cr const&
-	const& 
+	const&
 snippet tid typeid
 	typeid( ${1:type_or_expression} )
 snippet swp std::swap
 	std::swap( ${1:a}, ${2:b} )
 snippet tnfo std::type_info
-	std::type_info 
+	std::type_info
 snippet te template
-	template<${1}> 
+	template<${1}>
 snippet tt template template parameter
 	template<template <typename> class ${1}>
 snippet ttt recursive template
 	typedef typename ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:type} $2;
 snippet tn typename
-	typename 
+	typename
 snippet it iterator
-	iterator 
+	iterator
 snippet cit const_iterator
-	const_iterator 
+	const_iterator
 ##
 ## Locales
 snippet global std::locale
 	std::locale::global( std::locale( "${1:location}" ) )
 snippet locale std
-	std::locale 
+	std::locale
 snippet setlocale std
 	std::setlocale( ${1:LC_ALL}, "${2:location}" )
 ##
@@ -528,37 +528,37 @@ snippet n Single object placement new
 snippet p Array placement new
 	new ( ${1:ptr} ) ${2:T} [${3:N}]
 snippet d Single object delete
-	delete 
+	delete
 snippet d Array delete
-	delete[] 
+	delete[]
 snippet nt std::nothrow
 	std::nothrow
 ##
 ## Streams
 snippet ss std::stringstream
-	std::stringstream ${1:ss};
+	std::stringstream
 snippet iss std::istringstream
-	std::istringstream ${1:iss};
+	std::istringstream
 snippet oss std::ostringstream
-	std::ostringstream ${1:oss};
+	std::ostringstream
 snippet sb std::stringbuf
-	std::stringbuf ${1:sb};
+	std::stringbuf
 snippet is std::istream
-	std::istream ${1:is}( ${2:sb} );
+	std::istream
 snippet os std::ostream
-	std::ostream ${1:os}( ${2:sb} );
+	std::ostream
 snippet osi std::ostream_iterator
-	std::ostream_iterator<${1:T}> ${2:name}( ${3:os}, ${4:deilmiter} );
+	std::ostream_iterator<${1:T}>
 snippet ios std::iostream
-	std::iostream ${1:ios};
+	std::iostream
 snippet ofs std::ofstream
-	std::ofstream ${1:ofs}( ${2:filename} );
+	std::ofstream
 snippet ifs std::ifstream
-	std::ifstream ${1:ifs}( ${2:filename} );
+	std::ifstream
 snippet fs std::fstream
-	std::fstream ${1:fs}( ${2:filename} );
+	std::fstream
 snippet fbuf std::filebuf
-	std::filebuf ${1:fbuf};
+	std::filebuf
 ##
 ## Manipulators
 snippet boolalpha std
@@ -687,6 +687,14 @@ snippet binary_function std
 	std::binary_function<${1:Arg1}, ${2:Arg2}, ${3:Result}>
 ##
 ## STL Algorithms
+snippet generate std
+	std::generate( ${1:collection}.begin(), $1.end(), ${2:generator} )
+snippet generate_n std
+	std::generate_n( ${1:collection}.begin(), ${2:count}, ${3:generator} )
+snippet fill std
+	std::fill( ${1:collection}.begin(), $1.end(), ${2:val} )
+snippet fill_n std
+	std::fill_n( ${1:collection}.begin(), ${2:count}, ${3:val} )
 snippet any_of std
 	std::any_of( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
 snippet all_of std
@@ -704,55 +712,55 @@ snippet mismatch std
 snippet equal:collection std
 	std::equal( ${1:collection}.begin(), $1.end(), ${2:collection}.begin() )
 snippet transform std
-	std::transform( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:functor} );
+	std::transform( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:functor} )
 snippet copy std
-	std::copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() );
+	std::copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() )
 snippet copy_if std
-	std::copy_if( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate} );
+	std::copy_if( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate} )
 snippet remove std
-	std::remove( ${1:collection}.begin(), $1.end(), ${2:value} );
+	std::remove( ${1:collection}.begin(), $1.end(), ${2:value} )
 snippet remove_if std
-	std::remove_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} );
+	std::remove_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate} )
 snippet replace std
-	std::replace( ${1:collection}.begin(), $1.end(), ${2:old_value}, ${3:new_value} );
+	std::replace( ${1:collection}.begin(), $1.end(), ${2:old_value}, ${3:new_value} )
 snippet replace_if std
-	std::replace_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate}, ${3:new_value} );
+	std::replace_if( ${1:collection}.begin(), $1.end(), ${2:unary_predicate}, ${3:new_value} )
 snippet replace_copy std
-	std::replace_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:old_value}, ${4:new_value} );
+	std::replace_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:old_value}, ${4:new_value} )
 snippet replace_copy_if std
-	std::replace_copy_if( ${1:collection}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate}, ${4:new_value} );
+	std::replace_copy_if( ${1:collection}.begin(), $1.end(), ${2:destination}.begin(), ${3:unary_predicate}, ${4:new_value} )
 snippet rotate std
-	std::rotate( ${1:collection}.begin(), ${2:new_begin_element}, $1.end() );
+	std::rotate( ${1:collection}.begin(), ${2:new_begin_element}, $1.end() )
 snippet rotate_copy std
-	std::rotate_copy( ${1:collection}.begin(), ${2:new_begin_element}, $1.end(), ${3:destination}.begin() );
+	std::rotate_copy( ${1:collection}.begin(), ${2:new_begin_element}, $1.end(), ${3:destination}.begin() )
 snippet unique Default binary predicate (std::less) std
-	std::unique( ${1:collection}.begin(), $1.end() );
+	std::unique( ${1:collection}.begin(), $1.end() )
 snippet unique User defined binary predicate std
-	std::unique( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+	std::unique( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 snippet unique_copy Default binary predicate (std::less) std
-	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() );
+	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin() )
 snippet unique_copy User defined binary predicate std
-	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:binary_predicate} );
+	std::unique_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), ${3:binary_predicate} )
 snippet sort Default binary predicate (std::less) std
-	std::sort( ${1:collection}.begin(), $1.end() );
+	std::sort( ${1:collection}.begin(), $1.end() )
 snippet sort User defined binary predicate std
-	std::sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+	std::sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 snippet partial_sort Default binary predicate (std::less) std
-	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end() );
+	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end() )
 snippet partial_sort User defined binary predicate std
-	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end(), ${3:binary_predicate} );
+	std::partial_sort( ${1:collection}.begin(), ${2:middle_iter}, $1.end(), ${3:binary_predicate} )
 snippet partial_sort_copy Default binary predicate (std::less) std
-	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end() );
+	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end() )
 snippet partial_sort_copy User defined binary predicate std
-	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end(), ${3:binary_predicate} );
+	std::partial_sort_copy( ${1:source}.begin(), $1.end(), ${2:destination}.begin(), $2.end(), ${3:binary_predicate} )
 snippet stable_sort Default binary predicate (std::less) std
-	std::stable_sort( ${1:collection}.begin(), $1.end() );
+	std::stable_sort( ${1:collection}.begin(), $1.end() )
 snippet stable_sort User defined binary predicate std
-	std::stable_sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+	std::stable_sort( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 snippet nth_element Default binary predicate (std::less) std
-	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end() );
+	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end() )
 snippet nth_element User defined binary predicate std
-	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end(), ${3:binary_predicate} );
+	std::nth_element( ${1:collection}.begin(), ${2:nth_element}, $1.end(), ${3:binary_predicate} )
 snippet lower_bound Default binary predicate (std::less) std
 	std::lower_bound( ${1:collection}.begin(), $1.end(), ${2:value} )
 snippet lower_bound User defined binary predicate std
@@ -770,51 +778,51 @@ snippet equal_range Default binary predicate (std::less) std
 snippet equal_range User defined binary predicate std
 	std::equal_range( ${1:collection}.begin(), $1.end(), ${2:value}, ${3:binary_predicate} )
 snippet merge Default binary predicate (std::less) std
-	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin() );
+	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin() )
 snippet merge User defined binary predicate std
-	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+	std::merge( ${1:left}.begin(), $1.end(), ${2:right}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} )
 snippet inplace_merge Default binary predicate (std::less) std
-	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last} );
+	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last} )
 snippet inplace_merge User defined binary predicate std
-	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last}, ${4:binary_predicate} );
+	std::inplace_merge( ${1:first}, ${2:middle}, ${3:last}, ${4:binary_predicate} )
 snippet includes Default binary predicate (std::less) std
 	std::includes( ${1:haystack}.begin(), $1.end(), ${2:needle}.begin(), $2.end() )
 snippet includes User defined binary predicate std
 	std::includes( ${1:haystack}.begin(), $1.end(), ${2:needle}.begin(), $2.end(), ${3:binary_predicate} )
 snippet set_difference Default binary predicate (std::less) std
-	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
+	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() )
 snippet set_difference User defined binary predicate std
-	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+	std::set_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} )
 snippet set_intersection Default binary predicate (std::less) std
-	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
+	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() )
 snippet set_intersection User defined binary predicate std
-	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+	std::set_intersection( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} )
 snippet set_symmetric_difference Default binary predicate (std::less) std
-	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
+	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() )
 snippet set_symmetric_difference User defined binary predicate std
-	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+	std::set_symmetric_difference( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} )
 snippet set_union Default binary predicate (std::less) std
-	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() );
+	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin() )
 snippet set_union User defined binary predicate std
-	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} );
+	std::set_union( ${1:lhs}.begin(), $1.end(), ${2:rhs}.begin(), $2.end(), ${3:destination}.begin(), ${4:binary_predicate} )
 snippet is_heap std
 	std::is_heap( ${1:collection}.begin(), $1.end() )
 snippet mkheap Default binary predicate (std::less) std
-	std::make_heap( ${1:collection}.begin(), $1.end() );
+	std::make_heap( ${1:collection}.begin(), $1.end() )
 snippet mkheap User defined binary predicate std
-	std::make_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+	std::make_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 snippet push_heap Default binary predicate (std::less) std
-	std::push_heap( ${1:collection}.begin(), $1.end() );
+	std::push_heap( ${1:collection}.begin(), $1.end() )
 snippet push_heap User defined binary predicate std
-	std::push_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+	std::push_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 snippet pop_heap Default binary predicate (std::less) std
-	std::pop_heap( ${1:collection}.begin(), $1.end() );
+	std::pop_heap( ${1:collection}.begin(), $1.end() )
 snippet pop_heap User defined binary predicate std
-	std::pop_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+	std::pop_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 snippet sort_heap Default binary predicate (std::less) std
-	std::sort_heap( ${1:collection}.begin(), $1.end() );
+	std::sort_heap( ${1:collection}.begin(), $1.end() )
 snippet sort_heap User defined binary predicate std
-	std::sort_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} );
+	std::sort_heap( ${1:collection}.begin(), $1.end(), ${2:binary_predicate} )
 snippet minmax Default binary predicate (std::less) std
 	std::minmax( ${1:lhs}, ${2:rhs} )
 snippet minmax User defined binary predicate std
@@ -934,23 +942,23 @@ snippet ostreambuf_iterator std
 ##
 ## Effective STL
 snippet erase_remove Effective STL std
-	${1:vector}.erase( std::remove( $1.begin(), $1.end(), ${2:val} ), $1.end() );
+	${1:vector}.erase( std::remove( $1.begin(), $1.end(), ${2:val} ), $1.end() )
 snippet insert_or_update Effective STL
-	template<typename T> 
+	template<typename T>
 	typename T::iterator map_insert_or_update(
 		T& m, typename T::key_type const& k, typename T::mapped_type const& v )
 	{
 		typename T::iterator lb = m.lower_bound( k );
 
-		if( lb != m.end() && !( m.key_comp()( k, lb->first ) ) ) { 
+		if( lb != m.end() && !( m.key_comp()( k, lb->first ) ) ) {
 			lb->second = v;
 			return lb;
-		} 
+		}
 
 		return m.insert( lb, typename T::value_type( k, v ) );
 	}
 snippet shrink_to_fit C++03
-	${1:T}( ${2:collection} ).swap( $2 );
+	${1:T}( ${2:collection} ).swap( $2 )
 ##
 ## Access Modifiers
 snippet pri private
@@ -968,7 +976,7 @@ snippet mu mutable
 snippet cn Class name
 	`vim_snippets#Filename('$1', 'ClassName')`
 snippet cl Class declaration (C++98)
-	class ${1:`vim_snippets#Filename('$1', 'name')`} 
+	class ${1:`vim_snippets#Filename('$1', 'name')`}
 	{
 
 	public:
@@ -996,7 +1004,7 @@ snippet mfun Member function definition
 		${0}
 	}
 snippet ns namespace
-	namespace ${1:`vim_snippets#Filename('', 'my')`} 
+	namespace ${1:`vim_snippets#Filename('', 'my')`}
 	{
 		${0}
 	} /* namespace $1 */
@@ -1021,7 +1029,7 @@ snippet alloc custom allocator class template outline (C++98)
 	#include <new>
 
 	template <class T>
-	class ${1:`vim_snippets#Filename('$1', 'name')`} 
+	class ${1:`vim_snippets#Filename('$1', 'name')`}
 	{
 
 	public:

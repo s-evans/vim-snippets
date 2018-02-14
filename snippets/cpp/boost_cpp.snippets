@@ -1127,7 +1127,7 @@ snippet empty_deleter boost::log
 	boost::log::empty_deleter()
 ##
 ## Boost Graph Library (BGL)
-## 
+##
 ## BGL Graph Classes
 snippet adjacency_list boost
 	boost::adjacency_list<${1:OutEdgeList = boost::vecS}, ${2:VertexList = boost::vecS}, ${3:Directed = boost::directedS}, ${4:VertexProperties = boost::no_property}, ${5:EdgeProperties = boost::no_property}, ${6:GraphProperties = boost::no_property}, ${7:EdgeList = boost::listS}>
@@ -1139,13 +1139,13 @@ snippet adjacency_matrix boost
 	boost::adjacency_matrix<${1:Directed = boost::directedS}, ${2:VertexProperty = boost::no_property}, ${3:EdgeProperty = boost::no_property}, ${4:GraphProperty = boost::no_property}>
 snippet compressed_sparse_row_graph boost
 	boost::compressed_sparse_row_graph<${1:Directed = boost::directedS}, ${2:VertexProperty = void}, ${3:EdgeProperty = void}, ${4:GraphProperty = boost::no_property}, ${5:Vertex = std::size_t}, ${6:EdgeIndex = Vertex}>
-## 
+##
 ## BGL Iterators
 snippet adjacency_iterator boost
-	boost::graph_traits<${1:GraphType}>::adjacency_iterator 
+	boost::graph_traits<${1:GraphType}>::adjacency_iterator
 snippet vertex_iterator boost
-	boost::graph_traits<${1:GraphType}>::vertex_iterator 
-## 
+	boost::graph_traits<${1:GraphType}>::vertex_iterator
+##
 ## BGL Iterator Adaptors
 snippet adjacency_iterator_generator boost
 	boost::adjacency_iterator_generator<${1:Graph}, ${2:VertexDescriptor}, ${3:OutEdgeIter}>::type
@@ -1159,13 +1159,13 @@ snippet property_map boost
 	boost::property_map<${1:GraphType}, ${2:boost::vertex_index_t}>
 snippet adjacency_list_traits boost
 	boost::adjacency_list_traits<${1:AdjacencyListType}>
-## 
+##
 ## BGL Algorithms
 snippet copy_graph boost
 	boost::copy_graph( ${1:GraphConstRef}, ${2:GraphRef} )
 snippet transpose_graph boost
 	boost::transpose_graph( ${1:GraphConstRef}, ${2:GraphRef} )
-## 
+##
 ## BGL Algorithms TODO
 snippet breadth_first_search boost
 	boost::breadth_first_search()
@@ -1360,10 +1360,10 @@ snippet tsp_tour_len_visitor boost
 ##
 ## BGL Other Types
 snippet vertex_descriptor boost
-	boost::graph_traits<${1:GraphType}>::vertex_descriptor 
+	boost::graph_traits<${1:GraphType}>::vertex_descriptor
 snippet edge_descriptor boost
-	boost::graph_traits<${1:GraphType}>::edge_descriptor 
-## 
+	boost::graph_traits<${1:GraphType}>::edge_descriptor
+##
 ## BGL Graph Properties
 snippet property boost
 	boost::property<${1:PropertyTag}, ${2:PropertyType}, ${3:NextProperty}>

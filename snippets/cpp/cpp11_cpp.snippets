@@ -199,7 +199,7 @@ snippet uniform_on_sphere std::random
 ##
 ## Misc
 snippet ovr override
-	override 
+	override
 snippet u= Alias declaration
 	using ${1} = ${2};
 snippet =dl = delete
@@ -699,8 +699,8 @@ snippet tecb std
 ##
 ## Effective STL
 snippet shrink_to_fit C++11
-	${2:collection}.shrink_to_fit();
-## 
+	${2:collection}.shrink_to_fit()
+##
 ## Type Traits
 snippet integral_constant std
 	std::integral_constant<${1:T}, ${2:T v}>
@@ -871,7 +871,7 @@ snippet remove_volatile std
 ##
 ## Class
 snippet cl Class declaration (C++11)
-	class ${1:`vim_snippets#Filename('$1', 'name')`} 
+	class ${1:`vim_snippets#Filename('$1', 'name')`}
 	{
 
 	public:
@@ -926,7 +926,7 @@ snippet alloc custom allocator class template outline (C++11)
 	#include <new>
 
 	template <class T>
-	class ${1:`vim_snippets#Filename('$1', 'name')`} 
+	class ${1:`vim_snippets#Filename('$1', 'name')`}
 	{
 
 	public:
