@@ -1,60 +1,104 @@
 snippet cmake
-	cmake_minimum_required(VERSION 2.6)
+	cmake_minimum_required( VERSION 2.6 )
 
-	project(${1:projectname})
+	project( ${1:projectname} )
 
-	find_package(${2:library})
+	find_package( ${2:library} )
 
-	include_directories(
-		${$2_include_dir}
-	)
+	add_subdirectory( ${3:src} )
 
-	add_subdirectory(${0:src})
+	add_executable( $1 )
 
-	add_executable($1)
-
-	target_link_libraries($1
-		${$2_libraries}
-	)
-
-snippet proj
-	project(${0:Name})
+	target_link_libraries( $1 ${$2_libraries} )
 
 snippet min
-	cmake_minimum_required(version ${0:2.8.2})
+	cmake_minimum_required
 
-snippet include_directories
-	include_directories(${${0:include_dir}})
+snippet version
+	cmake_minimum_required
+
+snippet cmake_minimum_required
+	cmake_minimum_required( VERSION ${1:2.8.2} )
+
+snippet proj
+	project
+
+snippet project
+	project( ${1:Name} )
 
 snippet find_package
-	find_package(${0:library})
-
-snippet glob
-	file(glob ${1:srcs} *.${0:cpp})
-
-snippet subdir
-	add_subdirectory(${0:src})
+	find_package( ${1:library} )
 
 snippet lib
-	add_library(${1:lib} ${2:static}
-		${${0:srcs}}
-	)
+	add_library
 
-snippet link
-	target_link_libraries(${1:bin}
-		${0:somelib}
-	)
+snippet add_library
+	add_library( ${1:lib} ${2:STATIC|SHARED|MODULE} ${3:srcs} )
 
 snippet bin
-	add_executable(${1:bin})
+	add_executable
 
-snippet set
-	set(${1:var} ${0:val})
+snippet add_executable
+	add_executable( ${1:bin} ${2:srcs} )
+
+snippet srcs
+	target_sources
+
+snippet target_sources
+	target_sources( ${1:target} ${2:INTERFACE|PUBLIC|PRIVATE} ${3:srcs} )
+
+snippet link
+	target_link_libraries
+
+snippet target_link_libraries
+	target_link_libraries( ${1:bin} ${2:libs} )
+
+snippet link_libraries
+	target_link_libraries
+
+snippet link_directories
+	target_link_libraries
+
+snippet target_compile_definitions
+	target_compile_definitions( ${1:target} ${2:definitions} )
+
+snippet add_compile_options
+	target_compile_options
+
+snippet target_compile_options
+	target_compile_options( ${1:target} ${2:options} )
+
+snippet target_compile_features
+	target_compile_features( ${1:target} ${2:PRIVATE|PUBLIC|INTERFACE} ${3:options} )
+
+snippet include_directories
+	target_include_directories
+
+snippet target_include_directories
+	target_include_directories( ${1:target} ${2:directory_list} )
 
 snippet dep
-	add_dependencies(${1:target}
-		${0:dep}
+	add_dependencies( ${1:target} ${2:deps} )
+
+snippet set_property
+	set_target_properties
+
+snippet props
+	set_target_properties
+
+snippet set_target_properties
+	set_target_properties(${1:targets}
+		PROPERTIES ${2:property_name} ${3:property_value}
 	)
+
+snippet glob
+	file( glob ${1:srcs} *.${2:cpp} )
+
+snippet subdir
+	add_subdirectory( ${1:src} )
+
+snippet set
+	set( ${1:var} ${2:val} )
 
 snippet Ext_url
 	include(ExternalProject)
@@ -80,13 +124,6 @@ snippet Ext_git
 	  BUILD_COMMAND     ""
 	  INSTALL_COMMAND   ""
 	  TEST_COMMAND      ""
-	)
-
-
-snippet props
-	set_target_properties(${1:target}
-		${2:properties} ${3:compile_flags}
-		${0:"-o3 -wall -pedantic"}
 	)
 
 snippet if
@@ -124,9 +161,6 @@ snippet macro
 	macro( ${1:name} ${2:args} )
 		${3}
 	endmacro( $1 )
-
-snippet add_compile_options
-	add_compile_options( ${1:options} )
 
 snippet add_custom_command
 	add_custom_command( OUTPUT ${1:variable1}
@@ -228,9 +262,6 @@ snippet include_regular_expression
 snippet install
 	install( targets ${1:target_list} )
 
-snippet link_directories
-	link_directories( ${1:directory_list} )
-
 snippet list
 	list( ${1:operation} ${2:list} )
 
@@ -267,9 +298,6 @@ snippet separate_arguments
 snippet set_directory_properties
 	set_directory_properties( PROPERTIES ${1:property} ${2:value} )
 
-snippet set_property
-	set_property( ${1:option} PROPERTY ${2:property} ${3:value} )
-
 snippet set_source_files_properties
 	set_source_files_properties( ${1:file_list} PROPERTIES ${2:property} ${3:value} )
 
@@ -284,15 +312,6 @@ snippet source_group
 
 snippet string
 	string( ${1:operation} ${2:string} )
-
-snippet target_compile_definitions
-	target_compile_definitions( ${1:target} ${2:definitions} )
-
-snippet target_compile_options
-	target_compile_options( ${1:target} ${2:options} )
-
-snippet target_include_directories
-	target_include_directories( ${1:target} ${2:directory_list} )
 
 snippet try_compile
 	try_compile( ${1:compile_result_variable} ${2:bindir} ${3:srcdir} ${4:project} )
