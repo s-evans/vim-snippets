@@ -10,96 +10,66 @@ snippet cmake
 	add_executable( $1 )
 
 	target_link_libraries( $1 ${$2_libraries} )
-
 snippet min
 	cmake_minimum_required
-
 snippet version
 	cmake_minimum_required
-
 snippet cmake_minimum_required
 	cmake_minimum_required( VERSION ${1:2.8.2} )
-
 snippet proj
 	project
-
 snippet project
 	project( ${1:Name} )
-
 snippet find_package
 	find_package( ${1:library} )
-
 snippet lib
 	add_library
-
 snippet add_library
 	add_library( ${1:lib} ${2:STATIC|SHARED|MODULE} ${3:srcs} )
-
 snippet bin
 	add_executable
-
 snippet add_executable
 	add_executable( ${1:bin} ${2:srcs} )
-
 snippet srcs
 	target_sources
-
 snippet target_sources
 	target_sources( ${1:target} ${2:INTERFACE|PUBLIC|PRIVATE} ${3:srcs} )
-
 snippet link
 	target_link_libraries
-
 snippet target_link_libraries
 	target_link_libraries( ${1:bin} ${2:libs} )
-
 snippet link_libraries
 	target_link_libraries
-
 snippet link_directories
 	target_link_libraries
-
 snippet target_compile_definitions
 	target_compile_definitions( ${1:target} ${2:definitions} )
-
 snippet add_compile_options
 	target_compile_options
-
 snippet target_compile_options
 	target_compile_options( ${1:target} ${2:options} )
-
 snippet target_compile_features
 	target_compile_features( ${1:target} ${2:PRIVATE|PUBLIC|INTERFACE} ${3:options} )
-
 snippet include_directories
 	target_include_directories
-
 snippet target_include_directories
 	target_include_directories( ${1:target} ${2:directory_list} )
-
 snippet dep
 	add_dependencies( ${1:target} ${2:deps} )
-
 snippet set_property
 	set_target_properties
-
 snippet props
 	set_target_properties
-
 snippet set_target_properties
 	set_target_properties(${1:targets}
 		PROPERTIES ${2:property_name} ${3:property_value}
 	)
-
 snippet glob
 	file( glob ${1:srcs} *.${2:cpp} )
-
 snippet subdir
 	add_subdirectory( ${1:src} )
-
 snippet set
 	set( ${1:var} ${2:val} )
-
 snippet Ext_url
 	include(ExternalProject)
 	ExternalProject_Add(${1:googletest}
@@ -112,7 +82,6 @@ snippet Ext_url
 	  INSTALL_COMMAND   ""
 	  TEST_COMMAND      ""
 	)
-
 snippet Ext_git
 	include(ExternalProject)
 	ExternalProject_Add(${1:googletest}
@@ -125,203 +94,142 @@ snippet Ext_git
 	  INSTALL_COMMAND   ""
 	  TEST_COMMAND      ""
 	)
-
 snippet if
 	if ( ${1} )
 		${2}
 	endif ( $1 )
-
 snippet ei
 	elseif ( ${1} )
 		${2}
-
 snippet el
 	else ()
 		${1}
-
 snippet wh
 	while ( ${1} )
 		${2}
 	endwhile ( $1 )
-
 snippet for
 	foreach ( ${1:loop_var} ${2:args} )
 		${3}
 	endforeach ( $1 )
-
 snippet function
 	function( ${1:name} ${2:args} )
 		${3}
 	endfunction( $1 )
-
 snippet break
 	break()
-
 snippet macro
 	macro( ${1:name} ${2:args} )
 		${3}
 	endmacro( $1 )
-
 snippet add_custom_command
 	add_custom_command( OUTPUT ${1:variable1}
 		command ${2:command1} ${3:args} )
-
 snippet add_custom_target
 	add_custom_target( ${1:name} COMMAND ${2:command} ${3:args} )
-
 snippet add_definitions
 	add_definitions( ${1:definitions} )
-
 snippet add_test
 	add_test( ${1:testname} ${2:exename} ${3:args} )
-
 snippet aux_source_directory
 	aux_source_directory( ${1:dir} ${2:variable} )
-
 snippet build_command
 	build_command( ${1:variable} ${2:option} ${3:name} )
-
 snippet cmake_host_system_information
 	cmake_host_system_information( RESULT ${1:variable} QUERY ${2:key} )
-
 snippet cmake_minimum_required
 	cmake_minimum_required( VERSION ${1:version} )
-
 snippet cmake_policy
 	cmake_policy( VERSION ${1:version} )
-
 snippet configure_file
 	configure_file( ${1:input} ${2:output} ${3:options} )
-
 snippet create_test_sourcelist
 	create_test_sourcelist( ${1:sourcelistname} ${2:drivername} ${3:test_list} )
-
 snippet define_property
 	define_property( ${1:option}
 		property ${2:name}
 		brief_docs ${3:doc_list}
 		full_docs ${4:doc_list} )
-
 snippet enable_language
 	enable_language( ${1:lang} )
-
 snippet enable_testing
 	enable_testing()
-
 snippet execute_process
 	execute_process( COMMAND ${1:cmd} ${2:args} )
-
 snippet export
 	export( TARGETS ${1:target_list} FILE ${2:filename} )
-
 snippet file
 	file( ${1:option} ${2:output_filename} )
-
 snippet find_file
 	find_file( ${1:output_variable} NAMES ${2:name_list} PATHS ${3:path_list} )
-
 snippet find_library
 	find_library( ${1:output_variable} NAMES ${2:name_list} PATHS ${3:path_list} )
-
 snippet find_path
 	find_path( ${1:output_variable} NAMES ${2:name_list} PATHS ${3:path_list} )
-
 snippet find_program
 	find_program( ${1:output_variable} NAMES ${2:name_list} PATHS ${3:path_list} )
-
 snippet get_cmake_property
 	get_cmake_property( ${1:output_variable} ${2:property} )
-
 snippet get_directory_property
 	get_directory_property( ${1:output_variable} ${2:property} )
-
 snippet get_filename_component
 	get_filename_component( ${1:output_variable} ${2:filename} ${3:component} )
-
 snippet get_property
 	get_property( ${1:output_variable} PROPERTY ${3:property} )
-
 snippet get_source_file_property
 	get_source_file_property( ${1:variable} ${2:file} ${3:property} )
-
 snippet get_target_property
 	get_target_property( ${1:variable} ${2:file} ${3:property} )
-
 snippet get_test_property
 	get_test_property( ${1:variable} ${2:file} ${3:property} )
-
 snippet include
 	include( ${1:object} )
-
 snippet include_external_msproject
 	include_external_msproject( ${1:projectname} ${2:location} ${3:dependency_list} )
-
 snippet include_regular_expression
 	include_regular_expression( ${1:file_regex} )
-
 snippet install
 	install( targets ${1:target_list} )
-
 snippet list
 	list( ${1:operation} ${2:list} )
-
 snippet load_cache
 	load_cache( ${1:pathtocachefile} ${2:option} ${3:entry_list} )
-
 snippet load_command
 	load_command( ${1:command_name} )
-
 snippet mark_as_advanced
 	mark_as_advanced( ${1:option} ${2:variables} )
-
 snippet math
 	math( expr ${1:output_variable} ${2:expression} )
-
 snippet message
 	message( ${1:option} ${2:message} )
-
 snippet option
 	option( ${1:option_variable} ${2:description} ${3:default_value} )
-
 snippet project
 	project( ${1:project_name} ${2:language_list} )
-
 snippet remove_definitions
 	remove_definitions( ${1:definitions} )
-
 snippet return
 	return()
-
 snippet separate_arguments
 	separate_arguments( ${1:output_variable} ${2:option} ${3:argument_string} )
-
 snippet set_directory_properties
 	set_directory_properties( PROPERTIES ${1:property} ${2:value} )
-
 snippet set_source_files_properties
 	set_source_files_properties( ${1:file_list} PROPERTIES ${2:property} ${3:value} )
-
 snippet set_tests_properties
 	set_tests_properties( ${1:test_list} PROPERTIES ${2:property} ${3:value} )
-
 snippet site_name
 	site_name( ${1:variable} )
-
 snippet source_group
 	source_group( ${1:name} ${2:option} ${3:list} )
-
 snippet string
 	string( ${1:operation} ${2:string} )
-
 snippet try_compile
 	try_compile( ${1:compile_result_variable} ${2:bindir} ${3:srcdir} ${4:project} )
-
 snippet try_run
 	try_run( ${1:run_result_variable} ${2:compile_result_variable}
 		${3:bindir} ${4:srcfile} )
-
 snippet unset
 	unset( ${1:variable} ${2:cache} )
-
 snippet variable_watch
 	variable_watch( ${1:variable} ${2:command} )
