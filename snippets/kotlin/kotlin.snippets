@@ -1,0 +1,89 @@
+snippet to TODO
+	// TODO: 
+snippet t Ternary operator
+	if (${1}) ${2:true} else ${3:false}
+snippet cn Class name
+	`vim_snippets#Filename('$1', 'ClassName')`
+snippet cl Class declaration
+	class ${1:`vim_snippets#Filename('$1', 'name')`}
+snippet ctor Copy constructor
+	constructor(o: ${1:`vim_snippets#Filename('$1', 'name')`}) : this(${2:params, ...})
+snippet ops Container / Index Operators
+	operator fun contains(e: ${1:ElementType}): Boolean = TODO()
+	operator fun get(i: Int): $1 = TODO()
+	operator fun set(i: Int, e: $1): Unit = TODO()
+snippet ops Arithmetic Operators
+	operator fun plus(rhs: ${2:Int}): ${1:`vim_snippets#Filename('$1', 'name')`} = TODO()
+	operator fun minus(rhs: $2): $1 = TODO()
+	operator fun times(rhs: $2): $1 = TODO()
+	operator fun div(rhs: $2): $1 = TODO()
+	operator fun rem(rhs: $2): $1 = TODO()
+	operator fun plusAssign(rhs: $2): Unit = TODO()
+	operator fun minusAssign(rhs: $2): Unit = TODO()
+	operator fun timesAssign(rhs: $2): Unit = TODO()
+	operator fun divAssign(rhs: $2): Unit = TODO()
+	operator fun remAssign(rhs: $2): Unit = TODO()
+	operator fun inc(): $1 = TODO()
+	operator fun dec(): $1 = TODO()
+	operator fun unaryPlus(): $1 = TODO()
+	operator fun unaryMinus(): $1 = TODO()
+	operator fun not(): $1 = TODO()
+	operator fun rangeTo(rhs: $2): $1 = TODO()
+	override operator fun equals(other: Any?): Boolean = TODO()
+	operator fun compareTo(rhs: $1): $2 = TODO()
+snippet ops Delegate Operators
+	// import kotlin.reflect.KProperty
+	operator fun getValue(thisRef: Any?, property: KProperty<*>): ${1:ContainedType} = TODO()
+	operator fun setValue(thisRef: Any?, property: KProperty<*>, value: $1): Unit = TODO()
+	operator fun provideDelegate(thisRef: Any?, prop: KProperty<*>): ReadOnlyProperty<Any?, $1> = TODO()
+snippet p Read-Only Property
+	val ${1:name}: ${2:Type} = ${3:InitialValue}
+		get() {
+			TODO()
+			return field
+		}
+snippet p Read-Write Property
+	var ${1:name}: ${2:Type} = ${3:InitialValue}
+		get() {
+			TODO()
+			return field
+		}
+		set(value) {
+			field = value
+			TODO()
+		}
+snippet p Lazy Property
+	val ${1:name}: ${2:Type} by lazy {
+		${3:run_once_computations}
+		${4:returned_value}
+	}
+snippet switch Switch Statement
+	when (${1:exp}) {
+		${2:value} -> TODO()
+		else -> TODO()
+	}
+snippet when Switch Statement
+	when (${1:exp}) {
+		${2:value} -> TODO()
+		else -> TODO()
+	}
+snippet for For Loop
+	for (${1:i} in ${2:0} until ${3:1} step ${4:1}) {
+		${5}
+	}
+snippet for For Loop (Range)
+	for (${1:i} in ${2:0}..${3:1} step ${4:1}) {
+		${5}
+	}
+snippet for For Loop (Reverse)
+	for (${1:i} in ${2:0} downTo ${3:1} step ${4:1}) {
+		${5}
+	}
+snippet static Static Class Members
+	companion object {
+		$1
+	}
+snippet init Object Initializtion Block
+	init {
+		$1
+	}
